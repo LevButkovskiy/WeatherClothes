@@ -12,13 +12,22 @@ class ContainerViewController: UIViewController, HomeViewControllerDelegate {
 
     var controller : UIViewController!
     var menuViewController : MenuViewController!
-    
     var homeViewController : HomeViewController!
     
     var isMove = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        /*let firstLaunch = UserDefaults.standard.bool(forKey: "firstLaunch")
+        if firstLaunch  {
+            print("Not first launch.")
+        } else {
+            let tutorial = TutorialViewController()
+            navigationController?.pushViewController(tutorial, animated: true)
+            print("First launch, setting UserDefault.")
+            UserDefaults.standard.set(true, forKey: "firstLaunch")
+        }
+        */
         let home = HomeViewController()
         loadHomeViewController()
 
@@ -50,7 +59,7 @@ class ContainerViewController: UIViewController, HomeViewControllerDelegate {
                            initialSpringVelocity: 0,
                            options: .curveEaseInOut,
                            animations: {
-                            self.controller.view.frame.origin.x = self.controller.view.frame.width - 140
+                            self.controller.view.frame.origin.x = self.controller.view.frame.width / 2
             }) { (finished) in
                 
             }

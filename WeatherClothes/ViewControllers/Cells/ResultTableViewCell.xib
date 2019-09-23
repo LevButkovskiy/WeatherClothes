@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="154" id="KGk-i7-Jjw" customClass="ResultTableViewCell" customModule="WeatherClothes" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="412" height="154"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="412" height="153.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXG-0Y-a5E">
+                        <rect key="frame" x="10" y="10" width="133.5" height="133.5"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3he-SR-VMR">
+                                <rect key="frame" x="0.0" y="0.0" width="133.5" height="133.5"/>
+                                <connections>
+                                    <outlet property="delegate" destination="KGk-i7-Jjw" id="3Oy-Ee-Zr8"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="3he-SR-VMR" secondAttribute="trailing" id="Ck3-hF-1lH"/>
+                            <constraint firstItem="3he-SR-VMR" firstAttribute="leading" secondItem="aXG-0Y-a5E" secondAttribute="leading" id="Qfc-4h-czU"/>
+                            <constraint firstItem="3he-SR-VMR" firstAttribute="top" secondItem="aXG-0Y-a5E" secondAttribute="top" id="VIL-Ei-VWW"/>
+                            <constraint firstAttribute="bottom" secondItem="3he-SR-VMR" secondAttribute="bottom" id="rRR-vg-iEQ"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9NI-4J-mWi">
+                        <rect key="frame" x="153.5" y="10" width="248.5" height="133.5"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" text=" " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="u9v-8f-xFB">
+                                <rect key="frame" x="0.0" y="0.0" width="248.5" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text=" " lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="bg1-gU-POq">
+                                <rect key="frame" x="0.0" y="24" width="248.5" height="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="u9v-8f-xFB" firstAttribute="top" secondItem="9NI-4J-mWi" secondAttribute="top" id="5AF-fI-Ce2"/>
+                            <constraint firstItem="bg1-gU-POq" firstAttribute="top" secondItem="u9v-8f-xFB" secondAttribute="bottom" id="6fO-OW-aJd"/>
+                            <constraint firstAttribute="trailing" secondItem="bg1-gU-POq" secondAttribute="trailing" id="F6k-U6-EKV"/>
+                            <constraint firstItem="u9v-8f-xFB" firstAttribute="leading" secondItem="9NI-4J-mWi" secondAttribute="leading" id="UY1-GN-V2D"/>
+                            <constraint firstItem="bg1-gU-POq" firstAttribute="leading" secondItem="9NI-4J-mWi" secondAttribute="leading" id="jfW-7p-daJ"/>
+                            <constraint firstAttribute="trailing" secondItem="u9v-8f-xFB" secondAttribute="trailing" id="kfr-9x-Sk0"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="aXG-0Y-a5E" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="4PY-Gt-xT1"/>
+                    <constraint firstItem="9NI-4J-mWi" firstAttribute="leading" secondItem="aXG-0Y-a5E" secondAttribute="trailing" constant="10" id="BoW-e9-wG1"/>
+                    <constraint firstItem="9NI-4J-mWi" firstAttribute="height" secondItem="3he-SR-VMR" secondAttribute="height" id="Bym-ur-wso"/>
+                    <constraint firstItem="aXG-0Y-a5E" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="PSf-La-upM"/>
+                    <constraint firstAttribute="bottom" secondItem="9NI-4J-mWi" secondAttribute="bottom" constant="10" id="VOA-Lp-0i2"/>
+                    <constraint firstItem="9NI-4J-mWi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="WHf-F2-XxE"/>
+                    <constraint firstItem="aXG-0Y-a5E" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" constant="-20" id="XSO-xc-6OJ"/>
+                    <constraint firstItem="aXG-0Y-a5E" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="height" constant="-20" id="d0f-VU-GCK"/>
+                    <constraint firstAttribute="trailing" secondItem="9NI-4J-mWi" secondAttribute="trailing" constant="10" id="twc-UC-fNS"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="clotheDescription" destination="bg1-gU-POq" id="o5W-BR-cdA"/>
+                <outlet property="clotheName" destination="u9v-8f-xFB" id="4wI-yj-DD7"/>
+                <outlet property="scrollView" destination="3he-SR-VMR" id="eK7-Eu-rKa"/>
+            </connections>
+            <point key="canvasLocation" x="65.625" y="116.19718309859155"/>
+        </tableViewCell>
+    </objects>
+</document>

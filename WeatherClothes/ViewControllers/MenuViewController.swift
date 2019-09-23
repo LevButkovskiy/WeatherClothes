@@ -24,6 +24,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UINib(nibName: "MenuTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
+        tableView.backgroundColor = .groupTableViewBackground
+        tableView.allowsSelection = false
         view.addSubview(tableView)
         tableView.frame = view.bounds
         
@@ -38,14 +40,21 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MenuTableViewCell
         switch indexPath.row {
+        /*case 0:
+            cell.nameLabel.text = "nightTheme".localized
+            cell.switcher.isHidden = false
+            cell.mode = "theme"*/
         case 0:
-            cell.nameLabel.text = "Темная тема"
+            cell.mode = "gender"
+            cell.nameLabel.text = "gender".localized
             cell.switcher.isHidden = false
-        case 1:
-            cell.nameLabel.text = "Темная тема"
-            cell.switcher.isHidden = false
+            cell.switcher.onTintColor = UIColor(red:1.00, green:0.54, blue:0.98, alpha:1.0)
+            cell.switcher.tintColor = .blue
+            cell.switcher.layer.cornerRadius = cell.switcher.frame.height / 2
+            cell.switcher.backgroundColor = .blue
         default: break
         }
+        cell.setValues()
         return cell
     }
 }

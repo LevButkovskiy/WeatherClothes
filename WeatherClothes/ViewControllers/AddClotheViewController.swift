@@ -8,8 +8,9 @@
 
 import UIKit
 
-class AddClotheViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
-
+class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+    
+    
     var inventory = Inventory()
     var clothe : Dictionary<String, Any> = [:]
     let imagePicker = UIImagePickerController()
@@ -18,7 +19,6 @@ class AddClotheViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     var type : String = "Головной убор"
     
     @IBOutlet weak var clotheImage: UIImageView!
-    @IBOutlet weak var typePicker: UIPickerView!
     @IBOutlet weak var nameTextInput: UITextField!
     @IBOutlet weak var windSlider: UISlider!
     @IBOutlet weak var windSliderLabel: UILabel!
@@ -39,7 +39,6 @@ class AddClotheViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         if(!clothe.isNil()){
             type = inventory.getTypeNameFromIndex(index: clothe["type"] as! Int)
             name = (clothe["name"] as! String)
-            typePicker.selectRow(clothe["type"] as! Int, inComponent: 0, animated: false)
             nameTextInput.text = (clothe["name"] as! String)
             windSlider.value = clothe["wind"] as! Float
             comfortTemperatureSlider.value = clothe["temperature"] as! Float
@@ -49,11 +48,14 @@ class AddClotheViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
+    
     func setDefaultSettings(){        
         navigationController?.navigationBar.isHidden = false
-
+        
         saveButton.layer.cornerRadius = 10
-        saveButton.backgroundColor = .green
         clotheImage.layer.cornerRadius = 10
         comfortTemperatureSlider.minimumValue = -30
         comfortTemperatureSlider.maximumValue = 30
@@ -61,7 +63,6 @@ class AddClotheViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         windSlider.minimumValue = 0
         windSlider.maximumValue = 10
         windSlider.value = 0
-        typePicker.selectRow(0, inComponent: 0, animated: false)
         
         imagePicker.delegate = self
         self.nameTextInput.delegate = self
@@ -102,14 +103,6 @@ class AddClotheViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         clotheTypeLabel.textColor = .black
         windSliderLabel.textColor = .black
         comfortTemperatureSliderLabel.textColor = .black
-    }
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 4
     }
     
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {

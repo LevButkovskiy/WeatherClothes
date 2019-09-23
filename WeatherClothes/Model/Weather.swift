@@ -19,6 +19,7 @@ class Weather: NSObject {
     var windSpeed = Int()
     var pressure = Int()
     var humidity = Int()
+    var visibility = Double()
     var uvIndex = Double()
     var weatherCondition = String()
     var sunriseTimeHours = Int()
@@ -33,11 +34,12 @@ class Weather: NSObject {
     override init(){
         super.init()
     }
+
     func initWithParams(latitude: Double, longitude: Double, completion: @escaping ((Bool) -> ())) {
         tempMax = -999
         tempMin = 999
         let api = API()
-        api.load(latitude: latitude, longitude: longitude, language: "ru", params: "Сейчас"){json in
+        api.load(latitude: latitude, longitude: longitude, language: "lang".localized, params: "Сейчас"){json in
             self.city = json["name"] as! String
             let main = json["main"] as! Dictionary<String, Any>
             self.temperature = Int(truncating: main["temp"] as! NSNumber)
@@ -48,16 +50,18 @@ class Weather: NSObject {
             let weather = (json["weather"] as! NSArray).mutableCopy() as! NSMutableArray
             let subWeather = weather.firstObject as! Dictionary<String, Any>
             self.weatherCondition = subWeather["description"] as! String
+            //self.visibility = (json["visibility"] as! Double) / 1000
             self.sunriseTimeHours = Int(self.getSunSetRice(value: "sunrise", json: json, formatter: "HH"))!
             self.sunriseTimeMinutes = Int(self.getSunSetRice(value: "sunrise", json: json, formatter: "mm"))!
             self.sunsetTimeHours = Int(self.getSunSetRice(value: "sunset", json: json, formatter: "HH"))!
             self.sunsetTimeMinutes = Int(self.getSunSetRice(value: "sunset", json: json, formatter: "mm"))!
             api.loadUVIndex(latitude: latitude, longitude: longitude) { json in
                 self.uvIndex = json["value"] as! Double
-                api.load(latitude: latitude, longitude: longitude, language: "ru", params: "3 часа"){jsonForecast in
+                completion(true)
+                /*api.load(latitude: latitude, longitude: longitude, language: "lang".localized, params: "3 часа"){jsonForecast in
                     self.parseJsonForecast(json: jsonForecast)
                     completion(true)
-                }
+                }*/
             }
         }
     }
@@ -143,37 +147,41 @@ class Weather: NSObject {
     }
     
     func getImageForCondition(minutes: Int, hours: Int, weatherCondition: String) -> UIImage?{
-        if(weatherCondition == "облачно"){
+        if(weatherCondition.uppercased() == "cloudy".localized.uppercased() || weatherCondition.uppercased() == "fewClouds".uppercased()){
             return UIImage(named: String(format: "Cloudy%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
-        else if(weatherCondition == "слегка облачно"){
+        else if(weatherCondition.uppercased() == "partyCloudy".localized.uppercased() || weatherCondition.uppercased() == "scatteredClouds".localized.uppercased()){
             return UIImage(named: String(format: "PartyCloudy%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
-        else if(weatherCondition == "ясно"){
+        else if(weatherCondition.uppercased() == "clear".localized.uppercased() || weatherCondition.uppercased() == "clear sky".uppercased()){
             return UIImage(named: String(format: "Clear%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
-        else if(weatherCondition == "пасмурно"){
+        else if(weatherCondition.uppercased() == "dull".localized.uppercased() || weatherCondition.uppercased() == "overcastClouds".localized.uppercased() || weatherCondition.uppercased() == "brokenClouds".localized.uppercased()){
             return UIImage(named: String(format: "Cloudy%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
-        else if(weatherCondition == "туман" || weatherCondition == "туманно"){
+        else if(weatherCondition.uppercased() == "fog".localized.uppercased() || weatherCondition.uppercased() == "foggy".localized.uppercased() || weatherCondition.uppercased() == "Mist".uppercased()){
             return UIImage(named: String(format: "Fog%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
-        else if(weatherCondition == "дождь" ){
+        else if(weatherCondition.uppercased() == "rain".localized.uppercased() ){
             return UIImage(named: String(format: "Rain%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
-        else if(weatherCondition == "легкий дождь"){
+        else if(weatherCondition.uppercased() == "lightRain".localized.uppercased()){
             return UIImage(named: String(format: "LightRain%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
-        else if(weatherCondition == "сильный дождь" ){
+        else if(weatherCondition.uppercased() == "сильный дождь" ){
+            #warning("Localize")
             return UIImage(named: String(format: "HeavyRain%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
-        else if(weatherCondition == "гроза" ){
+        else if(weatherCondition.uppercased() == "гроза" ){
+            #warning("Localize")
             return UIImage(named: String(format: "Thunderstorm%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
-        else if(weatherCondition == "гроза с мелким дождём" ){
+        else if(weatherCondition.uppercased() == "гроза с мелким дождём" ){
+            #warning("Localize")
             return UIImage(named: String(format: "ThunderstormRain%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
-        else if(weatherCondition == "снег" ){
+        else if(weatherCondition.uppercased() == "снег" ){
+            #warning("Localize")
             return UIImage(named: String(format: "Snow%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
         else{

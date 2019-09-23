@@ -20,21 +20,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eio-aT-KcO">
-                        <rect key="frame" x="20" y="23.5" width="43" height="23.5"/>
-                        <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
+                        <rect key="frame" x="20" y="25" width="42" height="20.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qwm-5D-NZm">
-                        <rect key="frame" x="93" y="20" width="51" height="31"/>
+                        <rect key="frame" x="72" y="20" width="51" height="31"/>
                         <connections>
                             <action selector="switcherValueChanged:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Syx-Vy-aK4"/>
                         </connections>
                     </switch>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="qwm-5D-NZm" firstAttribute="leading" secondItem="eio-aT-KcO" secondAttribute="trailing" constant="10" id="DKF-aW-DEt"/>
                     <constraint firstItem="eio-aT-KcO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FiS-Gp-8jd"/>
-                    <constraint firstItem="qwm-5D-NZm" firstAttribute="leading" secondItem="eio-aT-KcO" secondAttribute="trailing" constant="30" id="LQf-dG-qK3"/>
                     <constraint firstItem="qwm-5D-NZm" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="PUi-Cb-ycc"/>
                     <constraint firstItem="eio-aT-KcO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="qbU-tU-fhK"/>
                 </constraints>

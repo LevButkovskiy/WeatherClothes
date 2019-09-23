@@ -13,21 +13,38 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet weak var clotheName: UILabel!
     @IBOutlet weak var clotheDescription: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var imageHeight: NSLayoutConstraint!
+    
     var height = CGFloat()
-    var images = [UIImage]()
+    var clothes = Array<Any>()
     var imageViews = [UIImageView]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        if(UIScreen.main.nativeBounds.height != 1136){
+            /*windView.layer.cornerRadius = 10
+            windView.layer.shadowColor = UIColor.lightGray.cgColor
+            windView.layer.shadowOpacity = 0.5
+            windView.layer.shadowOffset = .init(width: 2, height: 2)
+            tempView.layer.cornerRadius = 10
+            tempView.layer.shadowColor = UIColor.lightGray.cgColor
+            tempView.layer.shadowOpacity = 0.5
+            tempView.layer.shadowOffset = .init(width: 2, height: 2)
+            comfortView.layer.cornerRadius = 10
+            comfortView.layer.shadowColor = UIColor.lightGray.cgColor
+            comfortView.layer.shadowOpacity = 0.5
+            comfortView.layer.shadowOffset = .init(width: 2, height: 2)*/
+        }
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
-    func loadImf(){
-        
+    func setImages(){
+        imageViews = [UIImageView]()
+        for view in scrollView.subviews{
+            view.removeFromSuperview()
+        }
         height = self.frame.height - 20
         scrollView.layer.cornerRadius = 15
         scrollView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -35,9 +52,16 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
         scrollView.layer.shadowOffset = .zero
         scrollView.layer.shadowRadius = 3
         
-        for image in images{
-            //let image = UIImage.init(named: name)
-            let imageView = UIImageView(image: image)
+        if(clothes.count == 1){
+            scrollView.isScrollEnabled = false
+        }
+        else{
+            scrollView.isScrollEnabled = true
+        }
+        
+        for i in 0..<clothes.count{
+            let clothe = clothes[i] as! Dictionary<String, Any>
+            let imageView = UIImageView(image: (clothe["image"] as? UIImage))
             //imageView.contentMode = .f
             scrollView.addSubview(imageView)
             imageViews.append(imageView)
