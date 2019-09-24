@@ -5,6 +5,7 @@
   Created by Lev Butkovskiy on 22/09/2019.
   Copyright © 2019 Lev Butkovskiy. All rights reserved.
 */
+NSLocationAlwaysAndWhenInUseUsageDescription = "Разрешите доступ к геолокации, для получения прогноза погоды";
 NSLocationWhenInUseUsageDescription = "Разрешите доступ к геолокации, для получения прогноза погоды";
 NSCameraUsageDescription = "Разрешите доступ к камере, для добавления фото";
 NSPhotoLibraryUsageDescription = "Разрешите доступ к библиотеке, для добавления фото";

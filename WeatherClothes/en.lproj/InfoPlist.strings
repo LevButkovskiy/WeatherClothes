@@ -5,6 +5,7 @@
   Created by Lev Butkovskiy on 22/09/2019.
   Copyright © 2019 Lev Butkovskiy. All rights reserved.
 */
+NSLocationAlwaysAndWhenInUseUsageDescription = "Allow access to geolocation for weather forecast";
 NSLocationWhenInUseUsageDescription = "Allow access to geolocation for weather forecast";
 NSCameraUsageDescription = "Allow access to the camera to add photos";
 NSPhotoLibraryUsageDescription = "Allow access to the library to add photos";
