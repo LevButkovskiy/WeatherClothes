@@ -259,7 +259,7 @@ class Clothes: NSObject {
             gender = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Bool)
         }
         
-        guard (weather.temperature != 0 && weather.windSpeed != 0 && weather.humidity != 0) else {
+        guard (weather.humidity != 0) else {
             return
         }
         let temperature = Double(9/5 * Double(weather.temperature) + 32)
