@@ -70,11 +70,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     
         //checkTheme()
         setViews()
-
     }
     
     func setViews(){
-        //setLoadingView()
         tableView.layer.cornerRadius = 30
         tableView.layer.shadowColor = UIColor.lightGray.cgColor
         tableView.layer.shadowOpacity = 1
@@ -182,12 +180,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = generateCell(indexPath: indexPath)
-        
-        return cell
-    }
-    
-    func generateCell(indexPath: IndexPath) -> ResultTableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath) as! ResultTableViewCell
         
         cell.contentView.layer.cornerRadius = 20
@@ -196,7 +188,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         let section = clothes.head == "" ? indexPath.section + 1 : indexPath.section
         let clotheName = clothes.getNameForIndex(index: section)
-
+        
         cell.clotheName.text = clotheName.localized
         cell.clotheDescription.text = clothes.getDescriptionForIndex(index: section)
         cell.clothesImages = clothes.getClothes(weather: weather, inventory : inventory, section: section, value: clotheName.trimmingCharacters(in: .whitespaces).localized)
@@ -214,10 +206,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.frame.height / CGFloat(tableView.numberOfSections) - 30
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
     }
     
     @IBAction func goToInventoryButton(_ sender: Any) {
