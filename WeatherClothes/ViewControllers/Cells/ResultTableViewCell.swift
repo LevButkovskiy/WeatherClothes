@@ -15,7 +15,7 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     
     var height = CGFloat()
-    var clothes = Array<Any>()
+    var clothesImages = Array<Any>()
     var imageViews = [UIImageView]()
     
     override func awakeFromNib() {
@@ -52,15 +52,15 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
         scrollView.layer.shadowOffset = .zero
         scrollView.layer.shadowRadius = 3
         
-        if(clothes.count == 1){
+        if(clothesImages.count == 1){
             scrollView.isScrollEnabled = false
         }
         else{
             scrollView.isScrollEnabled = true
         }
         
-        for i in 0..<clothes.count{
-            let clothe = clothes[i] as! Dictionary<String, Any>
+        for i in 0..<clothesImages.count{
+            let clothe = clothesImages[i] as! Dictionary<String, Any>
             let imageView = UIImageView(image: (clothe["image"] as? UIImage))
             //imageView.contentMode = .f
             scrollView.addSubview(imageView)

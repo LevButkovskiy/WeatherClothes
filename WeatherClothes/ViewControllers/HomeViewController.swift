@@ -67,10 +67,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         locationManager!.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.startUpdatingLocation()
-        
-        /*let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(weatherViewLongPress))
-        longPressRecognizer.delegate = self
-        self.weatherView.addGestureRecognizer(longPressRecognizer)*/
+    
         //checkTheme()
         setViews()
 
@@ -97,16 +94,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         refreshControl.addTarget(self, action: #selector(reload), for: .valueChanged)
         scrollView.addSubview(refreshControl)
         
-        /*windLabel.text = "wind".localized
-        visibilityLabel.text = "visibility".localized
-        humidityLabel.text = "humidity".localized
-        uvIndexLabel.text = "uvIndex".localized*/
-        
         titleLabel.text = "clothesToWear".localized
     }
     
     @objc func reload(){
-        //self.setLoadingView()
         weather = Weather()
         loadWeather()
     }
@@ -142,7 +133,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         self.clothes.generateClothes(weather: self.weather)
         self.tableView.reloadData()
         self.refreshControl.endRefreshing()
-        self.deleteLoadingView()
     }
     
     func checkTheme(){
@@ -154,34 +144,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             }
             else{
                 setLightTheme()
-            }
-        }
-    }
-    
-    func setLoadingView(){
-        let lView = UIView()
-        let spinner = UIActivityIndicatorView()
-        lView.frame = view.frame
-        lView.backgroundColor = UIColor(red:0.0, green:0.0, blue:0.0, alpha:0.0)
-        spinner.frame = CGRect(x: view.frame.width / 2 - 15, y: view.frame.height / 2 - 15, width: 30, height: 30)
-        spinner.startAnimating()
-        lView.addSubview(spinner)
-        view.addSubview(lView)
-        UIView.animate(withDuration: 0.5, animations: {
-            lView.backgroundColor = UIColor(red:0.0, green:0.0, blue:0.0, alpha:0.5)
-        }) { (true) in
-            
-        }
-    }
-    
-    func deleteLoadingView(){
-        for view in view.subviews{
-            if(view.backgroundColor == UIColor(red:0.0, green:0.0, blue:0.0, alpha:0.5)){
-                UIView.animate(withDuration: 0.5, animations: {
-                    view.alpha = 0
-                }) { (true) in
-                    view.removeFromSuperview()
-                }
             }
         }
     }
@@ -208,67 +170,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         homeViewControllerDelegate?.toggleMenu()
     }
     
-    @objc func weatherViewLongPress()
-    {
-        if detailWeatherView != nil{
-            detailWeatherView!.setWeather(weather: weather)
-            detailWeatherView!.show()
-            detailWeatherView!.upperPosition = tableView.frame.minY + 10
-        }
-        else{
-            detailWeatherView = DetailWeather()
-            detailWeatherView!.frame = CGRect(x: 0, y: view.frame.maxY, width: view.frame.width, height: view.frame.height)
-            detailWeatherView!.upperPosition = tableView.frame.minY + 10
-            detailWeatherView!.backgroundColor = .white
-            detailWeatherView!.setWeather(weather: weather)
-            view.addSubview(detailWeatherView!)
-            detailWeatherView!.show()
-        }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        /*
-        UIView.animate(withDuration: 0.5, animations: {
-            self.weatherView.alpha = 0.5
-        }) { (true) in
-            UIView.animate(withDuration: 0.25, animations: {
-                self.weatherView.alpha = 1
-            })
-        }*/
-    }
-    
-    func getClothes(section : Int, value: String) -> Array<Any>{
-        var clothesDict = Array<Dictionary<String, Any>>()
-        if(inventory.inventory[section] != nil){
-            let typeOfClothe = inventory.inventory[section] as! Dictionary<Int, Any>
-            for i in 0..<typeOfClothe.count{
-                let clothe = typeOfClothe[i] as! Dictionary<String, Any>
-                if(weather.temperature >= clothe["temperature"] as! Int && weather.windSpeed <= clothe["wind"] as! Int){
-                    clothesDict.append(clothe)
-                    //images.append(UIImage(data: (clothe["image"] as! Data))!)
-                }
-            }
-            if(clothesDict.count == 0){
-                print(value)
-                if(value != ""){
-                    let image = clothes.generateImage(value: value)!
-                    var clothe = Dictionary<String, Any>()
-                    clothe["image"] = image
-                    clothesDict.append(clothe)
-                }
-            }
-        }
-        else{
-            if(value != ""){
-                let image = clothes.generateImage(value: value)!
-                var clothe = Dictionary<String, Any>()
-                clothe["image"] = image
-                clothesDict.append(clothe)
-            }
-        }
-        return clothesDict
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         guard clothes.head != "" else {
             return 3
@@ -281,69 +182,31 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = generateCell(indexPath: indexPath)
+        
+        return cell
+    }
+    
+    func generateCell(indexPath: IndexPath) -> ResultTableViewCell{
         let cell = tableView.dequeueReusableCell(withIdentifier: "resultCell", for: indexPath) as! ResultTableViewCell
         
         cell.contentView.layer.cornerRadius = 20
         cell.layer.cornerRadius = 20
         cell.backgroundColor = nil
         
-        if(clothes.head == ""){
-            switch indexPath.section{
-            case 0:
-                cell.clotheName.text = clothes.upper.trimmingCharacters(in: .whitespaces).localized
-                cell.clotheDescription.text = clothes.subUpper
-                cell.clothes = getClothes(section: 1, value: clothes.upper)
-            case 1:
-                cell.clotheName.text = clothes.lower.trimmingCharacters(in: .whitespaces).localized
-                cell.clothes = getClothes(section: 2, value: clothes.lower)
-            case 2:
-                cell.clotheName.text = clothes.boots.trimmingCharacters(in: .whitespaces).localized
-                cell.clothes = getClothes(section: 3, value: clothes.boots)
-            default:
-                break
-            }
-        }
-        else{
-            switch indexPath.section{
-            case 0:
-                cell.clotheName.text = clothes.head.trimmingCharacters(in: .whitespaces).localized
-                cell.clotheDescription.text = clothes.subHead
-                cell.clothes = getClothes(section: 0, value: clothes.head)
-            case 1:
-                cell.clotheName.text = clothes.upper.trimmingCharacters(in: .whitespaces).localized
-                cell.clotheDescription.text = clothes.subUpper
-                cell.clothes = getClothes(section: 1, value: clothes.upper)
-            case 2:
-                cell.clotheName.text = clothes.lower.trimmingCharacters(in: .whitespaces).localized
-                cell.clothes = getClothes(section: 2, value: clothes.lower)
-            case 3:
-                cell.clotheName.text = clothes.boots.trimmingCharacters(in: .whitespaces).localized
-                cell.clothes = getClothes(section: 3, value: clothes.boots)
-            default:
-                break
-            }
-        }
+        let section = clothes.head == "" ? indexPath.section + 1 : indexPath.section
+        let clotheName = clothes.getNameForIndex(index: section)
+
+        cell.clotheName.text = clotheName.localized
+        cell.clotheDescription.text = clothes.getDescriptionForIndex(index: section)
+        cell.clothesImages = clothes.getClothes(weather: weather, inventory : inventory, section: section, value: clotheName.trimmingCharacters(in: .whitespaces).localized)
         cell.setImages()
-        
         return cell
-    
     }
     
     @IBAction func refreshButton(_ sender: Any) {
         reload()
     }
-    
-    /*func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        var headerView = UIView()
-        if(section == 0){
-            headerView = UIView(frame: CGRect(x: 0, y: 0, width: Int(tableView.bounds.size.width), height: 0))
-        }
-        else{
-            headerView = UIView(frame: CGRect(x: 0, y: 0, width: Int(tableView.bounds.size.width), height: 25))
-        }
-        headerView.backgroundColor = UIColor.clear
-        return headerView
-    }*/
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
@@ -361,9 +224,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         performSegue(withIdentifier: "goToInventory", sender: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    }
-    
     //Location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
@@ -375,6 +235,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             }
         }
     }
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         let alert = UIAlertController(title: "attention".localized, message: "locationError".localized, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Go to Settings now", style: .default, handler: { (alert: UIAlertAction!) in
