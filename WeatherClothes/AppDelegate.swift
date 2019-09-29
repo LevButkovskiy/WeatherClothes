@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import CoreLocation
+import YandexMobileMetrica
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.rootViewController = ContainerViewController()*/
         // Override point for customization after application launch.
+        
+        // Initializing the AppMetrica SDK.
+        let configuration = YMMYandexMetricaConfiguration.init(apiKey: "b9e9f3f0-6800-47c2-b6cd-6f2bf71793f1")
+        YMMYandexMetrica.activate(with: configuration!)
         return true
     }
 
