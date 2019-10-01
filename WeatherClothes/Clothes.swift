@@ -11,11 +11,13 @@ import UIKit
 class Clothes: NSObject {
     
     var head = String()
-    var subHead = String()
+    var headDescription = String()
     var upper = String()
-    var subUpper = String()
+    var upperDescription = String()
     var lower = String()
+    var lowerDescription = String()
     var boots = String()
+    var bootsDescription = String()
     var gender = Bool()
     var chill = Double()
     var dict = Dictionary<String, Any>()
@@ -254,6 +256,39 @@ class Clothes: NSObject {
         }
     }
     
+    func getClothes(weather: Weather, inventory: Inventory, section : Int, value: String) -> Array<Any>{
+        var clothesDict = Array<Dictionary<String, Any>>()
+        if(inventory.inventory[section] != nil){
+            let typeOfClothe = inventory.inventory[section] as! Dictionary<Int, Any>
+            for i in 0..<typeOfClothe.count{
+                let clothe = typeOfClothe[i] as! Dictionary<String, Any>
+                if(weather.temperature >= clothe["temperature"] as! Int && weather.windSpeed <= clothe["wind"] as! Int){
+                    clothesDict.append(clothe)
+                    //images.append(UIImage(data: (clothe["image"] as! Data))!)
+                }
+            }
+            if(clothesDict.count == 0){
+                print(value)
+                if(value != ""){
+                    clothesDict.append(setDictWithImage(value: value))
+                }
+            }
+        }
+        else{
+            if(value != ""){
+                clothesDict.append(setDictWithImage(value: value))
+            }
+        }
+        return clothesDict
+    }
+    
+    func setDictWithImage(value: String) -> Dictionary<String, Any>{
+        let image = generateImage(value: value)!
+        var clothe = Dictionary<String, Any>()
+        clothe["image"] = image
+        return clothe
+    }
+    
     func generateClothes(weather : Weather){
         if let unarchivedObject = UserDefaults.standard.object(forKey: "gender") as? NSData {
             gender = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Bool)
@@ -354,6 +389,36 @@ class Clothes: NSObject {
             upper = "T-Shirt"
             lower = gender ? "Skirt": "Shorts"
             boots = "Slippers"
+        }
+    }
+    
+    func getNameForIndex(index : Int) -> String{
+        switch index {
+        case 0:
+            return head
+        case 1:
+            return upper
+        case 2:
+            return lower
+        case 3:
+            return boots
+        default:
+            return ""
+        }
+    }
+    
+    func getDescriptionForIndex(index : Int) -> String{
+        switch index {
+        case 0:
+            return headDescription
+        case 1:
+            return upperDescription
+        case 2:
+            return lowerDescription
+        case 3:
+            return bootsDescription
+        default:
+            return ""
         }
     }
 
