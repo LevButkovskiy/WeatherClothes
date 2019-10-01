@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>WhatsNewKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>YandexMobileMetrica.xcscheme</key>
 		<dict>
 			<key>isShown</key>

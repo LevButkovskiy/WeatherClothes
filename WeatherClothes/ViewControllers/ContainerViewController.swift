@@ -30,7 +30,6 @@ class ContainerViewController: UIViewController, HomeViewControllerDelegate {
         */
         let home = HomeViewController()
         loadHomeViewController()
-
         navigationController?.popToViewController(home, animated: true)
     }
     

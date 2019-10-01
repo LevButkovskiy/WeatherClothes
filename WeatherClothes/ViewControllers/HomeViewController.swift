@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import WhatsNewKit
 
 protocol HomeViewControllerDelegate {
     func toggleMenu()
@@ -75,6 +76,33 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         setViews()
 
     }
+    func showWhatsNew(){
+        // Initialize WhatsNew
+        let whatsNew = WhatsNew(
+            // The Title
+            title: "WhatsNewKit",
+            // The features you want to showcase
+            items: [
+                WhatsNew.Item(
+                    title: "Installation",
+                    subtitle: "You can install WhatsNewKit via CocoaPods or Carthage",
+                    image: UIImage(named: "installation")
+                ),
+                WhatsNew.Item(
+                    title: "Open Source",
+                    subtitle: "Contributions are very welcome 👨‍💻",
+                    image: UIImage(named: "openSource")
+                )
+            ]
+        )
+        
+        // Initialize WhatsNewViewController with WhatsNew
+        let whatsNewViewController = WhatsNewViewController(
+            whatsNew: whatsNew
+        )
+        // Present it 🤩
+        self.present(whatsNewViewController, animated: true)
+    }
     
     func setViews(){
         //setLoadingView()
@@ -134,6 +162,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                     self.weatherImage.image = self.weather.getImageForCondition(minutes: Int(minutes)!, hours: Int(hours)!, weatherCondition: self.weather.weatherCondition)
                     self.generateClothes()
                 }
+                
             }
         }
     }
@@ -143,6 +172,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         self.tableView.reloadData()
         self.refreshControl.endRefreshing()
         self.deleteLoadingView()
+        showWhatsNew()
     }
     
     func checkTheme(){

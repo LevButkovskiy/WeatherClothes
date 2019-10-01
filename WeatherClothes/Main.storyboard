@@ -51,7 +51,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wYe-Uo-ERs">
-                                <rect key="frame" x="20" y="54" width="25" height="25"/>
+                                <rect key="frame" x="20" y="98" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="Bhs-2B-NAp"/>
                                     <constraint firstAttribute="width" constant="25" id="CFG-El-6O9"/>
@@ -62,7 +62,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GS9-Be-gzM">
-                                <rect key="frame" x="0.0" y="229.5" width="414" height="691.5"/>
+                                <rect key="frame" x="0.0" y="273.5" width="414" height="647.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="rqR-U7-eLC" id="psg-Px-odF"/>
@@ -70,13 +70,13 @@
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Одежда на сегодня" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pe8-2r-s2J">
-                                <rect key="frame" x="126" y="56" width="162" height="21"/>
+                                <rect key="frame" x="126" y="100" width="162" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Hp-CC-epz">
-                                <rect key="frame" x="369" y="54" width="25" height="25"/>
+                                <rect key="frame" x="369" y="98" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="3rG-vu-RgB"/>
                                     <constraint firstAttribute="height" constant="25" id="tyM-bW-9uC"/>
@@ -87,7 +87,7 @@
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NwG-Sf-LLj">
-                                <rect key="frame" x="20" y="97" width="374" height="112.5"/>
+                                <rect key="frame" x="20" y="141" width="374" height="112.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m9V-Cq-OgL">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="112.5"/>
@@ -192,6 +192,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wQ1-5M-29z"/>
                     </view>
+                    <navigationItem key="navigationItem" id="zMF-Wp-Mkc"/>
                     <connections>
                         <outlet property="cityLabel" destination="ZQA-a7-6sI" id="ubM-YD-AEL"/>
                         <outlet property="menuButton" destination="wYe-Uo-ERs" id="Vv1-VS-E8E"/>
@@ -220,7 +221,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vwi-2p-iXG">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="f6z-Lp-tCl" id="aeE-ww-2aX"/>
@@ -271,7 +272,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mfK-yI-4dJ">
-                                <rect key="frame" x="10" y="54" width="394" height="148"/>
+                                <rect key="frame" x="10" y="98" width="394" height="148"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera" translatesAutoresizingMaskIntoConstraints="NO" id="umv-JO-jaQ">
                                         <rect key="frame" x="10" y="10" width="128" height="128"/>
@@ -301,7 +302,7 @@
                                 </constraints>
                             </view>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Введите название:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KsK-UO-nC3">
-                                <rect key="frame" x="10" y="240.5" width="394" height="30"/>
+                                <rect key="frame" x="10" y="284.5" width="394" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -310,61 +311,61 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qH5-Uw-fTH">
-                                <rect key="frame" x="10" y="212" width="394" height="23.5"/>
+                                <rect key="frame" x="10" y="256" width="394" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ветрозащита: 0 м/с" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuO-Q9-FS5">
-                                <rect key="frame" x="10" y="280.5" width="163.5" height="23"/>
+                                <rect key="frame" x="10" y="324.5" width="163.5" height="23"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="5Vg-B0-VDa">
-                                <rect key="frame" x="8" y="303.5" width="398" height="31"/>
+                                <rect key="frame" x="8" y="347.5" width="398" height="31"/>
                                 <connections>
                                     <action selector="windSliderValueChanged:" destination="hZ5-1T-EXk" eventType="valueChanged" id="yUV-3v-vM1"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 м/с" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QfB-Dm-npB">
-                                <rect key="frame" x="10" y="333.5" width="43" height="23.5"/>
+                                <rect key="frame" x="10" y="377.5" width="43" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 м/с" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kof-Pe-oap">
-                                <rect key="frame" x="351" y="333.5" width="53" height="23.5"/>
+                                <rect key="frame" x="351" y="377.5" width="53" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Комфортная температура: 0˙C (min)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="da6-2U-UqH">
-                                <rect key="frame" x="10" y="367" width="299" height="23.5"/>
+                                <rect key="frame" x="10" y="411" width="299" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Vak-tI-fQI">
-                                <rect key="frame" x="8" y="390.5" width="398" height="31"/>
+                                <rect key="frame" x="8" y="434.5" width="398" height="31"/>
                                 <connections>
                                     <action selector="comfortTemperatureSliderValueChanged:" destination="hZ5-1T-EXk" eventType="valueChanged" id="uU3-SO-S3l"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-30˙C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcF-VT-RJn">
-                                <rect key="frame" x="10" y="420.5" width="42" height="23"/>
+                                <rect key="frame" x="10" y="464.5" width="42" height="23"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+30˙C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nW-jt-7SZ">
-                                <rect key="frame" x="356" y="420.5" width="48" height="23"/>
+                                <rect key="frame" x="356" y="464.5" width="48" height="23"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Тип одежды:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhh-Uf-gJG">
-                                <rect key="frame" x="10" y="453.5" width="110" height="23.5"/>
+                                <rect key="frame" x="10" y="497.5" width="110" height="23.5"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -441,6 +442,22 @@
             </objects>
             <point key="canvasLocation" x="-171.01449275362319" y="412.5"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="T3s-Lm-qTn">
+            <objects>
+                <navigationController id="7KU-E0-Eu7" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eTJ-0M-Fn5">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="rqR-U7-eLC" kind="relationship" relationship="rootViewController" id="SHf-dy-0eG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="phd-tH-0kI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2829" y="-686"/>
+        </scene>
         <!--Weather View Controller-->
         <scene sceneID="7KP-Og-1u3">
             <objects>
@@ -450,13 +467,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Magnitogorsk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WCN-gK-OSe">
-                                <rect key="frame" x="147.5" y="64" width="119" height="21"/>
+                                <rect key="frame" x="147.5" y="108" width="119" height="21"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hj8-dg-MAM">
-                                <rect key="frame" x="20" y="105" width="374" height="311.5"/>
+                                <rect key="frame" x="20" y="149" width="374" height="311.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24˙C" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwY-FJ-68f">
                                         <rect key="frame" x="0.0" y="60" width="374" height="137"/>
@@ -485,7 +502,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wyE-em-b8d">
-                                <rect key="frame" x="20" y="436.5" width="374" height="120"/>
+                                <rect key="frame" x="20" y="480.5" width="374" height="120"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="windIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Ukx-5N-Yp1">
                                         <rect key="frame" x="10" y="10" width="100" height="100"/>
@@ -512,7 +529,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uUh-uv-9iu">
-                                <rect key="frame" x="20" y="576.5" width="374" height="120"/>
+                                <rect key="frame" x="20" y="620.5" width="374" height="120"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="humidityIcon" translatesAutoresizingMaskIntoConstraints="NO" id="yWb-zy-I1y">
                                         <rect key="frame" x="10" y="10" width="100" height="100"/>
@@ -539,7 +556,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dOn-T4-goa">
-                                <rect key="frame" x="20" y="716.5" width="374" height="120"/>
+                                <rect key="frame" x="20" y="760.5" width="374" height="120"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pressureIcon" translatesAutoresizingMaskIntoConstraints="NO" id="HBI-4B-ggh">
                                         <rect key="frame" x="10" y="10" width="100" height="100"/>
@@ -566,7 +583,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5Z-LO-rdj">
-                                <rect key="frame" x="20" y="59.5" width="30" height="30"/>
+                                <rect key="frame" x="20" y="103.5" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="W0d-pu-n0k"/>
                                     <constraint firstAttribute="width" constant="30" id="hHc-tM-VPV"/>

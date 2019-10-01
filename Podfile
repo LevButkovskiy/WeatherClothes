@@ -7,6 +7,7 @@ target 'WeatherClothes' do
 
   # Pods for WeatherClothes
   pod 'YandexMobileMetrica', '3.7.1'
+  pod 'WhatsNewKit'
 
   target 'WeatherClothesTests' do
     inherit! :search_paths
