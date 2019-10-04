@@ -301,10 +301,53 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
+}
 
+extension Date {
+    func dayOfWeek() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        dateFormatter.locale = Locale(identifier: "en_US")
+        return dateFormatter.string(from: self)
+    }
     
+    func hours() -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("HH")
+        dateFormatter.string(from: Date())
+        return dateFormatter.string(from: self)
+    }
+    
+    func minutes() -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("mm")
+        dateFormatter.string(from: Date())
+        return dateFormatter.string(from: self)
+    }
+    
+    func hoursMinutes() -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("HH:mm")
+        dateFormatter.string(from: Date())
+        return dateFormatter.string(from: self)
+    }
+}
 
+extension String {
+    func capitalizedFirst() -> String {
+        if(self.count > 0){
+            let first = self[self.startIndex ..< self.index(startIndex, offsetBy: 1)]
+            let rest = self[self.index(startIndex, offsetBy: 1) ..< self.endIndex]
+            return first.uppercased() + rest.lowercased()
+        }
+        else{
+            return self
+        }
+    }
+    
+    var localized: String {
+        return NSLocalizedString(self, comment: "")
+    }
 }
 
 

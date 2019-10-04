@@ -19,13 +19,10 @@
 		A099E223231D8777002AC664 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099E222231D8777002AC664 /* HomeViewController.swift */; };
 		A0A678A823410772002C0134 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF386D22EC623500A980CC /* AppDelegate.swift */; };
 		A0A678A923410772002C0134 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF386D22EC623500A980CC /* AppDelegate.swift */; };
-		A0A81DC3231AFD1B003EA87D /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A81DC1231AFD1B003EA87D /* TutorialViewController.swift */; };
-		A0A81DC4231AFD1B003EA87D /* TutorialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0A81DC2231AFD1B003EA87D /* TutorialViewController.xib */; };
 		A0BCA53D230B077E00407757 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BCA53C230B077E00407757 /* ContainerViewController.swift */; };
 		A0BCA53F230B078B00407757 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BCA53E230B078B00407757 /* MenuViewController.swift */; };
 		A0BCA546230B228C00407757 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BCA544230B228C00407757 /* MenuTableViewCell.swift */; };
 		A0BCA547230B228C00407757 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0BCA545230B228C00407757 /* MenuTableViewCell.xib */; };
-		A0C9CD4222FEF3E90050CC29 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C9CD4122FEF3E90050CC29 /* WeatherViewController.swift */; };
 		A0E67C7123476285008D8926 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E67C7023476285008D8926 /* Settings.swift */; };
 		A0E6F1D723244ACA00656EC7 /* DetailWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E6F1D623244ACA00656EC7 /* DetailWeather.swift */; };
 		A0E6F1D923244AD700656EC7 /* DetailWeather.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0E6F1D823244AD700656EC7 /* DetailWeather.xib */; };
@@ -83,13 +80,10 @@
 		A0773E0E230C0BFB007C202B /* Magnitogorsk.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Magnitogorsk.gpx; sourceTree = "<group>"; };
 		A0773E0F230D8B23007C202B /* Clothes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Clothes.swift; path = ../Clothes.swift; sourceTree = "<group>"; };
 		A099E222231D8777002AC664 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		A0A81DC1231AFD1B003EA87D /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
-		A0A81DC2231AFD1B003EA87D /* TutorialViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialViewController.xib; sourceTree = "<group>"; };
 		A0BCA53C230B077E00407757 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		A0BCA53E230B078B00407757 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		A0BCA544230B228C00407757 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		A0BCA545230B228C00407757 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
-		A0C9CD4122FEF3E90050CC29 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		A0E67C7023476285008D8926 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = ../Settings.swift; sourceTree = "<group>"; };
 		A0E6F1D623244ACA00656EC7 /* DetailWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeather.swift; sourceTree = "<group>"; };
 		A0E6F1D823244AD700656EC7 /* DetailWeather.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailWeather.xib; sourceTree = "<group>"; };
@@ -192,12 +186,9 @@
 				A0A81DB6231AF8B6003EA87D /* Cells */,
 				A0BCA53C230B077E00407757 /* ContainerViewController.swift */,
 				A099E222231D8777002AC664 /* HomeViewController.swift */,
-				A0C9CD4122FEF3E90050CC29 /* WeatherViewController.swift */,
 				A0BCA53E230B078B00407757 /* MenuViewController.swift */,
 				A0F3611322F9CDB400906528 /* InventoryViewController.swift */,
 				A0F3611922FAA61900906528 /* AddClotheViewController.swift */,
-				A0A81DC1231AFD1B003EA87D /* TutorialViewController.swift */,
-				A0A81DC2231AFD1B003EA87D /* TutorialViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -411,7 +402,6 @@
 				A056C6552317A869003B83D3 /* HeaderView.xib in Resources */,
 				A056C65923181780003B83D3 /* Localizable.strings in Resources */,
 				A0EF387B22EC623700A980CC /* LaunchScreen.storyboard in Resources */,
-				A0A81DC4231AFD1B003EA87D /* TutorialViewController.xib in Resources */,
 				A006C2332337916800B2A8F6 /* InfoPlist.strings in Resources */,
 				A0EF387822EC623700A980CC /* Assets.xcassets in Resources */,
 			);
@@ -534,12 +524,10 @@
 				A0F3611722F9DBB900906528 /* InventoryTableViewCell.swift in Sources */,
 				A0EF387622EC623500A980CC /* WeatherClothes.xcdatamodeld in Sources */,
 				A0EC77E523156B720080B7B1 /* Inventory.swift in Sources */,
-				A0A81DC3231AFD1B003EA87D /* TutorialViewController.swift in Sources */,
 				A0E6F1D723244ACA00656EC7 /* DetailWeather.swift in Sources */,
 				A0F3611222F992C400906528 /* Weather.swift in Sources */,
 				A0BCA53F230B078B00407757 /* MenuViewController.swift in Sources */,
 				A0F3611A22FAA61A00906528 /* AddClotheViewController.swift in Sources */,
-				A0C9CD4222FEF3E90050CC29 /* WeatherViewController.swift in Sources */,
 				A04C128F22FC811A00C82372 /* ResultTableViewCell.swift in Sources */,
 				A0BCA53D230B077E00407757 /* ContainerViewController.swift in Sources */,
 				A0E67C7123476285008D8926 /* Settings.swift in Sources */,

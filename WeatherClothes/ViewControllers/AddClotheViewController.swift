@@ -14,29 +14,17 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     var inventory = Inventory()
     var clothe : Dictionary<String, Any> = [:]
     let imagePicker = UIImagePickerController()
+    let context = UIGraphicsGetCurrentContext()
+    var path = UIBezierPath()
+
     
     var name : String = ""
     var type : String = "Головной убор"
     
-    @IBOutlet weak var clotheImage: UIImageView!
-    @IBOutlet weak var nameTextInput: UITextField!
-    @IBOutlet weak var windSlider: UISlider!
-    @IBOutlet weak var windSliderLabel: UILabel!
-    @IBOutlet weak var comfortTemperatureSlider: UISlider!
-    @IBOutlet weak var comfortTemperatureSliderLabel: UILabel!
-    @IBOutlet weak var saveButton: UIButton!
-    
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var minWindLabel: UILabel!
-    @IBOutlet weak var maxWindLabel: UILabel!
-    @IBOutlet weak var minTemperatureLabel: UILabel!
-    @IBOutlet weak var maxTemperatureLabel: UILabel!
-    @IBOutlet weak var clotheTypeLabel: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDefaultSettings()
-        if(!clothe.isNil()){
+        //setDefaultSettings()
+        /*if(!clothe.isNil()){
             type = inventory.getTypeNameFromIndex(index: clothe["type"] as! Int)
             name = (clothe["name"] as! String)
             nameTextInput.text = (clothe["name"] as! String)
@@ -45,7 +33,7 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
             clotheImage.image = UIImage(data: (clothe["image"] as! Data))
             comfortTemperatureSliderLabel.text = String(format: "Комфортная температура: %d˙C", Int(comfortTemperatureSlider.value))
             windSliderLabel.text = String(format: "Ветрозащита: %d м/с", Int(windSlider.value))
-        }
+        }*/
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,17 +43,8 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     func setDefaultSettings(){        
         navigationController?.navigationBar.isHidden = false
         
-        saveButton.layer.cornerRadius = 10
-        clotheImage.layer.cornerRadius = 10
-        comfortTemperatureSlider.minimumValue = -30
-        comfortTemperatureSlider.maximumValue = 30
-        comfortTemperatureSlider.value = 0
-        windSlider.minimumValue = 0
-        windSlider.maximumValue = 10
-        windSlider.value = 0
-        
-        imagePicker.delegate = self
-        self.nameTextInput.delegate = self
+        //imagePicker.delegate = self
+        //self.nameTextInput.delegate = self
         checkTheme()
     }
     
@@ -83,29 +62,14 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     
     func setDarkTheme(){
         view.backgroundColor = UIColor(red:0.15, green:0.15, blue:0.15, alpha:1.0)
-        nameLabel.textColor = .white
-        minWindLabel.textColor = .white
-        maxWindLabel.textColor = .white
-        minTemperatureLabel.textColor = .white
-        maxTemperatureLabel.textColor = .white
-        clotheTypeLabel.textColor = .white
-        windSliderLabel.textColor = .white
-        comfortTemperatureSliderLabel.textColor = .white
     }
     
     func setLightTheme(){
         view.backgroundColor = .groupTableViewBackground
-        nameLabel.textColor = .black
-        minWindLabel.textColor = .black
-        maxWindLabel.textColor = .black
-        minTemperatureLabel.textColor = .black
-        maxTemperatureLabel.textColor = .black
-        clotheTypeLabel.textColor = .black
-        windSliderLabel.textColor = .black
-        comfortTemperatureSliderLabel.textColor = .black
     }
     
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+    
+    /*func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let string = inventory.getTypeNameFromIndex(index: row)
         if let unarchivedObject = UserDefaults.standard.object(forKey: "theme") as? NSData {
             let theme = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Bool)
@@ -121,9 +85,9 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         type = inventory.getTypeNameFromIndex(index: row)
-    }
+    }*/
     
-    @IBAction func nameTextInputValueChanged(_ sender: Any) {
+    /*@IBAction func nameTextInputValueChanged(_ sender: Any) {
         name = nameTextInput.text!
     }
     
@@ -156,11 +120,11 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         newItem["wind"] = Int(windSlider.value)
         inventory.add(item: newItem)
         navigationController?.popViewController(animated: true)
-    }
+    }*/
     
     
     //MARK: ImagePicker
-    @IBAction func addPhoto(_ sender: Any){
+    /*@IBAction func addPhoto(_ sender: Any){
         let alert = UIAlertController(title: "Выбрать изображение", message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Камера", style: .default, handler:{ _ in
             self.openCamera()
@@ -215,7 +179,7 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
         dismiss(animated: true, completion: nil)
-    }
+    }*/
 }
 
 extension UIImage
