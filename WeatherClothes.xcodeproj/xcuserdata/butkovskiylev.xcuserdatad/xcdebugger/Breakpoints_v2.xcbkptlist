@@ -90,7 +90,7 @@
                   moduleName = "WeatherClothes"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/butkovskiylev/Documents/BlueBeakStd/WeatherClothes/WeatherClothes/ViewControllers/TutorialViewController.swift"
-                  timestampString = "591628349.897086"
+                  timestampString = "591882300.053899"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "65"
@@ -105,7 +105,7 @@
                   moduleName = "WeatherClothes"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/butkovskiylev/Documents/BlueBeakStd/WeatherClothes/WeatherClothes/ViewControllers/TutorialViewController.swift"
-                  timestampString = "591628349.8993371"
+                  timestampString = "591882300.055756"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "64"
@@ -129,20 +129,6 @@
             endingLineNumber = "235"
             landmarkName = "generateImage(value:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "WeatherClothes/ViewControllers/HomeViewController.swift"
-            timestampString = "591628349.684237"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "408"
-            endingLineNumber = "408">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

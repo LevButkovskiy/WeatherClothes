@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import WhatsNewKit
+import SystemConfiguration //Internet
 
 protocol HomeViewControllerDelegate {
     func toggleMenu()
@@ -19,6 +20,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     var weather = Weather()
     let clothes = Clothes()
     var inventory = Inventory()
+    var settings = Settings()
     var detailWeatherView : DetailWeather?
     
     var locationManager: CLLocationManager?
@@ -53,7 +55,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDefaultSettings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,36 +69,74 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         locationManager!.desiredAccuracy = kCLLocationAccuracyBest
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.startUpdatingLocation()
-    
+        
         //checkTheme()
         setViews()
     }
+    
+    func afterLoadSettings(){
+        if(!settings.isConnectedToNetwork()){
+            //showNoInternetConnection()
+            //showWhatsNew()
+        }
+        if (UserDefaults.standard.object(forKey: "version102") as? NSData) == nil {
+            showWhatsNew()
+        }
+
+    }
+    
     func showWhatsNew(){
-        // Initialize WhatsNew
-        let whatsNew = WhatsNew(
-            // The Title
-            title: "WhatsNewKit",
-            // The features you want to showcase
-            items: [
-                WhatsNew.Item(
-                    title: "Installation",
-                    subtitle: "You can install WhatsNewKit via CocoaPods or Carthage",
-                    image: UIImage(named: "installation")
-                ),
-                WhatsNew.Item(
-                    title: "Open Source",
-                    subtitle: "Contributions are very welcome 👨‍💻",
-                    image: UIImage(named: "openSource")
-                )
-            ]
-        )
+            // Initialize WhatsNew
+            let whatsNew = WhatsNew(
+                // The Title
+                title: "Что нового в версии 1.0.2",
+                // The features you want to showcase
+                items: [
+                    WhatsNew.Item(
+                        title: "Installation",
+                        subtitle: "You can install WhatsNewKit via CocoaPods or Carthage",
+                        image: UIImage(named: "installation")
+                    ),
+                    WhatsNew.Item(
+                        title: "Open Source",
+                        subtitle: "Contributions are very welcome 👨‍💻",
+                        image: UIImage(named: "openSource")
+                    )
+                ]
+            )
+            
+            // Initialize default Configuration
+            var configuration = WhatsNewViewController.Configuration()
+            
+            // Customize Configuration to your needs
+            configuration.backgroundColor = .white
+            configuration.titleView.titleColor = .whatsNewKitBlue
+            configuration.itemsView.titleFont = .systemFont(ofSize: 17)
+            configuration.detailButton?.titleColor = .whatsNewKitBlue
+            configuration.completionButton.backgroundColor = .whatsNewKitGreen
+            // And many more configuration properties...
+            
+            //Animation
+            configuration.titleView.animation = .slideRight
+            configuration.itemsView.animation = .slideRight
+            configuration.detailButton?.animation = .slideRight
+            configuration.completionButton.animation = .slideRight
+            configuration.completionButton.title = "Понятно"
         
-        // Initialize WhatsNewViewController with WhatsNew
-        let whatsNewViewController = WhatsNewViewController(
-            whatsNew: whatsNew
-        )
-        // Present it 🤩
-        self.present(whatsNewViewController, animated: true)
+            // Initialize WhatsNewViewController with custom configuration
+            let whatsNewViewController = WhatsNewViewController(
+                whatsNew: whatsNew,
+                configuration: configuration
+            )
+            do{
+                let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: true, requiringSecureCoding: true)
+                UserDefaults().set(archivedObject, forKey: "version102")
+            }
+            catch {
+                print(error)
+            }
+            // Present it 🤩
+            self.present(whatsNewViewController, animated: true)
     }
     
     func setViews(){
@@ -160,11 +199,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         self.clothes.generateClothes(weather: self.weather)
         self.tableView.reloadData()
         self.refreshControl.endRefreshing()
-        showWhatsNew()
+        afterLoadSettings()
     }
     
     func checkTheme(){
-        
         if let unarchivedObject = UserDefaults.standard.object(forKey: "theme") as? NSData {
             let theme = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Bool)
             if(theme){
