@@ -18,7 +18,6 @@
 		A041FD2D234CF7B400303AA0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF38A222EC628900A980CC /* API.swift */; };
 		A041FD2E234CF8A400303AA0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A056C65B23181780003B83D3 /* Localizable.strings */; };
 		A041FD2F234CF8BB00303AA0 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E67C7023476285008D8926 /* Settings.swift */; };
-		A041FD30234CFA2B00303AA0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0EF387C22EC623700A980CC /* Info.plist */; };
 		A041FD31234CFA8900303AA0 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F3611122F992C400906528 /* Weather.swift */; };
 		A041FD32234CFAD200303AA0 /* Clothes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0773E0F230D8B23007C202B /* Clothes.swift */; };
 		A041FD33234CFAD600303AA0 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EC77E423156B720080B7B1 /* Inventory.swift */; };
@@ -476,7 +475,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A041FD30234CFA2B00303AA0 /* Info.plist in Resources */,
 				A041FD2C234CF7AD00303AA0 /* Assets.xcassets in Resources */,
 				A041FD2E234CF8A400303AA0 /* Localizable.strings in Resources */,
 				A041FD23234CE53500303AA0 /* MainInterface.storyboard in Resources */,
