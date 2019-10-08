@@ -10,6 +10,18 @@
 		19E19C93B01250E78C8EBDFB /* Pods_WeatherClothes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC420B1EE9F9BC8F8D5A419 /* Pods_WeatherClothes.framework */; };
 		A006C2332337916800B2A8F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A006C2352337916800B2A8F6 /* InfoPlist.strings */; };
 		A00928B4231ECE46002F9D2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00928B3231ECE46002F9D2A /* Main.storyboard */; };
+		A041FD1D234CE53500303AA0 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A041FD1C234CE53500303AA0 /* NotificationCenter.framework */; };
+		A041FD20234CE53500303AA0 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041FD1F234CE53500303AA0 /* TodayViewController.swift */; };
+		A041FD23234CE53500303AA0 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A041FD21234CE53500303AA0 /* MainInterface.storyboard */; };
+		A041FD27234CE53500303AA0 /* WhatToWearTodayExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A041FD1B234CE53500303AA0 /* WhatToWearTodayExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A041FD2C234CF7AD00303AA0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0EF387722EC623700A980CC /* Assets.xcassets */; };
+		A041FD2D234CF7B400303AA0 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF38A222EC628900A980CC /* API.swift */; };
+		A041FD2E234CF8A400303AA0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A056C65B23181780003B83D3 /* Localizable.strings */; };
+		A041FD2F234CF8BB00303AA0 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E67C7023476285008D8926 /* Settings.swift */; };
+		A041FD30234CFA2B00303AA0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A0EF387C22EC623700A980CC /* Info.plist */; };
+		A041FD31234CFA8900303AA0 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F3611122F992C400906528 /* Weather.swift */; };
+		A041FD32234CFAD200303AA0 /* Clothes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0773E0F230D8B23007C202B /* Clothes.swift */; };
+		A041FD33234CFAD600303AA0 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EC77E423156B720080B7B1 /* Inventory.swift */; };
 		A04C128F22FC811A00C82372 /* ResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A04C128D22FC811A00C82372 /* ResultTableViewCell.swift */; };
 		A04C129022FC811A00C82372 /* ResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A04C128E22FC811A00C82372 /* ResultTableViewCell.xib */; };
 		A056C6532317A858003B83D3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A056C6522317A858003B83D3 /* HeaderView.swift */; };
@@ -44,6 +56,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		A041FD25234CE53500303AA0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A0EF386222EC623500A980CC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A041FD1A234CE53500303AA0;
+			remoteInfo = WhatToWearTodayExtension;
+		};
 		A0EF388222EC623700A980CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = A0EF386222EC623500A980CC /* Project object */;
@@ -60,6 +79,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		A041FD2B234CE53500303AA0 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A041FD27234CE53500303AA0 /* WhatToWearTodayExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		0C970EDEF4A2F81CAD8E6E09 /* Pods-WeatherClothesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherClothesUITests.release.xcconfig"; path = "Target Support Files/Pods-WeatherClothesUITests/Pods-WeatherClothesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		37D71E9DC93CDCDFE048F598 /* Pods-WeatherClothesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherClothesTests.debug.xcconfig"; path = "Target Support Files/Pods-WeatherClothesTests/Pods-WeatherClothesTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -71,6 +104,11 @@
 		A006C2342337916800B2A8F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A006C2362337916D00B2A8F6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A00928B3231ECE46002F9D2A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A041FD1B234CE53500303AA0 /* WhatToWearTodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WhatToWearTodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A041FD1C234CE53500303AA0 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		A041FD1F234CE53500303AA0 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		A041FD22234CE53500303AA0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		A041FD24234CE53500303AA0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A04C128D22FC811A00C82372 /* ResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewCell.swift; sourceTree = "<group>"; };
 		A04C128E22FC811A00C82372 /* ResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultTableViewCell.xib; sourceTree = "<group>"; };
 		A056C6522317A858003B83D3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
@@ -111,6 +149,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		A041FD18234CE53500303AA0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A041FD1D234CE53500303AA0 /* NotificationCenter.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A0EF386722EC623500A980CC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -149,6 +195,16 @@
 				0C970EDEF4A2F81CAD8E6E09 /* Pods-WeatherClothesUITests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A041FD1E234CE53500303AA0 /* WhatToWearTodayExtension */ = {
+			isa = PBXGroup;
+			children = (
+				A041FD1F234CE53500303AA0 /* TodayViewController.swift */,
+				A041FD21234CE53500303AA0 /* MainInterface.storyboard */,
+				A041FD24234CE53500303AA0 /* Info.plist */,
+			);
+			path = WhatToWearTodayExtension;
 			sourceTree = "<group>";
 		};
 		A056C65623181759003B83D3 /* Localizable */ = {
@@ -223,6 +279,7 @@
 				A0EF386C22EC623500A980CC /* WeatherClothes */,
 				A0EF388422EC623700A980CC /* WeatherClothesTests */,
 				A0EF388F22EC623700A980CC /* WeatherClothesUITests */,
+				A041FD1E234CE53500303AA0 /* WhatToWearTodayExtension */,
 				A0EF386B22EC623500A980CC /* Products */,
 				04E2AF4A5C839C03FBA749B4 /* Pods */,
 				BD41A42303FF5863A5906C70 /* Frameworks */,
@@ -235,6 +292,7 @@
 				A0EF386A22EC623500A980CC /* WeatherClothes.app */,
 				A0EF388122EC623700A980CC /* WeatherClothesTests.xctest */,
 				A0EF388C22EC623700A980CC /* WeatherClothesUITests.xctest */,
+				A041FD1B234CE53500303AA0 /* WhatToWearTodayExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -281,6 +339,7 @@
 				3AC420B1EE9F9BC8F8D5A419 /* Pods_WeatherClothes.framework */,
 				544036DED2AAB788A5EA1C21 /* Pods_WeatherClothesTests.framework */,
 				F0B22A9676C15D1160572CE3 /* Pods_WeatherClothesUITests.framework */,
+				A041FD1C234CE53500303AA0 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -288,6 +347,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		A041FD1A234CE53500303AA0 /* WhatToWearTodayExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A041FD2A234CE53500303AA0 /* Build configuration list for PBXNativeTarget "WhatToWearTodayExtension" */;
+			buildPhases = (
+				A041FD17234CE53500303AA0 /* Sources */,
+				A041FD18234CE53500303AA0 /* Frameworks */,
+				A041FD19234CE53500303AA0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WhatToWearTodayExtension;
+			productName = WhatToWearTodayExtension;
+			productReference = A041FD1B234CE53500303AA0 /* WhatToWearTodayExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		A0EF386922EC623500A980CC /* WeatherClothes */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A0EF389522EC623700A980CC /* Build configuration list for PBXNativeTarget "WeatherClothes" */;
@@ -297,10 +373,12 @@
 				A0EF386722EC623500A980CC /* Frameworks */,
 				A0EF386822EC623500A980CC /* Resources */,
 				1BCE46031AA343E30554E507 /* [CP] Embed Pods Frameworks */,
+				A041FD2B234CE53500303AA0 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A041FD26234CE53500303AA0 /* PBXTargetDependency */,
 			);
 			name = WeatherClothes;
 			productName = WeatherClothes;
@@ -355,6 +433,9 @@
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = "Lev Butkovskiy";
 				TargetAttributes = {
+					A041FD1A234CE53500303AA0 = {
+						CreatedOnToolsVersion = 10.3;
+					};
 					A0EF386922EC623500A980CC = {
 						CreatedOnToolsVersion = 10.3;
 					};
@@ -385,11 +466,23 @@
 				A0EF386922EC623500A980CC /* WeatherClothes */,
 				A0EF388022EC623700A980CC /* WeatherClothesTests */,
 				A0EF388B22EC623700A980CC /* WeatherClothesUITests */,
+				A041FD1A234CE53500303AA0 /* WhatToWearTodayExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		A041FD19234CE53500303AA0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A041FD30234CFA2B00303AA0 /* Info.plist in Resources */,
+				A041FD2C234CF7AD00303AA0 /* Assets.xcassets in Resources */,
+				A041FD2E234CF8A400303AA0 /* Localizable.strings in Resources */,
+				A041FD23234CE53500303AA0 /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A0EF386822EC623500A980CC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -510,6 +603,19 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		A041FD17234CE53500303AA0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A041FD33234CFAD600303AA0 /* Inventory.swift in Sources */,
+				A041FD31234CFA8900303AA0 /* Weather.swift in Sources */,
+				A041FD2F234CF8BB00303AA0 /* Settings.swift in Sources */,
+				A041FD2D234CF7B400303AA0 /* API.swift in Sources */,
+				A041FD32234CFAD200303AA0 /* Clothes.swift in Sources */,
+				A041FD20234CE53500303AA0 /* TodayViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A0EF386622EC623500A980CC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -555,6 +661,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		A041FD26234CE53500303AA0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A041FD1A234CE53500303AA0 /* WhatToWearTodayExtension */;
+			targetProxy = A041FD25234CE53500303AA0 /* PBXContainerItemProxy */;
+		};
 		A0EF388322EC623700A980CC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = A0EF386922EC623500A980CC /* WeatherClothes */;
@@ -575,6 +686,14 @@
 				A006C2362337916D00B2A8F6 /* ru */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		A041FD21234CE53500303AA0 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A041FD22234CE53500303AA0 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 		A056C65B23181780003B83D3 /* Localizable.strings */ = {
@@ -598,6 +717,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		A041FD28234CE53500303AA0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5J2CH3482H;
+				INFOPLIST_FILE = WhatToWearTodayExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bluebeakstd.WeatherClothesI.WhatToWearTodayExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A041FD29234CE53500303AA0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5J2CH3482H;
+				INFOPLIST_FILE = WhatToWearTodayExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.bluebeakstd.WeatherClothesI.WhatToWearTodayExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		A0EF389322EC623700A980CC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -720,6 +877,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9E16E86EC49CBE0D9DD7A75E /* Pods-WeatherClothes.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5J2CH3482H;
@@ -740,6 +898,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4ED99F4301369B74E99A5BB3 /* Pods-WeatherClothes.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5J2CH3482H;
@@ -845,6 +1004,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A041FD2A234CE53500303AA0 /* Build configuration list for PBXNativeTarget "WhatToWearTodayExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A041FD28234CE53500303AA0 /* Debug */,
+				A041FD29234CE53500303AA0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A0EF386522EC623500A980CC /* Build configuration list for PBXProject "WeatherClothes" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

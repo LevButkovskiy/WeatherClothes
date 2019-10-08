@@ -334,22 +334,5 @@ extension Date {
     }
 }
 
-extension String {
-    func capitalizedFirst() -> String {
-        if(self.count > 0){
-            let first = self[self.startIndex ..< self.index(startIndex, offsetBy: 1)]
-            let rest = self[self.index(startIndex, offsetBy: 1) ..< self.endIndex]
-            return first.uppercased() + rest.lowercased()
-        }
-        else{
-            return self
-        }
-    }
-    
-    var localized: String {
-        return NSLocalizedString(self, comment: "")
-    }
-}
-
 
 
