@@ -55,6 +55,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setDefaultSettings()
     }
     
     override func viewWillAppear(_ animated: Bool) {

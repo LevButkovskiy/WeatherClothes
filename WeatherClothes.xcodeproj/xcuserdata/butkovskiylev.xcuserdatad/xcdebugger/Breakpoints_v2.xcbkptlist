@@ -81,38 +81,6 @@
             endingLineNumber = "64"
             landmarkName = "scrollViewDidEndDragging(_:willDecelerate:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in WeatherClothes.TutorialViewController.scrollViewDidEndDragging(_: __C.UIScrollView, willDecelerate: Swift.Bool) -&gt; ()"
-                  moduleName = "WeatherClothes"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/butkovskiylev/Documents/BlueBeakStd/WeatherClothes/WeatherClothes/ViewControllers/TutorialViewController.swift"
-                  timestampString = "591882300.053899"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "21">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "function signature specialization &lt;Arg[1] = Dead&gt; of WeatherClothes.TutorialViewController.scrollViewDidEndDragging(_: __C.UIScrollView, willDecelerate: Swift.Bool) -&gt; ()"
-                  moduleName = "WeatherClothes"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/butkovskiylev/Documents/BlueBeakStd/WeatherClothes/WeatherClothes/ViewControllers/TutorialViewController.swift"
-                  timestampString = "591882300.055756"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "64"
-                  endingLineNumber = "64"
-                  offsetFromSymbolStart = "76">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
