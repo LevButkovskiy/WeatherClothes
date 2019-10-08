@@ -260,7 +260,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         cell.clotheName.text = clotheName.localized
         cell.clotheDescription.text = clothes.getDescriptionForIndex(index: section)
-        cell.clothesImages = clothes.getClothes(weather: weather, inventory : inventory, section: section, value: clotheName.trimmingCharacters(in: .whitespaces).localized)
+        cell.clothesImages = clothes.getClothes(weather: weather, inventory : inventory, section: section, value: clotheName.trimmingCharacters(in: .whitespaces))
         cell.setImages()
         return cell
     }
