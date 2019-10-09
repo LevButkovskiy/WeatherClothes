@@ -8,21 +8,26 @@
 
 import UIKit
 
-class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
     
     
     var inventory = Inventory()
     var clothe : Dictionary<String, Any> = [:]
     let imagePicker = UIImagePickerController()
-    let context = UIGraphicsGetCurrentContext()
-    var path = UIBezierPath()
 
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var typeCollectionView: UICollectionView!
+    @IBOutlet weak var colorCollectionView: UICollectionView!
+    @IBOutlet weak var chooseTypeHelpLabel: UILabel!
     
     var name : String = ""
     var type : String = "Головной убор"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        typeCollectionView.register(UINib(nibName: "TypeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "typeCell")
+        
         //setDefaultSettings()
         /*if(!clothe.isNil()){
             type = inventory.getTypeNameFromIndex(index: clothe["type"] as! Int)
@@ -67,6 +72,86 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     func setLightTheme(){
         view.backgroundColor = .groupTableViewBackground
     }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return collectionView == typeCollectionView ? 4 : 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = typeCollectionView.dequeueReusableCell(withReuseIdentifier: "typeCell", for: indexPath) as! TypeCollectionViewCell
+        if(collectionView == typeCollectionView){
+            if(indexPath.row == 0){
+                cell.imageView.image = UIImage(named: "Кепка_белая")
+            }
+            if(indexPath.row == 1){
+                cell.imageView.image = UIImage(named: "Футболка_белая_м")
+                cell.type = "Футболка"
+            }
+            if(indexPath.row == 2){
+                cell.imageView.image = UIImage(named: "Штаны_белые")
+            }
+            if(indexPath.row == 3){
+                cell.imageView.image = UIImage(named: "Кроссовки_белые")
+            }
+            cell.imageView.backgroundColor = .lightGray
+        }
+        else{
+            cell.imageView.backgroundColor = .yellow
+            cell.layer.borderWidth = 2
+            cell.layer.borderColor = UIColor.lightGray.cgColor
+            cell.layer.cornerRadius = cell.frame.width / 2
+            if(indexPath.row == 0){
+                cell.imageView.backgroundColor = .white
+                cell.layer.borderColor = UIColor.blue.cgColor
+            }
+            if(indexPath.row == 1){
+                cell.imageView.backgroundColor = .red
+            }
+            if(indexPath.row == 2){
+                cell.imageView.backgroundColor = .green
+            }
+            if(indexPath.row == 3){
+                cell.imageView.backgroundColor = .blue
+            }
+
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! TypeCollectionViewCell
+        if(collectionView == typeCollectionView){
+            chooseTypeHelpLabel.isHidden = true
+            deselectAll(collectionView: typeCollectionView)
+            cell.imageView.backgroundColor = .blue
+            imageView.image = cell.imageView.image
+        }
+        else{
+            deselectAll(collectionView: colorCollectionView)
+            cell.layer.borderColor = UIColor.blue.cgColor
+        }
+    }
+    
+    func deselectAll(collectionView: UICollectionView){
+        if(collectionView == typeCollectionView){
+            for i in 0..<typeCollectionView.numberOfItems(inSection: 0){
+                let cell = typeCollectionView.cellForItem(at: IndexPath(row: i, section: 0)) as! TypeCollectionViewCell
+                cell.imageView.backgroundColor = .lightGray
+            }
+        }
+        else{
+            for i in 0..<colorCollectionView.numberOfItems(inSection: 0){
+                let cell = colorCollectionView.cellForItem(at: IndexPath(row: i, section: 0)) as! TypeCollectionViewCell
+                cell.layer.borderColor = UIColor.lightGray.cgColor
+            }
+        }
+    }
+    
+    
     
     
     /*func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
@@ -180,19 +265,4 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
         dismiss(animated: true, completion: nil)
     }*/
-}
-
-extension UIImage
-{
-    // convenience function in UIImage extension to resize a given image
-    func convert(toSize size:CGSize, scale:CGFloat) ->UIImage
-    {
-        let imgRect = CGRect(origin: CGPoint(x:0.0, y:0.0), size: size)
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        self.draw(in: imgRect)
-        let copied = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return copied!
-    }
 }
