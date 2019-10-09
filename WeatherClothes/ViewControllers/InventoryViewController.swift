@@ -116,10 +116,12 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! InventoryTableViewCell
         cell.clotheImage.layer.cornerRadius = 10
         let clothe = inventory.cellForRowAt(indexPath: indexPath)
-        cell.clotheName.text = (clothe["name"] as! String)
-        cell.comfortableTemperature.text = String(format: "Комфортная температура: %d˙C", (clothe["temperature"] as! Int))
-        cell.windProtection.text = String(format: "Ветрозащита: %d м/с", (clothe["wind"] as! Int))
-        cell.clotheImage.image = UIImage(data: (clothe["image"] as! Data))
+        if(clothe != nil){
+            cell.clotheName.text = clothe?.name
+            cell.comfortableTemperature.text = String(format: "Комфортная температура: %d˙C", clothe!.comfortTemperature!)
+            cell.windProtection.text = String(format: "Ветрозащита: %d м/с", clothe!.comfortWind!)
+            cell.clotheImage.image = UIImage(data: clothe!.image)
+        }
         return cell
     }
     
@@ -198,8 +200,8 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         let delete = UITableViewRowAction(style: .default, title: "Удалить") { action, index in
         print("Delete")
-            let clothe = self.inventory.cellForRowAt(indexPath: indexPath)
-            self.inventory.remove(item: clothe)
+            let clothe = self.inventory.cellForRowAt(indexPath: indexPath) as! Clothe
+            self.inventory.remove(clothe: clothe)
             self.update()
             }
         return [delete, block]

@@ -10,6 +10,9 @@
 		19E19C93B01250E78C8EBDFB /* Pods_WeatherClothes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC420B1EE9F9BC8F8D5A419 /* Pods_WeatherClothes.framework */; };
 		A006C2332337916800B2A8F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A006C2352337916800B2A8F6 /* InfoPlist.strings */; };
 		A00928B4231ECE46002F9D2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00928B3231ECE46002F9D2A /* Main.storyboard */; };
+		A0285584234E34EA003AC1DA /* Clothe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C37605234E314E00E4604B /* Clothe.swift */; };
+		A0285587234E5C18003AC1DA /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0285585234E5C18003AC1DA /* ColorCollectionViewCell.swift */; };
+		A0285588234E5C18003AC1DA /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0285586234E5C18003AC1DA /* ColorCollectionViewCell.xib */; };
 		A041FD1D234CE53500303AA0 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A041FD1C234CE53500303AA0 /* NotificationCenter.framework */; };
 		A041FD20234CE53500303AA0 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A041FD1F234CE53500303AA0 /* TodayViewController.swift */; };
 		A041FD23234CE53500303AA0 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A041FD21234CE53500303AA0 /* MainInterface.storyboard */; };
@@ -36,6 +39,7 @@
 		A0BCA547230B228C00407757 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0BCA545230B228C00407757 /* MenuTableViewCell.xib */; };
 		A0C37603234DEF1800E4604B /* TypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C37601234DEF1800E4604B /* TypeCollectionViewCell.swift */; };
 		A0C37604234DEF1800E4604B /* TypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0C37602234DEF1800E4604B /* TypeCollectionViewCell.xib */; };
+		A0C37606234E314E00E4604B /* Clothe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C37605234E314E00E4604B /* Clothe.swift */; };
 		A0E67C7123476285008D8926 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E67C7023476285008D8926 /* Settings.swift */; };
 		A0E6F1D723244ACA00656EC7 /* DetailWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E6F1D623244ACA00656EC7 /* DetailWeather.swift */; };
 		A0E6F1D923244AD700656EC7 /* DetailWeather.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0E6F1D823244AD700656EC7 /* DetailWeather.xib */; };
@@ -105,6 +109,8 @@
 		A006C2342337916800B2A8F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A006C2362337916D00B2A8F6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A00928B3231ECE46002F9D2A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A0285585234E5C18003AC1DA /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		A0285586234E5C18003AC1DA /* ColorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColorCollectionViewCell.xib; sourceTree = "<group>"; };
 		A041FD1B234CE53500303AA0 /* WhatToWearTodayExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WhatToWearTodayExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		A041FD1C234CE53500303AA0 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		A041FD1F234CE53500303AA0 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +131,7 @@
 		A0BCA545230B228C00407757 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
 		A0C37601234DEF1800E4604B /* TypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		A0C37602234DEF1800E4604B /* TypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeCollectionViewCell.xib; sourceTree = "<group>"; };
+		A0C37605234E314E00E4604B /* Clothe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clothe.swift; sourceTree = "<group>"; };
 		A0E67C7023476285008D8926 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = ../Settings.swift; sourceTree = "<group>"; };
 		A0E6F1D623244ACA00656EC7 /* DetailWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeather.swift; sourceTree = "<group>"; };
 		A0E6F1D823244AD700656EC7 /* DetailWeather.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailWeather.xib; sourceTree = "<group>"; };
@@ -233,6 +240,7 @@
 				A0EC77E423156B720080B7B1 /* Inventory.swift */,
 				A0EF38A222EC628900A980CC /* API.swift */,
 				A0F3611122F992C400906528 /* Weather.swift */,
+				A0C37605234E314E00E4604B /* Clothe.swift */,
 				A0773E0F230D8B23007C202B /* Clothes.swift */,
 			);
 			path = Model;
@@ -263,6 +271,8 @@
 				A0BCA545230B228C00407757 /* MenuTableViewCell.xib */,
 				A056C6522317A858003B83D3 /* HeaderView.swift */,
 				A056C6542317A869003B83D3 /* HeaderView.xib */,
+				A0285585234E5C18003AC1DA /* ColorCollectionViewCell.swift */,
+				A0285586234E5C18003AC1DA /* ColorCollectionViewCell.xib */,
 				A0C37601234DEF1800E4604B /* TypeCollectionViewCell.swift */,
 				A0C37602234DEF1800E4604B /* TypeCollectionViewCell.xib */,
 			);
@@ -501,6 +511,7 @@
 				A056C65923181780003B83D3 /* Localizable.strings in Resources */,
 				A0EF387B22EC623700A980CC /* LaunchScreen.storyboard in Resources */,
 				A006C2332337916800B2A8F6 /* InfoPlist.strings in Resources */,
+				A0285588234E5C18003AC1DA /* ColorCollectionViewCell.xib in Resources */,
 				A0EF387822EC623700A980CC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -617,6 +628,7 @@
 				A041FD2F234CF8BB00303AA0 /* Settings.swift in Sources */,
 				A041FD2D234CF7B400303AA0 /* API.swift in Sources */,
 				A041FD32234CFAD200303AA0 /* Clothes.swift in Sources */,
+				A0285584234E34EA003AC1DA /* Clothe.swift in Sources */,
 				A041FD20234CE53500303AA0 /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,6 +647,8 @@
 				A0F3611722F9DBB900906528 /* InventoryTableViewCell.swift in Sources */,
 				A0EF387622EC623500A980CC /* WeatherClothes.xcdatamodeld in Sources */,
 				A0EC77E523156B720080B7B1 /* Inventory.swift in Sources */,
+				A0285587234E5C18003AC1DA /* ColorCollectionViewCell.swift in Sources */,
+				A0C37606234E314E00E4604B /* Clothe.swift in Sources */,
 				A0E6F1D723244ACA00656EC7 /* DetailWeather.swift in Sources */,
 				A0F3611222F992C400906528 /* Weather.swift in Sources */,
 				A0BCA53F230B078B00407757 /* MenuViewController.swift in Sources */,

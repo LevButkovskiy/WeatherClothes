@@ -32,16 +32,12 @@ class Inventory: NSObject {
     func load(){
         if let unarchivedObject = UserDefaults.standard.object(forKey: "inventory") as? NSData {
             inventory = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Dictionary<Int, Any>)
-            setTypes()
             setSections()
         }
     }
     
     func update(){
         load()
-    }
-    
-    func setTypes(){
     }
     
     func save(){
@@ -55,37 +51,39 @@ class Inventory: NSObject {
         update()
     }
     
-    func add(item : Dictionary<String, Any>){
-        let type = item["type"] as! Int
+    func add(clothe : Clothe){
+        let type = clothe.type as! Int
         if(inventory[type] != nil){
             var itemType = inventory[type] as! Dictionary<Int, Any>
-            itemType[itemType.count] = item
+            itemType[itemType.count] = clothe
             inventory[type] = itemType
         }
         else{
             var itemType : Dictionary<Int, Any> = [:]
-            itemType[0] = item
+            itemType[0] = clothe
             inventory[type] = itemType
         }
         save()
     }
     
     func add(name: String, image : UIImage, type: Int, temperature : Int, wind: Int){
-        var item = Dictionary<String, Any>()
+        let clothe = Clothe(name: name, image: image.jpegData(compressionQuality: 0.1)!, type: type, color: .white, comfortTemperature: temperature, comfortWind: wind)
+        add(clothe: clothe)
+        /*var item = Dictionary<String, Any>()
         item["name"] = name
         item["image"] = image.jpegData(compressionQuality: 0.1)
         item["type"] = type
         item["temperature"] = temperature
         item["wind"] = wind
-        add(item: item)
+        add(item: item)*/
     }
     
-    func remove(item : Dictionary<String, Any>){
-        let type = item["type"] as! Int
+    func remove(clothe : Clothe){
+        let type = clothe.type as! Int
         var items = inventory[type] as! Dictionary<Int, Any>
         for i in 0..<items.count{
-            let invItem = items[i] as! Dictionary<String, Any>
-            if(invItem.isEqual(dict: item)){
+            let invItem = items[i] as! Clothe
+            if(invItem.isEqual(clothe)){
                 items = deleteAtIndex(dictionary: items, index: i)
                 inventory[type] = items
                 break;
@@ -105,32 +103,32 @@ class Inventory: NSObject {
     }
     
     //MARK: TableView functions
-    func cellForRowAt(indexPath: IndexPath) -> Dictionary<String, Any>{
+    func cellForRowAt(indexPath: IndexPath) -> Clothe?{
         switch sections[indexPath.section] {
         case Type.head.rawValue:
             if(inventory[Type.head.rawValue] != nil){
                 let head = inventory[Type.head.rawValue] as! Dictionary<Int, Any>
-                return head[indexPath.row] as! Dictionary<String, Any>
+                return head[indexPath.row] as! Clothe
             }
         case Type.upper.rawValue:
             if(inventory[Type.upper.rawValue] != nil){
                 let upper = inventory[Type.upper.rawValue] as! Dictionary<Int, Any>
-                return upper[indexPath.row] as! Dictionary<String, Any>
+                return upper[indexPath.row] as! Clothe
             }
         case Type.lower.rawValue:
             if(inventory[Type.lower.rawValue] != nil){
                 let lower = inventory[Type.lower.rawValue] as! Dictionary<Int, Any>
-                return lower[indexPath.row] as! Dictionary<String, Any>
+                return lower[indexPath.row] as! Clothe
             }
         case Type.boots.rawValue:
             if(inventory[Type.boots.rawValue] != nil){
                 let boots = inventory[Type.boots.rawValue] as! Dictionary<Int, Any>
-                return boots[indexPath.row] as! Dictionary<String, Any>
+                return boots[indexPath.row] as! Clothe
             }
         default:
-           return Dictionary<String, Any>()
+            return nil
         }
-        return Dictionary<String, Any>()
+        return nil
     }
     
     func titleForHeaderInSection(section: Int) -> String{
@@ -215,6 +213,21 @@ class Inventory: NSObject {
             return "Нижняя часть одежды"
         case Type.boots.rawValue:
             return "Обувь"
+        default:
+            return ""
+        }
+    }
+    
+    func tmpStringValueOfType(type : Int) -> String{
+        switch type {
+        case Type.head.rawValue:
+            return "cap"
+        case Type.upper.rawValue:
+            return "tshirt"
+        case Type.lower.rawValue:
+            return "pants"
+        case Type.boots.rawValue:
+            return "sneakers"
         default:
             return ""
         }

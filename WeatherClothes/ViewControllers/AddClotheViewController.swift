@@ -8,12 +8,15 @@
 
 import UIKit
 
-class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
+class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     
     var inventory = Inventory()
     var clothe : Dictionary<String, Any> = [:]
     let imagePicker = UIImagePickerController()
+    
+    var type = Int()
+    var color = String()
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var typeCollectionView: UICollectionView!
@@ -21,13 +24,15 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     @IBOutlet weak var chooseTypeHelpLabel: UILabel!
     
     var name : String = ""
-    var type : String = "Головной убор"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        type = 0
         typeCollectionView.register(UINib(nibName: "TypeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "typeCell")
-        
+        colorCollectionView.register(UINib(nibName: "ColorCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "colorCell")
+        typeCollectionView.tag = 101
+        colorCollectionView.tag = 102
+
         //setDefaultSettings()
         /*if(!clothe.isNil()){
             type = inventory.getTypeNameFromIndex(index: clothe["type"] as! Int)
@@ -39,6 +44,32 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
             comfortTemperatureSliderLabel.text = String(format: "Комфортная температура: %d˙C", Int(comfortTemperatureSlider.value))
             windSliderLabel.text = String(format: "Ветрозащита: %d м/с", Int(windSlider.value))
         }*/
+    }
+    
+    func colorsForType(type : Int) -> Array<UIColor>{
+        var colors = Array<UIColor>()
+        if(type == 0){
+            colors.append(.white)
+        }
+        else if(type == 1){
+            colors.append(.white)
+            colors.append(.red)
+            colors.append(.green)
+            colors.append(.blue)
+            colors.append(.yellow)
+            colors.append(.purple)
+            colors.append(.black)
+        }
+        else if(type == 2){
+            colors.append(.white)
+            colors.append(.green)
+            colors.append(.blue)
+            colors.append(.black)
+        }
+        else if(type == 3){
+            colors.append(.white)
+        }
+        return colors
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,61 +107,66 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return collectionView == typeCollectionView ? 4 : 5
+        if(collectionView == typeCollectionView){
+            return 4
+        }
+        else{
+            return colorsForType(type: type).count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = typeCollectionView.dequeueReusableCell(withReuseIdentifier: "typeCell", for: indexPath) as! TypeCollectionViewCell
         if(collectionView == typeCollectionView){
+            let cell = typeCollectionView.dequeueReusableCell(withReuseIdentifier: "typeCell", for: indexPath) as! TypeCollectionViewCell
             if(indexPath.row == 0){
-                cell.imageView.image = UIImage(named: "Кепка_белая")
+                cell.imageView.image = UIImage(named: "cap_white")
             }
             if(indexPath.row == 1){
-                cell.imageView.image = UIImage(named: "Футболка_белая_м")
+                cell.imageView.image = UIImage(named: "tshirt_white")
                 cell.type = "Футболка"
             }
             if(indexPath.row == 2){
-                cell.imageView.image = UIImage(named: "Штаны_белые")
+                cell.imageView.image = UIImage(named: "pants_white")
             }
             if(indexPath.row == 3){
-                cell.imageView.image = UIImage(named: "Кроссовки_белые")
+                cell.imageView.image = UIImage(named: "sneakers_white")
             }
             cell.imageView.backgroundColor = .lightGray
+            return cell
         }
         else{
-            cell.imageView.backgroundColor = .yellow
+            let cell = colorCollectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as! ColorCollectionViewCell
+            cell.frame.size = CGSize(width: 30, height: 30)
             cell.layer.borderWidth = 2
             cell.layer.borderColor = UIColor.lightGray.cgColor
             cell.layer.cornerRadius = cell.frame.width / 2
+            let colors = colorsForType(type: type)
+            cell.backgroundColor = colors[indexPath.row]
+            cell.imageView.backgroundColor = colors[indexPath.row]
             if(indexPath.row == 0){
                 cell.imageView.backgroundColor = .white
                 cell.layer.borderColor = UIColor.blue.cgColor
             }
-            if(indexPath.row == 1){
-                cell.imageView.backgroundColor = .red
-            }
-            if(indexPath.row == 2){
-                cell.imageView.backgroundColor = .green
-            }
-            if(indexPath.row == 3){
-                cell.imageView.backgroundColor = .blue
-            }
-
+            return cell
         }
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! TypeCollectionViewCell
         if(collectionView == typeCollectionView){
+            let cell = collectionView.cellForItem(at: indexPath) as! TypeCollectionViewCell
             chooseTypeHelpLabel.isHidden = true
+            type = indexPath.row
+            
             deselectAll(collectionView: typeCollectionView)
             cell.imageView.backgroundColor = .blue
             imageView.image = cell.imageView.image
+            colorCollectionView.reloadData()
         }
         else{
+            let cell = collectionView.cellForItem(at: indexPath) as! ColorCollectionViewCell
+            updateImage(color: cell.imageView.backgroundColor!)
             deselectAll(collectionView: colorCollectionView)
             cell.layer.borderColor = UIColor.blue.cgColor
         }
@@ -145,10 +181,33 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         }
         else{
             for i in 0..<colorCollectionView.numberOfItems(inSection: 0){
-                let cell = colorCollectionView.cellForItem(at: IndexPath(row: i, section: 0)) as! TypeCollectionViewCell
+                let cell = colorCollectionView.cellForItem(at: IndexPath(row: i, section: 0)) as! ColorCollectionViewCell
                 cell.layer.borderColor = UIColor.lightGray.cgColor
             }
         }
+    }
+    
+    func updateImage(color: UIColor){
+        var f = ""
+        switch color {
+        case UIColor.white:
+            f = "white"
+        case UIColor.blue:
+            f = "blue"
+        case UIColor.red:
+            f = "red"
+        case UIColor.green:
+            f = "green"
+        case UIColor.yellow:
+            f = "yellow"
+        case UIColor.purple:
+            f = "purple"
+        case UIColor.black:
+            f = "black"
+        default:
+            f = "white"
+        }
+        imageView.image = UIImage(named: String(format: "%@_%@", inventory.tmpStringValueOfType(type: type), f))
     }
     
     
