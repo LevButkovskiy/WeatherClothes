@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScrollableImagesView" customModule="WeatherClothes" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="QUI-34-OJ9"/>
+                <outlet property="leftButton" destination="DGy-rM-Jjo" id="4yh-e9-yvE"/>
+                <outlet property="rightButton" destination="nMu-2B-XxG" id="oRJ-Ln-ZWi"/>
+                <outlet property="scrollView" destination="MT4-3e-LNp" id="hFK-VS-2ND"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="453" height="483"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DGy-rM-Jjo">
+                    <rect key="frame" x="0.0" y="211.5" width="40.5" height="60"/>
+                    <state key="normal" image="leftArrow"/>
+                    <connections>
+                        <action selector="leftButtonClick:" destination="-1" eventType="touchUpInside" id="DVq-Pd-20f"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMu-2B-XxG">
+                    <rect key="frame" x="413" y="211.5" width="40" height="60"/>
+                    <state key="normal" image="rightArrow"/>
+                    <connections>
+                        <action selector="rightButtonClick:" destination="-1" eventType="touchUpInside" id="lwm-Uh-whI"/>
+                    </connections>
+                </button>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MT4-3e-LNp">
+                    <rect key="frame" x="40" y="40" width="373" height="403"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="nMu-2B-XxG" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="1/12" id="1p6-bd-Ele"/>
+                <constraint firstItem="DGy-rM-Jjo" firstAttribute="centerY" secondItem="MT4-3e-LNp" secondAttribute="centerY" id="5ha-9h-sYx"/>
+                <constraint firstItem="MT4-3e-LNp" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="7G4-vb-iPw"/>
+                <constraint firstItem="MT4-3e-LNp" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="LbK-Of-M5z"/>
+                <constraint firstItem="DGy-rM-Jjo" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="USi-xr-kEp"/>
+                <constraint firstItem="nMu-2B-XxG" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="1/8" id="bUK-5s-Pk4"/>
+                <constraint firstItem="MT4-3e-LNp" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" constant="-80" id="cfe-Sp-qDM"/>
+                <constraint firstItem="nMu-2B-XxG" firstAttribute="centerY" secondItem="MT4-3e-LNp" secondAttribute="centerY" id="nls-5u-Q7H"/>
+                <constraint firstItem="DGy-rM-Jjo" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="1/8" id="s54-g8-eTv"/>
+                <constraint firstItem="MT4-3e-LNp" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" constant="-80" id="v7o-f9-lY5"/>
+                <constraint firstItem="DGy-rM-Jjo" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="1/12" id="vKZ-cd-pqX"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="nMu-2B-XxG" secondAttribute="trailing" id="zgo-tr-3cp"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="109.42028985507247" y="-17.745535714285712"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="leftArrow" width="256" height="256"/>
+        <image name="rightArrow" width="256" height="256"/>
+    </resources>
+</document>
