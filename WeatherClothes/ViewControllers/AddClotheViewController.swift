@@ -16,24 +16,31 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     let imagePicker = UIImagePickerController()
     
     var type = Int()
-    var color = String()
+    var value = String()
+    var color = UIColor()
+    
+    var height = CGFloat()
+    var clothesImages = Array<Any>()
+    var imageViews = [UIImageView]()
 
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var typeCollectionView: UICollectionView!
     @IBOutlet weak var colorCollectionView: UICollectionView!
-    @IBOutlet weak var chooseTypeHelpLabel: UILabel!
+    @IBOutlet weak var scrollableImages: ScrollableImagesView!
     
+    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var colorSwitcher: UISwitch!
     var name : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         type = 0
+        color = .white
         typeCollectionView.register(UINib(nibName: "TypeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "typeCell")
         colorCollectionView.register(UINib(nibName: "ColorCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "colorCell")
         typeCollectionView.tag = 101
         colorCollectionView.tag = 102
-
-        //setDefaultSettings()
+        setDefaultSettings()
         /*if(!clothe.isNil()){
             type = inventory.getTypeNameFromIndex(index: clothe["type"] as! Int)
             name = (clothe["name"] as! String)
@@ -46,42 +53,26 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         }*/
     }
     
-    func colorsForType(type : Int) -> Array<UIColor>{
-        var colors = Array<UIColor>()
-        if(type == 0){
-            colors.append(.white)
-        }
-        else if(type == 1){
-            colors.append(.white)
-            colors.append(.red)
-            colors.append(.green)
-            colors.append(.blue)
-            colors.append(.yellow)
-            colors.append(.purple)
-            colors.append(.black)
-        }
-        else if(type == 2){
-            colors.append(.white)
-            colors.append(.green)
-            colors.append(.blue)
-            colors.append(.black)
-        }
-        else if(type == 3){
-            colors.append(.white)
-        }
-        return colors
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
     }
     
-    func setDefaultSettings(){        
+    func setDefaultSettings(){
+        color = .white
+        colorCollectionView.isHidden = true
         navigationController?.navigationBar.isHidden = false
         
         //imagePicker.delegate = self
         //self.nameTextInput.delegate = self
-        checkTheme()
+        let doneButtonImage = UIImage(named: "doneButton")
+        let tintedDoneButtonImage = doneButtonImage?.withRenderingMode(.alwaysTemplate)
+        doneButton.setImage(tintedDoneButtonImage, for: .normal)
+        doneButton.tintColor = .green
+        
+        let closeButtonImage = UIImage(named: "closeButton")
+        let tintedCloseButtonImage = closeButtonImage?.withRenderingMode(.alwaysTemplate)
+        closeButton.setImage(tintedCloseButtonImage, for: .normal)
+        closeButton.tintColor = .red
     }
     
     func checkTheme(){
@@ -104,6 +95,19 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         view.backgroundColor = .groupTableViewBackground
     }
     
+    func setColors() -> Array<UIColor>{
+        var colors = Array<UIColor>()
+        colors.append(.white)
+        colors.append(.red)
+        colors.append(.green)
+        colors.append(.blue)
+        colors.append(.yellow)
+        colors.append(.purple)
+        colors.append(.gray)
+        colors.append(.black)
+        return colors
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -112,8 +116,11 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         if(collectionView == typeCollectionView){
             return 4
         }
+        else if(collectionView == colorCollectionView){
+            return setColors().count
+        }
         else{
-            return colorsForType(type: type).count
+            return 0
         }
     }
     
@@ -125,7 +132,6 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
             }
             if(indexPath.row == 1){
                 cell.imageView.image = UIImage(named: "tshirt_white")
-                cell.type = "Футболка"
             }
             if(indexPath.row == 2){
                 cell.imageView.image = UIImage(named: "pants_white")
@@ -142,12 +148,17 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
             cell.layer.borderWidth = 2
             cell.layer.borderColor = UIColor.lightGray.cgColor
             cell.layer.cornerRadius = cell.frame.width / 2
-            let colors = colorsForType(type: type)
+            let colors = setColors()
             cell.backgroundColor = colors[indexPath.row]
             cell.imageView.backgroundColor = colors[indexPath.row]
-            if(indexPath.row == 0){
-                cell.imageView.backgroundColor = .white
-                cell.layer.borderColor = UIColor.blue.cgColor
+            if(!colors.contains(color)){
+                let firstCell = colorCollectionView.cellForItem(at: IndexPath(row: 0, section: 0))
+                firstCell?.layer.borderColor = UIColor.blue.cgColor
+            }
+            else{
+                if(cell.imageView.backgroundColor == color){
+                    cell.layer.borderColor = UIColor.blue.cgColor
+                }
             }
             return cell
         }
@@ -156,17 +167,17 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if(collectionView == typeCollectionView){
             let cell = collectionView.cellForItem(at: indexPath) as! TypeCollectionViewCell
-            chooseTypeHelpLabel.isHidden = true
+            colorSwitcher.isEnabled = true
             type = indexPath.row
-            
+            generateImagesForScrollableView(with: color, toFirst: true)
             deselectAll(collectionView: typeCollectionView)
             cell.imageView.backgroundColor = .blue
-            imageView.image = cell.imageView.image
             colorCollectionView.reloadData()
         }
         else{
             let cell = collectionView.cellForItem(at: indexPath) as! ColorCollectionViewCell
-            updateImage(color: cell.imageView.backgroundColor!)
+            color = cell.imageView.backgroundColor!
+            generateImagesForScrollableView(with: color, toFirst: false)
             deselectAll(collectionView: colorCollectionView)
             cell.layer.borderColor = UIColor.blue.cgColor
         }
@@ -187,29 +198,46 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         }
     }
     
-    func updateImage(color: UIColor){
-        var f = ""
-        switch color {
-        case UIColor.white:
-            f = "white"
-        case UIColor.blue:
-            f = "blue"
-        case UIColor.red:
-            f = "red"
-        case UIColor.green:
-            f = "green"
-        case UIColor.yellow:
-            f = "yellow"
-        case UIColor.purple:
-            f = "purple"
-        case UIColor.black:
-            f = "black"
+    func generateImagesForScrollableView(with color: UIColor, toFirst: Bool){
+        var array = Array<UIImage>()
+        switch type {
+        case 0:
+            array.append(UIImage.init(named: String(format: "%@_%@", "cap", color.name!))!)
+            array.append(UIImage.init(named: String(format: "%@_%@", "hat", color.name!))!)
+        case 1:
+            array.append(UIImage.init(named: String(format: "%@_%@", "tshirt", color.name!))!)
+            array.append(UIImage.init(named: String(format: "%@_%@", "windBreaker", color.name!))!)
+        case 2:
+            array.append(UIImage.init(named: String(format: "%@_%@", "pants", color.name!))!)
+            array.append(UIImage.init(named: String(format: "%@_%@", "tshirt", color.name!))!)
+        case 3:
+            array.append(UIImage.init(named: String(format: "%@_%@", "sneakers", color.name!))!)
+            array.append(UIImage.init(named: String(format: "%@_%@", "tshirt", color.name!))!)
         default:
-            f = "white"
+            break;
         }
-        imageView.image = UIImage(named: String(format: "%@_%@", inventory.tmpStringValueOfType(type: type), f))
+        scrollableImages.setImages(clothes: array)
+        scrollableImages.update(toFirst: toFirst)
     }
     
+    @IBAction func colorSwitcherValueChanged(_ sender: Any) {
+        color = .white
+        colorCollectionView.reloadData()
+        if(colorSwitcher.isOn){
+            colorCollectionView.isHidden = false
+        }
+        else{
+            colorCollectionView.isHidden = true
+        }
+    }
+
+    @IBAction func saveButton(_ sender: Any) {
+        let clothe = Clothe()
+        let imageNamed = String(format: "%@_%@", inventory.getTypeNameFromIndex(type: type, index: scrollableImages.index), color.name!)
+        clothe.set(name: "Name", imageNamed: imageNamed, type: type, temperature: -30, wind: 12)
+        inventory.add(clothe: clothe)
+        navigationController?.popViewController(animated: true)
+    }
     
     
     
@@ -225,17 +253,10 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
             }
         }
         return NSAttributedString(string: string, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 17.0)!])
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        type = inventory.getTypeNameFromIndex(index: row)
     }*/
     
     /*@IBAction func nameTextInputValueChanged(_ sender: Any) {
         name = nameTextInput.text!
-    }
-    
-    @IBAction func nameTextInputEditingEnd(_ sender: Any) {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool
@@ -250,20 +271,6 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     
     @IBAction func comfortTemperatureSliderValueChanged(_ sender: Any) {
         comfortTemperatureSliderLabel.text = String(format: "Комфортная температура: %d˙C", Int(comfortTemperatureSlider.value))
-    }
-    
-    @IBAction func saveButton(_ sender: Any) {
-        if(!clothe.isNil()){
-            inventory.remove(item: clothe)
-        }
-        var newItem = Dictionary<String, Any>()
-        newItem["name"] = name
-        newItem["image"] = clotheImage.image!.jpegData(compressionQuality: 0.1)
-        newItem["type"] = inventory.getIndexForTypeName(type: type)
-        newItem["temperature"] = Int(comfortTemperatureSlider.value)
-        newItem["wind"] = Int(windSlider.value)
-        inventory.add(item: newItem)
-        navigationController?.popViewController(animated: true)
     }*/
     
     
@@ -324,4 +331,24 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
         dismiss(animated: true, completion: nil)
     }*/
+}
+
+extension UIImage {
+    
+    func outline() -> UIImage? {
+        
+        UIGraphicsBeginImageContext(size)
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        self.draw(in: rect, blendMode: .normal, alpha: 1.0)
+        let context = UIGraphicsGetCurrentContext()
+        context?.setStrokeColor(red: 1.0, green: 0.5, blue: 1.0, alpha: 1.0)
+        context?.setLineWidth(5.0)
+        context?.stroke(rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+        
+    }
+    
 }

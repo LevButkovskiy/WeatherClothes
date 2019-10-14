@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/butkovskiylev/Documents/BlueBeakStd/WeatherClothes/WeatherClothes/ViewControllers/InventoryViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:WeatherClothes.xcodeproj">
    </FileRef>
    <FileRef

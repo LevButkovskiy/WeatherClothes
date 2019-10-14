@@ -21,7 +21,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     let clothes = Clothes()
     var inventory = Inventory()
     var settings = Settings()
-    var detailWeatherView : DetailWeather?
     
     var locationManager: CLLocationManager?
     var latitude = Double()
@@ -59,6 +58,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        inventory.update()
+        tableView.reloadData()
         navigationController?.navigationBar.isHidden = true
     }
     
@@ -87,6 +88,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     func showWhatsNew(){
+        UserDefaults.standard.removeObject(forKey: "inventory")
+
             // Initialize WhatsNew
             let whatsNew = WhatsNew(
                 // The Title
@@ -164,8 +167,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     @objc func reload(){
-        weather = Weather()
         loadWeather()
+        inventory.update()
     }
     
     func loadWeather(){
@@ -229,7 +232,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         menuIsActive = !menuIsActive
         //checkTheme()
         if(menuIsActive){
-            menuButton.setImage(UIImage.init(named: "backArrowBlack"), for: .normal)
+            menuButton.setImage(UIImage.init(named: "leftArrow"), for: .normal)
         }
         else{
             menuButton.setImage(UIImage.init(named: "menu"), for: .normal)
@@ -266,7 +269,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     @IBAction func refreshButton(_ sender: Any) {
-        reload()
+        performSegue(withIdentifier: "goToInventory", sender: nil)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

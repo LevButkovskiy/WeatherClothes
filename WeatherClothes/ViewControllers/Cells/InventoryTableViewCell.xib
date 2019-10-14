@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EmH-uZ-A3E">
                         <rect key="frame" x="10" y="10" width="338" height="71.5"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ветровка_м" translatesAutoresizingMaskIntoConstraints="NO" id="mI7-So-hCQ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tshirt_black" translatesAutoresizingMaskIntoConstraints="NO" id="mI7-So-hCQ">
                                 <rect key="frame" x="266.5" y="2.5" width="66.5" height="66.5"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="piS-L0-b2L">
@@ -97,6 +97,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Ветровка_м" width="1067" height="1067"/>
+        <image name="tshirt_black" width="1067" height="1067"/>
     </resources>
 </document>

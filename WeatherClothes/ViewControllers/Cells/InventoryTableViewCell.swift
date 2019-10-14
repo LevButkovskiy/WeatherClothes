@@ -18,6 +18,7 @@ class InventoryTableViewCell: UITableViewCell {
     @IBOutlet weak var descriptionView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
+        clotheImage.layer.cornerRadius = 10
         // Initialization code
     }
 
