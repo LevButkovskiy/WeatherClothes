@@ -58,12 +58,16 @@ class Weather: NSObject {
             api.loadUVIndex(latitude: latitude, longitude: longitude) { json in
                 self.uvIndex = json["value"] as! Double
                 completion(true)
-                /*api.load(latitude: latitude, longitude: longitude, language: "lang".localized, params: "3 часа"){jsonForecast in
-                    self.parseJsonForecast(json: jsonForecast)
-                    completion(true)
-                }*/
             }
         }
+    }
+    
+    func initForForecast(latitude: Double, longitude: Double, completion: @escaping ((Bool) -> ())){
+        let api = API()
+        api.load(latitude: latitude, longitude: longitude, language: "lang".localized, params: "3 часа"){jsonForecast in
+         self.parseJsonForecast(json: jsonForecast)
+         completion(true)
+         }
     }
     
     func parseJsonForecast(json : Dictionary<String, Any>){

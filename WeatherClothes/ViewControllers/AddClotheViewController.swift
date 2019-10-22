@@ -343,12 +343,12 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         }
         alert.addTextField { (textField) in
             textField.placeholder = "Название одежды"
+            textField.autocapitalizationType = .sentences
         }
         alert.addAction(action)
         alert.addAction(closeAction)
         present(alert, animated: true, completion: nil)
     }
-    
     
     
     /*func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
@@ -363,16 +363,6 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
             }
         }
         return NSAttributedString(string: string, attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont(name: "Avenir-Heavy", size: 17.0)!])
-    }*/
-    
-    /*@IBAction func nameTextInputValueChanged(_ sender: Any) {
-        name = nameTextInput.text!
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool
-    {
-        self.view.endEditing(true)
-        return false;
     }*/
     
     //MARK: ImagePicker

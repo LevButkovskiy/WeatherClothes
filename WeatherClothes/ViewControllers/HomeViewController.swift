@@ -17,7 +17,10 @@ protocol HomeViewControllerDelegate {
 
 class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+    
     var weather = Weather()
+    var weatherForecast = Weather()
     let clothes = Clothes()
     var inventory = Inventory()
     var settings = Settings()
@@ -199,6 +202,32 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         }
     }
     
+    func loadForecast(){
+        self.now = Date()
+        
+        weatherForecast = Weather()
+        
+        weatherForecast.initForForecast(latitude: self.latitude, longitude: self.longitude) { (completion) in
+            DispatchQueue.main.async {
+                if(completion){
+                    for i in 0..<self.weatherForecast.forecast.count{
+                        let weatherPart = self.weatherForecast.forecast[i] as! Dictionary<String, Any>
+                        let time = weatherPart["time"] as! String
+                        if(time == "08:00" || time == "09:00" || time == "10:00"){
+                            let temperature = weatherPart["temperature"] as! String
+                            var weatherCondition = weatherPart["weatherCondition"] as! String
+                            weatherCondition = weatherCondition.capitalizedFirst()
+                            let weatherConditionImage = self.weatherForecast.getImageForCondition(minutes: Int("30")!, hours: Int("9")!, weatherCondition: weatherCondition)
+                            print("Time: \(time), Temperature: \(temperature), WeatherCondition: \(weatherCondition)")
+                            self.appDelegate?.schuduleNotification(title: "Доброе утро", body: "На улице: \(temperature)°С, \(weatherCondition)")
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+    
     func generateClothes(){
         self.clothes.generateClothes(weather: self.weather)
         self.tableView.reloadData()
@@ -323,6 +352,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                 self.longitude = location.coordinate.longitude
                 print("Location is \(location)")
                 loadWeather()
+                loadForecast()
             }
         }
     }

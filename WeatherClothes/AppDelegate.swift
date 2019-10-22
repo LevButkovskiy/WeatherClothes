@@ -16,7 +16,7 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    let notificationCenter = UNUserNotificationCenter.current()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
  
@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Initializing the AppMetrica SDK.
         let configuration = YMMYandexMetricaConfiguration.init(apiKey: "b9e9f3f0-6800-47c2-b6cd-6f2bf71793f1")
         YMMYandexMetrica.activate(with: configuration!)
-        //registerForPushNotifications()
+        requestAutorization()
         return true
     }
 
@@ -47,6 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
@@ -101,9 +102,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func registerForPushNotifications() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) {
-            (granted, error) in
+    func requestAutorization(){
+        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
             print("Permission granted: \(granted)")
             
             guard granted else { return }
@@ -112,25 +112,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func getNotificationSettings() {
-        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+        notificationCenter.getNotificationSettings { (settings) in
             print("Notification settings: \(settings)")
             guard settings.authorizationStatus == .authorized else { return }
-            UIApplication.shared.registerForRemoteNotifications()
+            DispatchQueue.main.async {
+                UIApplication.shared.registerForRemoteNotifications()
+            }
         }
     }
     
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let tokenParts = deviceToken.map { data -> String in
-            return String(format: "%02.2hhx", data)
+    func schuduleNotification(title: String, body: String){
+        print("clicked")
+        let content = UNMutableNotificationContent()
+        
+        content.title = title
+        content.body = body
+        content.sound = .default
+        content.badge = 1
+        let date = Date()
+        var timeInt = Int()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        if(hour < 9){
+            timeInt = (9-hour)*60
+        }
+        else if(hour > 9){
+            timeInt = (24-hour+9)*60*60
+        }
+        else{
+            timeInt = 24*60
+        }
+        timeInt = timeInt - minutes*60
+        print(timeInt)
+        let newDate = Date(timeInterval: TimeInterval(60), since: date)
+        let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: newDate)
+        
+        //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+
+        let identifier = "Local notification"
+        
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+        notificationCenter.add(request) { (error) in
+            if let error = error{
+                print("Error: \(error.localizedDescription)")
+            }
         }
         
-        let token = tokenParts.joined()
-        print("Device Token: \(token)")
-    }
-    
-    func application(_ application: UIApplication,
-                     didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Failed to register: \(error)")
     }
 
 }
