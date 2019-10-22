@@ -185,7 +185,10 @@ class Weather: NSObject {
             #warning("Localize")
             return UIImage(named: String(format: "ThunderstormRain%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
-        else if(weatherCondition.uppercased() == "snow".localized.uppercased() || weatherCondition.uppercased() == "lightSnow".localized.uppercased() || weatherCondition.uppercased() == "snowfall".localized.uppercased() || weatherCondition.uppercased() == "heavySnow".localized.uppercased()){
+        else if(weatherCondition.uppercased() == "snow".localized.uppercased() || weatherCondition.uppercased() == "lightSnow".localized.uppercased()){
+            return UIImage(named: String(format: "LightSnow%@", getTimeDesription(hours: hours, minutes: minutes)))!
+        }
+        else if(weatherCondition.uppercased() == "snowfall".localized.uppercased() || weatherCondition.uppercased() == "heavySnow".localized.uppercased()){
             return UIImage(named: String(format: "Snow%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
         else{
