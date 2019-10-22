@@ -18,7 +18,7 @@ class ScrollableImagesView: UIView {
     var height = CGFloat()
     var scrollViewPosition = CGFloat()
     var index = Int()
-    var clothesImages = Array<UIImage>()
+    var clothesImageViews = Array<UIImageView>()
     var imageViews = [UIImageView]()
     
     override init(frame: CGRect) {
@@ -30,17 +30,24 @@ class ScrollableImagesView: UIView {
         super.init(coder: aDecoder)
         commonInit()
     }
+    
+    func getImageWithIndex() -> UIImage{
+        let image = imageViews[index].image
+        return image!
+    }
 
     private func commonInit(){
         Bundle.main.loadNibNamed("ScrollableImagesView", owner: self, options: nil)
         addSubview(contentView)
         contentView.frame = self.bounds
+        leftButton.isEnabled = false
+        rightButton.isEnabled = false
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         scrollViewPosition = 0
     }
     
-    func setImages(clothes: Array<UIImage>){
-        clothesImages = clothes
+    func setImages(clothesImageViews: Array<UIImageView>){
+        self.clothesImageViews = clothesImageViews
         setupImages()
         checkButtons()
     }
@@ -57,9 +64,7 @@ class ScrollableImagesView: UIView {
         scrollView.layer.shadowOffset = .zero
         scrollView.layer.shadowRadius = 3
         
-        for i in 0..<clothesImages.count{
-            let clothe = clothesImages[i]
-            let imageView = UIImageView(image: clothe)
+        for imageView in clothesImageViews{
             //imageView.contentMode = .f
             scrollView.addSubview(imageView)
             imageViews.append(imageView)
@@ -111,6 +116,7 @@ class ScrollableImagesView: UIView {
         if(toFirst){
             scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
             scrollViewPosition = 0
+            index = 0
             checkButtons()
         }
     }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ColorSlider
 
 class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -19,13 +20,23 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     var value = String()
     var color = UIColor()
     
+    var loadingView = UIView()
+    var helpView = UIView()
+    var helpViewActive = Bool()
+    var colorSlider = ColorSlider()
+    
     var height = CGFloat()
     var clothesImages = Array<Any>()
     var imageViews = [UIImageView]()
-
+    
     @IBOutlet weak var typeCollectionView: UICollectionView!
-    @IBOutlet weak var colorCollectionView: UICollectionView!
     @IBOutlet weak var scrollableImages: ScrollableImagesView!
+    
+    
+    @IBOutlet weak var temperatureSlider: UISlider!
+    @IBOutlet weak var temperatureSliderLabel: UILabel!
+    @IBOutlet weak var windSlider: UISlider!
+    @IBOutlet weak var windSliderLabel: UILabel!
     
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
@@ -36,11 +47,11 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         super.viewDidLoad()
         type = 0
         color = .white
+        helpViewActive = false
         typeCollectionView.register(UINib(nibName: "TypeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "typeCell")
-        colorCollectionView.register(UINib(nibName: "ColorCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "colorCell")
         typeCollectionView.tag = 101
-        colorCollectionView.tag = 102
         setDefaultSettings()
+        
         /*if(!clothe.isNil()){
             type = inventory.getTypeNameFromIndex(index: clothe["type"] as! Int)
             name = (clothe["name"] as! String)
@@ -53,13 +64,44 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         }*/
     }
     
+    func setImageColor(imageView: UIImageView, color: UIColor) {
+        imageView.image = UIImage(named: "tshirt_gen1")
+        var overlayedImage = ((UIImage(named: "tshirt_gen2")))
+        overlayedImage = overlayedImage?.tinted(with: color)
+        imageView.image = imageView.image!.imageOverlayingImages([overlayedImage!])
+        closeLoadingView()
+    }
+    
+    func generateImageView(imageName: String, color: UIColor) -> UIImageView {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: String(format: "%@_back", imageName))
+        var overlayedImage = UIImage(named: String(format: "%@_top", imageName))
+        overlayedImage = overlayedImage?.tinted(with: color)
+        imageView.image = imageView.image!.imageOverlayingImages([overlayedImage!])
+        closeLoadingView()
+        return imageView
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
     }
     
+    func showLoadingView(){
+        loadingView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        loadingView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
+        let spinner = UIActivityIndicatorView()
+        spinner.frame = CGRect(x: self.view.frame.width - 25, y: self.view.frame.height - 25, width: 50, height: 50)
+        view.addSubview(loadingView)
+        spinner.startAnimating()
+        loadingView.addSubview(spinner)
+    }
+    
+    func closeLoadingView(){
+        loadingView.removeFromSuperview()
+    }
+    
     func setDefaultSettings(){
         color = .white
-        colorCollectionView.isHidden = true
         navigationController?.navigationBar.isHidden = false
         
         //imagePicker.delegate = self
@@ -95,19 +137,6 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         view.backgroundColor = .groupTableViewBackground
     }
     
-    func setColors() -> Array<UIColor>{
-        var colors = Array<UIColor>()
-        colors.append(.white)
-        colors.append(.red)
-        colors.append(.green)
-        colors.append(.blue)
-        colors.append(.yellow)
-        colors.append(.purple)
-        colors.append(.gray)
-        colors.append(.black)
-        return colors
-    }
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -116,127 +145,208 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         if(collectionView == typeCollectionView){
             return 4
         }
-        else if(collectionView == colorCollectionView){
-            return setColors().count
-        }
         else{
             return 0
         }
     }
     
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if(collectionView == typeCollectionView){
-            let cell = typeCollectionView.dequeueReusableCell(withReuseIdentifier: "typeCell", for: indexPath) as! TypeCollectionViewCell
-            if(indexPath.row == 0){
-                cell.imageView.image = UIImage(named: "cap_white")
-            }
-            if(indexPath.row == 1){
-                cell.imageView.image = UIImage(named: "tshirt_white")
-            }
-            if(indexPath.row == 2){
-                cell.imageView.image = UIImage(named: "pants_white")
-            }
-            if(indexPath.row == 3){
-                cell.imageView.image = UIImage(named: "sneakers_white")
-            }
-            cell.imageView.backgroundColor = .lightGray
-            return cell
+        let cell = typeCollectionView.dequeueReusableCell(withReuseIdentifier: "typeCell", for: indexPath) as! TypeCollectionViewCell
+        if(indexPath.row == 0){
+            cell.imageView.image = UIImage(named: "cap_white")
         }
-        else{
-            let cell = colorCollectionView.dequeueReusableCell(withReuseIdentifier: "colorCell", for: indexPath) as! ColorCollectionViewCell
-            cell.frame.size = CGSize(width: 30, height: 30)
-            cell.layer.borderWidth = 2
-            cell.layer.borderColor = UIColor.lightGray.cgColor
-            cell.layer.cornerRadius = cell.frame.width / 2
-            let colors = setColors()
-            cell.backgroundColor = colors[indexPath.row]
-            cell.imageView.backgroundColor = colors[indexPath.row]
-            if(!colors.contains(color)){
-                let firstCell = colorCollectionView.cellForItem(at: IndexPath(row: 0, section: 0))
-                firstCell?.layer.borderColor = UIColor.blue.cgColor
-            }
-            else{
-                if(cell.imageView.backgroundColor == color){
-                    cell.layer.borderColor = UIColor.blue.cgColor
-                }
-            }
-            return cell
+        if(indexPath.row == 1){
+            cell.imageView.image = UIImage(named: "tshirt_white")
         }
+        if(indexPath.row == 2){
+            cell.imageView.image = UIImage(named: "pants_white")
+        }
+        if(indexPath.row == 3){
+            cell.imageView.image = UIImage(named: "sneakers_white")
+        }
+        cell.imageView.backgroundColor = .lightGray
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if(collectionView == typeCollectionView){
-            let cell = collectionView.cellForItem(at: indexPath) as! TypeCollectionViewCell
-            colorSwitcher.isEnabled = true
-            type = indexPath.row
-            generateImagesForScrollableView(with: color, toFirst: true)
-            deselectAll(collectionView: typeCollectionView)
-            cell.imageView.backgroundColor = .blue
-            colorCollectionView.reloadData()
-        }
-        else{
-            let cell = collectionView.cellForItem(at: indexPath) as! ColorCollectionViewCell
-            color = cell.imageView.backgroundColor!
-            generateImagesForScrollableView(with: color, toFirst: false)
-            deselectAll(collectionView: colorCollectionView)
-            cell.layer.borderColor = UIColor.blue.cgColor
-        }
+        let cell = collectionView.cellForItem(at: indexPath) as! TypeCollectionViewCell
+        colorSwitcher.isEnabled = true
+        type = indexPath.row
+        generateImagesForScrollableView(with: color, toFirst: true)
+        deselectAll(collectionView: typeCollectionView)
+        cell.imageView.backgroundColor = .blue
+    }
+    
+    @objc func changedColor(_ slider: ColorSlider) {
+        showLoadingView()
+        color = slider.color
+        generateImagesForScrollableView(with: color, toFirst: false)
     }
     
     func deselectAll(collectionView: UICollectionView){
-        if(collectionView == typeCollectionView){
-            for i in 0..<typeCollectionView.numberOfItems(inSection: 0){
-                let cell = typeCollectionView.cellForItem(at: IndexPath(row: i, section: 0)) as! TypeCollectionViewCell
-                cell.imageView.backgroundColor = .lightGray
-            }
-        }
-        else{
-            for i in 0..<colorCollectionView.numberOfItems(inSection: 0){
-                let cell = colorCollectionView.cellForItem(at: IndexPath(row: i, section: 0)) as! ColorCollectionViewCell
-                cell.layer.borderColor = UIColor.lightGray.cgColor
-            }
+        for i in 0..<typeCollectionView.numberOfItems(inSection: 0){
+            let cell = typeCollectionView.cellForItem(at: IndexPath(row: i, section: 0)) as! TypeCollectionViewCell
+            cell.imageView.backgroundColor = .lightGray
         }
     }
     
     func generateImagesForScrollableView(with color: UIColor, toFirst: Bool){
-        var array = Array<UIImage>()
+        var array = Array<UIImageView>()
+
         switch type {
         case 0:
-            array.append(UIImage.init(named: String(format: "%@_%@", "cap", color.name!))!)
-            array.append(UIImage.init(named: String(format: "%@_%@", "hat", color.name!))!)
+            array.append(generateImageView(imageName: "cap" , color: color))
+            array.append(generateImageView(imageName: "hat" , color: color))
         case 1:
-            array.append(UIImage.init(named: String(format: "%@_%@", "tshirt", color.name!))!)
-            array.append(UIImage.init(named: String(format: "%@_%@", "windBreaker", color.name!))!)
+            array.append(generateImageView(imageName: "tshirt" , color: color))
+            array.append(generateImageView(imageName: "windbreaker" , color: color))
         case 2:
-            array.append(UIImage.init(named: String(format: "%@_%@", "pants", color.name!))!)
-            array.append(UIImage.init(named: String(format: "%@_%@", "tshirt", color.name!))!)
+            array.append(generateImageView(imageName: "shorts" , color: color))
+            array.append(generateImageView(imageName: "pants" , color: color))
         case 3:
-            array.append(UIImage.init(named: String(format: "%@_%@", "sneakers", color.name!))!)
-            array.append(UIImage.init(named: String(format: "%@_%@", "tshirt", color.name!))!)
+            array.append(generateImageView(imageName: "slippers" , color: color))
+            array.append(generateImageView(imageName: "sneakers" , color: color))
+            array.append(generateImageView(imageName: "winterShoes" , color: color))
+
         default:
             break;
         }
-        scrollableImages.setImages(clothes: array)
+        scrollableImages.setImages(clothesImageViews: array)
         scrollableImages.update(toFirst: toFirst)
     }
     
     @IBAction func colorSwitcherValueChanged(_ sender: Any) {
         color = .white
-        colorCollectionView.reloadData()
         if(colorSwitcher.isOn){
-            colorCollectionView.isHidden = false
+            colorSlider = ColorSlider(orientation: .horizontal, previewSide: .top)
+            colorSlider.frame = CGRect(x: 20, y: colorSwitcher.frame.maxY + 10, width: view.frame.width - 40, height: 12)
+            view.addSubview(colorSlider)
+            //colorSlider.addTarget(self, action: #selector(changeColor(slider:event:)), for: .valueChanged)
+            colorSlider.addTarget(self, action: #selector(changedColor(_:)), for: [.touchUpInside, .touchUpOutside])
         }
         else{
-            colorCollectionView.isHidden = true
+            colorSlider.removeFromSuperview()
+            generateImagesForScrollableView(with: .white, toFirst: false)
         }
     }
-
+    
+    @IBAction func temperatureSliderChanged(_ sender: Any) {
+        /*if(temperatureSlider.value <= -30){
+            temperatureSlider.tintColor = UIColor(red:0.04, green:0.00, blue:0.23, alpha:1.0)
+        }
+        else if(temperatureSlider.value > -30 && temperatureSlider.value <= -25){
+            temperatureSlider.tintColor = UIColor(red:0.00, green:0.00, blue:0.35, alpha:1.0)
+        }
+        else if(temperatureSlider.value > -25 && temperatureSlider.value <= -20){
+            temperatureSlider.tintColor = UIColor(red:0.04, green:0.27, blue:0.85, alpha:1.0)
+        }
+        else if(temperatureSlider.value > -20 && temperatureSlider.value <= -15){
+            temperatureSlider.tintColor = UIColor(red:0.04, green:0.58, blue:0.85, alpha:1.0)
+        }
+        else if(temperatureSlider.value > -15 && temperatureSlider.value <= -10){
+            temperatureSlider.tintColor = UIColor(red:0.03, green:0.65, blue:0.96, alpha:1.0)
+        }
+        else if(temperatureSlider.value > -10 && temperatureSlider.value <= -5){
+            temperatureSlider.tintColor = UIColor(red:0.26, green:0.73, blue:0.96, alpha:1.0)
+        }
+        else if(temperatureSlider.value > -5 && temperatureSlider.value <= 0){
+            temperatureSlider.tintColor = UIColor(red:0.54, green:0.80, blue:0.94, alpha:1.0)
+        }
+        else if(temperatureSlider.value > 0 && temperatureSlider.value <= 5){
+            temperatureSlider.tintColor = UIColor(red:1.00, green:1.00, blue:0.75, alpha:1.0)
+        }
+        else if(temperatureSlider.value > 5 && temperatureSlider.value <= 10){
+            temperatureSlider.tintColor = UIColor(red:1.00, green:0.91, blue:0.48, alpha:1.0)
+        }
+        else if(temperatureSlider.value > 10 && temperatureSlider.value <= 15){
+            temperatureSlider.tintColor = UIColor(red:0.97, green:0.63, blue:0.13, alpha:1.0)
+        }
+        else if(temperatureSlider.value > 15 && temperatureSlider.value <= 20){
+            temperatureSlider.tintColor = UIColor(red:0.97, green:0.41, blue:0.13, alpha:1.0)
+        }
+        else if(temperatureSlider.value > 20 && temperatureSlider.value <= 25){
+            temperatureSlider.tintColor = UIColor(red:0.97, green:0.28, blue:0.13, alpha:1.0)
+        }
+        else if(temperatureSlider.value > 25 && temperatureSlider.value <= 30){
+            temperatureSlider.tintColor = UIColor(red:0.97, green:0.13, blue:0.13, alpha:1.0)
+        }
+        else if(temperatureSlider.value > 30){
+            temperatureSlider.tintColor = UIColor(red:0.80, green:0.00, blue:0.00, alpha:1.0)
+        }*/
+        
+        temperatureSliderLabel.text = String(format: "Комфортная температура: %d°C", Int(temperatureSlider.value))
+    }
+    
+    @IBAction func windSliderChanged(_ sender: Any) {
+        windSliderLabel.text = String(format: "Ветрозащита: %d м/с", Int(windSlider.value))
+    }
+    
     @IBAction func saveButton(_ sender: Any) {
-        let clothe = Clothe()
-        let imageNamed = String(format: "%@_%@", inventory.getTypeNameFromIndex(type: type, index: scrollableImages.index), color.name!)
-        clothe.set(name: "Name", imageNamed: imageNamed, type: type, temperature: -30, wind: 12)
-        inventory.add(clothe: clothe)
-        navigationController?.popViewController(animated: true)
+        if(colorSwitcher.isEnabled){
+            saveAction()
+        }
+        else{
+            showHelpView(text: "Выберите тип одежды")
+        }
+
+    }
+    
+    @IBAction func closeButton(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func showHelpView(text: String){
+        if(!helpViewActive){
+            helpViewActive = true
+            self.helpView.frame = CGRect(x: self.closeButton.frame.maxX + 20, y: -20, width: self.doneButton.frame.minX - 50 - self.closeButton.frame.width, height: 20)
+            let button = UIButton()
+            button.frame = self.helpView.frame
+            button.setTitle(text, for: .normal)
+            helpView.backgroundColor = .red
+            helpView.layer.cornerRadius = 10
+            view.addSubview(helpView)
+            view.addSubview(button)
+            UIView.animate(withDuration: 0.5, animations: {
+                self.helpView.frame = CGRect(x: self.closeButton.frame.maxX + 20, y: self.closeButton.frame.minY + 7.5, width: self.doneButton.frame.minX - 50 - self.closeButton.frame.width, height: 20)
+                button.frame = self.helpView.frame
+            }) { (true) in
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self.helpView.frame = CGRect(x: self.closeButton.frame.maxX + 20, y: -20, width: self.doneButton.frame.minX - 50 - self.closeButton.frame.width, height: 20)
+                        button.frame = self.helpView.frame
+                    }, completion: { (true) in
+                        self.helpViewActive = false
+                    })
+                }
+            }
+        }
+    }
+    
+    func saveAction(){
+        let alert = UIAlertController(title: "Добавление одежды", message: "Введите название одежды", preferredStyle: UIAlertController.Style.alert)
+        
+        let action = UIAlertAction(title: "Сохранить", style: .default) { (alertAction) in
+            let textField = alert.textFields![0] as UITextField
+            if(textField.text != ""){
+                let clothe = Clothe()
+                let image = self.scrollableImages.getImageWithIndex()
+                clothe.set(name: textField.text!, image: image, type: self.type, temperature: Int(self.temperatureSlider.value), wind: Int(self.windSlider.value))
+                self.inventory.add(clothe: clothe)
+                self.navigationController?.popViewController(animated: true)
+            }
+            else{
+                self.showHelpView(text: "Название не может быть пустым")
+            }
+        }
+        let closeAction = UIAlertAction(title: "Отмена", style: .cancel) { (alertAction) in
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "Название одежды"
+        }
+        alert.addAction(action)
+        alert.addAction(closeAction)
+        present(alert, animated: true, completion: nil)
     }
     
     
@@ -263,16 +373,7 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     {
         self.view.endEditing(true)
         return false;
-    }
-    
-    @IBAction func windSliderValueChanged(_ sender: Any) {
-        windSliderLabel.text = String(format: "Ветрозащита: %d м/с", Int(windSlider.value))
-    }
-    
-    @IBAction func comfortTemperatureSliderValueChanged(_ sender: Any) {
-        comfortTemperatureSliderLabel.text = String(format: "Комфортная температура: %d˙C", Int(comfortTemperatureSlider.value))
     }*/
-    
     
     //MARK: ImagePicker
     /*@IBAction func addPhoto(_ sender: Any){
@@ -335,20 +436,112 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
 
 extension UIImage {
     
-    func outline() -> UIImage? {
-        
-        UIGraphicsBeginImageContext(size)
-        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        self.draw(in: rect, blendMode: .normal, alpha: 1.0)
-        let context = UIGraphicsGetCurrentContext()
-        context?.setStrokeColor(red: 1.0, green: 0.5, blue: 1.0, alpha: 1.0)
-        context?.setLineWidth(5.0)
-        context?.stroke(rect)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        return newImage
-        
+    typealias RectCalculationClosure = (_ parentSize: CGSize, _ newImageSize: CGSize)->(CGRect)
+    
+    func with(image named: String, rectCalculation: RectCalculationClosure) -> UIImage {
+        return with(image: UIImage(named: named), rectCalculation: rectCalculation)
     }
     
+    func tinted(with color: UIColor) -> UIImage? {
+        return UIGraphicsImageRenderer(size: size, format: imageRendererFormat).image { _ in
+            color.set()
+            withRenderingMode(.alwaysTemplate).draw(at: .zero)
+        }
+    }
+    
+    func with(image: UIImage?, rectCalculation: RectCalculationClosure) -> UIImage {
+        
+        if let image = image {
+            UIGraphicsBeginImageContext(size)
+            
+            draw(in: CGRect(origin: .zero, size: size))
+            image.draw(in: rectCalculation(size, image.size))
+            
+            let newImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return newImage!
+        }
+        return self
+    }
+    
+    func imageOverlayingImages(_ images: [UIImage], scalingBy factors: [CGFloat]? = nil) -> UIImage {
+        let size = self.size
+        let container = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 2.0)
+        UIGraphicsGetCurrentContext()!.interpolationQuality = .high
+        
+        self.draw(in: container)
+        
+        let scaleFactors = factors ?? [CGFloat](repeating: 1.0, count: images.count)
+        
+        for (image, scaleFactor) in zip(images, scaleFactors) {
+            let topWidth = size.width / scaleFactor
+            let topHeight = size.height / scaleFactor
+            let topX = (size.width / 2.0) - (topWidth / 2.0)
+            let topY = (size.height / 2.0) - (topHeight / 2.0)
+            
+            image.draw(in: CGRect(x: topX, y: topY, width: topWidth, height: topHeight), blendMode: .normal, alpha: 1.0)
+        }
+        return UIGraphicsGetImageFromCurrentImageContext()!
+    }
+    
+    func maskWithColor(color: UIColor) -> UIImage? {
+        let maskImage = cgImage!
+        
+        let width = size.width
+        let height = size.height
+        let bounds = CGRect(x: 0, y: 0, width: width, height: height)
+        
+        let colorSpace = CGColorSpaceCreateDeviceRGB()
+        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
+        let context = CGContext(data: nil, width: Int(width), height: Int(height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)!
+        
+        context.clip(to: bounds, mask: maskImage)
+        context.setFillColor(color.cgColor)
+        context.fill(bounds)
+        let coloredImage = UIImage(cgImage: cgImage!)
+        return coloredImage
+        if let cgImage = context.makeImage() {
+            let coloredImage = UIImage(cgImage: cgImage)
+            return coloredImage
+        } else {
+            return nil
+        }
+    }
+    
+    class func imageWithColor(color: UIColor) -> UIImage {
+        let rect: CGRect = CGRect(x: 0, y: 0, width: 1, height: 1)
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: 1, height: 1), false, 0)
+        color.setFill()
+        UIRectFill(rect)
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
+
+}
+    
+extension UIImageView {
+    
+    enum ImageAddingMode {
+        case changeOriginalImage
+        case addSubview
+    }
+    
+    func drawOnCurrentImage(anotherImage: UIImage?, mode: ImageAddingMode, rectCalculation: UIImage.RectCalculationClosure) {
+        
+        guard let image = image else {
+            return
+        }
+        
+        switch mode {
+        case .changeOriginalImage:
+            self.image = image.with(image: anotherImage, rectCalculation: rectCalculation)
+            
+        case .addSubview:
+            let newImageView = UIImageView(frame: rectCalculation(frame.size, image.size))
+            newImageView.image = anotherImage
+            addSubview(newImageView)
+        }
+    }
 }

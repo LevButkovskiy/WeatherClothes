@@ -14,14 +14,14 @@ class Clothe: NSObject, NSSecureCoding {
     }
 
     var name : String
-    var imageNamed : String
+    var image : UIImage
     var type : Int!
     var comfortTemperature : Int?
     var comfortWind : Int?
     
     override init() {
         name = ""
-        imageNamed = String()
+        image = UIImage()
         //userImage = Data()
         type = 0
         comfortWind = 0
@@ -30,7 +30,7 @@ class Clothe: NSObject, NSSecureCoding {
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "name")
-        aCoder.encode(imageNamed, forKey: "imageNamed")
+        aCoder.encode(image, forKey: "image")
         //aCoder.encode(userImage, forKey: "userImage")
         aCoder.encode(type, forKey: "type")
         aCoder.encode(comfortTemperature, forKey: "temperature")
@@ -39,16 +39,16 @@ class Clothe: NSObject, NSSecureCoding {
     
     required init?(coder aDecoder: NSCoder) {
         name = aDecoder.decodeObject(forKey: "name") as! String
-        imageNamed = aDecoder.decodeObject(forKey: "imageNamed") as! String
+        image = aDecoder.decodeObject(forKey: "image") as! UIImage
         //userImage = aDecoder.decodeObject(forKey: "userImage") as! Data
         type = aDecoder.decodeObject(forKey: "type") as? Int
         comfortTemperature = aDecoder.decodeObject(forKey: "temperature") as? Int
         comfortWind = aDecoder.decodeObject(forKey: "wind") as? Int
     }
     
-    func set(name: String, imageNamed: String, type: Int, temperature: Int, wind: Int){
+    func set(name: String, image: UIImage, type: Int, temperature: Int, wind: Int){
         self.name = name
-        self.imageNamed = imageNamed
+        self.image = image
         self.type = type
         self.comfortTemperature = temperature
         self.comfortWind = wind

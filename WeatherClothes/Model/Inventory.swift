@@ -65,9 +65,9 @@ class Inventory: NSObject {
         save()
     }
     
-    func add(name: String, imageNamed : String, type: Int, temperature : Int, wind: Int){
+    func add(name: String, image : UIImage, type: Int, temperature : Int, wind: Int){
         let clothe = Clothe()
-        clothe.set(name: name, imageNamed: imageNamed, type: type, temperature: temperature, wind: wind)
+        clothe.set(name: name, image: image, type: type, temperature: temperature, wind: wind)
         add(clothe: clothe)
         /*var item = Dictionary<String, Any>()
         item["name"] = name
@@ -207,13 +207,13 @@ class Inventory: NSObject {
     func stringValueOfType(type : Int) -> String{
         switch type {
         case Type.head.rawValue:
-            return "Головные уборы"
+            return "Hats".localized
         case Type.upper.rawValue:
-            return "Верхняя часть одежды"
+            return "TopOfClothes".localized
         case Type.lower.rawValue:
-            return "Нижняя часть одежды"
+            return "LowerPartOfClothes".localized
         case Type.boots.rawValue:
-            return "Обувь"
+            return "Footwear".localized
         default:
             return ""
         }

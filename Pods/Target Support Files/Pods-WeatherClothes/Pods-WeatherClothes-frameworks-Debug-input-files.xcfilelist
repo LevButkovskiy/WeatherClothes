@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-WeatherClothes/Pods-WeatherClothes-frameworks.sh
+${BUILT_PRODUCTS_DIR}/ColorSlider/ColorSlider.framework
 ${BUILT_PRODUCTS_DIR}/WhatsNewKit/WhatsNewKit.framework

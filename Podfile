@@ -8,7 +8,8 @@ target 'WeatherClothes' do
   # Pods for WeatherClothes
   pod 'YandexMobileMetrica', '3.7.1'
   pod 'WhatsNewKit'
-
+  pod 'ColorSlider', '~> 4.4'
+  
   target 'WeatherClothesTests' do
     inherit! :search_paths
     # Pods for testing

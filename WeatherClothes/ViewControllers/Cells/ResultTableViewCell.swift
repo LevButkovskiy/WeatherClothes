@@ -62,7 +62,7 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
         for i in 0..<clothesImages.count{
             let clothe = clothesImages[i] as! Clothe
             //let imageView = UIImageView(image: UIImage(data: clothe.image))
-            let imageView = UIImageView(image: UIImage(named: clothe.imageNamed))
+            let imageView = UIImageView(image: clothe.image)
             //imageView.contentMode = .f
             scrollView.addSubview(imageView)
             imageViews.append(imageView)

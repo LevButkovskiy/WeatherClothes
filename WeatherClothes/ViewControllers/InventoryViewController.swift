@@ -23,7 +23,7 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func setDefaultSettings(){
-        title = "Ваша одежда"
+        title = "inventoryTitle".localized
         navigationController?.navigationBar.isHidden = false
         tableView.register(UINib(nibName: "InventoryTableViewCell", bundle: nil), forCellReuseIdentifier: "inventoryCell")
         tableView.register(UINib(nibName: "HeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "headerView")
@@ -49,9 +49,9 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         let clothe = inventory.cellForRowAt(indexPath: indexPath)
         if(clothe != nil){
             cell.clotheName.text = clothe?.name
-            cell.clotheImage.image = UIImage(named: clothe!.imageNamed)
-            cell.comfortableTemperature.text = String(format: "Комфортная температура: %d˙C", clothe!.comfortTemperature!)
-            cell.windProtection.text = String(format: "Ветрозащита: %d м/с", clothe!.comfortWind!)
+            cell.clotheImage.image = clothe!.image
+            cell.comfortableTemperature.text = String(format: "%@: %d˙C", "comfortableTemperature".localized, clothe!.comfortTemperature!)
+            cell.windProtection.text = String(format: "%@: %d %@","windProtection".localized, clothe!.comfortWind!, "ms".localized)
         }
         return cell
     }
@@ -82,18 +82,18 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let block = UITableViewRowAction(style: .normal, title: "Изменить") { action, index in
+        /*let block = UITableViewRowAction(style: .normal, title: "Изменить") { action, index in
             print("Edit")
             let clothe = self.inventory.cellForRowAt(indexPath: indexPath)
             self.goToAdd(clothe!)
-        }
-        let delete = UITableViewRowAction(style: .default, title: "Удалить") { action, index in
-            print("Delete")
+        }*/
+        let delete = UITableViewRowAction(style: .default, title: "delete".localized) { action, index in
+            print("delete")
             let clothe = self.inventory.cellForRowAt(indexPath: indexPath)
             self.inventory.remove(clothe: clothe!)
             self.update()
         }
-        return [delete, block]
+        return [delete/*, block*/]
     }
     
     @IBAction func goToAdd(_ sender: Any) {

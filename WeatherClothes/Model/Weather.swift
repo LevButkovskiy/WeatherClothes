@@ -147,6 +147,7 @@ class Weather: NSObject {
     }
     
     func getImageForCondition(minutes: Int, hours: Int, weatherCondition: String) -> UIImage?{
+        print(weatherCondition)
         if(weatherCondition.uppercased() == "cloudy".localized.uppercased() || weatherCondition.uppercased() == "fewClouds".uppercased()){
             return UIImage(named: String(format: "Cloudy%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
@@ -180,8 +181,7 @@ class Weather: NSObject {
             #warning("Localize")
             return UIImage(named: String(format: "ThunderstormRain%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
-        else if(weatherCondition.uppercased() == "снег" ){
-            #warning("Localize")
+        else if(weatherCondition.uppercased() == "snow".localized.uppercased() || weatherCondition.uppercased() == "lightSnow".localized.uppercased() || weatherCondition.uppercased() == "snowfall".localized.uppercased() || weatherCondition.uppercased() == "heavySnow".localized.uppercased()){
             return UIImage(named: String(format: "Snow%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
         else{

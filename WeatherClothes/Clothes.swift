@@ -286,35 +286,41 @@ class Clothes: NSObject {
     }
     
     func getClothes(weather: Weather, inventory: Inventory, section : Int, value: String) -> Array<Clothe>{
-        var clothesDict = Array<Clothe>()
-        if(inventory.inventory[section] != nil){
-            let typeOfClothe = inventory.inventory[section] as! Dictionary<Int, Any>
-            print(typeOfClothe.count)
-            for i in 0..<typeOfClothe.count{
-                let clothe = typeOfClothe[i] as! Clothe
-                if(weather.temperature >= clothe.comfortTemperature! && weather.windSpeed <= clothe.comfortWind!){
-                    clothesDict.append(clothe)
-                    //images.append(UIImage(data: (clothe["image"] as! Data))!)
+        if(weather.humidity != 0){
+            #warning ("check weather is null")
+            var clothesDict = Array<Clothe>()
+            if(inventory.inventory[section] != nil){
+                let typeOfClothe = inventory.inventory[section] as! Dictionary<Int, Any>
+                print(typeOfClothe.count)
+                for i in 0..<typeOfClothe.count{
+                    let clothe = typeOfClothe[i] as! Clothe
+                    if(weather.temperature >= clothe.comfortTemperature! && weather.windSpeed <= clothe.comfortWind!){
+                        clothesDict.append(clothe)
+                        //images.append(UIImage(data: (clothe["image"] as! Data))!)
+                    }
+                }
+                if(clothesDict.count == 0){
+                    print(value)
+                    if(value != ""){
+                        clothesDict.append(setClotheWithImage(value: value))
+                    }
                 }
             }
-            if(clothesDict.count == 0){
-                print(value)
+            else{
                 if(value != ""){
                     clothesDict.append(setClotheWithImage(value: value))
                 }
             }
+            return clothesDict
         }
         else{
-            if(value != ""){
-                clothesDict.append(setClotheWithImage(value: value))
-            }
+            return []
         }
-        return clothesDict
     }
     
     func setClotheWithImage(value: String) -> Clothe{
         let clothe = Clothe()
-        clothe.imageNamed = generateImage(value: value)
+        clothe.image = generateImage(value: value)!
         return clothe
     }
     

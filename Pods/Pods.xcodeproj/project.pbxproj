@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -19,43 +19,56 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		04D04D33E3615CA76511262BD47CF474 /* WhatsNewButtonViewController+CompletionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB60083DFAC512DACA1220C37436A21 /* WhatsNewButtonViewController+CompletionButton.swift */; };
-		05E28D427460EC90CD6CF5B7BFBBFDF0 /* WhatsNewViewController+TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E29DE148BE5ABC136E490300322D0F /* WhatsNewViewController+TitleView.swift */; };
+		04D04D33E3615CA76511262BD47CF474 /* WhatsNewButtonViewController+CompletionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E058E9D676FD03C072BDE36C8CA0594 /* WhatsNewButtonViewController+CompletionButton.swift */; };
+		05E28D427460EC90CD6CF5B7BFBBFDF0 /* WhatsNewViewController+TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3321297612C8FD2765CDD938EF00BB91 /* WhatsNewViewController+TitleView.swift */; };
 		068A61CEBE956B5B72A7FEC831A57C66 /* Pods-WeatherClothesUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A39035E00537635D551C99E69EDC02B /* Pods-WeatherClothesUITests-dummy.m */; };
-		0819BFD97C6B7E230DA64A1909C31474 /* WhatsNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F3B9B4B8EAF692942E99FE6AC6861F /* WhatsNewViewController.swift */; };
-		082A51FE0CEFDF24BB138D09CCA82127 /* NSLayoutConstraint+Activate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464383CC283AC8778ECB946F2F01CDAB /* NSLayoutConstraint+Activate.swift */; };
-		1904C9ABE758705A2184D802C031897C /* WhatsNew+Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A830ACA74C4AD4A1623AD24178D4CA4 /* WhatsNew+Item.swift */; };
-		1A965C82346FE98AA2DB8E876C7FFF9F /* Pods-WeatherClothes-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D033B9BB4BD503AA5E0AE3CA385DEC /* Pods-WeatherClothes-dummy.m */; };
+		0819BFD97C6B7E230DA64A1909C31474 /* WhatsNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E4421BE4854DFB66C3E1773D720134 /* WhatsNewViewController.swift */; };
+		082A51FE0CEFDF24BB138D09CCA82127 /* NSLayoutConstraint+Activate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373ABF2A3E2B2F4097DE152FC88B5E04 /* NSLayoutConstraint+Activate.swift */; };
+		1904C9ABE758705A2184D802C031897C /* WhatsNew+Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372BDFFC04BB77E6396831D6FAABD147 /* WhatsNew+Item.swift */; };
+		1CC464BE1E583E5160D751E207F3BFE7 /* ColorSliderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11F81A664BC089BAB1B490BE51CD5072 /* ColorSliderExtensions.swift */; };
 		1FC51309CF08BB1994380DC143B30FA5 /* Pods-WeatherClothesTests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 11642E17C1293D5109ED179403A35758 /* Pods-WeatherClothesTests-dummy.m */; };
-		1FF68194BAA78802ED786A445AF63A80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		24EF03E8DC605EEC135F4F6205FFA363 /* WhatsNewKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 837C21B68198A1EBD9AAD2F28EDE1019 /* WhatsNewKit-dummy.m */; };
-		26006CD50DF1221592FC8CE518B3E524 /* WhatsNewTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A73CF2C0178A0EFDAF46311E834F91 /* WhatsNewTitleViewController.swift */; };
-		2C44162F78BFBD23545D7E9683076D12 /* WhatsNewButtonViewController+DetailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12126589B2C35EC606A431DE3CE6D569 /* WhatsNewButtonViewController+DetailButton.swift */; };
-		3486ADF5D99029D742D42701067599F8 /* Pods-WeatherClothes-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C7478E3D59C4953463DFA9C6B10D176 /* Pods-WeatherClothes-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		38908B6EA5AC50CC23758321FE5D4C50 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 312B988EF117AE4DE76A268D970131FE /* UIKit.framework */; };
-		602F34B083E40F6C0D5ABD83772429A7 /* InMemoryWhatsNewVersionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C476AA6709F30A53A63C55C7944ECB97 /* InMemoryWhatsNewVersionStore.swift */; };
+		1FF68194BAA78802ED786A445AF63A80 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762C973A19DDE5A5AD81F317CEA5461F /* Foundation.framework */; };
+		24EF03E8DC605EEC135F4F6205FFA363 /* WhatsNewKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 30234FFCBA6036206467DE9ED42728A2 /* WhatsNewKit-dummy.m */; };
+		26006CD50DF1221592FC8CE518B3E524 /* WhatsNewTitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA2E7DDE8A88412D663C1E78854B6359 /* WhatsNewTitleViewController.swift */; };
+		2C44162F78BFBD23545D7E9683076D12 /* WhatsNewButtonViewController+DetailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436C301AF2A0837E050CE9E94F6D77BC /* WhatsNewButtonViewController+DetailButton.swift */; };
+		31F570C9F4C083F5A7D4060CEA42435F /* PreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A364F48189DAE75FDB4B57F667AC7E60 /* PreviewView.swift */; };
+		32B0706EF583EC48078886ED3FFA3C8A /* ColorSlider-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9533B926D813C6D3A3113648B46AA7D7 /* ColorSlider-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		38908B6EA5AC50CC23758321FE5D4C50 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56DE6DFF52489DACAF66A82BFD0FE2CA /* UIKit.framework */; };
+		39AF1B7D71211DB608677E5E044ACB21 /* ColorSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCE4E12066D0DB533DDA1EB8434B719 /* ColorSlider.swift */; };
+		3D3284D1B236580D227E2AE67BB7204A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20A7DACB743F2A39BC0D9C0E317842D5 /* CoreGraphics.framework */; };
+		457E2722877BAC6B250EDAEBE07B179F /* ColorSlider-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 13AD73F0330689207FFD0A8E29561F75 /* ColorSlider-dummy.m */; };
+		602F34B083E40F6C0D5ABD83772429A7 /* InMemoryWhatsNewVersionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCF686843C13395F2371F725230D744 /* InMemoryWhatsNewVersionStore.swift */; };
+		6608117DFF47DEB3554446BBEFB61589 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8A2CC58179A418744294781780AF74 /* GradientView.swift */; };
 		66E86CAAAD4CF3E221AD07DA76BC8C60 /* Pods-WeatherClothesUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 28DCB6701918EDF8B605BAC6A26AA91F /* Pods-WeatherClothesUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7D16802E323ECF2E5CD496E692813B50 /* WhatsNewKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 93163BA7128B024627AC16DFA2293E72 /* WhatsNewKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7F436540AA75AFBC599CE99376C36527 /* WhatsNewViewController+DetailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28802F000E455B59D1276792D1F66DA6 /* WhatsNewViewController+DetailButton.swift */; };
-		8A0CE85127D2F8627A31EEF0E50F1F79 /* UIViewController+AddChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = A519EC403B00C9545E4404517CB9E8AB /* UIViewController+AddChild.swift */; };
-		978F6D0C76FEFAD75F8DD7C27A55325D /* WhatsNewViewController+ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5868C82F393B318E72424239C438F74 /* WhatsNewViewController+ItemsView.swift */; };
-		A02AE0E44EE2D5116CF22F575533AFFF /* Sequence+WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095E4B42017A41FBF926C19B393D87E4 /* Sequence+WhatsNew.swift */; };
-		A212757F4A5C581C36DF4309ACE3591A /* WhatsNewButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A756FFA4CC3BDB1A98562AE1A928FB /* WhatsNewButtonViewController.swift */; };
-		AB5F4BDC93C851AF5281AAB81135C5C7 /* WhatsNewViewController+HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81F84FEEC67183F2D08734C2B146E6A8 /* WhatsNewViewController+HapticFeedback.swift */; };
-		B18AD9A2A0762F64B0A7962C3C2CAA5E /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F460F23252199242623928EF8D605 /* WhatsNew.swift */; };
-		B914C07AFDDCE3B4144237E352417578 /* WhatsNewViewController+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB30B7EEFCDD7312DC36E75DB824EAC /* WhatsNewViewController+Animation.swift */; };
-		BEF1B1BE02C1101492051D8B3C1AB4D8 /* WhatsNew+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADF676108320F9820F895296DE796C1 /* WhatsNew+Version.swift */; };
-		C5CAAD3A1BD3DBC8E024EABC54D06913 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		E59031810B7C402487E71519D3AD8BFA /* WhatsNewViewController+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 238CD46FF5A4F7B72B28473C28D17EDA /* WhatsNewViewController+Configuration.swift */; };
-		E6FA562BAB1C2152F7CA553157C20791 /* UIColor+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CDA0773D7BA1FA28AE13FF234BB427 /* UIColor+Defaults.swift */; };
-		E825D6142358E91E5E52DE2BF8243822 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		E8312ADF2CEDE7D9384087375501F18A /* WhatsNewItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE45E1281EE2B4E1E3C635150DCE3CA3 /* WhatsNewItemsViewController.swift */; };
-		EC3AC7B1C8B77F7A060E673DE51E3F18 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
-		F06D63D4556FFD50610CF8761D333126 /* WhatsNewItemsViewController+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD813246115ECFD6C027B3FF83AFFF0 /* WhatsNewItemsViewController+Cell.swift */; };
-		F34011D7F01DAE6748CA0F4F6031F0D5 /* KeyValueWhatsNewVersionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6AE628F0DD835F56E13CDC2962BC7D /* KeyValueWhatsNewVersionStore.swift */; };
+		7B63048690E3EFD4D67EFA53CD786319 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9B86528815F4C81E70D4F6522BB7687 /* QuartzCore.framework */; };
+		7D16802E323ECF2E5CD496E692813B50 /* WhatsNewKit-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BA2CE97EDF04393478565A48585E9D88 /* WhatsNewKit-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7F436540AA75AFBC599CE99376C36527 /* WhatsNewViewController+DetailButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6746222D836AB4BE73C64A475DE3417A /* WhatsNewViewController+DetailButton.swift */; };
+		83BBA9563FFEC8C2953FA44BF8B2BDF9 /* Pods-WeatherClothes-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9C7478E3D59C4953463DFA9C6B10D176 /* Pods-WeatherClothes-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A0CE85127D2F8627A31EEF0E50F1F79 /* UIViewController+AddChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1906EF31908B3E45867CEE5804CEAE09 /* UIViewController+AddChild.swift */; };
+		96F9C58704D9774946612F82CEC6A9DD /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C77F41833C3125701FEC55A67CAC9C /* Gradient.swift */; };
+		978F6D0C76FEFAD75F8DD7C27A55325D /* WhatsNewViewController+ItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E872BF1807D082092518A5163B56B7A9 /* WhatsNewViewController+ItemsView.swift */; };
+		9F8EB8DAFECABB33DF2A65F2B30B860F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762C973A19DDE5A5AD81F317CEA5461F /* Foundation.framework */; };
+		A02AE0E44EE2D5116CF22F575533AFFF /* Sequence+WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDCC76671D4DAB2BA38F55783D882E9C /* Sequence+WhatsNew.swift */; };
+		A212757F4A5C581C36DF4309ACE3591A /* WhatsNewButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46E3643EBE22AA639DC7816EBBA3E1CE /* WhatsNewButtonViewController.swift */; };
+		AB5F4BDC93C851AF5281AAB81135C5C7 /* WhatsNewViewController+HapticFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3F550F47A1D3912623E094331A7A3C /* WhatsNewViewController+HapticFeedback.swift */; };
+		B18AD9A2A0762F64B0A7962C3C2CAA5E /* WhatsNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74A107DF18EA2B97FD330356E677763D /* WhatsNew.swift */; };
+		B914C07AFDDCE3B4144237E352417578 /* WhatsNewViewController+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E140CA16380B44AD9DA24EC73D3BED1 /* WhatsNewViewController+Animation.swift */; };
+		BEF1B1BE02C1101492051D8B3C1AB4D8 /* WhatsNew+Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82644925C68215F816B530A82C8447AD /* WhatsNew+Version.swift */; };
+		C5CAAD3A1BD3DBC8E024EABC54D06913 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762C973A19DDE5A5AD81F317CEA5461F /* Foundation.framework */; };
+		CA5A2B0B83A55942F6CBA31560EEB3C0 /* HSBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62CFB488FDB9E3FF0A8B180AE17A53CE /* HSBColor.swift */; };
+		D98F26017BAF92CC7211C077750D942F /* DefaultPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3249B028EA1484D79E391934C4FBCBF2 /* DefaultPreviewView.swift */; };
+		E2E7C547C9DE21C008E067386A828E01 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56DE6DFF52489DACAF66A82BFD0FE2CA /* UIKit.framework */; };
+		E59031810B7C402487E71519D3AD8BFA /* WhatsNewViewController+Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B6F98C9BCB31D2B9B244AACEEF80EE /* WhatsNewViewController+Configuration.swift */; };
+		E6FA562BAB1C2152F7CA553157C20791 /* UIColor+Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7C214DA8864838CBFD53311BC6C4B28 /* UIColor+Defaults.swift */; };
+		E8312ADF2CEDE7D9384087375501F18A /* WhatsNewItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4AE741CDC155043DA394FAFDF3C581 /* WhatsNewItemsViewController.swift */; };
+		EC3AC7B1C8B77F7A060E673DE51E3F18 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762C973A19DDE5A5AD81F317CEA5461F /* Foundation.framework */; };
+		EEEAAD7A83977059AB41FF5FA746A9BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 762C973A19DDE5A5AD81F317CEA5461F /* Foundation.framework */; };
+		F06D63D4556FFD50610CF8761D333126 /* WhatsNewItemsViewController+Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4643B88AA5D344836C02C319E6D2825C /* WhatsNewItemsViewController+Cell.swift */; };
+		F34011D7F01DAE6748CA0F4F6031F0D5 /* KeyValueWhatsNewVersionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B58691120DAFF5622524AD0DB808190 /* KeyValueWhatsNewVersionStore.swift */; };
 		F46B2071636305807EB727CABFA5472E /* Pods-WeatherClothesTests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5A762AF1B6DDC8BD7AF7211CC22D3629 /* Pods-WeatherClothesTests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F63155B3D0EDBF7384E56D237AF25187 /* WhatsNewViewController+CompletionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 709484F25E7F277D3747878E4459609C /* WhatsNewViewController+CompletionButton.swift */; };
-		FC161D73F225189CC36FF41113077D6A /* WhatsNewVersionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F70E4E303F55CE763E687922DD5AE6B8 /* WhatsNewVersionStore.swift */; };
+		F63155B3D0EDBF7384E56D237AF25187 /* WhatsNewViewController+CompletionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0DD87832C10CBE1565174802B33F4D /* WhatsNewViewController+CompletionButton.swift */; };
+		FB71400834C0323DC64CC90FF85AEF14 /* Pods-WeatherClothes-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D033B9BB4BD503AA5E0AE3CA385DEC /* Pods-WeatherClothes-dummy.m */; };
+		FC161D73F225189CC36FF41113077D6A /* WhatsNewVersionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD118E32289AC4F3E5C4862DD8F2059 /* WhatsNewVersionStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,109 +86,143 @@
 			remoteGlobalIDString = 8C3EB6C96C29D7D211D47F6031E501A8;
 			remoteInfo = "Pods-WeatherClothes";
 		};
-		DDD7890FCCFE6F2477F37E3D7AE8A9C1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9704B189A5639F0B7534EC8872960E23;
-			remoteInfo = WhatsNewKit;
-		};
-		E06218392CF1415E504185234FBD90C1 /* PBXContainerItemProxy */ = {
+		2EC2E23262CBD2E1FCA94B1E1F1132D2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 899318C1CEDE586664EC232A68069570;
 			remoteInfo = YandexMobileMetrica;
 		};
+		3833E164F1CBA74FAB8C28E9216FB71D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9704B189A5639F0B7534EC8872960E23;
+			remoteInfo = WhatsNewKit;
+		};
+		446C25B3E2FE901530E18913BE8F38F8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1E3469B000FE3C67BAD723C2FB400BCC;
+			remoteInfo = ColorSlider;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		020D2D532D149A49D4323417F77722BD /* YandexMobileMetrica.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YandexMobileMetrica.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YandexMobileMetrica.h; sourceTree = "<group>"; };
 		05820D00741272626AE5014D80D4CB7B /* Pods-WeatherClothes-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WeatherClothes-acknowledgements.markdown"; sourceTree = "<group>"; };
 		09472E96E0B6F2C1A7A48A2E5B9412AE /* Pods-WeatherClothes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeatherClothes.debug.xcconfig"; sourceTree = "<group>"; };
-		095E4B42017A41FBF926C19B393D87E4 /* Sequence+WhatsNew.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Sequence+WhatsNew.swift"; path = "Sources/Extensions/Sequence+WhatsNew.swift"; sourceTree = "<group>"; };
-		0ADF676108320F9820F895296DE796C1 /* WhatsNew+Version.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNew+Version.swift"; path = "Sources/Models/WhatsNew+Version.swift"; sourceTree = "<group>"; };
+		108BD26E699D544A3505266E5DB96CD7 /* YandexMobileMetrica.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YandexMobileMetrica.xcconfig; sourceTree = "<group>"; };
+		10E4421BE4854DFB66C3E1773D720134 /* WhatsNewViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WhatsNewViewController.swift; path = Sources/WhatsNewViewController.swift; sourceTree = "<group>"; };
 		11642E17C1293D5109ED179403A35758 /* Pods-WeatherClothesTests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WeatherClothesTests-dummy.m"; sourceTree = "<group>"; };
-		12126589B2C35EC606A431DE3CE6D569 /* WhatsNewButtonViewController+DetailButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewButtonViewController+DetailButton.swift"; path = "Sources/Components/Buttons/WhatsNewButtonViewController+DetailButton.swift"; sourceTree = "<group>"; };
+		11F81A664BC089BAB1B490BE51CD5072 /* ColorSliderExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorSliderExtensions.swift; path = Sources/Internal/ColorSliderExtensions.swift; sourceTree = "<group>"; };
+		13AD73F0330689207FFD0A8E29561F75 /* ColorSlider-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ColorSlider-dummy.m"; sourceTree = "<group>"; };
+		17547463728CDAEF6CA02B8E8AE3B866 /* WhatsNewKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WhatsNewKit-prefix.pch"; sourceTree = "<group>"; };
 		18D033B9BB4BD503AA5E0AE3CA385DEC /* Pods-WeatherClothes-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WeatherClothes-dummy.m"; sourceTree = "<group>"; };
+		1906EF31908B3E45867CEE5804CEAE09 /* UIViewController+AddChild.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+AddChild.swift"; path = "Sources/Extensions/UIViewController+AddChild.swift"; sourceTree = "<group>"; };
 		1E07739A8F8950012E9B95B374256114 /* Pods-WeatherClothesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeatherClothesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1F3F550F47A1D3912623E094331A7A3C /* WhatsNewViewController+HapticFeedback.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewViewController+HapticFeedback.swift"; path = "Sources/Configuration/WhatsNewViewController+HapticFeedback.swift"; sourceTree = "<group>"; };
+		1FCE4E12066D0DB533DDA1EB8434B719 /* ColorSlider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ColorSlider.swift; path = Sources/ColorSlider.swift; sourceTree = "<group>"; };
 		2056548C9E2AF92530C0F9E177AA9434 /* Pods-WeatherClothes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeatherClothes.release.xcconfig"; sourceTree = "<group>"; };
-		238CD46FF5A4F7B72B28473C28D17EDA /* WhatsNewViewController+Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewViewController+Configuration.swift"; path = "Sources/Configuration/WhatsNewViewController+Configuration.swift"; sourceTree = "<group>"; };
-		28802F000E455B59D1276792D1F66DA6 /* WhatsNewViewController+DetailButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewViewController+DetailButton.swift"; path = "Sources/Configuration/WhatsNewViewController+DetailButton.swift"; sourceTree = "<group>"; };
+		20A7DACB743F2A39BC0D9C0E317842D5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/CoreGraphics.framework; sourceTree = DEVELOPER_DIR; };
 		28DCB6701918EDF8B605BAC6A26AA91F /* Pods-WeatherClothesUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WeatherClothesUITests-umbrella.h"; sourceTree = "<group>"; };
-		2AB60083DFAC512DACA1220C37436A21 /* WhatsNewButtonViewController+CompletionButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewButtonViewController+CompletionButton.swift"; path = "Sources/Components/Buttons/WhatsNewButtonViewController+CompletionButton.swift"; sourceTree = "<group>"; };
-		2C6AE628F0DD835F56E13CDC2962BC7D /* KeyValueWhatsNewVersionStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyValueWhatsNewVersionStore.swift; path = Sources/Store/KeyValueWhatsNewVersionStore.swift; sourceTree = "<group>"; };
 		2CF3C89537F907DD2DA569325843A86D /* Pods-WeatherClothesUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WeatherClothesUITests-Info.plist"; sourceTree = "<group>"; };
-		2D7F460F23252199242623928EF8D605 /* WhatsNew.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WhatsNew.swift; path = Sources/Models/WhatsNew.swift; sourceTree = "<group>"; };
 		2EBECD53001E1F8EBE680DA9943C81DD /* Pods-WeatherClothes-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-WeatherClothes-frameworks.sh"; sourceTree = "<group>"; };
-		2FCA446E4D2FDDE987A02F080BBF1382 /* WhatsNewKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = WhatsNewKit.modulemap; sourceTree = "<group>"; };
-		312B988EF117AE4DE76A268D970131FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		39F3B9B4B8EAF692942E99FE6AC6861F /* WhatsNewViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WhatsNewViewController.swift; path = Sources/WhatsNewViewController.swift; sourceTree = "<group>"; };
+		30234FFCBA6036206467DE9ED42728A2 /* WhatsNewKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "WhatsNewKit-dummy.m"; sourceTree = "<group>"; };
+		315E8E40B606E7BB543828F7526DCCDF /* YandexMobileMetricaCrashes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YandexMobileMetricaCrashes.framework; path = static/YandexMobileMetricaCrashes.framework; sourceTree = "<group>"; };
+		3249B028EA1484D79E391934C4FBCBF2 /* DefaultPreviewView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DefaultPreviewView.swift; path = Sources/DefaultPreviewView.swift; sourceTree = "<group>"; };
+		3321297612C8FD2765CDD938EF00BB91 /* WhatsNewViewController+TitleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewViewController+TitleView.swift"; path = "Sources/Configuration/WhatsNewViewController+TitleView.swift"; sourceTree = "<group>"; };
+		372BDFFC04BB77E6396831D6FAABD147 /* WhatsNew+Item.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNew+Item.swift"; path = "Sources/Models/WhatsNew+Item.swift"; sourceTree = "<group>"; };
+		373ABF2A3E2B2F4097DE152FC88B5E04 /* NSLayoutConstraint+Activate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSLayoutConstraint+Activate.swift"; path = "Sources/Extensions/NSLayoutConstraint+Activate.swift"; sourceTree = "<group>"; };
+		396A589532D0A28260270180EB2FBEE2 /* WhatsNewKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WhatsNewKit.xcconfig; sourceTree = "<group>"; };
 		3A39035E00537635D551C99E69EDC02B /* Pods-WeatherClothesUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-WeatherClothesUITests-dummy.m"; sourceTree = "<group>"; };
+		3B58691120DAFF5622524AD0DB808190 /* KeyValueWhatsNewVersionStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyValueWhatsNewVersionStore.swift; path = Sources/Store/KeyValueWhatsNewVersionStore.swift; sourceTree = "<group>"; };
 		3B5C7035E0BDF8D8364B2FD27A1E0150 /* Pods-WeatherClothesTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WeatherClothesTests-acknowledgements.plist"; sourceTree = "<group>"; };
 		3D79FCB7F62D8F18B9CA10C89F25A2D3 /* Pods-WeatherClothesUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WeatherClothesUITests.modulemap"; sourceTree = "<group>"; };
-		436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		44F5B8CB13CBFB67D37AF6384241857A /* YMMYandexMetricaConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMYandexMetricaConfiguration.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMYandexMetricaConfiguration.h; sourceTree = "<group>"; };
-		45996E5B04D59B27A9D97B418DE23207 /* YMMCompletionBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMCompletionBlocks.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMCompletionBlocks.h; sourceTree = "<group>"; };
-		464383CC283AC8778ECB946F2F01CDAB /* NSLayoutConstraint+Activate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "NSLayoutConstraint+Activate.swift"; path = "Sources/Extensions/NSLayoutConstraint+Activate.swift"; sourceTree = "<group>"; };
-		4CB04DD6948D705EC602A404A7BB2CAD /* YandexMobileMetrica-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "YandexMobileMetrica-umbrella.h"; path = "static/YandexMobileMetrica.framework/Versions/A/Headers/YandexMobileMetrica-umbrella.h"; sourceTree = "<group>"; };
-		4D2E40E3E711FD7A29757A5C999ABF6D /* YandexMobileMetricaCrashes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YandexMobileMetricaCrashes.framework; path = static/YandexMobileMetricaCrashes.framework; sourceTree = "<group>"; };
-		536A93358B23A1EFC708E67C7427FCD4 /* YandexMobileMetrica.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YandexMobileMetrica.framework; path = static/YandexMobileMetrica.framework; sourceTree = "<group>"; };
-		54E29DE148BE5ABC136E490300322D0F /* WhatsNewViewController+TitleView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewViewController+TitleView.swift"; path = "Sources/Configuration/WhatsNewViewController+TitleView.swift"; sourceTree = "<group>"; };
+		3E058E9D676FD03C072BDE36C8CA0594 /* WhatsNewButtonViewController+CompletionButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewButtonViewController+CompletionButton.swift"; path = "Sources/Components/Buttons/WhatsNewButtonViewController+CompletionButton.swift"; sourceTree = "<group>"; };
+		404EDFDC2D3427614C66A5AF5D0F57E1 /* WhatsNewKit.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = WhatsNewKit.modulemap; sourceTree = "<group>"; };
+		436C301AF2A0837E050CE9E94F6D77BC /* WhatsNewButtonViewController+DetailButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewButtonViewController+DetailButton.swift"; path = "Sources/Components/Buttons/WhatsNewButtonViewController+DetailButton.swift"; sourceTree = "<group>"; };
+		4643B88AA5D344836C02C319E6D2825C /* WhatsNewItemsViewController+Cell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewItemsViewController+Cell.swift"; path = "Sources/Components/Items/WhatsNewItemsViewController+Cell.swift"; sourceTree = "<group>"; };
+		46E3643EBE22AA639DC7816EBBA3E1CE /* WhatsNewButtonViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WhatsNewButtonViewController.swift; path = Sources/Components/Buttons/WhatsNewButtonViewController.swift; sourceTree = "<group>"; };
+		4E3B7E201374B54B2E4A1F47FBDCF3C6 /* WhatsNewKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "WhatsNewKit-Info.plist"; sourceTree = "<group>"; };
+		5383359EC446AE0D78823A23837A9235 /* ColorSlider-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ColorSlider-prefix.pch"; sourceTree = "<group>"; };
+		56DE6DFF52489DACAF66A82BFD0FE2CA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		5A762AF1B6DDC8BD7AF7211CC22D3629 /* Pods-WeatherClothesTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WeatherClothesTests-umbrella.h"; sourceTree = "<group>"; };
-		61A73CF2C0178A0EFDAF46311E834F91 /* WhatsNewTitleViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WhatsNewTitleViewController.swift; path = Sources/Components/Title/WhatsNewTitleViewController.swift; sourceTree = "<group>"; };
+		5F65857814FD6CD1D2C27672BCECBB74 /* YandexMobileMetrica-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "YandexMobileMetrica-umbrella.h"; path = "static/YandexMobileMetrica.framework/Versions/A/Headers/YandexMobileMetrica-umbrella.h"; sourceTree = "<group>"; };
+		61B6F98C9BCB31D2B9B244AACEEF80EE /* WhatsNewViewController+Configuration.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewViewController+Configuration.swift"; path = "Sources/Configuration/WhatsNewViewController+Configuration.swift"; sourceTree = "<group>"; };
 		6210AD28EEB5DA11F5C393B299DDFCB7 /* Pods_WeatherClothesUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WeatherClothesUITests.framework; path = "Pods-WeatherClothesUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		62CFB488FDB9E3FF0A8B180AE17A53CE /* HSBColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HSBColor.swift; path = Sources/Internal/HSBColor.swift; sourceTree = "<group>"; };
 		648766E689A2EFCD18723EE9C8B79399 /* Pods-WeatherClothesTests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WeatherClothesTests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		678FE1D73766FB529382CB0F66929025 /* YandexMobileMetricaCrashes-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "YandexMobileMetricaCrashes-umbrella.h"; path = "static/YandexMobileMetricaCrashes.framework/Versions/A/Headers/YandexMobileMetricaCrashes-umbrella.h"; sourceTree = "<group>"; };
-		6A830ACA74C4AD4A1623AD24178D4CA4 /* WhatsNew+Item.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNew+Item.swift"; path = "Sources/Models/WhatsNew+Item.swift"; sourceTree = "<group>"; };
-		70602ED3A94C037174782BC25B7F5002 /* YMMYandexMetricaPreloadInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMYandexMetricaPreloadInfo.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMYandexMetricaPreloadInfo.h; sourceTree = "<group>"; };
-		709484F25E7F277D3747878E4459609C /* WhatsNewViewController+CompletionButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewViewController+CompletionButton.swift"; path = "Sources/Configuration/WhatsNewViewController+CompletionButton.swift"; sourceTree = "<group>"; };
-		774013B8532D5C9A838D7002AB0ED500 /* YMMYandexMetricaReporting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMYandexMetricaReporting.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMYandexMetricaReporting.h; sourceTree = "<group>"; };
-		7A35BE9A8BDB38579EE2987F2C846E69 /* YMMUserProfile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMUserProfile.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMUserProfile.h; sourceTree = "<group>"; };
+		6746222D836AB4BE73C64A475DE3417A /* WhatsNewViewController+DetailButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewViewController+DetailButton.swift"; path = "Sources/Configuration/WhatsNewViewController+DetailButton.swift"; sourceTree = "<group>"; };
+		6C91C9B3CAD9B27022B03E79A0A264A0 /* YMMReporterConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMReporterConfiguration.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMReporterConfiguration.h; sourceTree = "<group>"; };
+		74A107DF18EA2B97FD330356E677763D /* WhatsNew.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WhatsNew.swift; path = Sources/Models/WhatsNew.swift; sourceTree = "<group>"; };
+		762C973A19DDE5A5AD81F317CEA5461F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		7A9485D5005ACFF057A3BFFBD0387F65 /* WhatsNewKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = WhatsNewKit.framework; path = WhatsNewKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C205884EA5D2B1A90009C35E0BEECC5 /* Pods-WeatherClothes-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WeatherClothes-Info.plist"; sourceTree = "<group>"; };
-		81F84FEEC67183F2D08734C2B146E6A8 /* WhatsNewViewController+HapticFeedback.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewViewController+HapticFeedback.swift"; path = "Sources/Configuration/WhatsNewViewController+HapticFeedback.swift"; sourceTree = "<group>"; };
-		837C21B68198A1EBD9AAD2F28EDE1019 /* WhatsNewKit-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "WhatsNewKit-dummy.m"; sourceTree = "<group>"; };
-		84D158A077CC1CE276F53B584CF166DC /* YMMYandexMetrica.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMYandexMetrica.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMYandexMetrica.h; sourceTree = "<group>"; };
+		82644925C68215F816B530A82C8447AD /* WhatsNew+Version.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNew+Version.swift"; path = "Sources/Models/WhatsNew+Version.swift"; sourceTree = "<group>"; };
+		848A49F4C47C118F92B88675F8DD8F86 /* YMMRevenueInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMRevenueInfo.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMRevenueInfo.h; sourceTree = "<group>"; };
+		87C77F41833C3125701FEC55A67CAC9C /* Gradient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Gradient.swift; path = Sources/Internal/Gradient.swift; sourceTree = "<group>"; };
 		89357E7A7C0D218611EE79F9A461A9C1 /* Pods-WeatherClothesUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-WeatherClothesUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
-		8BD813246115ECFD6C027B3FF83AFFF0 /* WhatsNewItemsViewController+Cell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewItemsViewController+Cell.swift"; path = "Sources/Components/Items/WhatsNewItemsViewController+Cell.swift"; sourceTree = "<group>"; };
-		8BF13B38D4B8BBA9892D08B9DE2FB2D5 /* YMMVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMVersion.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMVersion.h; sourceTree = "<group>"; };
+		8CCF686843C13395F2371F725230D744 /* InMemoryWhatsNewVersionStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InMemoryWhatsNewVersionStore.swift; path = Sources/Store/InMemoryWhatsNewVersionStore.swift; sourceTree = "<group>"; };
+		8E140CA16380B44AD9DA24EC73D3BED1 /* WhatsNewViewController+Animation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewViewController+Animation.swift"; path = "Sources/Configuration/WhatsNewViewController+Animation.swift"; sourceTree = "<group>"; };
+		8EAD4607EF63BA1BB54C58F1345B4337 /* YMMYandexMetricaConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMYandexMetricaConfiguration.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMYandexMetricaConfiguration.h; sourceTree = "<group>"; };
 		8FFC09543A6A864AEB1ED65807232B8F /* Pods-WeatherClothesTests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WeatherClothesTests-Info.plist"; sourceTree = "<group>"; };
-		93163BA7128B024627AC16DFA2293E72 /* WhatsNewKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WhatsNewKit-umbrella.h"; sourceTree = "<group>"; };
+		9533B926D813C6D3A3113648B46AA7D7 /* ColorSlider-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ColorSlider-umbrella.h"; sourceTree = "<group>"; };
 		993B652FB653213C69B2F699DA3C28C5 /* Pods-WeatherClothesTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WeatherClothesTests.modulemap"; sourceTree = "<group>"; };
+		9A58E1EC1EBCABEFFA26ECD0EA12B508 /* YMMCompletionBlocks.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMCompletionBlocks.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMCompletionBlocks.h; sourceTree = "<group>"; };
 		9B86BE71DC3C9BCAA83A44CA6319E230 /* Pods-WeatherClothesUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeatherClothesUITests.release.xcconfig"; sourceTree = "<group>"; };
 		9C7478E3D59C4953463DFA9C6B10D176 /* Pods-WeatherClothes-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-WeatherClothes-umbrella.h"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A0E1AEDC8AC051D8280885DCC39DC5EA /* YMMRevenueInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMRevenueInfo.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMRevenueInfo.h; sourceTree = "<group>"; };
+		A364F48189DAE75FDB4B57F667AC7E60 /* PreviewView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PreviewView.swift; path = Sources/PreviewView.swift; sourceTree = "<group>"; };
 		A3DE1F53924892919A6E9ECD8BD2058E /* Pods-WeatherClothes-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WeatherClothes-acknowledgements.plist"; sourceTree = "<group>"; };
-		A519EC403B00C9545E4404517CB9E8AB /* UIViewController+AddChild.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIViewController+AddChild.swift"; path = "Sources/Extensions/UIViewController+AddChild.swift"; sourceTree = "<group>"; };
-		A6CDA0773D7BA1FA28AE13FF234BB427 /* UIColor+Defaults.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Defaults.swift"; path = "Sources/Extensions/UIColor+Defaults.swift"; sourceTree = "<group>"; };
+		A77BDD4D44222BCB204BE28CB9809722 /* ColorSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ColorSlider.framework; path = ColorSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AA2E7DDE8A88412D663C1E78854B6359 /* WhatsNewTitleViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WhatsNewTitleViewController.swift; path = Sources/Components/Title/WhatsNewTitleViewController.swift; sourceTree = "<group>"; };
 		AB86CB29F8D08E263B6C6D2A9E401F95 /* Pods-WeatherClothesUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-WeatherClothesUITests-acknowledgements.plist"; sourceTree = "<group>"; };
-		ACA88EA8ACF371DB4D2CAA937A3942AB /* WhatsNewKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WhatsNewKit-prefix.pch"; sourceTree = "<group>"; };
-		B86BB3999B3B4AB3C81092D6AFB0E0F7 /* YandexMobileMetrica.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = YandexMobileMetrica.xcconfig; sourceTree = "<group>"; };
+		AB927F7810D4B8586ED626F78E0CB613 /* YMMYandexMetricaReporting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMYandexMetricaReporting.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMYandexMetricaReporting.h; sourceTree = "<group>"; };
+		ACD118E32289AC4F3E5C4862DD8F2059 /* WhatsNewVersionStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WhatsNewVersionStore.swift; path = Sources/Store/WhatsNewVersionStore.swift; sourceTree = "<group>"; };
+		ADA36A2C0A478B0B3790894E8BFCD675 /* ColorSlider.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ColorSlider.xcconfig; sourceTree = "<group>"; };
+		AF3A046A1F7A568B31FFFA55D5FC2A9B /* ColorSlider.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = ColorSlider.modulemap; sourceTree = "<group>"; };
+		B2865D69BAA19B3D71202F07A9160240 /* YMMYandexMetrica.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMYandexMetrica.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMYandexMetrica.h; sourceTree = "<group>"; };
+		B7C214DA8864838CBFD53311BC6C4B28 /* UIColor+Defaults.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIColor+Defaults.swift"; path = "Sources/Extensions/UIColor+Defaults.swift"; sourceTree = "<group>"; };
+		B812C7949096BB59B6C5D36CBCD0936A /* YandexMobileMetricaCrashes-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "YandexMobileMetricaCrashes-umbrella.h"; path = "static/YandexMobileMetricaCrashes.framework/Versions/A/Headers/YandexMobileMetricaCrashes-umbrella.h"; sourceTree = "<group>"; };
 		B97FB2457DCD809F3A27A4C2FC160B02 /* Pods_WeatherClothes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WeatherClothes.framework; path = "Pods-WeatherClothes.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA114651A1E3B04EC5EDE8C6350BCE47 /* WhatsNewKit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = WhatsNewKit.xcconfig; sourceTree = "<group>"; };
+		B9B86528815F4C81E70D4F6522BB7687 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
+		BA2CE97EDF04393478565A48585E9D88 /* WhatsNewKit-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "WhatsNewKit-umbrella.h"; sourceTree = "<group>"; };
 		BBA7F97D24C82751A59D7CB0C6D9302E /* Pods-WeatherClothes.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-WeatherClothes.modulemap"; sourceTree = "<group>"; };
-		C476AA6709F30A53A63C55C7944ECB97 /* InMemoryWhatsNewVersionStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InMemoryWhatsNewVersionStore.swift; path = Sources/Store/InMemoryWhatsNewVersionStore.swift; sourceTree = "<group>"; };
-		D9A756FFA4CC3BDB1A98562AE1A928FB /* WhatsNewButtonViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WhatsNewButtonViewController.swift; path = Sources/Components/Buttons/WhatsNewButtonViewController.swift; sourceTree = "<group>"; };
+		BBCF1986DC888AAAA1D047A9D49A6DEF /* YMMYandexMetricaPreloadInfo.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMYandexMetricaPreloadInfo.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMYandexMetricaPreloadInfo.h; sourceTree = "<group>"; };
+		BC0DD87832C10CBE1565174802B33F4D /* WhatsNewViewController+CompletionButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewViewController+CompletionButton.swift"; path = "Sources/Configuration/WhatsNewViewController+CompletionButton.swift"; sourceTree = "<group>"; };
+		BDCC76671D4DAB2BA38F55783D882E9C /* Sequence+WhatsNew.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Sequence+WhatsNew.swift"; path = "Sources/Extensions/Sequence+WhatsNew.swift"; sourceTree = "<group>"; };
+		C27C8C1FA1AD56430D7468463BA16FEB /* YMMVersion.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMVersion.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMVersion.h; sourceTree = "<group>"; };
+		C3091A0142C5F73D6C66F2B2121F11B7 /* YMMProfileAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMProfileAttribute.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMProfileAttribute.h; sourceTree = "<group>"; };
+		DB4AE741CDC155043DA394FAFDF3C581 /* WhatsNewItemsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WhatsNewItemsViewController.swift; path = Sources/Components/Items/WhatsNewItemsViewController.swift; sourceTree = "<group>"; };
+		DF8A2CC58179A418744294781780AF74 /* GradientView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GradientView.swift; path = Sources/GradientView.swift; sourceTree = "<group>"; };
+		E0509208322738AAFE84F25ED856AECE /* ColorSlider-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ColorSlider-Info.plist"; sourceTree = "<group>"; };
 		E29954DD5BE6DAF3904E8BC01232085B /* Pods_WeatherClothesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_WeatherClothesTests.framework; path = "Pods-WeatherClothesTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E2E599091C662C7F06A62DA31360E08E /* YMMReporterConfiguration.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMReporterConfiguration.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMReporterConfiguration.h; sourceTree = "<group>"; };
 		E45C31FB67192331E4C3F6027DE99899 /* Pods-WeatherClothesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeatherClothesTests.release.xcconfig"; sourceTree = "<group>"; };
-		EE45E1281EE2B4E1E3C635150DCE3CA3 /* WhatsNewItemsViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WhatsNewItemsViewController.swift; path = Sources/Components/Items/WhatsNewItemsViewController.swift; sourceTree = "<group>"; };
+		E872BF1807D082092518A5163B56B7A9 /* WhatsNewViewController+ItemsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewViewController+ItemsView.swift"; path = "Sources/Configuration/WhatsNewViewController+ItemsView.swift"; sourceTree = "<group>"; };
 		F0A847E8CC48FB475A33EA084CC84718 /* Pods-WeatherClothesUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-WeatherClothesUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		F49641EC950829C937C77786052872D1 /* YMMProfileAttribute.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMProfileAttribute.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMProfileAttribute.h; sourceTree = "<group>"; };
-		F5868C82F393B318E72424239C438F74 /* WhatsNewViewController+ItemsView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewViewController+ItemsView.swift"; path = "Sources/Configuration/WhatsNewViewController+ItemsView.swift"; sourceTree = "<group>"; };
-		F5CFBA4DC58A49E7B6190565B1B9505C /* YandexMobileMetrica.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YandexMobileMetrica.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YandexMobileMetrica.h; sourceTree = "<group>"; };
-		F70E4E303F55CE763E687922DD5AE6B8 /* WhatsNewVersionStore.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = WhatsNewVersionStore.swift; path = Sources/Store/WhatsNewVersionStore.swift; sourceTree = "<group>"; };
-		FE4759F6EAD96D90ADDB0423853ACEC0 /* WhatsNewKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "WhatsNewKit-Info.plist"; sourceTree = "<group>"; };
-		FEB30B7EEFCDD7312DC36E75DB824EAC /* WhatsNewViewController+Animation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "WhatsNewViewController+Animation.swift"; path = "Sources/Configuration/WhatsNewViewController+Animation.swift"; sourceTree = "<group>"; };
+		FC789CE9A89DE316A05BF77A53B2758A /* YMMUserProfile.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = YMMUserProfile.h; path = static/YandexMobileMetrica.framework/Versions/A/Headers/YMMUserProfile.h; sourceTree = "<group>"; };
+		FD144C2CB5F00D7C7ADD8A0B5EEFE16E /* YandexMobileMetrica.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YandexMobileMetrica.framework; path = static/YandexMobileMetrica.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		65FFEFD6EB20569C14BB23128E8A1FA1 /* Frameworks */ = {
+		3A7C5F56C326E3A8F4029BFE61CF9D9A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E825D6142358E91E5E52DE2BF8243822 /* Foundation.framework in Frameworks */,
+				3D3284D1B236580D227E2AE67BB7204A /* CoreGraphics.framework in Frameworks */,
+				EEEAAD7A83977059AB41FF5FA746A9BF /* Foundation.framework in Frameworks */,
+				7B63048690E3EFD4D67EFA53CD786319 /* QuartzCore.framework in Frameworks */,
+				E2E7C547C9DE21C008E067386A828E01 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9EC978FB70B7E25EED41697083AC7178 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F8EB8DAFECABB33DF2A65F2B30B860F /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,45 +254,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		06B645D928917E33B465F872B56888F8 /* WhatsNewKit */ = {
+		10D366E2B94E85304191FDEF6088E69E /* Static */ = {
 			isa = PBXGroup;
 			children = (
-				C476AA6709F30A53A63C55C7944ECB97 /* InMemoryWhatsNewVersionStore.swift */,
-				2C6AE628F0DD835F56E13CDC2962BC7D /* KeyValueWhatsNewVersionStore.swift */,
-				464383CC283AC8778ECB946F2F01CDAB /* NSLayoutConstraint+Activate.swift */,
-				095E4B42017A41FBF926C19B393D87E4 /* Sequence+WhatsNew.swift */,
-				A6CDA0773D7BA1FA28AE13FF234BB427 /* UIColor+Defaults.swift */,
-				A519EC403B00C9545E4404517CB9E8AB /* UIViewController+AddChild.swift */,
-				2D7F460F23252199242623928EF8D605 /* WhatsNew.swift */,
-				6A830ACA74C4AD4A1623AD24178D4CA4 /* WhatsNew+Item.swift */,
-				0ADF676108320F9820F895296DE796C1 /* WhatsNew+Version.swift */,
-				D9A756FFA4CC3BDB1A98562AE1A928FB /* WhatsNewButtonViewController.swift */,
-				2AB60083DFAC512DACA1220C37436A21 /* WhatsNewButtonViewController+CompletionButton.swift */,
-				12126589B2C35EC606A431DE3CE6D569 /* WhatsNewButtonViewController+DetailButton.swift */,
-				EE45E1281EE2B4E1E3C635150DCE3CA3 /* WhatsNewItemsViewController.swift */,
-				8BD813246115ECFD6C027B3FF83AFFF0 /* WhatsNewItemsViewController+Cell.swift */,
-				61A73CF2C0178A0EFDAF46311E834F91 /* WhatsNewTitleViewController.swift */,
-				F70E4E303F55CE763E687922DD5AE6B8 /* WhatsNewVersionStore.swift */,
-				39F3B9B4B8EAF692942E99FE6AC6861F /* WhatsNewViewController.swift */,
-				FEB30B7EEFCDD7312DC36E75DB824EAC /* WhatsNewViewController+Animation.swift */,
-				709484F25E7F277D3747878E4459609C /* WhatsNewViewController+CompletionButton.swift */,
-				238CD46FF5A4F7B72B28473C28D17EDA /* WhatsNewViewController+Configuration.swift */,
-				28802F000E455B59D1276792D1F66DA6 /* WhatsNewViewController+DetailButton.swift */,
-				81F84FEEC67183F2D08734C2B146E6A8 /* WhatsNewViewController+HapticFeedback.swift */,
-				F5868C82F393B318E72424239C438F74 /* WhatsNewViewController+ItemsView.swift */,
-				54E29DE148BE5ABC136E490300322D0F /* WhatsNewViewController+TitleView.swift */,
-				9E73CE2E6DDD53884D279503D3AF79BB /* Support Files */,
+				5255192B51DAB4C6E67DA944D4CA8E8A /* Core */,
+				D0AA147ED3EB08666222F0A66522D803 /* Crashes */,
 			);
-			name = WhatsNewKit;
-			path = WhatsNewKit;
+			name = Static;
 			sourceTree = "<group>";
 		};
-		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
+		1155ADEC7E04AAF5F89527C6BD42C352 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E2983683FD097A93297E2F5D4E382B36 /* iOS */,
+				315E8E40B606E7BB543828F7526DCCDF /* YandexMobileMetricaCrashes.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		166C8294A61B8DBE4BD194FCC1B9AB00 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AF3A046A1F7A568B31FFFA55D5FC2A9B /* ColorSlider.modulemap */,
+				ADA36A2C0A478B0B3790894E8BFCD675 /* ColorSlider.xcconfig */,
+				13AD73F0330689207FFD0A8E29561F75 /* ColorSlider-dummy.m */,
+				E0509208322738AAFE84F25ED856AECE /* ColorSlider-Info.plist */,
+				5383359EC446AE0D78823A23837A9235 /* ColorSlider-prefix.pch */,
+				9533B926D813C6D3A3113648B46AA7D7 /* ColorSlider-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ColorSlider";
 			sourceTree = "<group>";
 		};
 		1B94C0F76C5A371BC999F5CF565FDF4D /* Targets Support Files */ = {
@@ -258,41 +295,33 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		23EE51982390EBF0C4C1BDD9A0ADB922 /* YandexMobileMetrica */ = {
+		216D11D6253026459814863746CC99A1 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				9F99DB9EAA5D168DCC14AB5BA84263C2 /* Static */,
-				9AE7F3516E67A9FAC0DF5C4758A11ECA /* Support Files */,
+				20A7DACB743F2A39BC0D9C0E317842D5 /* CoreGraphics.framework */,
+				762C973A19DDE5A5AD81F317CEA5461F /* Foundation.framework */,
+				B9B86528815F4C81E70D4F6522BB7687 /* QuartzCore.framework */,
+				56DE6DFF52489DACAF66A82BFD0FE2CA /* UIKit.framework */,
 			);
-			name = YandexMobileMetrica;
-			path = YandexMobileMetrica;
+			name = iOS;
 			sourceTree = "<group>";
 		};
-		2E3C1EE6DDF750123D755529D56904BE /* Crashes */ = {
+		5255192B51DAB4C6E67DA944D4CA8E8A /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				678FE1D73766FB529382CB0F66929025 /* YandexMobileMetricaCrashes-umbrella.h */,
-				69D69A1EDCEE299E0AB5E55CE2C2E2C2 /* Frameworks */,
-			);
-			name = Crashes;
-			sourceTree = "<group>";
-		};
-		4EC08598A3FA0F67C427A81CFC1DE8FE /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				F5CFBA4DC58A49E7B6190565B1B9505C /* YandexMobileMetrica.h */,
-				4CB04DD6948D705EC602A404A7BB2CAD /* YandexMobileMetrica-umbrella.h */,
-				45996E5B04D59B27A9D97B418DE23207 /* YMMCompletionBlocks.h */,
-				F49641EC950829C937C77786052872D1 /* YMMProfileAttribute.h */,
-				E2E599091C662C7F06A62DA31360E08E /* YMMReporterConfiguration.h */,
-				A0E1AEDC8AC051D8280885DCC39DC5EA /* YMMRevenueInfo.h */,
-				7A35BE9A8BDB38579EE2987F2C846E69 /* YMMUserProfile.h */,
-				8BF13B38D4B8BBA9892D08B9DE2FB2D5 /* YMMVersion.h */,
-				84D158A077CC1CE276F53B584CF166DC /* YMMYandexMetrica.h */,
-				44F5B8CB13CBFB67D37AF6384241857A /* YMMYandexMetricaConfiguration.h */,
-				70602ED3A94C037174782BC25B7F5002 /* YMMYandexMetricaPreloadInfo.h */,
-				774013B8532D5C9A838D7002AB0ED500 /* YMMYandexMetricaReporting.h */,
-				8417148798F7126A54900C23C095E71F /* Frameworks */,
+				020D2D532D149A49D4323417F77722BD /* YandexMobileMetrica.h */,
+				5F65857814FD6CD1D2C27672BCECBB74 /* YandexMobileMetrica-umbrella.h */,
+				9A58E1EC1EBCABEFFA26ECD0EA12B508 /* YMMCompletionBlocks.h */,
+				C3091A0142C5F73D6C66F2B2121F11B7 /* YMMProfileAttribute.h */,
+				6C91C9B3CAD9B27022B03E79A0A264A0 /* YMMReporterConfiguration.h */,
+				848A49F4C47C118F92B88675F8DD8F86 /* YMMRevenueInfo.h */,
+				FC789CE9A89DE316A05BF77A53B2758A /* YMMUserProfile.h */,
+				C27C8C1FA1AD56430D7468463BA16FEB /* YMMVersion.h */,
+				B2865D69BAA19B3D71202F07A9160240 /* YMMYandexMetrica.h */,
+				8EAD4607EF63BA1BB54C58F1345B4337 /* YMMYandexMetricaConfiguration.h */,
+				BBCF1986DC888AAAA1D047A9D49A6DEF /* YMMYandexMetricaPreloadInfo.h */,
+				AB927F7810D4B8586ED626F78E0CB613 /* YMMYandexMetricaReporting.h */,
+				80E88222E60F020CA3298210F267D4E4 /* Frameworks */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -330,12 +359,42 @@
 			path = "Target Support Files/Pods-WeatherClothes";
 			sourceTree = "<group>";
 		};
-		69D69A1EDCEE299E0AB5E55CE2C2E2C2 /* Frameworks */ = {
+		69CFAD5EDDAC53BAD344103D6D003996 /* YandexMobileMetrica */ = {
 			isa = PBXGroup;
 			children = (
-				4D2E40E3E711FD7A29757A5C999ABF6D /* YandexMobileMetricaCrashes.framework */,
+				10D366E2B94E85304191FDEF6088E69E /* Static */,
+				D8EE22E288971B0B3E1B61AFF9CE68EE /* Support Files */,
 			);
-			name = Frameworks;
+			name = YandexMobileMetrica;
+			path = YandexMobileMetrica;
+			sourceTree = "<group>";
+		};
+		6AEDF93F6281A1FAA3855C3ECA8C5E4C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A77BDD4D44222BCB204BE28CB9809722 /* ColorSlider.framework */,
+				B97FB2457DCD809F3A27A4C2FC160B02 /* Pods_WeatherClothes.framework */,
+				E29954DD5BE6DAF3904E8BC01232085B /* Pods_WeatherClothesTests.framework */,
+				6210AD28EEB5DA11F5C393B299DDFCB7 /* Pods_WeatherClothesUITests.framework */,
+				7A9485D5005ACFF057A3BFFBD0387F65 /* WhatsNewKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6E2BD33BC1EDD7102435711357A82927 /* ColorSlider */ = {
+			isa = PBXGroup;
+			children = (
+				1FCE4E12066D0DB533DDA1EB8434B719 /* ColorSlider.swift */,
+				11F81A664BC089BAB1B490BE51CD5072 /* ColorSliderExtensions.swift */,
+				3249B028EA1484D79E391934C4FBCBF2 /* DefaultPreviewView.swift */,
+				87C77F41833C3125701FEC55A67CAC9C /* Gradient.swift */,
+				DF8A2CC58179A418744294781780AF74 /* GradientView.swift */,
+				62CFB488FDB9E3FF0A8B180AE17A53CE /* HSBColor.swift */,
+				A364F48189DAE75FDB4B57F667AC7E60 /* PreviewView.swift */,
+				166C8294A61B8DBE4BD194FCC1B9AB00 /* Support Files */,
+			);
+			name = ColorSlider;
+			path = ColorSlider;
 			sourceTree = "<group>";
 		};
 		7958C18FFD635A540EA481810ECB6B3D /* Pods-WeatherClothesUITests */ = {
@@ -354,89 +413,119 @@
 			path = "Target Support Files/Pods-WeatherClothesUITests";
 			sourceTree = "<group>";
 		};
-		7ACA5B3FF4F2C7D764A5936160CED151 /* Products */ = {
+		80E88222E60F020CA3298210F267D4E4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B97FB2457DCD809F3A27A4C2FC160B02 /* Pods_WeatherClothes.framework */,
-				E29954DD5BE6DAF3904E8BC01232085B /* Pods_WeatherClothesTests.framework */,
-				6210AD28EEB5DA11F5C393B299DDFCB7 /* Pods_WeatherClothesUITests.framework */,
-				7A9485D5005ACFF057A3BFFBD0387F65 /* WhatsNewKit.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		8417148798F7126A54900C23C095E71F /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				536A93358B23A1EFC708E67C7427FCD4 /* YandexMobileMetrica.framework */,
+				FD144C2CB5F00D7C7ADD8A0B5EEFE16E /* YandexMobileMetrica.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8DA60A81418A50ECB5E0861AD147A042 /* Pods */ = {
+		A73223D46DAA9D72EFE4BB38C68B0FE3 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				06B645D928917E33B465F872B56888F8 /* WhatsNewKit */,
-				23EE51982390EBF0C4C1BDD9A0ADB922 /* YandexMobileMetrica */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		9AE7F3516E67A9FAC0DF5C4758A11ECA /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				B86BB3999B3B4AB3C81092D6AFB0E0F7 /* YandexMobileMetrica.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/YandexMobileMetrica";
-			sourceTree = "<group>";
-		};
-		9E73CE2E6DDD53884D279503D3AF79BB /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				2FCA446E4D2FDDE987A02F080BBF1382 /* WhatsNewKit.modulemap */,
-				BA114651A1E3B04EC5EDE8C6350BCE47 /* WhatsNewKit.xcconfig */,
-				837C21B68198A1EBD9AAD2F28EDE1019 /* WhatsNewKit-dummy.m */,
-				FE4759F6EAD96D90ADDB0423853ACEC0 /* WhatsNewKit-Info.plist */,
-				ACA88EA8ACF371DB4D2CAA937A3942AB /* WhatsNewKit-prefix.pch */,
-				93163BA7128B024627AC16DFA2293E72 /* WhatsNewKit-umbrella.h */,
+				404EDFDC2D3427614C66A5AF5D0F57E1 /* WhatsNewKit.modulemap */,
+				396A589532D0A28260270180EB2FBEE2 /* WhatsNewKit.xcconfig */,
+				30234FFCBA6036206467DE9ED42728A2 /* WhatsNewKit-dummy.m */,
+				4E3B7E201374B54B2E4A1F47FBDCF3C6 /* WhatsNewKit-Info.plist */,
+				17547463728CDAEF6CA02B8E8AE3B866 /* WhatsNewKit-prefix.pch */,
+				BA2CE97EDF04393478565A48585E9D88 /* WhatsNewKit-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/WhatsNewKit";
 			sourceTree = "<group>";
 		};
-		9F99DB9EAA5D168DCC14AB5BA84263C2 /* Static */ = {
+		BA4F31F07263C99FC76E66D632A59F09 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				4EC08598A3FA0F67C427A81CFC1DE8FE /* Core */,
-				2E3C1EE6DDF750123D755529D56904BE /* Crashes */,
+				216D11D6253026459814863746CC99A1 /* iOS */,
 			);
-			name = Static;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BFE0A38CFC706EFACA9321B27891E86D /* WhatsNewKit */ = {
+			isa = PBXGroup;
+			children = (
+				8CCF686843C13395F2371F725230D744 /* InMemoryWhatsNewVersionStore.swift */,
+				3B58691120DAFF5622524AD0DB808190 /* KeyValueWhatsNewVersionStore.swift */,
+				373ABF2A3E2B2F4097DE152FC88B5E04 /* NSLayoutConstraint+Activate.swift */,
+				BDCC76671D4DAB2BA38F55783D882E9C /* Sequence+WhatsNew.swift */,
+				B7C214DA8864838CBFD53311BC6C4B28 /* UIColor+Defaults.swift */,
+				1906EF31908B3E45867CEE5804CEAE09 /* UIViewController+AddChild.swift */,
+				74A107DF18EA2B97FD330356E677763D /* WhatsNew.swift */,
+				372BDFFC04BB77E6396831D6FAABD147 /* WhatsNew+Item.swift */,
+				82644925C68215F816B530A82C8447AD /* WhatsNew+Version.swift */,
+				46E3643EBE22AA639DC7816EBBA3E1CE /* WhatsNewButtonViewController.swift */,
+				3E058E9D676FD03C072BDE36C8CA0594 /* WhatsNewButtonViewController+CompletionButton.swift */,
+				436C301AF2A0837E050CE9E94F6D77BC /* WhatsNewButtonViewController+DetailButton.swift */,
+				DB4AE741CDC155043DA394FAFDF3C581 /* WhatsNewItemsViewController.swift */,
+				4643B88AA5D344836C02C319E6D2825C /* WhatsNewItemsViewController+Cell.swift */,
+				AA2E7DDE8A88412D663C1E78854B6359 /* WhatsNewTitleViewController.swift */,
+				ACD118E32289AC4F3E5C4862DD8F2059 /* WhatsNewVersionStore.swift */,
+				10E4421BE4854DFB66C3E1773D720134 /* WhatsNewViewController.swift */,
+				8E140CA16380B44AD9DA24EC73D3BED1 /* WhatsNewViewController+Animation.swift */,
+				BC0DD87832C10CBE1565174802B33F4D /* WhatsNewViewController+CompletionButton.swift */,
+				61B6F98C9BCB31D2B9B244AACEEF80EE /* WhatsNewViewController+Configuration.swift */,
+				6746222D836AB4BE73C64A475DE3417A /* WhatsNewViewController+DetailButton.swift */,
+				1F3F550F47A1D3912623E094331A7A3C /* WhatsNewViewController+HapticFeedback.swift */,
+				E872BF1807D082092518A5163B56B7A9 /* WhatsNewViewController+ItemsView.swift */,
+				3321297612C8FD2765CDD938EF00BB91 /* WhatsNewViewController+TitleView.swift */,
+				A73223D46DAA9D72EFE4BB38C68B0FE3 /* Support Files */,
+			);
+			name = WhatsNewKit;
+			path = WhatsNewKit;
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
-				8DA60A81418A50ECB5E0861AD147A042 /* Pods */,
-				7ACA5B3FF4F2C7D764A5936160CED151 /* Products */,
+				BA4F31F07263C99FC76E66D632A59F09 /* Frameworks */,
+				D82A3B808660F0D6CB6BA5FEFA0E9CC3 /* Pods */,
+				6AEDF93F6281A1FAA3855C3ECA8C5E4C /* Products */,
 				1B94C0F76C5A371BC999F5CF565FDF4D /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		E2983683FD097A93297E2F5D4E382B36 /* iOS */ = {
+		D0AA147ED3EB08666222F0A66522D803 /* Crashes */ = {
 			isa = PBXGroup;
 			children = (
-				436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */,
-				312B988EF117AE4DE76A268D970131FE /* UIKit.framework */,
+				B812C7949096BB59B6C5D36CBCD0936A /* YandexMobileMetricaCrashes-umbrella.h */,
+				1155ADEC7E04AAF5F89527C6BD42C352 /* Frameworks */,
 			);
-			name = iOS;
+			name = Crashes;
+			sourceTree = "<group>";
+		};
+		D82A3B808660F0D6CB6BA5FEFA0E9CC3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6E2BD33BC1EDD7102435711357A82927 /* ColorSlider */,
+				BFE0A38CFC706EFACA9321B27891E86D /* WhatsNewKit */,
+				69CFAD5EDDAC53BAD344103D6D003996 /* YandexMobileMetrica */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D8EE22E288971B0B3E1B61AFF9CE68EE /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				108BD26E699D544A3505266E5DB96CD7 /* YandexMobileMetrica.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/YandexMobileMetrica";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		55AF1BDFDC1ED96854A0F0B785EEDAE6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32B0706EF583EC48078886ED3FFA3C8A /* ColorSlider-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6C23DCEC5FEB248FE1903978BAB84D25 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -461,17 +550,35 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		E7CD8F3A918ABBA72FD49EB7A197BE8E /* Headers */ = {
+		F4CE01DC7ADC9E768DF88CE363D68A5C /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3486ADF5D99029D742D42701067599F8 /* Pods-WeatherClothes-umbrella.h in Headers */,
+				83BBA9563FFEC8C2953FA44BF8B2BDF9 /* Pods-WeatherClothes-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		1E3469B000FE3C67BAD723C2FB400BCC /* ColorSlider */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91344CFB134CCE51498476A80CEBA466 /* Build configuration list for PBXNativeTarget "ColorSlider" */;
+			buildPhases = (
+				55AF1BDFDC1ED96854A0F0B785EEDAE6 /* Headers */,
+				368E497EA85258174D43AA64D012AEBD /* Sources */,
+				3A7C5F56C326E3A8F4029BFE61CF9D9A /* Frameworks */,
+				B5804285A13CFE45D068CB7FCBE71BB9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ColorSlider;
+			productName = ColorSlider;
+			productReference = A77BDD4D44222BCB204BE28CB9809722 /* ColorSlider.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		6873A8B10CB011242DC145A8F6BE7999 /* Pods-WeatherClothesTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 937D45FD45D3E7239B289C7CDF31EEDE /* Build configuration list for PBXNativeTarget "Pods-WeatherClothesTests" */;
@@ -493,18 +600,19 @@
 		};
 		8C3EB6C96C29D7D211D47F6031E501A8 /* Pods-WeatherClothes */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B247FC282248B53E462B81DC4FEE0340 /* Build configuration list for PBXNativeTarget "Pods-WeatherClothes" */;
+			buildConfigurationList = CB8D58ED8E00B4FD42C1F1C6FED8DA31 /* Build configuration list for PBXNativeTarget "Pods-WeatherClothes" */;
 			buildPhases = (
-				E7CD8F3A918ABBA72FD49EB7A197BE8E /* Headers */,
-				425A20B5367D1CFEA069F965BBC6A94E /* Sources */,
-				65FFEFD6EB20569C14BB23128E8A1FA1 /* Frameworks */,
-				346EF8B38C2AD2ED43946C209DD8FADF /* Resources */,
+				F4CE01DC7ADC9E768DF88CE363D68A5C /* Headers */,
+				730803861DC0CB08C834444C07078B28 /* Sources */,
+				9EC978FB70B7E25EED41697083AC7178 /* Frameworks */,
+				AFF5984AE66A6DB0261499BBBF1BEEB8 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				19D5EFA30B931FD060B67E5D5791A28D /* PBXTargetDependency */,
-				1AF232FA3EFED7F8ED1EFC84C9C3B49B /* PBXTargetDependency */,
+				B6E5027B4D4C3D25A811C813AB59ED33 /* PBXTargetDependency */,
+				A4747F6436753E549996469318B360C8 /* PBXTargetDependency */,
+				906654A3FBD3A2F0AECBF9F88750BC7C /* PBXTargetDependency */,
 			);
 			name = "Pods-WeatherClothes";
 			productName = "Pods-WeatherClothes";
@@ -558,17 +666,18 @@
 				LastUpgradeCheck = 1100;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 7ACA5B3FF4F2C7D764A5936160CED151 /* Products */;
+			productRefGroup = 6AEDF93F6281A1FAA3855C3ECA8C5E4C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				1E3469B000FE3C67BAD723C2FB400BCC /* ColorSlider */,
 				8C3EB6C96C29D7D211D47F6031E501A8 /* Pods-WeatherClothes */,
 				6873A8B10CB011242DC145A8F6BE7999 /* Pods-WeatherClothesTests */,
 				943601BE1A95B9872D81B2DEBCE1E257 /* Pods-WeatherClothesUITests */,
@@ -586,13 +695,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		346EF8B38C2AD2ED43946C209DD8FADF /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5F95CC36D1290688600711939D22CA74 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -601,6 +703,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		940310AD07E4E9044ACFB77F7F4A09D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AFF5984AE66A6DB0261499BBBF1BEEB8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B5804285A13CFE45D068CB7FCBE71BB9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -626,11 +742,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		425A20B5367D1CFEA069F965BBC6A94E /* Sources */ = {
+		368E497EA85258174D43AA64D012AEBD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A965C82346FE98AA2DB8E876C7FFF9F /* Pods-WeatherClothes-dummy.m in Sources */,
+				457E2722877BAC6B250EDAEBE07B179F /* ColorSlider-dummy.m in Sources */,
+				39AF1B7D71211DB608677E5E044ACB21 /* ColorSlider.swift in Sources */,
+				1CC464BE1E583E5160D751E207F3BFE7 /* ColorSliderExtensions.swift in Sources */,
+				D98F26017BAF92CC7211C077750D942F /* DefaultPreviewView.swift in Sources */,
+				96F9C58704D9774946612F82CEC6A9DD /* Gradient.swift in Sources */,
+				6608117DFF47DEB3554446BBEFB61589 /* GradientView.swift in Sources */,
+				CA5A2B0B83A55942F6CBA31560EEB3C0 /* HSBColor.swift in Sources */,
+				31F570C9F4C083F5A7D4060CEA42435F /* PreviewView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		730803861DC0CB08C834444C07078B28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FB71400834C0323DC64CC90FF85AEF14 /* Pods-WeatherClothes-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -669,18 +800,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		19D5EFA30B931FD060B67E5D5791A28D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = WhatsNewKit;
-			target = 9704B189A5639F0B7534EC8872960E23 /* WhatsNewKit */;
-			targetProxy = DDD7890FCCFE6F2477F37E3D7AE8A9C1 /* PBXContainerItemProxy */;
-		};
-		1AF232FA3EFED7F8ED1EFC84C9C3B49B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = YandexMobileMetrica;
-			target = 899318C1CEDE586664EC232A68069570 /* YandexMobileMetrica */;
-			targetProxy = E06218392CF1415E504185234FBD90C1 /* PBXContainerItemProxy */;
-		};
 		6006857B0CF2FEBC472CF8C9EF02BD57 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Pods-WeatherClothes";
@@ -693,10 +812,105 @@
 			target = 8C3EB6C96C29D7D211D47F6031E501A8 /* Pods-WeatherClothes */;
 			targetProxy = 28D16CDF64A2476AEEEC72852D5F2CD8 /* PBXContainerItemProxy */;
 		};
+		906654A3FBD3A2F0AECBF9F88750BC7C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = YandexMobileMetrica;
+			target = 899318C1CEDE586664EC232A68069570 /* YandexMobileMetrica */;
+			targetProxy = 2EC2E23262CBD2E1FCA94B1E1F1132D2 /* PBXContainerItemProxy */;
+		};
+		A4747F6436753E549996469318B360C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WhatsNewKit;
+			target = 9704B189A5639F0B7534EC8872960E23 /* WhatsNewKit */;
+			targetProxy = 3833E164F1CBA74FAB8C28E9216FB71D /* PBXContainerItemProxy */;
+		};
+		B6E5027B4D4C3D25A811C813AB59ED33 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ColorSlider;
+			target = 1E3469B000FE3C67BAD723C2FB400BCC /* ColorSlider */;
+			targetProxy = 446C25B3E2FE901530E18913BE8F38F8 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		205B147AE14EBE51BAAE52A6FB7FC0DC /* Release */ = {
+		0E495ED15D176E60A7D648CFB9978CE6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0A847E8CC48FB475A33EA084CC84718 /* Pods-WeatherClothesUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WeatherClothesUITests/Pods-WeatherClothesUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WeatherClothesUITests/Pods-WeatherClothesUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		0FF4A7862FD2760F63C62291C2A54A75 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E45C31FB67192331E4C3F6027DE99899 /* Pods-WeatherClothesTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WeatherClothesTests/Pods-WeatherClothesTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WeatherClothesTests/Pods-WeatherClothesTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1713CFCD9D018F8768EE6694F3722207 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9B86BE71DC3C9BCAA83A44CA6319E230 /* Pods-WeatherClothesUITests.release.xcconfig */;
 			buildSettings = {
@@ -713,7 +927,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-WeatherClothesUITests/Pods-WeatherClothesUITests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -735,7 +949,7 @@
 			};
 			name = Release;
 		};
-		257497152829C177993B5EC99C1D227A /* Release */ = {
+		2F55A3566E4E4FC936EAEAB624C33C12 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -783,7 +997,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -795,9 +1009,48 @@
 			};
 			name = Release;
 		};
+		456800A110BA3DCA5B60710972E9D2C1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2056548C9E2AF92530C0F9E177AA9434 /* Pods-WeatherClothes.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WeatherClothes/Pods-WeatherClothes-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WeatherClothes/Pods-WeatherClothes.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		5E9C0C387724F6A8946C1CFA833BEBAA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B86BB3999B3B4AB3C81092D6AFB0E0F7 /* YandexMobileMetrica.xcconfig */;
+			baseConfigurationReference = 108BD26E699D544A3505266E5DB96CD7 /* YandexMobileMetrica.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -811,193 +1064,7 @@
 			};
 			name = Debug;
 		};
-		722DDD8025384863C3C81236C27B1788 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E45C31FB67192331E4C3F6027DE99899 /* Pods-WeatherClothesTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-WeatherClothesTests/Pods-WeatherClothesTests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WeatherClothesTests/Pods-WeatherClothesTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		79EDF748DFBF0A0BA8162C201935669B /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1E07739A8F8950012E9B95B374256114 /* Pods-WeatherClothesTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-WeatherClothesTests/Pods-WeatherClothesTests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WeatherClothesTests/Pods-WeatherClothesTests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		89EA0711019EA37DC36C72CDDBB975D5 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA114651A1E3B04EC5EDE8C6350BCE47 /* WhatsNewKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/WhatsNewKit/WhatsNewKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/WhatsNewKit/WhatsNewKit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/WhatsNewKit/WhatsNewKit.modulemap";
-				PRODUCT_MODULE_NAME = WhatsNewKit;
-				PRODUCT_NAME = WhatsNewKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		ABD5EC419FA43B67D7D9E0D318002476 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F0A847E8CC48FB475A33EA084CC84718 /* Pods-WeatherClothesUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-WeatherClothesUITests/Pods-WeatherClothesUITests-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WeatherClothesUITests/Pods-WeatherClothesUITests.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		C89E11DA32A493818AD70646B31AB050 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA114651A1E3B04EC5EDE8C6350BCE47 /* WhatsNewKit.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/WhatsNewKit/WhatsNewKit-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/WhatsNewKit/WhatsNewKit-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MODULEMAP_FILE = "Target Support Files/WhatsNewKit/WhatsNewKit.modulemap";
-				PRODUCT_MODULE_NAME = WhatsNewKit;
-				PRODUCT_NAME = WhatsNewKit;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		CD0AB61A1B60AFA0259610563BC538D8 /* Debug */ = {
+		81726A33C91F77D40EAE290571188964 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 09472E96E0B6F2C1A7A48A2E5B9412AE /* Pods-WeatherClothes.debug.xcconfig */;
 			buildSettings = {
@@ -1014,7 +1081,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-WeatherClothes/Pods-WeatherClothes-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1035,7 +1102,80 @@
 			};
 			name = Debug;
 		};
-		DD8F832993327D1DD8046C3CBCBD97CD /* Debug */ = {
+		89EA0711019EA37DC36C72CDDBB975D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 396A589532D0A28260270180EB2FBEE2 /* WhatsNewKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/WhatsNewKit/WhatsNewKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/WhatsNewKit/WhatsNewKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/WhatsNewKit/WhatsNewKit.modulemap";
+				PRODUCT_MODULE_NAME = WhatsNewKit;
+				PRODUCT_NAME = WhatsNewKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8F0A8412441C03A9239867D13EE40D30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E07739A8F8950012E9B95B374256114 /* Pods-WeatherClothesTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WeatherClothesTests/Pods-WeatherClothesTests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WeatherClothesTests/Pods-WeatherClothesTests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		959DAB4EC1BE4ADE4B22644C3E349521 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1086,7 +1226,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1099,9 +1239,81 @@
 			};
 			name = Debug;
 		};
+		9F8FC56BE88D45264C9F7BB8C02BABBA /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ADA36A2C0A478B0B3790894E8BFCD675 /* ColorSlider.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/ColorSlider/ColorSlider-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ColorSlider/ColorSlider-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/ColorSlider/ColorSlider.modulemap";
+				PRODUCT_MODULE_NAME = ColorSlider;
+				PRODUCT_NAME = ColorSlider;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C89E11DA32A493818AD70646B31AB050 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 396A589532D0A28260270180EB2FBEE2 /* WhatsNewKit.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/WhatsNewKit/WhatsNewKit-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/WhatsNewKit/WhatsNewKit-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/WhatsNewKit/WhatsNewKit.modulemap";
+				PRODUCT_MODULE_NAME = WhatsNewKit;
+				PRODUCT_NAME = WhatsNewKit;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		EA360B6E9943D2510AD67AA15C237555 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B86BB3999B3B4AB3C81092D6AFB0E0F7 /* YandexMobileMetrica.xcconfig */;
+			baseConfigurationReference = 108BD26E699D544A3505266E5DB96CD7 /* YandexMobileMetrica.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1116,12 +1328,10 @@
 			};
 			name = Release;
 		};
-		F50E7C9B8C7D0E66A690E9E7E9D340B1 /* Release */ = {
+		FA62E137DEF7F9B449F74E3971D65D90 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2056548C9E2AF92530C0F9E177AA9434 /* Pods-WeatherClothes.release.xcconfig */;
+			baseConfigurationReference = ADA36A2C0A478B0B3790894E8BFCD675 /* ColorSlider.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1131,29 +1341,27 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-WeatherClothes/Pods-WeatherClothes-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/ColorSlider/ColorSlider-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ColorSlider/ColorSlider-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WeatherClothes/Pods-WeatherClothes.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/ColorSlider/ColorSlider.modulemap";
+				PRODUCT_MODULE_NAME = ColorSlider;
+				PRODUCT_NAME = ColorSlider;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1170,8 +1378,17 @@
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				DD8F832993327D1DD8046C3CBCBD97CD /* Debug */,
-				257497152829C177993B5EC99C1D227A /* Release */,
+				959DAB4EC1BE4ADE4B22644C3E349521 /* Debug */,
+				2F55A3566E4E4FC936EAEAB624C33C12 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		91344CFB134CCE51498476A80CEBA466 /* Build configuration list for PBXNativeTarget "ColorSlider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA62E137DEF7F9B449F74E3971D65D90 /* Debug */,
+				9F8FC56BE88D45264C9F7BB8C02BABBA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1179,17 +1396,8 @@
 		937D45FD45D3E7239B289C7CDF31EEDE /* Build configuration list for PBXNativeTarget "Pods-WeatherClothesTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				79EDF748DFBF0A0BA8162C201935669B /* Debug */,
-				722DDD8025384863C3C81236C27B1788 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B247FC282248B53E462B81DC4FEE0340 /* Build configuration list for PBXNativeTarget "Pods-WeatherClothes" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CD0AB61A1B60AFA0259610563BC538D8 /* Debug */,
-				F50E7C9B8C7D0E66A690E9E7E9D340B1 /* Release */,
+				8F0A8412441C03A9239867D13EE40D30 /* Debug */,
+				0FF4A7862FD2760F63C62291C2A54A75 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1197,8 +1405,17 @@
 		B25548D1F09F5756331E82C6171E9F60 /* Build configuration list for PBXNativeTarget "Pods-WeatherClothesUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ABD5EC419FA43B67D7D9E0D318002476 /* Debug */,
-				205B147AE14EBE51BAAE52A6FB7FC0DC /* Release */,
+				0E495ED15D176E60A7D648CFB9978CE6 /* Debug */,
+				1713CFCD9D018F8768EE6694F3722207 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CB8D58ED8E00B4FD42C1F1C6FED8DA31 /* Build configuration list for PBXNativeTarget "Pods-WeatherClothes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81726A33C91F77D40EAE290571188964 /* Debug */,
+				456800A110BA3DCA5B60710972E9D2C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

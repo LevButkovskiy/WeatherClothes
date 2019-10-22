@@ -82,12 +82,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             //showWhatsNew()
         }
         if (UserDefaults.standard.object(forKey: "version102") as? NSData) == nil {
-            showWhatsNew()
+            showWhatsNew("You can install WhatsNewKit via CocoaPods or Carthage")
         }
 
     }
     
-    func showWhatsNew(){
+    func showWhatsNew(_ withText: String){
         UserDefaults.standard.removeObject(forKey: "inventory")
 
             // Initialize WhatsNew
@@ -98,7 +98,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                 items: [
                     WhatsNew.Item(
                         title: "Installation",
-                        subtitle: "You can install WhatsNewKit via CocoaPods or Carthage",
+                        subtitle: withText,
                         image: UIImage(named: "installation")
                     ),
                     WhatsNew.Item(
@@ -269,7 +269,38 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     @IBAction func refreshButton(_ sender: Any) {
+        /*let subView = UIView()
+        subView.frame = CGRect(x: 20, y: 40, width: view.frame.width - 40, height: view.frame.height - 80)
+        subView.backgroundColor = .white
+        subView.layer.cornerRadius = 10
+        let blackView = UIView()
+        blackView.frame = view.frame
+        blackView.alpha = 0.5
+        blackView.backgroundColor = .black
+        view.addSubview(blackView)
+        view.addSubview(subView)
+        
+        let button = UIButton()
+        button.backgroundColor = .whatsNewKitGreen
+        button.frame = CGRect(x: subView.frame.minX + 20, y: subView.frame.maxY - 10 - 30, width: subView.frame.width - 40, height: 30)
+        button.layer.cornerRadius = 5
+        view.addSubview(button)
+        let button2 = UIButton()
+        button2.backgroundColor = .whatsNewKitGreen
+        button2.frame = CGRect(x: subView.frame.minX + 20, y: subView.frame.maxY - 10 - 30 - 10 - 30, width: subView.frame.width - 40, height: 30)
+        button2.layer.cornerRadius = 5
+        view.addSubview(button2)
+        
+        let title = UILabel()
+        title.text = "Подписка"
+        title.frame = CGRect(x: subView.frame.minX + 20, y: subView.frame.minY + 20, width: subView.frame.width - 40, height: 40)
+        title.textAlignment = .center
+        view.addSubview(title)*/
         performSegue(withIdentifier: "goToInventory", sender: nil)
+    }
+    
+    @objc func closeButton(){
+
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
