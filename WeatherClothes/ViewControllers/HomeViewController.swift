@@ -238,8 +238,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             tableView.backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
         }
         else{
-            tableView.backgroundColor = .white
             view.backgroundColor =  UIColor(red: 158.0/255.0, green: 201.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+            tableView.backgroundColor = .white
         }
     }
 

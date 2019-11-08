@@ -170,7 +170,7 @@ class Weather: NSObject {
         else if(weatherCondition.uppercased() == "rain".localized.uppercased() ){
             return UIImage(named: String(format: "Rain%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
-        else if(weatherCondition.uppercased() == "lightRain".localized.uppercased()){
+        else if(weatherCondition.uppercased() == "lightRain".localized.uppercased() || weatherCondition.uppercased() == "lightyRain".localized.uppercased()){
             return UIImage(named: String(format: "LightRain%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
         else if(weatherCondition.uppercased() == "сильный дождь" ){

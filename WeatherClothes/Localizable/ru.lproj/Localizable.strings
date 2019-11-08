@@ -42,6 +42,7 @@
 "clear" = "Ясно";
 "dull" = "Пасмурно";
 "lightRain" = "Легкий дождь";
+"lightyRain" = "Небольшой дождь";
 "rain" = "Дождь";
 "overcastClouds" = "Пасмурно";
 "brokenClouds" = "Пасмурно";

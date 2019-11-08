@@ -13,6 +13,7 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet weak var clotheName: UILabel!
     @IBOutlet weak var clotheDescription: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var backView: UIView!
     
     var height = CGFloat()
     var clothesImages = Array<Any>()
@@ -43,9 +44,11 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
         let theme = settings.theme
         if(theme){
             clotheName.textColor = .white
+            backView.backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
         }
         else{
             clotheName.textColor = .black
+            backView.backgroundColor = .white
         }
     }
     
@@ -86,7 +89,7 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
             imageView.frame.size = CGSize(width: height, height: height)
             imageView.frame.origin.x = height * CGFloat(index)
             imageView.frame.origin.y = 0
-            imageView.backgroundColor = nil
+            imageView.backgroundColor = .black
         }
         let contentWidth  = height * CGFloat(imageViews.count)
         scrollView.contentSize = CGSize(width: contentWidth, height: height)
