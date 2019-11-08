@@ -26,8 +26,8 @@ class Weather: NSObject {
     var sunriseTimeMinutes = Int()
     var sunsetTimeHours = Int()
     var sunsetTimeMinutes = Int()
-    var tempMin = Int()
-    var tempMax = Int()
+    //var tempMin = Int()
+    //var tempMax = Int()
 
     var forecast = Dictionary<Int, Any>()
     
@@ -36,8 +36,8 @@ class Weather: NSObject {
     }
 
     func initWithParams(latitude: Double, longitude: Double, completion: @escaping ((Bool) -> ())) {
-        tempMax = -999
-        tempMin = 999
+        //tempMax = -999
+        //tempMin = 999
         let api = API()
         api.load(latitude: latitude, longitude: longitude, language: "lang".localized, params: "Сейчас"){json in
             self.city = json["name"] as! String
@@ -74,7 +74,7 @@ class Weather: NSObject {
         let list = json["list"] as! NSArray
         let city = json["city"] as! Dictionary<String, Any>
         let timeZone = city["timezone"] as! Int
-        for i in 2..<7{
+        for i in 2..<10{
             let item = list[i] as! Dictionary<String, Any>
             var weather = Dictionary<String, Any>()
             let main = item["main"] as! Dictionary<String, Any>
@@ -86,7 +86,7 @@ class Weather: NSObject {
             weather["weatherCondition"] = subWeather["description"] as! String
             forecast[i-2] = weather
         }
-        for i in 0..<8{
+        /*for i in 0..<8{
             let item = list[i] as! Dictionary<String, Any>
             let main = item["main"] as! Dictionary<String, Any>
             let tempMin = Int(truncating: main["temp_min"] as! NSNumber)
@@ -97,7 +97,7 @@ class Weather: NSObject {
             if(tempMax > self.tempMax){
                 self.tempMax = tempMax
             }
-        }
+        }*/
     }
     
     func dateFromString(string : String, timeZone : Int) -> String{
@@ -152,16 +152,16 @@ class Weather: NSObject {
     
     func getImageForCondition(minutes: Int, hours: Int, weatherCondition: String) -> UIImage?{
         print(weatherCondition)
-        if(weatherCondition.uppercased() == "cloudy".localized.uppercased() || weatherCondition.uppercased() == "fewClouds".uppercased()){
+        if(weatherCondition.uppercased() == "cloudy".localized.uppercased()){
             return UIImage(named: String(format: "Cloudy%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
-        else if(weatherCondition.uppercased() == "partyCloudy".localized.uppercased() || weatherCondition.uppercased() == "scatteredClouds".localized.uppercased()){
+        else if(weatherCondition.uppercased() == "partyCloudy".localized.uppercased() || weatherCondition.uppercased() == "scatteredClouds".localized.uppercased() || weatherCondition.uppercased() == "scatteredCloud".localized.uppercased() || weatherCondition.uppercased() == "fewClouds".localized.uppercased() || weatherCondition.uppercased() == "fewsClouds".localized.uppercased()){
             return UIImage(named: String(format: "PartyCloudy%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
         else if(weatherCondition.uppercased() == "clear".localized.uppercased() || weatherCondition.uppercased() == "clear sky".uppercased()){
             return UIImage(named: String(format: "Clear%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
-        else if(weatherCondition.uppercased() == "dull".localized.uppercased() || weatherCondition.uppercased() == "overcastClouds".localized.uppercased() || weatherCondition.uppercased() == "brokenClouds".localized.uppercased()){
+        else if(weatherCondition.uppercased() == "dull".localized.uppercased() || weatherCondition.uppercased() == "overcastClouds".localized.uppercased() || weatherCondition.uppercased() == "brokenClouds".localized.uppercased() || weatherCondition.uppercased() == "brokenCloudsLight".localized.uppercased()){
             return UIImage(named: String(format: "Cloudy%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
         else if(weatherCondition.uppercased() == "fog".localized.uppercased() || weatherCondition.uppercased() == "foggy".localized.uppercased() || weatherCondition.uppercased() == "Mist".uppercased()){
@@ -185,14 +185,26 @@ class Weather: NSObject {
             #warning("Localize")
             return UIImage(named: String(format: "ThunderstormRain%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
-        else if(weatherCondition.uppercased() == "snow".localized.uppercased() || weatherCondition.uppercased() == "lightSnow".localized.uppercased()){
+        else if(weatherCondition.uppercased() == "snow".localized.uppercased() || weatherCondition.uppercased() == "lightSnow".localized.uppercased() || weatherCondition.uppercased() == "lightShowersSnow".localized.uppercased()){
             return UIImage(named: String(format: "LightSnow%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
-        else if(weatherCondition.uppercased() == "snowfall".localized.uppercased() || weatherCondition.uppercased() == "heavySnow".localized.uppercased()){
+        else if(weatherCondition.uppercased() == "snowfall".localized.uppercased() || weatherCondition.uppercased() == "heavySnow".localized.uppercased() || weatherCondition.uppercased() == "heavySnowers".localized.uppercased()){
             return UIImage(named: String(format: "Snow%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
         else{
             return nil
         }
+    }
+}
+
+extension Weather{
+    var isNull : Bool{
+        if(self.temperature == 0 && self.windSpeed == 0 && self.humidity == 0 && self.pressure == 0 && self.weatherCondition == ""){
+            return true
+        }
+        else{
+            return false
+        }
+        
     }
 }

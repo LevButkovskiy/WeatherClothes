@@ -17,13 +17,12 @@ protocol HomeViewControllerDelegate {
 
 class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     
-    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+    let notificationCenter = Notifications()
     
     var weather = Weather()
     var weatherForecast = Weather()
     let clothes = Clothes()
     var inventory = Inventory()
-    var settings = Settings()
     
     var locationManager: CLLocationManager?
     var latitude = Double()
@@ -75,19 +74,16 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         locationManager?.requestWhenInUseAuthorization()
         locationManager?.startUpdatingLocation()
         
-        //checkTheme()
+        setTheme()
         setViews()
     }
     
     func afterLoadSettings(){
-        if(!settings.isConnectedToNetwork()){
-            //showNoInternetConnection()
-            //showWhatsNew()
-        }
         if (UserDefaults.standard.object(forKey: "version102") as? NSData) == nil {
             showWhatsNew("You can install WhatsNewKit via CocoaPods or Carthage")
         }
-
+        let theme = Settings.shared().theme
+        setTheme()
     }
     
     func showWhatsNew(_ withText: String){
@@ -219,7 +215,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                             weatherCondition = weatherCondition.capitalizedFirst()
                             let weatherConditionImage = self.weatherForecast.getImageForCondition(minutes: Int("30")!, hours: Int("9")!, weatherCondition: weatherCondition)
                             print("Time: \(time), Temperature: \(temperature), WeatherCondition: \(weatherCondition)")
-                            self.appDelegate?.schuduleNotification(title: "Доброе утро", body: "На улице: \(temperature)°С, \(weatherCondition)")
+                            self.notificationCenter.scheduleNotification(title: "Доброе утро", body: "На улице: \(temperature)°С, \(weatherCondition)")
                         }
                     }
                 }
@@ -229,37 +225,27 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     func generateClothes(){
-        self.clothes.generateClothes(weather: self.weather)
+        self.inventory.generateClothes(weather: self.weather)
         self.tableView.reloadData()
         self.refreshControl.endRefreshing()
         afterLoadSettings()
     }
     
-    func checkTheme(){
-        if let unarchivedObject = UserDefaults.standard.object(forKey: "theme") as? NSData {
-            let theme = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Bool)
-            if(theme){
-                setDarkTheme()
-            }
-            else{
-                setLightTheme()
-            }
+    func setTheme(){
+        let theme = Settings.shared().theme
+        if(theme){
+            view.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+            tableView.backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
+        }
+        else{
+            tableView.backgroundColor = .white
+            view.backgroundColor =  UIColor(red: 158.0/255.0, green: 201.0/255.0, blue: 255.0/255.0, alpha: 1.0)
         }
     }
-    
-    func setLightTheme(){
-        weatherView.backgroundColor = UIColor(red:0.59, green:0.72, blue:0.99, alpha:1.0)
-        view.backgroundColor = UIColor(red:0.26, green:0.65, blue:1.00, alpha:1.0)
-    }
-    
-    func setDarkTheme(){
-        view.backgroundColor = UIColor(red:0.15, green:0.15, blue:0.15, alpha:1.0)
-        tableView.backgroundColor = UIColor(red:0.21, green:0.21, blue:0.21, alpha:1.0)
-    }
+
     
     @IBAction func showMenu(_ sender: Any) {
         menuIsActive = !menuIsActive
-        //checkTheme()
         if(menuIsActive){
             menuButton.setImage(UIImage.init(named: "leftArrow"), for: .normal)
         }
@@ -270,7 +256,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        guard clothes.head != "" else {
+        guard inventory.head != "" else {
             return 3
         }
         return 4
@@ -285,14 +271,13 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         cell.contentView.layer.cornerRadius = 20
         cell.layer.cornerRadius = 20
-        cell.backgroundColor = nil
-        
-        let section = clothes.head == "" ? indexPath.section + 1 : indexPath.section
-        let clotheName = clothes.getNameForIndex(index: section)
+        cell.setTheme()
+        let section = inventory.head == "" ? indexPath.section + 1 : indexPath.section
+        let clotheName = inventory.getNameForIndex(index: section)
         
         cell.clotheName.text = clotheName.localized
-        cell.clotheDescription.text = clothes.getDescriptionForIndex(index: section)
-        cell.clothesImages = clothes.getClothes(weather: weather, inventory : inventory, section: section, value: clotheName.trimmingCharacters(in: .whitespaces))
+        cell.clotheDescription.text = inventory.getDescriptionForIndex(index: section)
+        cell.clothesImages = inventory.getClothes(weather: weather, section: section, value: clotheName.trimmingCharacters(in: .whitespaces))
         cell.setImages()
         return cell
     }

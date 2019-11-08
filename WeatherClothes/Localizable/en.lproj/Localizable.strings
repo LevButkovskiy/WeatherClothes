@@ -1,0 +1,110 @@
+/*
+  Localizable.strings
+  WeatherClothes
+
+  Created by Lev Butkovskiy on 29/08/2019.
+  Copyright © 2019 Lev Butkovskiy. All rights reserved.
+*/
+
+
+"lang" = "ru";
+
+//Attentions and default text's
+"attention" = "Внимание!";
+"details" = "Дополнительная информация";
+"refresh" = "Потяните для обновления";
+"edit" = "Правка";
+"delete" = "Удалить";
+
+"hourly" = "Почасовая";
+"nightTheme" = "Темная тема";
+"gender" = "Пол";
+"inventory" = "Гардероб";
+"inventoryTitle" = "Ваша одежда";
+"whatToWhearToday" = "Что сегодня надеть?";
+"clothesToWear" = "Одежда на сегодня";
+
+"locationError" = "Доступ к геолокации ограничен. Для получения прогноза погоды, включите геолокацию в приложении «Настройки» в разделе «Конфиденциальность», «Местоположения».";
+
+//Погода
+"wind" = "ветер";
+"pressure" = "давление";
+"humidity" = "влажность";
+"uvIndex" = "УФ индекс";
+"visibility" = "видимость";
+
+"cloudy" = "Облачно";
+"partyCloudy" = "Cлегка облачно";
+"fewClouds" = "Слегка облачно";
+"fewsClouds" = "Небольшая облачность";
+"scatteredCloud" = "Переменная облачность";
+"scatteredClouds" = "Слегка облачно";
+"clear" = "Ясно";
+"dull" = "Пасмурно";
+"lightRain" = "Легкий дождь";
+"rain" = "Дождь";
+"overcastClouds" = "Пасмурно";
+"brokenClouds" = "Пасмурно";
+"brokenCloudsLight" = "Облачно с прояснениями";
+"fog" = "Туман";
+"foggy" = "Туманно";
+"snow" = "Снег";
+"snowfall" = "Снегопад";
+"lightSnow" = "Небольшой снегопад";
+"lightShowersSnow" = "Небольшой снегопад";
+"heavySnow" = "Сильный снег";
+"heavySnowers" = "Сильный снегопад";
+
+"day" = "День";
+"night" = "Ночь";
+
+//
+"ms" = "м/с";
+"mmHg" = "мм.рт.ст";
+"uv" = "уф";
+"km" = "км";
+
+//День недели
+"Monday" = "Понедельник";
+"Tuesday" = "Вторник";
+"Wednesday" = "Среда";
+"Thursday" = "Четверг";
+"Friday" = "Пятница";
+"Saturday" = "Суббота";
+"Sunday" = "Воскресенье";
+
+//Одежда
+//Головные уборы
+"Hats" = "Головные уборы";
+//
+"Cap" = "Кепка";
+"Hat" = "Шапка";
+"InsulatedHat" = "Утепленная шапка";
+
+//Верхняя часть одежды
+"TopOfClothes" = "Верхняя часть одежды";
+//
+"T-Shirt" = "Футболка";
+"Hoodie" = "Кофта";
+"Jacket" = "Куртка";
+"InsulatedJacket" = "Утепленная куртка";
+"WindBreaker" = "Ветровка";
+"Dress" = "Платье";
+
+//Нижняя часть одежды
+"LowerPartOfClothes" = "Нижняя часть одежды";
+//
+"Shorts" = "Шорты";
+"Pants" = "Штаны";
+"Skirt" = "Юбка";
+
+//Обувь
+"Footwear" = "Обувь";
+//
+"Sneakers" = "Кроссовки";
+"Slippers" = "Тапки";
+"Winter Shoes" = "Зимняя обувь";
+
+//Clothes conditions
+"windProtection" = "Ветрозащита";
+"comfortableTemperature" = "Комфортная температура";

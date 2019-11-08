@@ -20,6 +20,8 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        backgroundColor = nil
+
         if(UIScreen.main.nativeBounds.height != 1136){
             /*windView.layer.cornerRadius = 10
             windView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -33,6 +35,17 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
             comfortView.layer.shadowColor = UIColor.lightGray.cgColor
             comfortView.layer.shadowOpacity = 0.5
             comfortView.layer.shadowOffset = .init(width: 2, height: 2)*/
+        }
+    }
+    
+    func setTheme(){
+        let settings = Settings()
+        let theme = settings.theme
+        if(theme){
+            clotheName.textColor = .white
+        }
+        else{
+            clotheName.textColor = .black
         }
     }
     
@@ -51,6 +64,7 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
         scrollView.layer.shadowOpacity = 1
         scrollView.layer.shadowOffset = .zero
         scrollView.layer.shadowRadius = 3
+        scrollView.backgroundColor = nil
         
         if(clothesImages.count == 1){
             scrollView.isScrollEnabled = false
@@ -72,6 +86,7 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
             imageView.frame.size = CGSize(width: height, height: height)
             imageView.frame.origin.x = height * CGFloat(index)
             imageView.frame.origin.y = 0
+            imageView.backgroundColor = nil
         }
         let contentWidth  = height * CGFloat(imageViews.count)
         scrollView.contentSize = CGSize(width: contentWidth, height: height)

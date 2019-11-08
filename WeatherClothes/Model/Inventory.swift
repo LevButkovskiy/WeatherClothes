@@ -20,6 +20,16 @@ class Inventory: NSObject {
     var inventory = Dictionary<Int, Any>()
 
     var sections = Array<Int>()
+    var gender = Bool()
+
+    var head = String()
+    var headDescription = String()
+    var upper = String()
+    var upperDescription = String()
+    var lower = String()
+    var lowerDescription = String()
+    var boots = String()
+    var bootsDescription = String()
     
     override init() {
         super.init()
@@ -66,16 +76,8 @@ class Inventory: NSObject {
     }
     
     func add(name: String, image : UIImage, type: Int, temperature : Int, wind: Int){
-        let clothe = Clothe()
-        clothe.set(name: name, image: image, type: type, temperature: temperature, wind: wind)
+        let clothe = Clothe(name: name, image: image, type: type, temperature: temperature, wind: wind)
         add(clothe: clothe)
-        /*var item = Dictionary<String, Any>()
-        item["name"] = name
-        item["image"] = image.jpegData(compressionQuality: 0.1)
-        item["type"] = type
-        item["temperature"] = temperature
-        item["wind"] = wind
-        add(item: item)*/
     }
     
     func remove(clothe : Clothe){
@@ -95,11 +97,91 @@ class Inventory: NSObject {
         save()
     }
     
+    private func deleteAtIndex(dictionary : Dictionary<Int, Any>, index : Int) -> Dictionary<Int, Any>{
+        var dict = dictionary
+        if(index != dict.count - 1){
+            for j in index..<dict.count - 1{
+                dict[j] = dict[j+1]
+            }
+            dict.removeValue(forKey: dict.count - 1)
+            return dict
+        }
+        else{
+            dict.removeValue(forKey: index)
+        }
+        return dict
+    }
+    
     func removeAll(){
         for i in 0..<self.inventory.count{
             inventory[i] = nil
         }
         save()
+    }
+    
+    //MARK: TableView functions
+    func cellForRowAt(indexPath: IndexPath) -> Clothe?{
+        switch sections[indexPath.section] {
+        case Type.head.rawValue:
+            if(inventory[Type.head.rawValue] != nil){
+                let head = inventory[Type.head.rawValue] as! Dictionary<Int, Any>
+                return (head[indexPath.row] as! Clothe)
+            }
+        case Type.upper.rawValue:
+            if(inventory[Type.upper.rawValue] != nil){
+                let upper = inventory[Type.upper.rawValue] as! Dictionary<Int, Any>
+                return (upper[indexPath.row] as! Clothe)
+            }
+        case Type.lower.rawValue:
+            if(inventory[Type.lower.rawValue] != nil){
+                let lower = inventory[Type.lower.rawValue] as! Dictionary<Int, Any>
+                return (lower[indexPath.row] as! Clothe)
+            }
+        case Type.boots.rawValue:
+            if(inventory[Type.boots.rawValue] != nil){
+                let boots = inventory[Type.boots.rawValue] as! Dictionary<Int, Any>
+                return (boots[indexPath.row] as! Clothe)
+            }
+        default:
+            return nil
+        }
+        return nil
+    }
+    
+    func numberOfSections() -> Int{
+        return sections.count
+    }
+    
+    func numberOfRowsInSection(section : Int) -> Int{
+        switch sections[section] {
+        case Type.head.rawValue:
+            if(inventory[Type.head.rawValue] != nil){
+                let head = inventory[Type.head.rawValue] as! Dictionary<Int, Any>
+                return head.count
+            }
+        case Type.upper.rawValue:
+            if(inventory[Type.upper.rawValue] != nil){
+                let upper = inventory[Type.upper.rawValue] as! Dictionary<Int, Any>
+                return upper.count
+            }
+        case Type.lower.rawValue:
+            if(inventory[Type.lower.rawValue] != nil){
+                let lower = inventory[Type.lower.rawValue] as! Dictionary<Int, Any>
+                return lower.count
+            }
+        case Type.boots.rawValue:
+            if(inventory[Type.boots.rawValue] != nil){
+                let boots = inventory[Type.boots.rawValue] as! Dictionary<Int, Any>
+                return boots.count
+            }
+        default:
+            return 1
+        }
+        return 1
+    }
+    
+    func titleForHeaderInSection(section: Int) -> String{
+        return stringValueOfType(type: sections[section])
     }
     
     func setSections(){
@@ -138,72 +220,235 @@ class Inventory: NSObject {
         }
     }
     
-    //MARK: TableView functions
-    func cellForRowAt(indexPath: IndexPath) -> Clothe?{
-        switch sections[indexPath.section] {
-        case Type.head.rawValue:
-            if(inventory[Type.head.rawValue] != nil){
-                let head = inventory[Type.head.rawValue] as! Dictionary<Int, Any>
-                return (head[indexPath.row] as! Clothe)
-            }
-        case Type.upper.rawValue:
-            if(inventory[Type.upper.rawValue] != nil){
-                let upper = inventory[Type.upper.rawValue] as! Dictionary<Int, Any>
-                return (upper[indexPath.row] as! Clothe)
-            }
-        case Type.lower.rawValue:
-            if(inventory[Type.lower.rawValue] != nil){
-                let lower = inventory[Type.lower.rawValue] as! Dictionary<Int, Any>
-                return (lower[indexPath.row] as! Clothe)
-            }
-        case Type.boots.rawValue:
-            if(inventory[Type.boots.rawValue] != nil){
-                let boots = inventory[Type.boots.rawValue] as! Dictionary<Int, Any>
-                return (boots[indexPath.row] as! Clothe)
-            }
-        default:
-            return nil
+    //Clothes methods
+    func generateClothes(weather : Weather){
+        var chill = Double()
+        if let unarchivedObject = UserDefaults.standard.object(forKey: "gender") as? NSData {
+            gender = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Bool)
         }
-        return nil
-    }
-    
-    func titleForHeaderInSection(section: Int) -> String{
-        return stringValueOfType(type: sections[section])
-    }
-    
-    func numberOfRowsInSection(section : Int) -> Int{
-        switch sections[section] {
-        case Type.head.rawValue:
-            if(inventory[Type.head.rawValue] != nil){
-                let head = inventory[Type.head.rawValue] as! Dictionary<Int, Any>
-                return head.count
-            }
-        case Type.upper.rawValue:
-            if(inventory[Type.upper.rawValue] != nil){
-                let upper = inventory[Type.upper.rawValue] as! Dictionary<Int, Any>
-                return upper.count
-            }
-        case Type.lower.rawValue:
-            if(inventory[Type.lower.rawValue] != nil){
-                let lower = inventory[Type.lower.rawValue] as! Dictionary<Int, Any>
-                return lower.count
-            }
-        case Type.boots.rawValue:
-            if(inventory[Type.boots.rawValue] != nil){
-                let boots = inventory[Type.boots.rawValue] as! Dictionary<Int, Any>
-                return boots.count
-            }
-        default:
-            return 1
+        
+        guard (weather.humidity != 0) else {
+            return
         }
-        return 1
+        let temperature = Double(9/5 * Double(weather.temperature) + 32)
+        let wind = 2.23694 * Double(weather.windSpeed)
+        if(wind != 0){
+            let velocity = pow(wind, 0.16)
+            chill = (35.74 + (0.6215 * temperature) - (35.75 * velocity) + (0.4275 * temperature * velocity) - 32) * 5/9
+        }
+        else{
+            chill = temperature
+        }
+        
+        if(chill < -30){
+            head = "Insulated Hat"
+            upper = "Insulated Jacket"
+            lower = "Pants"
+            boots = "Winter Shoes"
+        }
+        else if(chill >= -30 && chill <= -25){
+            head = "Insulated Hat"
+            upper = "Insulated Jacket"
+            lower = "Pants"
+            boots = "Winter Shoes"
+        }
+        else if(chill > -25 && chill <= -20){
+            head = "Insulated Hat"
+            upper = "Insulated Jacket"
+            lower = "Pants"
+            boots = "Winter Shoes"
+        }
+        else if(chill > -20 && chill <= -15){
+            head = "Hat"
+            upper = "Insulated Jacket"
+            lower = "Pants"
+            boots = "Winter Shoes"
+        }
+        else if(chill > -15 && chill <= -10){
+            head = "Hat"
+            upper = "Jacket"
+            lower = "Pants"
+            boots = "Winter Shoes"
+        }
+        else if(chill > -10 && chill <= -5){
+            head = "Hat"
+            upper = "Jacket"
+            lower = "Pants"
+            boots = "Winter Shoes"
+        }
+        else if(chill > -5 && chill <= 0){
+            head = "Hat"
+            upper = "Jacket"
+            lower = "Pants"
+            boots = "Winter Shoes"
+        }
+        else if(chill > 0 && chill <= 5){
+            head = "Hat"
+            upper = "Jacket"
+            lower = "Pants"
+            boots = "Sneakers"
+        }
+        else if(chill > 5 && chill <= 10){
+            upper = "WindBreaker"
+            lower = "Pants"
+            boots = "Sneakers"
+        }
+        else if(chill > 10 && chill <= 15){
+            upper = "WindBreaker"
+            lower = "Pants"
+            boots = "Sneakers"
+        }
+        else if(chill > 15 && chill <= 20){
+            upper = "Hoodie"
+            lower = "Pants"
+            boots = "Sneakers"
+        }
+        else if(chill > 20 && chill <= 25){
+            head = "Cap"
+            upper = "T-Shirt"
+            lower = gender ? "Skirt" : "Shorts"
+            boots = "Sneakers"
+        }
+        else if(chill > 25 && chill <= 30){
+            head = "Cap"
+            upper = "T-Shirt"
+            lower = gender ? "Skirt" : "Shorts"
+            boots = "Sneakers"
+        }
+        else if(chill > 30){
+            head = "Cap"
+            upper = "T-Shirt"
+            lower = gender ? "Skirt": "Shorts"
+            boots = "Slippers"
+        }
     }
     
-    func numberOfSections() -> Int{
-        return sections.count
+    func getClothes(weather: Weather, section : Int, value: String) -> Array<Clothe>{
+        if(!weather.isNull){
+            var clothesDict = Array<Clothe>()
+            if(inventory[section] != nil){
+                let typeOfClothe = inventory[section] as! Dictionary<Int, Any>
+                print(typeOfClothe.count)
+                for i in 0..<typeOfClothe.count{
+                    let clothe = typeOfClothe[i] as! Clothe
+                    if(weather.temperature >= clothe.comfortTemperature! && weather.windSpeed <= clothe.comfortWind!){
+                        clothesDict.append(clothe)
+                    }
+                }
+                if(clothesDict.count == 0){
+                    print(value)
+                    if(value != ""){
+                        clothesDict.append(setClotheWithImage(value: value))
+                    }
+                }
+            }
+            else{
+                if(value != ""){
+                    clothesDict.append(setClotheWithImage(value: value))
+                }
+            }
+            return clothesDict
+        }
+        else{
+            return []
+        }
     }
     
-
+    func setClotheWithImage(value: String) -> Clothe{
+        let clothe = Clothe()
+        clothe.image = generateImage(value: value)!
+        return clothe
+    }
+    
+    func generateImage(value: String) -> UIImage?{
+        let val = value.removingWhitespaces()
+        if(gender == false){
+            if(val != ""){
+                guard val != "Hoodie" else {
+                    return UIImage.init(named: (String(format: "%@_%@", "WindBreaker", "м")))!
+                }
+                print(val)
+                let image = UIImage.init(named: (String(format: "%@_%@", val, "м")))!
+                return image
+            }
+            else{
+                return nil
+            }
+        }
+        else{
+            if(val != ""){
+                guard val != "Hoodie" else {
+                    return UIImage.init(named: (String(format: "%@_%@", "WindBreaker", "ж")))!
+                }
+                let image = UIImage.init(named: (String(format: "%@_%@", val, "ж")))!
+                return image
+            }
+            else{
+                return nil
+            }
+        }
+    }
+    
+    func generateImage(value: String) -> String{
+        let val = value.removingWhitespaces()
+        if(gender == false){
+            if(val != ""){
+                guard val != "Hoodie" else {
+                    return String(format: "%@_%@", "WindBreaker", "м")
+                }
+                print(val)
+                let image = String(format: "%@_%@", val, "м")
+                return image
+            }
+            else{
+                return ""
+            }
+        }
+        else{
+            if(val != ""){
+                guard val != "Hoodie" else {
+                    return String(format: "%@_%@", "WindBreaker", "ж")
+                }
+                let image = String(format: "%@_%@", val, "ж")
+                return image
+            }
+            else{
+                return ""
+            }
+        }
+    }
+    
+    //Index methods
+    func getNameForIndex(index : Int) -> String{
+        switch index {
+        case 0:
+            return head
+        case 1:
+            return upper
+        case 2:
+            return lower
+        case 3:
+            return boots
+        default:
+            return ""
+        }
+    }
+    
+    func getDescriptionForIndex(index : Int) -> String{
+        switch index {
+        case 0:
+            return headDescription
+        case 1:
+            return upperDescription
+        case 2:
+            return lowerDescription
+        case 3:
+            return bootsDescription
+        default:
+            return ""
+        }
+    }
+    
     func stringValueOfType(type : Int) -> String{
         switch type {
         case Type.head.rawValue:
@@ -218,144 +463,9 @@ class Inventory: NSObject {
             return ""
         }
     }
-    
-    func tmpStringValueOfType(type : Int) -> String{
-        switch type {
-        case Type.head.rawValue:
-            return "cap"
-        case Type.upper.rawValue:
-            return "tshirt"
-        case Type.lower.rawValue:
-            return "pants"
-        case Type.boots.rawValue:
-            return "sneakers"
-        default:
-            return ""
-        }
-    }
-    
-    func getIndexForTypeName(type : String) ->Int{
-        switch type {
-        case "Головной убор":
-            return 0
-        case "Верхняя часть одежды":
-            return 1
-        case "Нижняя часть одежды":
-            return 2
-        case "Обувь":
-            return 3
-        default:
-            return 0
-        }
-    }
-    
-    func getTypeNameFromIndex(index : Int) -> String{
-        switch index {
-        case 0:
-            return "Головной убор"
-        case 1:
-            return "Верхняя часть одежды"
-        case 2:
-            return "Нижняя часть одежды"
-        case 3:
-            return "Обувь"
-        default:
-            return ""
-        }
-    }
-    
-    func getTypeNameFromIndex(type: Int, index : Int) -> String{
-        switch type {
-        case 0:
-            if(index == 0){
-                return "cap"
-            }
-            else if(index == 1){
-                return "hat"
-            }
-        case 1:
-            if(index == 0){
-                return "tshirt"
-            }
-            else if(index == 1){
-                return "windBreaker"
-            }
-        case 2:
-            if(index == 0){
-                return "pants"
-            }
-            else if(index == 1){
-                return "pants"
-            }
-        case 3:
-            if(index == 0){
-                return "sneakers"
-            }
-            else if(index == 1){
-                return "sneakers"
-            }
-        default:
-            return ""
-        }
-        return ""
-    }
 
-    
-    private func deleteAtIndex(dictionary : Dictionary<Int, Any>, index : Int) -> Dictionary<Int, Any>{
-        var dict = dictionary
-        if(index != dict.count - 1){
-            for j in index..<dict.count - 1{
-                dict[j] = dict[j+1]
-            }
-            dict.removeValue(forKey: dict.count - 1)
-            return dict
-        }
-        else{
-            dict.removeValue(forKey: index)
-        }
-        return dict
-    }
 }
 
-extension Dictionary{
-    // Only for Int and String
-    func isEqual(dict : Dictionary) -> Bool{
-        let keys = dict.keys
-        for key in keys{
-            if(self[key] as? String != nil){
-                let first = self[key] as? String
-                let second = dict[key] as? String
-                if(first != second){
-                    return false
-                }
-            }
-            else if(self[key] as? Int != nil){
-                let first = self[key] as? Int
-                let second = dict[key] as? Int
-                if(first != second){
-                    return false
-                }
-            }
-        }
-        return true
-    }
-    
-    func isNil() -> Bool{
-        if(self.count == 0){
-            return true;
-        }
-        let keys = self.keys
-        if(keys.count == 0){
-            return true
-        }
-        for key in keys{
-            if(self[key] == nil){
-                return true
-            }
-        }
-        return false
-    }
-}
 
 /*
 func deleteClothe(delClothe : Dictionary<String, Any>){

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		19E19C93B01250E78C8EBDFB /* Pods_WeatherClothes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC420B1EE9F9BC8F8D5A419 /* Pods_WeatherClothes.framework */; };
 		A006C2332337916800B2A8F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A006C2352337916800B2A8F6 /* InfoPlist.strings */; };
+		A007981D237562170090033C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A007981F237562170090033C /* Localizable.strings */; };
 		A00928B4231ECE46002F9D2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00928B3231ECE46002F9D2A /* Main.storyboard */; };
 		A01EA18323564824002F7850 /* SubscriptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A01EA18223564824002F7850 /* SubscriptionView.xib */; };
 		A0285587234E5C18003AC1DA /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0285585234E5C18003AC1DA /* ColorCollectionViewCell.swift */; };
@@ -17,8 +18,9 @@
 		A04C129022FC811A00C82372 /* ResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A04C128E22FC811A00C82372 /* ResultTableViewCell.xib */; };
 		A056C6532317A858003B83D3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A056C6522317A858003B83D3 /* HeaderView.swift */; };
 		A056C6552317A869003B83D3 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A056C6542317A869003B83D3 /* HeaderView.xib */; };
-		A056C65923181780003B83D3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A056C65B23181780003B83D3 /* Localizable.strings */; };
 		A0773E10230D8B23007C202B /* Clothes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0773E0F230D8B23007C202B /* Clothes.swift */; };
+		A0967FF7236809D00066B8E7 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0967FF6236809D00066B8E7 /* Notifications.swift */; };
+		A0967FF923680E510066B8E7 /* 1234.png in Resources */ = {isa = PBXBuildFile; fileRef = A0967FF823680E510066B8E7 /* 1234.png */; };
 		A099E223231D8777002AC664 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A099E222231D8777002AC664 /* HomeViewController.swift */; };
 		A0A678A823410772002C0134 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF386D22EC623500A980CC /* AppDelegate.swift */; };
 		A0A678A923410772002C0134 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF386D22EC623500A980CC /* AppDelegate.swift */; };
@@ -89,6 +91,9 @@
 		9E16E86EC49CBE0D9DD7A75E /* Pods-WeatherClothes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherClothes.debug.xcconfig"; path = "Target Support Files/Pods-WeatherClothes/Pods-WeatherClothes.debug.xcconfig"; sourceTree = "<group>"; };
 		A006C2342337916800B2A8F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A006C2362337916D00B2A8F6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		A007981A237561A80090033C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A007981E237562170090033C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A0079820237562190090033C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A00928B3231ECE46002F9D2A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A018E13E2358851B00614796 /* WeatherClothes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeatherClothes.entitlements; sourceTree = "<group>"; };
 		A01EA18223564824002F7850 /* SubscriptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscriptionView.xib; sourceTree = "<group>"; };
@@ -99,10 +104,10 @@
 		A04C128E22FC811A00C82372 /* ResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultTableViewCell.xib; sourceTree = "<group>"; };
 		A056C6522317A858003B83D3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		A056C6542317A869003B83D3 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
-		A056C65A23181780003B83D3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		A056C65D231817D1003B83D3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A0773E0E230C0BFB007C202B /* Magnitogorsk.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Magnitogorsk.gpx; sourceTree = "<group>"; };
 		A0773E0F230D8B23007C202B /* Clothes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Clothes.swift; path = ../Clothes.swift; sourceTree = "<group>"; };
+		A0967FF6236809D00066B8E7 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
+		A0967FF823680E510066B8E7 /* 1234.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1234.png; path = ../../../../Desktop/1234.png; sourceTree = "<group>"; };
 		A099E222231D8777002AC664 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A0B5B8992358DD670028808E /* Chelyabinsk.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Chelyabinsk.gpx; sourceTree = "<group>"; };
 		A0BCA53C230B077E00407757 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -119,7 +124,6 @@
 		A0EF386A22EC623500A980CC /* WeatherClothes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherClothes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0EF386D22EC623500A980CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0EF387522EC623500A980CC /* WeatherClothes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeatherClothes.xcdatamodel; sourceTree = "<group>"; };
-		A0EF387A22EC623700A980CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A0EF387C22EC623700A980CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A0EF388122EC623700A980CC /* WeatherClothesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WeatherClothesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0EF388522EC623700A980CC /* WeatherClothesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherClothesTests.swift; sourceTree = "<group>"; };
@@ -182,7 +186,7 @@
 		A056C65623181759003B83D3 /* Localizable */ = {
 			isa = PBXGroup;
 			children = (
-				A056C65B23181780003B83D3 /* Localizable.strings */,
+				A007981F237562170090033C /* Localizable.strings */,
 			);
 			path = Localizable;
 			sourceTree = "<group>";
@@ -205,6 +209,7 @@
 				A0F3611122F992C400906528 /* Weather.swift */,
 				A0C37605234E314E00E4604B /* Clothe.swift */,
 				A0773E0F230D8B23007C202B /* Clothes.swift */,
+				A0967FF6236809D00066B8E7 /* Notifications.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 				A0A81DB5231AF8A2003EA87D /* ViewControllers */,
 				A0A81DB4231AF889003EA87D /* Model */,
 				A056C65623181759003B83D3 /* Localizable */,
+				A0967FF823680E510066B8E7 /* 1234.png */,
 				A0773E0D230C0BE7007C202B /* Location */,
 				A0EF386D22EC623500A980CC /* AppDelegate.swift */,
 				A00928B3231ECE46002F9D2A /* Main.storyboard */,
@@ -417,7 +423,6 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 				ru,
 			);
 			mainGroup = A0EF386122EC623500A980CC;
@@ -440,16 +445,17 @@
 				A04C129022FC811A00C82372 /* ResultTableViewCell.xib in Resources */,
 				A00928B4231ECE46002F9D2A /* Main.storyboard in Resources */,
 				A0BCA547230B228C00407757 /* MenuTableViewCell.xib in Resources */,
+				A007981D237562170090033C /* Localizable.strings in Resources */,
 				A0C37604234DEF1800E4604B /* TypeCollectionViewCell.xib in Resources */,
 				A0F3611822F9DBB900906528 /* InventoryTableViewCell.xib in Resources */,
 				A056C6552317A869003B83D3 /* HeaderView.xib in Resources */,
 				A0DDFF74235E1CD000344ABB /* Assets.xcassets in Resources */,
-				A056C65923181780003B83D3 /* Localizable.strings in Resources */,
 				A0EF387B22EC623700A980CC /* LaunchScreen.storyboard in Resources */,
 				A006C2332337916800B2A8F6 /* InfoPlist.strings in Resources */,
 				A01EA18323564824002F7850 /* SubscriptionView.xib in Resources */,
 				A0F270972354C78C00E3C814 /* ScrollableImagesView.xib in Resources */,
 				A0285588234E5C18003AC1DA /* ColorCollectionViewCell.xib in Resources */,
+				A0967FF923680E510066B8E7 /* 1234.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,6 +581,7 @@
 				A0BCA53F230B078B00407757 /* MenuViewController.swift in Sources */,
 				A0F270992354C7EA00E3C814 /* ScrollableImagesView.swift in Sources */,
 				A0F3611A22FAA61A00906528 /* AddClotheViewController.swift in Sources */,
+				A0967FF7236809D00066B8E7 /* Notifications.swift in Sources */,
 				A0C37603234DEF1800E4604B /* TypeCollectionViewCell.swift in Sources */,
 				A04C128F22FC811A00C82372 /* ResultTableViewCell.swift in Sources */,
 				A0CD2FEE235211D60069D6FB /* InventoryViewController.swift in Sources */,
@@ -626,20 +633,19 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		A056C65B23181780003B83D3 /* Localizable.strings */ = {
+		A007981F237562170090033C /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A056C65A23181780003B83D3 /* en */,
-				A056C65D231817D1003B83D3 /* ru */,
+				A007981E237562170090033C /* en */,
+				A0079820237562190090033C /* ru */,
 			);
 			name = Localizable.strings;
-			path = ../../../..;
 			sourceTree = "<group>";
 		};
 		A0EF387922EC623700A980CC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A0EF387A22EC623700A980CC /* Base */,
+				A007981A237561A80090033C /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";

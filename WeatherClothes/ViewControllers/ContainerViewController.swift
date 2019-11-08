@@ -58,7 +58,7 @@ class ContainerViewController: UIViewController, HomeViewControllerDelegate {
                            initialSpringVelocity: 0,
                            options: .curveEaseInOut,
                            animations: {
-                            self.controller.view.frame.origin.x = self.controller.view.frame.width / 2
+                            self.controller.view.frame.origin.x = self.controller.view.frame.width * 0.6
             }) { (finished) in
                 
             }

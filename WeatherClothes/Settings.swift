@@ -11,7 +11,7 @@ import Foundation
 import SystemConfiguration
 
 class Settings: NSObject {
-    
+    var theme = Bool()
     func isConnectedToNetwork() -> Bool{
         if Reachability.isConnectedToNetwork(){
             //Internet Connection Available
@@ -21,10 +21,29 @@ class Settings: NSObject {
             return false
         }
     }
+    override init() {
+        if let unarchivedObject = UserDefaults.standard.object(forKey: "theme") as? NSData {
+            self.theme = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Bool)
+        }
+    }
+    
+    static func shared() -> Settings {
+        return Settings()
+    }
+    
+    static func themeChanged(theme: Bool){
+        do{
+            let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: theme, requiringSecureCoding: true)
+            UserDefaults().set(archivedObject, forKey: "theme")
+            //setTheme(!switcher.isOn)
+        }
+        catch {
+            print(error)
+        }
+    }
 }
 
 public class Reachability {
-    
     class func isConnectedToNetwork() -> Bool {
         
         var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
@@ -71,6 +90,10 @@ extension String {
         }
     }
     
+    func removingWhitespaces() -> String {
+        return components(separatedBy: .whitespaces).joined()
+    }
+    
     var localized: String {
         return NSLocalizedString(self, comment: "")
     }
@@ -111,4 +134,62 @@ extension UIColor {
         default: return nil
         }
     }
+    
+    func themeColor(referense: Bool) -> UIColor{
+        if(!referense){
+            switch self {
+            case .white:
+                return UIColor(red:0.12, green:0.12, blue:0.12, alpha:1.0)
+            case .black:
+                return .white
+            default:
+                return .black
+            }
+        }
+        else{
+            return self
+        }
+    }
+}
+
+
+extension Dictionary{
+    // Only for Int and String
+    func isEqual(dict : Dictionary) -> Bool{
+        let keys = dict.keys
+        for key in keys{
+            if(self[key] as? String != nil){
+                let first = self[key] as? String
+                let second = dict[key] as? String
+                if(first != second){
+                    return false
+                }
+            }
+            else if(self[key] as? Int != nil){
+                let first = self[key] as? Int
+                let second = dict[key] as? Int
+                if(first != second){
+                    return false
+                }
+            }
+        }
+        return true
+    }
+    
+    func isNil() -> Bool{
+        if(self.count == 0){
+            return true;
+        }
+        let keys = self.keys
+        if(keys.count == 0){
+            return true
+        }
+        for key in keys{
+            if(self[key] == nil){
+                return true
+            }
+        }
+        return false
+    }
+    
 }

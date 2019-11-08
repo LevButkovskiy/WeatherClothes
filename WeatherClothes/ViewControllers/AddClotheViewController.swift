@@ -53,7 +53,6 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         setDefaultSettings()
         
         /*if(!clothe.isNil()){
-            type = inventory.getTypeNameFromIndex(index: clothe["type"] as! Int)
             name = (clothe["name"] as! String)
             nameTextInput.text = (clothe["name"] as! String)
             windSlider.value = clothe["wind"] as! Float
@@ -64,21 +63,14 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         }*/
     }
     
-    func setImageColor(imageView: UIImageView, color: UIColor) {
-        imageView.image = UIImage(named: "tshirt_gen1")
-        var overlayedImage = ((UIImage(named: "tshirt_gen2")))
-        overlayedImage = overlayedImage?.tinted(with: color)
-        imageView.image = imageView.image!.imageOverlayingImages([overlayedImage!])
-        closeLoadingView()
-    }
-    
     func generateImageView(imageName: String, color: UIColor) -> UIImageView {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: String(format: "%@_back", imageName))
-        var overlayedImage = UIImage(named: String(format: "%@_top", imageName))
-        overlayedImage = overlayedImage?.tinted(with: color)
-        imageView.image = imageView.image!.imageOverlayingImages([overlayedImage!])
-        closeLoadingView()
+        let bottomImage = UIImage(named: String(format: "%@_back", imageName))
+        var topImage = UIImage(named: String(format: "%@_top", imageName))
+        topImage = topImage?.tinted(with: color)
+        imageView.image = UIImage.imageByMergingImages(topImage: topImage!, bottomImage: bottomImage!)
+        //imageView.image = imageView.image!.imageOverlayingImages([overlayedImage!])
+        self.closeLoadingView()
         return imageView
     }
     
@@ -197,10 +189,10 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         switch type {
         case 0:
             array.append(generateImageView(imageName: "cap" , color: color))
-            array.append(generateImageView(imageName: "hat" , color: color))
+            //array.append(generateImageView(imageName: "hat" , color: color))
         case 1:
             array.append(generateImageView(imageName: "tshirt" , color: color))
-            array.append(generateImageView(imageName: "windbreaker" , color: color))
+           // array.append(generateImageView(imageName: "windbreaker" , color: color))
         case 2:
             array.append(generateImageView(imageName: "shorts" , color: color))
             array.append(generateImageView(imageName: "pants" , color: color))
@@ -222,7 +214,6 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
             colorSlider = ColorSlider(orientation: .horizontal, previewSide: .top)
             colorSlider.frame = CGRect(x: 20, y: colorSwitcher.frame.maxY + 10, width: view.frame.width - 40, height: 12)
             view.addSubview(colorSlider)
-            //colorSlider.addTarget(self, action: #selector(changeColor(slider:event:)), for: .valueChanged)
             colorSlider.addTarget(self, action: #selector(changedColor(_:)), for: [.touchUpInside, .touchUpOutside])
         }
         else{
@@ -329,9 +320,8 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         let action = UIAlertAction(title: "Сохранить", style: .default) { (alertAction) in
             let textField = alert.textFields![0] as UITextField
             if(textField.text != ""){
-                let clothe = Clothe()
                 let image = self.scrollableImages.getImageWithIndex()
-                clothe.set(name: textField.text!, image: image, type: self.type, temperature: Int(self.temperatureSlider.value), wind: Int(self.windSlider.value))
+                let clothe = Clothe(name: textField.text!, image: image, type: self.type, temperature: Int(self.temperatureSlider.value), wind: Int(self.windSlider.value))
                 self.inventory.add(clothe: clothe)
                 self.navigationController?.popViewController(animated: true)
             }
@@ -352,7 +342,6 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     
     
     /*func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        let string = inventory.getTypeNameFromIndex(index: row)
         if let unarchivedObject = UserDefaults.standard.object(forKey: "theme") as? NSData {
             let theme = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Bool)
             if(theme){
@@ -428,30 +417,11 @@ extension UIImage {
     
     typealias RectCalculationClosure = (_ parentSize: CGSize, _ newImageSize: CGSize)->(CGRect)
     
-    func with(image named: String, rectCalculation: RectCalculationClosure) -> UIImage {
-        return with(image: UIImage(named: named), rectCalculation: rectCalculation)
-    }
-    
     func tinted(with color: UIColor) -> UIImage? {
         return UIGraphicsImageRenderer(size: size, format: imageRendererFormat).image { _ in
             color.set()
             withRenderingMode(.alwaysTemplate).draw(at: .zero)
         }
-    }
-    
-    func with(image: UIImage?, rectCalculation: RectCalculationClosure) -> UIImage {
-        
-        if let image = image {
-            UIGraphicsBeginImageContext(size)
-            
-            draw(in: CGRect(origin: .zero, size: size))
-            image.draw(in: rectCalculation(size, image.size))
-            
-            let newImage = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            return newImage!
-        }
-        return self
     }
     
     func imageOverlayingImages(_ images: [UIImage], scalingBy factors: [CGFloat]? = nil) -> UIImage {
@@ -475,63 +445,21 @@ extension UIImage {
         return UIGraphicsGetImageFromCurrentImageContext()!
     }
     
-    func maskWithColor(color: UIColor) -> UIImage? {
-        let maskImage = cgImage!
+    static func imageByMergingImages(topImage: UIImage, bottomImage: UIImage, scaleForTop: CGFloat = 1.0) -> UIImage {
+        let size = bottomImage.size
+        let container = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContextWithOptions(size, false, 2.0)
+        UIGraphicsGetCurrentContext()!.interpolationQuality = .high
+        bottomImage.draw(in: container)
         
-        let width = size.width
-        let height = size.height
-        let bounds = CGRect(x: 0, y: 0, width: width, height: height)
+        let topWidth = size.width / scaleForTop
+        let topHeight = size.height / scaleForTop
+        let topX = (size.width / 2.0) - (topWidth / 2.0)
+        let topY = (size.height / 2.0) - (topHeight / 2.0)
         
-        let colorSpace = CGColorSpaceCreateDeviceRGB()
-        let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
-        let context = CGContext(data: nil, width: Int(width), height: Int(height), bitsPerComponent: 8, bytesPerRow: 0, space: colorSpace, bitmapInfo: bitmapInfo.rawValue)!
+        topImage.draw(in: CGRect(x: topX, y: topY, width: topWidth, height: topHeight), blendMode: .normal, alpha: 1.0)
         
-        context.clip(to: bounds, mask: maskImage)
-        context.setFillColor(color.cgColor)
-        context.fill(bounds)
-        let coloredImage = UIImage(cgImage: cgImage!)
-        return coloredImage
-        if let cgImage = context.makeImage() {
-            let coloredImage = UIImage(cgImage: cgImage)
-            return coloredImage
-        } else {
-            return nil
-        }
-    }
-    
-    class func imageWithColor(color: UIColor) -> UIImage {
-        let rect: CGRect = CGRect(x: 0, y: 0, width: 1, height: 1)
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 1, height: 1), false, 0)
-        color.setFill()
-        UIRectFill(rect)
-        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return image
+        return UIGraphicsGetImageFromCurrentImageContext()!
     }
 
-}
-    
-extension UIImageView {
-    
-    enum ImageAddingMode {
-        case changeOriginalImage
-        case addSubview
-    }
-    
-    func drawOnCurrentImage(anotherImage: UIImage?, mode: ImageAddingMode, rectCalculation: UIImage.RectCalculationClosure) {
-        
-        guard let image = image else {
-            return
-        }
-        
-        switch mode {
-        case .changeOriginalImage:
-            self.image = image.with(image: anotherImage, rectCalculation: rectCalculation)
-            
-        case .addSubview:
-            let newImageView = UIImageView(frame: rectCalculation(frame.size, image.size))
-            newImageView.image = anotherImage
-            addSubview(newImageView)
-        }
-    }
 }

@@ -28,6 +28,14 @@ class Clothe: NSObject, NSSecureCoding {
         comfortTemperature = 0
     }
     
+    init(name: String, image: UIImage, type: Int, temperature: Int, wind: Int) {
+        self.name = name
+        self.image = image
+        self.type = type
+        self.comfortTemperature = temperature
+        self.comfortWind = wind
+    }
+    
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "name")
         aCoder.encode(image, forKey: "image")
@@ -44,13 +52,5 @@ class Clothe: NSObject, NSSecureCoding {
         type = aDecoder.decodeObject(forKey: "type") as? Int
         comfortTemperature = aDecoder.decodeObject(forKey: "temperature") as? Int
         comfortWind = aDecoder.decodeObject(forKey: "wind") as? Int
-    }
-    
-    func set(name: String, image: UIImage, type: Int, temperature: Int, wind: Int){
-        self.name = name
-        self.image = image
-        self.type = type
-        self.comfortTemperature = temperature
-        self.comfortWind = wind
     }
 }
