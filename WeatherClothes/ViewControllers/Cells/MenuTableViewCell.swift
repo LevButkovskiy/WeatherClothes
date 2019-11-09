@@ -25,8 +25,10 @@ class MenuTableViewCell: UITableViewCell {
     }
     
     func setValues(){
-        let settings = Settings.shared()
-        let theme = settings.theme
+        var theme = Settings.shared().theme
+        if #available(iOS 13, *) {
+            theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
+        }
         setTheme()
         if (mode == "theme"){
             switcher.addTarget(self, action: #selector(switchTheme(sender:)), for: .valueChanged)
@@ -46,15 +48,17 @@ class MenuTableViewCell: UITableViewCell {
     }
     
     func setTheme(){
-        let settings = Settings.shared()
-        let theme = settings.theme
+        var theme = Settings.shared().theme
+        if #available(iOS 13, *) {
+            theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
+        }
         if(theme){
             nameLabel.textColor = .white
             self.backgroundColor = UIColor(red: 30.0/255.0, green: 32.0/255.0, blue: 35.0/255.0, alpha: 1.0)
         }
         else{
             nameLabel.textColor = .black
-            self.backgroundColor = .white
+            self.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
         }
     }
     

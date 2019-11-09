@@ -20,7 +20,6 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     var value = String()
     var color = UIColor()
     
-    var loadingView = UIView()
     var helpView = UIView()
     var helpViewActive = Bool()
     var colorSlider = ColorSlider()
@@ -31,12 +30,13 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     
     @IBOutlet weak var typeCollectionView: UICollectionView!
     @IBOutlet weak var scrollableImages: ScrollableImagesView!
-    
+    @IBOutlet weak var conditionsView: UIView!
     
     @IBOutlet weak var temperatureSlider: UISlider!
     @IBOutlet weak var temperatureSliderLabel: UILabel!
     @IBOutlet weak var windSlider: UISlider!
     @IBOutlet weak var windSliderLabel: UILabel!
+    @IBOutlet weak var colorLabel: UILabel!
     
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
@@ -70,26 +70,11 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         topImage = topImage?.tinted(with: color)
         imageView.image = UIImage.imageByMergingImages(topImage: topImage!, bottomImage: bottomImage!)
         //imageView.image = imageView.image!.imageOverlayingImages([overlayedImage!])
-        self.closeLoadingView()
         return imageView
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
-    }
-    
-    func showLoadingView(){
-        loadingView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-        loadingView.backgroundColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5)
-        let spinner = UIActivityIndicatorView()
-        spinner.frame = CGRect(x: self.view.frame.width - 25, y: self.view.frame.height - 25, width: 50, height: 50)
-        view.addSubview(loadingView)
-        spinner.startAnimating()
-        loadingView.addSubview(spinner)
-    }
-    
-    func closeLoadingView(){
-        loadingView.removeFromSuperview()
     }
     
     func setDefaultSettings(){
@@ -107,26 +92,31 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         let tintedCloseButtonImage = closeButtonImage?.withRenderingMode(.alwaysTemplate)
         closeButton.setImage(tintedCloseButtonImage, for: .normal)
         closeButton.tintColor = .red
+        
+        setTheme()
     }
     
-    func checkTheme(){
-        if let unarchivedObject = UserDefaults.standard.object(forKey: "theme") as? NSData {
-            let theme = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Bool)
-            if(theme){
-                setDarkTheme()
-            }
-            else{
-                setLightTheme()
-            }
+    func setTheme(){
+        var theme = Settings.shared().theme
+        if #available(iOS 13, *) {
+            theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
         }
-    }
-    
-    func setDarkTheme(){
-        view.backgroundColor = UIColor(red:0.15, green:0.15, blue:0.15, alpha:1.0)
-    }
-    
-    func setLightTheme(){
-        view.backgroundColor = .groupTableViewBackground
+        if(theme){
+            view.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+            typeCollectionView.backgroundColor = UIColor(red: 52.0/255.0, green: 52.0/255.0, blue: 54.0/255.0, alpha: 1.0)
+            conditionsView.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+            temperatureSliderLabel.textColor = .white
+            windSliderLabel.textColor = .white
+            colorLabel.textColor = .white
+        }
+        else{
+            view.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
+            typeCollectionView.backgroundColor = .white
+            conditionsView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
+            temperatureSliderLabel.textColor = .black
+            windSliderLabel.textColor = .black
+            colorLabel.textColor = .black
+        }
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -157,6 +147,10 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         if(indexPath.row == 3){
             cell.imageView.image = UIImage(named: "sneakers_white")
         }
+        var theme = Settings.shared().theme
+        if #available(iOS 13, *) {
+            theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
+        }
         cell.imageView.backgroundColor = .lightGray
         return cell
     }
@@ -171,7 +165,6 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @objc func changedColor(_ slider: ColorSlider) {
-        showLoadingView()
         color = slider.color
         generateImagesForScrollableView(with: color, toFirst: false)
     }

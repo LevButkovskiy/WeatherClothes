@@ -27,13 +27,28 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         navigationController?.navigationBar.isHidden = false
         tableView.register(UINib(nibName: "InventoryTableViewCell", bundle: nil), forCellReuseIdentifier: "inventoryCell")
         tableView.register(UINib(nibName: "HeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "headerView")
-        
+        setTheme()
         update()
     }
     
     func update(){
         inventory.load()
         tableView.reloadData()
+    }
+    
+    func setTheme(){
+        var theme = Settings.shared().theme
+        if #available(iOS 13, *) {
+            theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
+        }
+        if(theme){
+            view.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+            tableView.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+        }
+        else{
+            view.backgroundColor = .white
+            tableView.backgroundColor = .white
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -48,6 +63,7 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "inventoryCell", for: indexPath) as! InventoryTableViewCell
         let clothe = inventory.cellForRowAt(indexPath: indexPath)
         if(clothe != nil){
+            cell.setTheme()
             cell.clotheName.text = clothe?.name
             cell.clotheImage.image = clothe!.image
             cell.comfortableTemperature.text = String(format: "%@: %d˙C", "comfortableTemperature".localized, clothe!.comfortTemperature!)
@@ -72,7 +88,18 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "headerView") as! HeaderView
         headerView.titleLabel.text = inventory.titleForHeaderInSection(section: section)
-        headerView.contentView.backgroundColor = .groupTableViewBackground
+        var theme = Settings.shared().theme
+        if #available(iOS 13, *) {
+            theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
+        }
+        if(theme){
+            headerView.contentView.backgroundColor = UIColor(red: 30.0/255.0, green: 32.0/255.0, blue: 35.0/255.0, alpha: 1.0)
+            headerView.titleLabel.textColor = .white
+        }
+        else{
+            headerView.contentView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
+            headerView.titleLabel.textColor = .black
+        }
     
         return headerView
     }

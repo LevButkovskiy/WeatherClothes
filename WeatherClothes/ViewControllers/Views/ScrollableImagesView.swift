@@ -44,12 +44,28 @@ class ScrollableImagesView: UIView {
         rightButton.isEnabled = false
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         scrollViewPosition = 0
+        setTheme()
     }
     
     func setImages(clothesImageViews: Array<UIImageView>){
         self.clothesImageViews = clothesImageViews
         setupImages()
         checkButtons()
+    }
+    
+    func setTheme(){
+        var theme = Settings.shared().theme
+        if #available(iOS 13, *) {
+            theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
+        }
+        if(theme){
+            contentView.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+            scrollView.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+        }
+        else{
+            contentView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
+            scrollView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
+        }
     }
     
     private func setupImages(){

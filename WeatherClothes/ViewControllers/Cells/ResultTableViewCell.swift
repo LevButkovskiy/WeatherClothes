@@ -40,8 +40,10 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
     
     func setTheme(){
-        let settings = Settings()
-        let theme = settings.theme
+        var theme = Settings.shared().theme
+        if #available(iOS 13, *) {
+            theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
+        }
         if(theme){
             clotheName.textColor = .white
             backView.backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
@@ -89,7 +91,7 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
             imageView.frame.size = CGSize(width: height, height: height)
             imageView.frame.origin.x = height * CGFloat(index)
             imageView.frame.origin.y = 0
-            imageView.backgroundColor = .black
+            imageView.backgroundColor = nil
         }
         let contentWidth  = height * CGFloat(imageViews.count)
         scrollView.contentSize = CGSize(width: contentWidth, height: height)

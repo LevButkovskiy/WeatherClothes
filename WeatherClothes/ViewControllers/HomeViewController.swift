@@ -82,7 +82,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         if (UserDefaults.standard.object(forKey: "version102") as? NSData) == nil {
             showWhatsNew("You can install WhatsNewKit via CocoaPods or Carthage")
         }
-        let theme = Settings.shared().theme
         setTheme()
     }
     
@@ -232,7 +231,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     func setTheme(){
-        let theme = Settings.shared().theme
+        var theme = Settings.shared().theme
+        if #available(iOS 13, *) {
+            theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
+        }
         if(theme){
             view.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
             tableView.backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)

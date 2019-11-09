@@ -28,31 +28,27 @@ class InventoryTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func checkTheme(){
-        if let unarchivedObject = UserDefaults.standard.object(forKey: "theme") as? NSData {
-            let theme = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Bool)
-            if(theme){
-                setDarkTheme()
-            }
-            else{
-                setLightTheme()
-            }
+    func setTheme(){
+        var theme = Settings.shared().theme
+        if #available(iOS 13, *) {
+            theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
         }
-    }
-    
-    func setDarkTheme(){
-        backgroundColor = UIColor(red:0.15, green:0.15, blue:0.15, alpha:1.0)
-        clotheView.backgroundColor = UIColor(red:0.15, green:0.15, blue:0.15, alpha:1.0)
-        descriptionView.backgroundColor = UIColor(red:0.15, green:0.15, blue:0.15, alpha:1.0)
-        clotheName.textColor = .white
-    }
-    
-    func setLightTheme(){
-        backgroundColor = .groupTableViewBackground
-        clotheView.backgroundColor = .groupTableViewBackground
-        descriptionView.backgroundColor = . groupTableViewBackground
-
-        clotheName.textColor = .black
+        if(theme){
+            backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
+            clotheView.backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
+            descriptionView.backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
+            clotheName.textColor = .white
+            windProtection.textColor = .white
+            comfortableTemperature.textColor = .white
+        }
+        else{
+            backgroundColor = .white
+            clotheView.backgroundColor = .white
+            descriptionView.backgroundColor = .white
+            clotheName.textColor = .black
+            windProtection.textColor = .black
+            comfortableTemperature.textColor = .black
+        }
     }
     
 }

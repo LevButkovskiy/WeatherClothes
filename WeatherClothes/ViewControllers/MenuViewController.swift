@@ -19,13 +19,15 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         setTheme()
     }
     func setTheme(){
-        let settings = Settings.shared()
-        let theme = settings.theme
+        var theme = Settings.shared().theme
+        if #available(iOS 13, *) {
+            theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
+        }
         if(theme){
             tableView.backgroundColor = UIColor(red: 30.0/255.0, green: 32.0/255.0, blue: 35.0/255.0, alpha: 1.0)
         }
         else{
-            tableView.backgroundColor = .white
+            tableView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
         }
     }
     
@@ -41,32 +43,57 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        if #available(iOS 13, *) {
+            return 2
+        }
+        else{
+            return 3
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! MenuTableViewCell
         cell.setTheme()
-        switch indexPath.row {
-        case 0:
-            cell.mode = "gender"
-            cell.nameLabel.text = "gender".localized
-            cell.switcher.isHidden = false
-            cell.switcher.onTintColor = UIColor(red:1.00, green:0.54, blue:0.98, alpha:1.0)
-            cell.switcher.tintColor = .blue
-            cell.switcher.layer.cornerRadius = cell.switcher.frame.height / 2
-            cell.switcher.backgroundColor = .blue
-            cell.selectionStyle = .none
-        case 1:
-            cell.mode = "theme"
-            cell.nameLabel.text = "nightTheme".localized
-            cell.switcher.isHidden = false
-            cell.selectionStyle = .none
-        case 2:
-            cell.nameLabel.text = "Уведомления"
-            cell.accessoryType = .disclosureIndicator
-        default: break
+        if #available(iOS 13, *) {
+            switch indexPath.row {
+            case 0:
+                cell.mode = "gender"
+                cell.nameLabel.text = "gender".localized
+                cell.switcher.isHidden = false
+                cell.switcher.onTintColor = UIColor(red:1.00, green:0.54, blue:0.98, alpha:1.0)
+                cell.switcher.tintColor = .blue
+                cell.switcher.layer.cornerRadius = cell.switcher.frame.height / 2
+                cell.switcher.backgroundColor = .blue
+                cell.selectionStyle = .none
+            case 1:
+                cell.nameLabel.text = "Уведомления"
+                cell.accessoryType = .disclosureIndicator
+            default: break
+            }
         }
+        else{
+            switch indexPath.row {
+            case 0:
+                cell.mode = "gender"
+                cell.nameLabel.text = "gender".localized
+                cell.switcher.isHidden = false
+                cell.switcher.onTintColor = UIColor(red:1.00, green:0.54, blue:0.98, alpha:1.0)
+                cell.switcher.tintColor = .blue
+                cell.switcher.layer.cornerRadius = cell.switcher.frame.height / 2
+                cell.switcher.backgroundColor = .blue
+                cell.selectionStyle = .none
+            case 1:
+                cell.mode = "theme"
+                cell.nameLabel.text = "nightTheme".localized
+                cell.switcher.isHidden = false
+                cell.selectionStyle = .none
+            case 2:
+                cell.nameLabel.text = "Уведомления"
+                cell.accessoryType = .disclosureIndicator
+            default: break
+            }
+        }
+
         cell.setValues()
         return cell
     }

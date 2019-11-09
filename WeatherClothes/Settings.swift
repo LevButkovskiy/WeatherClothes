@@ -12,7 +12,8 @@ import SystemConfiguration
 
 class Settings: NSObject {
     var theme = Bool()
-    func isConnectedToNetwork() -> Bool{
+
+    /*func isConnectedToNetwork() -> Bool{
         if Reachability.isConnectedToNetwork(){
             //Internet Connection Available
             return true
@@ -20,7 +21,7 @@ class Settings: NSObject {
             //Internet Connection not Available
             return false
         }
-    }
+    }*/
     override init() {
         if let unarchivedObject = UserDefaults.standard.object(forKey: "theme") as? NSData {
             self.theme = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Bool)
