@@ -15,15 +15,18 @@ class ScrollableImagesView: UIView {
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     
+    
     var height = CGFloat()
     var scrollViewPosition = CGFloat()
     var index = Int()
-    var clothesImageViews = Array<UIImageView>()
-    var imageViews = [UIImageView]()
-    
+    var clothesImageViews = Array<Dictionary<String, Any>>()
+    var imageViewsBack = [UIImageView]()
+    var imageViewsTop = [UIImageView]()
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,9 +34,14 @@ class ScrollableImagesView: UIView {
         commonInit()
     }
     
-    func getImageWithIndex() -> UIImage{
-        let image = imageViews[index].image
-        return image!
+    func getClotheName() -> String{
+        let clothe = clothesImageViews[index]
+        return clothe["imageName"] as! String
+    }
+    
+    func getClotheColor() -> UIColor{
+        let clothe = clothesImageViews[index]
+        return clothe["color"] as! UIColor
     }
 
     private func commonInit(){
@@ -47,7 +55,7 @@ class ScrollableImagesView: UIView {
         setTheme()
     }
     
-    func setImages(clothesImageViews: Array<UIImageView>){
+    func setImages(clothesImageViews: Array<Dictionary<String, Any>>){
         self.clothesImageViews = clothesImageViews
         setupImages()
         checkButtons()
@@ -69,7 +77,9 @@ class ScrollableImagesView: UIView {
     }
     
     private func setupImages(){
-        imageViews = [UIImageView]()
+        imageViewsBack = [UIImageView]()
+        imageViewsTop = [UIImageView]()
+        
         for view in scrollView.subviews{
             view.removeFromSuperview()
         }
@@ -82,16 +92,25 @@ class ScrollableImagesView: UIView {
         
         for imageView in clothesImageViews{
             //imageView.contentMode = .f
-            scrollView.addSubview(imageView)
-            imageViews.append(imageView)
+            scrollView.addSubview(imageView["back"] as! UIImageView)
+            imageViewsBack.append(imageView["back"] as! UIImageView)
+            scrollView.addSubview(imageView["top"] as! UIImageView)
+            imageViewsTop.append(imageView["top"] as! UIImageView)
         }
         
-        for(index, imageView) in imageViews.enumerated(){
+        for(index, imageView) in imageViewsBack.enumerated(){
             imageView.frame.size = CGSize(width: height, height: height)
             imageView.frame.origin.x = height * CGFloat(index)
             imageView.frame.origin.y = 0
         }
-        let contentWidth  = height * CGFloat(imageViews.count)
+        
+        for(index, imageView) in imageViewsTop.enumerated(){
+            imageView.frame.size = CGSize(width: height, height: height)
+            imageView.frame.origin.x = height * CGFloat(index)
+            imageView.frame.origin.y = 0
+        }
+        
+        let contentWidth  = height * CGFloat(imageViewsBack.count)
         scrollView.contentSize = CGSize(width: contentWidth, height: height)
     }
 

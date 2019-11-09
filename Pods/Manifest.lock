@@ -1,5 +1,6 @@
 PODS:
   - ColorSlider (4.4)
+  - SwiftGifOrigin (1.7.0)
   - WhatsNewKit (1.3.0)
   - YandexMobileMetrica (3.7.1):
     - YandexMobileMetrica/Static (= 3.7.1)
@@ -12,20 +13,24 @@ PODS:
 
 DEPENDENCIES:
   - ColorSlider (~> 4.4)
+  - SwiftGifOrigin (~> 1.7.0)
   - WhatsNewKit
   - YandexMobileMetrica (= 3.7.1)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - ColorSlider
     - WhatsNewKit
     - YandexMobileMetrica
+  trunk:
+    - SwiftGifOrigin
 
 SPEC CHECKSUMS:
   ColorSlider: 9a888e65b871fa1e6a26fadebf4931c949935681
+  SwiftGifOrigin: fbd6cf37afcfcf97a5c3db996ddc0492e5c5c145
   WhatsNewKit: 7ec83c4ab2240605c3af63e302ede1310ab366be
   YandexMobileMetrica: 95e93ee5af38520c9e470533dc8df6cf72fa171d
 
-PODFILE CHECKSUM: 85be8e47bb1a8711191e4411b18164aa67f2c12a
+PODFILE CHECKSUM: c409460ca42feed256998f90419349d8113e0ad5
 
-COCOAPODS: 1.7.2
+COCOAPODS: 1.8.4

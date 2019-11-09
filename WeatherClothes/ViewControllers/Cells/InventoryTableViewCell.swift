@@ -11,7 +11,7 @@ import UIKit
 class InventoryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var clotheName: UILabel!
-    @IBOutlet weak var clotheImage: UIImageView!
+    @IBOutlet weak var clotheImage: DoubleImageViewsView!
     @IBOutlet weak var windProtection: UILabel!
     @IBOutlet weak var comfortableTemperature: UILabel!
     @IBOutlet weak var clotheView: UIView!

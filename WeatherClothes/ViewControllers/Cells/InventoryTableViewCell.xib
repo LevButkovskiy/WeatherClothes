@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,32 +14,29 @@
             <rect key="frame" x="0.0" y="0.0" width="358" height="92"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="358" height="91.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="358" height="92"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EmH-uZ-A3E">
-                        <rect key="frame" x="10" y="10" width="338" height="71.5"/>
+                        <rect key="frame" x="10" y="10" width="338" height="72"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tshirt_black" translatesAutoresizingMaskIntoConstraints="NO" id="mI7-So-hCQ">
-                                <rect key="frame" x="266.5" y="2.5" width="66.5" height="66.5"/>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="piS-L0-b2L">
-                                <rect key="frame" x="5" y="5" width="251.5" height="61.5"/>
+                                <rect key="frame" x="5" y="5" width="251" height="62"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="244" verticalCompressionResistancePriority="751" text="Комфортная t: 20˙С" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LKH-E5-Qn8">
-                                        <rect key="frame" x="0.0" y="44" width="251.5" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="44" width="251" height="20.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Кофта" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cZT-bo-S9V">
-                                        <rect key="frame" x="0.0" y="0.0" width="251.5" height="23.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="251" height="23.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Ветрозащита: 5 м/с" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nn8-yb-0F8">
-                                        <rect key="frame" x="0.0" y="23.5" width="251.5" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="23.5" width="251" height="20.5"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -61,17 +56,21 @@
                                     <constraint firstAttribute="bottom" secondItem="LKH-E5-Qn8" secondAttribute="bottom" priority="100" id="zb4-Lf-HaO"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s4K-1w-3ko" customClass="DoubleImageViewsView" customModule="WeatherClothes" customModuleProvider="target">
+                                <rect key="frame" x="266" y="5" width="62" height="62"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="s4K-1w-3ko" secondAttribute="trailing" constant="10" id="3AT-Ng-uXg"/>
+                            <constraint firstItem="s4K-1w-3ko" firstAttribute="leading" secondItem="piS-L0-b2L" secondAttribute="trailing" constant="10" id="9ud-xf-shH"/>
                             <constraint firstItem="piS-L0-b2L" firstAttribute="leading" secondItem="EmH-uZ-A3E" secondAttribute="leading" constant="5" id="AMn-ib-Aqf"/>
                             <constraint firstAttribute="bottom" secondItem="piS-L0-b2L" secondAttribute="bottom" constant="5" id="DUh-1L-bWO"/>
                             <constraint firstItem="piS-L0-b2L" firstAttribute="top" secondItem="EmH-uZ-A3E" secondAttribute="top" constant="5" id="Pq7-eL-Dao"/>
-                            <constraint firstItem="mI7-So-hCQ" firstAttribute="width" secondItem="EmH-uZ-A3E" secondAttribute="height" constant="-5" id="eVa-aa-xda"/>
-                            <constraint firstItem="mI7-So-hCQ" firstAttribute="height" secondItem="EmH-uZ-A3E" secondAttribute="height" constant="-5" id="f7w-jl-V3g"/>
-                            <constraint firstItem="mI7-So-hCQ" firstAttribute="leading" secondItem="piS-L0-b2L" secondAttribute="trailing" constant="10" id="kO5-ug-Cga"/>
-                            <constraint firstAttribute="trailing" secondItem="mI7-So-hCQ" secondAttribute="trailing" constant="5" id="rlb-iU-wfA"/>
-                            <constraint firstItem="mI7-So-hCQ" firstAttribute="centerY" secondItem="EmH-uZ-A3E" secondAttribute="centerY" id="vCv-ss-ANq"/>
+                            <constraint firstItem="s4K-1w-3ko" firstAttribute="height" secondItem="piS-L0-b2L" secondAttribute="height" id="Xfo-yx-mIQ"/>
+                            <constraint firstItem="s4K-1w-3ko" firstAttribute="top" secondItem="EmH-uZ-A3E" secondAttribute="top" constant="5" id="pac-q0-ISo"/>
+                            <constraint firstItem="s4K-1w-3ko" firstAttribute="width" secondItem="piS-L0-b2L" secondAttribute="height" id="yck-FR-nNk"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -86,7 +85,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="clotheImage" destination="mI7-So-hCQ" id="BnK-Mu-nim"/>
+                <outlet property="clotheImage" destination="s4K-1w-3ko" id="b7G-FX-DM2"/>
                 <outlet property="clotheName" destination="cZT-bo-S9V" id="bX0-ma-Inl"/>
                 <outlet property="clotheView" destination="EmH-uZ-A3E" id="Nlo-Li-z2R"/>
                 <outlet property="comfortableTemperature" destination="LKH-E5-Qn8" id="Lr9-88-H3E"/>
@@ -96,7 +95,4 @@
             <point key="canvasLocation" x="173.91304347826087" y="85.714285714285708"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="tshirt_black" width="1067" height="1067"/>
-    </resources>
 </document>

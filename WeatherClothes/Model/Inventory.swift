@@ -39,7 +39,7 @@ class Inventory: NSObject {
     }
     //MARK: model functions
     func load(){
-        if let unarchivedObject = UserDefaults.standard.object(forKey: "inventory") as? NSData {
+        if let unarchivedObject = UserDefaults.standard.object(forKey: "inventoryTes2") as? NSData {
             inventory = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Dictionary<Int, Any>)
             setSections()
         }
@@ -52,10 +52,10 @@ class Inventory: NSObject {
     func save(){
         do{
             let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: inventory, requiringSecureCoding: true)
-            UserDefaults().set(archivedObject, forKey: "inventory")
+            UserDefaults().set(archivedObject, forKey: "inventoryTes2")
         }
         catch {
-            print(error)
+            print(error.localizedDescription)
         }
         update()
     }
@@ -75,8 +75,8 @@ class Inventory: NSObject {
         save()
     }
     
-    func add(name: String, image : UIImage, type: Int, temperature : Int, wind: Int){
-        let clothe = Clothe(name: name, image: image, type: type, temperature: temperature, wind: wind)
+    func add(name: String, imageName: String, color : UIColor, type: Int, temperature : Int, wind: Int){
+        let clothe = Clothe(name: name, imageName: imageName, color: color, type: type, temperature: temperature, wind: wind)
         add(clothe: clothe)
     }
     
@@ -323,28 +323,27 @@ class Inventory: NSObject {
         }
     }
     
-    func getClothes(weather: Weather, section : Int, value: String) -> Array<Clothe>{
+    func getClothes(weather: Weather, section : Int, value: String) -> Array<Dictionary<String,Any>>{
         if(!weather.isNull){
-            var clothesDict = Array<Clothe>()
+            var clothesDict = Array<Dictionary<String,Any>>()
             if(inventory[section] != nil){
                 let typeOfClothe = inventory[section] as! Dictionary<Int, Any>
-                print(typeOfClothe.count)
                 for i in 0..<typeOfClothe.count{
                     let clothe = typeOfClothe[i] as! Clothe
                     if(weather.temperature >= clothe.comfortTemperature! && weather.windSpeed <= clothe.comfortWind!){
-                        clothesDict.append(clothe)
+                        clothesDict.append(generateImage(imageName: clothe.imageName, color: clothe.color))
                     }
                 }
                 if(clothesDict.count == 0){
                     print(value)
                     if(value != ""){
-                        clothesDict.append(setClotheWithImage(value: value))
+                        clothesDict.append(generateImage(imageName: value, color: .white))
                     }
                 }
             }
             else{
                 if(value != ""){
-                    clothesDict.append(setClotheWithImage(value: value))
+                    clothesDict.append(generateImage(imageName: value, color: .white))
                 }
             }
             return clothesDict
@@ -353,11 +352,10 @@ class Inventory: NSObject {
             return []
         }
     }
-    
-    func setClotheWithImage(value: String) -> Clothe{
-        let clothe = Clothe()
-        clothe.image = generateImage(value: value)!
-        return clothe
+    /*
+    func setClotheWithImage(value: String) -> Dictionary<String,Any>{
+        return generateImage(imageName: value, color: nil)
+        //clothe.image = generateImage(value: value)!
     }
     
     func generateImage(value: String) -> UIImage?{
@@ -417,7 +415,7 @@ class Inventory: NSObject {
             }
         }
     }
-    
+    */
     //Index methods
     func getNameForIndex(index : Int) -> String{
         switch index {
@@ -462,6 +460,30 @@ class Inventory: NSObject {
         default:
             return ""
         }
+    }
+    
+    func generateImage(imageName: String, color: UIColor) -> Dictionary<String, Any> {
+        var result = Dictionary<String,Any>()
+        var backImage = UIImage(named: String(format: "%@_white", imageName.lowercased().removingWhitespaces()))
+        if(imageName.uppercased() == "Jacket".uppercased() || imageName.uppercased() == "windBreaker".uppercased()){
+            backImage = UIImage(named: "windBreaker_white")
+        }
+        let backImageView = UIImageView(image: backImage)
+        let topImage = UIImage(named: String(format: "%@_frame", imageName.lowercased().removingWhitespaces()))
+        let topImageView = UIImageView(image: topImage)
+        backImageView.tintColor = color
+        result["back"] = backImageView
+        result["top"] = topImageView
+        result["imageName"] = imageName
+        result["color"] = color
+        return result
+        /*
+        let bottomImage = UIImage(named: String(format: "%@_back", imageName))
+        var topImage = UIImage(named: String(format: "%@_top", imageName))
+        topImage = topImage?.tinted(with: color)
+        let result = UIImage.imageByMergingImages(topImage: topImage!, bottomImage: bottomImage!)
+        //imageView.image = imageView.image!.imageOverlayingImages([overlayedImage!])
+        return result*/
     }
 
 }

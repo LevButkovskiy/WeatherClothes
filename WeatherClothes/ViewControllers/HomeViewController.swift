@@ -79,66 +79,89 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     func afterLoadSettings(){
-        if (UserDefaults.standard.object(forKey: "version102") as? NSData) == nil {
-            showWhatsNew("You can install WhatsNewKit via CocoaPods or Carthage")
+        if (UserDefaults.standard.object(forKey: "version 1.0.2") as? NSData) == nil {
+            showWhatsNew()
         }
         setTheme()
     }
     
-    func showWhatsNew(_ withText: String){
+    func showWhatsNew(){
         UserDefaults.standard.removeObject(forKey: "inventory")
 
-            // Initialize WhatsNew
-            let whatsNew = WhatsNew(
-                // The Title
-                title: "Что нового в версии 1.0.2",
-                // The features you want to showcase
-                items: [
-                    WhatsNew.Item(
-                        title: "Installation",
-                        subtitle: withText,
-                        image: UIImage(named: "installation")
-                    ),
-                    WhatsNew.Item(
-                        title: "Open Source",
-                        subtitle: "Contributions are very welcome 👨‍💻",
-                        image: UIImage(named: "openSource")
-                    )
-                ]
-            )
+        // Initialize WhatsNew
+        let whatsNew = WhatsNew(
+            // The Title
+            title: "Что нового в версии 1.0.2",
+            // The features you want to showcase
+            items: [
+                WhatsNew.Item(
+                    title: "Темная тема",
+                    subtitle: "Теперь в темное время суток проще рабоать с приложением!",
+                    image: UIImage(named: "darkMode")
+                ),
+                WhatsNew.Item(
+                    title: "Возможность добавления одежды",
+                    subtitle: "Добавляйте собственную одежду с помощью генератора!",
+                    image: UIImage(named: "tshirt_white")
+                ),
+                WhatsNew.Item(
+                    title: "Уведомления",
+                    subtitle: "Уведомления каждое утро о том, что сегодня надеть",
+                    image: UIImage(named: "tshirt_top")
+                )
+            ]
+        )
+        // Initialize default Configuration
+        var configuration = WhatsNewViewController.Configuration()
             
-            // Initialize default Configuration
-            var configuration = WhatsNewViewController.Configuration()
-            
-            // Customize Configuration to your needs
+        // Customize Configuration to your needs
+        /*if #available(iOS 13, *) {
+            if(self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark){
+                configuration.backgroundColor = .whatsNewKitDark
+                configuration.itemsView.titleColor = .white
+                configuration.itemsView.subtitleColor = .white
+            }
+            else{
+                configuration.backgroundColor = .white
+                configuration.itemsView.titleColor = .black
+                configuration.itemsView.subtitleColor = .black
+            }
+        }
+        else{
             configuration.backgroundColor = .white
-            configuration.titleView.titleColor = .whatsNewKitBlue
-            configuration.itemsView.titleFont = .systemFont(ofSize: 17)
-            configuration.detailButton?.titleColor = .whatsNewKitBlue
-            configuration.completionButton.backgroundColor = .whatsNewKitGreen
-            // And many more configuration properties...
-            
-            //Animation
-            configuration.titleView.animation = .slideRight
-            configuration.itemsView.animation = .slideRight
-            configuration.detailButton?.animation = .slideRight
-            configuration.completionButton.animation = .slideRight
-            configuration.completionButton.title = "Понятно"
+        }*/
+        configuration.backgroundColor = .whatsNewKitDark
+        configuration.itemsView.titleColor = .white
+        configuration.itemsView.subtitleColor = .white
         
-            // Initialize WhatsNewViewController with custom configuration
-            let whatsNewViewController = WhatsNewViewController(
-                whatsNew: whatsNew,
-                configuration: configuration
-            )
-            do{
-                let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: true, requiringSecureCoding: true)
-                UserDefaults().set(archivedObject, forKey: "version102")
-            }
-            catch {
-                print(error)
-            }
-            // Present it 🤩
-            self.present(whatsNewViewController, animated: true)
+        configuration.itemsView.autoTintImage = false
+        configuration.titleView.titleColor = .whatsNewKitBlue
+        configuration.itemsView.titleFont = .systemFont(ofSize: 17, weight: .heavy)
+        configuration.detailButton?.titleColor = .whatsNewKitBlue
+        configuration.completionButton.backgroundColor = .whatsNewKitGreen
+        // And many more configuration properties...
+        
+        //Animation
+        configuration.titleView.animation = .slideRight
+        configuration.itemsView.animation = .slideRight
+        configuration.detailButton?.animation = .slideRight
+        configuration.completionButton.animation = .slideRight
+        configuration.completionButton.title = "Понятно"
+    
+        // Initialize WhatsNewViewController with custom configuration
+        let whatsNewViewController = WhatsNewViewController(
+            whatsNew: whatsNew,
+            configuration: configuration
+        )
+        do{
+            let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: true, requiringSecureCoding: true)
+            UserDefaults().set(archivedObject, forKey: "version102")
+        }
+        catch {
+            print(error)
+        }
+        // Present it 🤩
+        self.present(whatsNewViewController, animated: true)
     }
     
     func setViews(){
@@ -273,14 +296,16 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         cell.contentView.layer.cornerRadius = 20
         cell.layer.cornerRadius = 20
-        cell.setTheme()
         let section = inventory.head == "" ? indexPath.section + 1 : indexPath.section
         let clotheName = inventory.getNameForIndex(index: section)
-        
         cell.clotheName.text = clotheName.localized
         cell.clotheDescription.text = inventory.getDescriptionForIndex(index: section)
-        cell.clothesImages = inventory.getClothes(weather: weather, section: section, value: clotheName.trimmingCharacters(in: .whitespaces))
+        let array = inventory.getClothes(weather: weather, section: section, value: clotheName.trimmingCharacters(in: .whitespaces))
+        cell.clothesImageViews = array
         cell.setImages()
+        cell.setTheme()
+
+        /*cell.clothesImages = inventory.getClothes(weather: weather, section: section, value: clotheName.trimmingCharacters(in: .whitespaces))*/
         return cell
     }
     
@@ -324,7 +349,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.height / CGFloat(tableView.numberOfSections) - 30
+        return tableView.frame.height / CGFloat(tableView.numberOfSections) - 20
     }
     
     @IBAction func goToInventoryButton(_ sender: Any) {

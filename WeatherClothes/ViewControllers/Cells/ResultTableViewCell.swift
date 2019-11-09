@@ -16,8 +16,8 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet weak var backView: UIView!
     
     var height = CGFloat()
-    var clothesImages = Array<Any>()
-    var imageViews = [UIImageView]()
+    var clothesImageViews = Array<Dictionary<String,Any>>()
+    private var imageViews = [DoubleImageViewsView]()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -47,10 +47,14 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
         if(theme){
             clotheName.textColor = .white
             backView.backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
+            scrollView.backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
+
         }
         else{
             clotheName.textColor = .black
             backView.backgroundColor = .white
+            backgroundColor = .white
+            scrollView.backgroundColor = .white
         }
     }
     
@@ -59,7 +63,8 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
     }
     
     func setImages(){
-        imageViews = [UIImageView]()
+        imageViews = [DoubleImageViewsView]()
+        
         for view in scrollView.subviews{
             view.removeFromSuperview()
         }
@@ -69,32 +74,25 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
         scrollView.layer.shadowOpacity = 1
         scrollView.layer.shadowOffset = .zero
         scrollView.layer.shadowRadius = 3
-        scrollView.backgroundColor = nil
         
-        if(clothesImages.count == 1){
-            scrollView.isScrollEnabled = false
-        }
-        else{
-            scrollView.isScrollEnabled = true
-        }
-        
-        for i in 0..<clothesImages.count{
-            let clothe = clothesImages[i] as! Clothe
-            //let imageView = UIImageView(image: UIImage(data: clothe.image))
-            let imageView = UIImageView(image: clothe.image)
+        for imageView in clothesImageViews{
             //imageView.contentMode = .f
-            scrollView.addSubview(imageView)
-            imageViews.append(imageView)
+            let doubleView = DoubleImageViewsView()
+            doubleView.setImages(backImageView: imageView["back"] as! UIImageView, topImageView: imageView["top"] as! UIImageView)
+            doubleView.setTheme()
+            scrollView.addSubview(doubleView)
+            imageViews.append(doubleView)
         }
         
         for(index, imageView) in imageViews.enumerated(){
             imageView.frame.size = CGSize(width: height, height: height)
             imageView.frame.origin.x = height * CGFloat(index)
             imageView.frame.origin.y = 0
-            imageView.backgroundColor = nil
         }
+        
+        
         let contentWidth  = height * CGFloat(imageViews.count)
         scrollView.contentSize = CGSize(width: contentWidth, height: height)
     }
-    
+
 }

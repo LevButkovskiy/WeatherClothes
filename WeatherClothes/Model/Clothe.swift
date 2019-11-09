@@ -14,23 +14,26 @@ class Clothe: NSObject, NSSecureCoding {
     }
 
     var name : String
-    var image : UIImage
+    var imageName : String
+    var color : UIColor
     var type : Int!
     var comfortTemperature : Int?
     var comfortWind : Int?
     
     override init() {
         name = ""
-        image = UIImage()
+        imageName = ""
+        color = .white
         //userImage = Data()
         type = 0
         comfortWind = 0
         comfortTemperature = 0
     }
     
-    init(name: String, image: UIImage, type: Int, temperature: Int, wind: Int) {
+    init(name: String, imageName : String, color: UIColor, type: Int, temperature: Int, wind: Int) {
         self.name = name
-        self.image = image
+        self.imageName = imageName
+        self.color = color
         self.type = type
         self.comfortTemperature = temperature
         self.comfortWind = wind
@@ -38,7 +41,9 @@ class Clothe: NSObject, NSSecureCoding {
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "name")
-        aCoder.encode(image, forKey: "image")
+        aCoder.encode(imageName, forKey: "imageName")
+        let colorData = color.encode()
+        aCoder.encode(colorData, forKey: "color")
         //aCoder.encode(userImage, forKey: "userImage")
         aCoder.encode(type, forKey: "type")
         aCoder.encode(comfortTemperature, forKey: "temperature")
@@ -47,10 +52,22 @@ class Clothe: NSObject, NSSecureCoding {
     
     required init?(coder aDecoder: NSCoder) {
         name = aDecoder.decodeObject(forKey: "name") as! String
-        image = aDecoder.decodeObject(forKey: "image") as! UIImage
+        imageName = aDecoder.decodeObject(forKey: "imageName") as! String
+        let colorData = aDecoder.decodeObject(forKey: "color") as! Data
+        color = UIColor.color(withData: colorData)
         //userImage = aDecoder.decodeObject(forKey: "userImage") as! Data
         type = aDecoder.decodeObject(forKey: "type") as? Int
         comfortTemperature = aDecoder.decodeObject(forKey: "temperature") as? Int
         comfortWind = aDecoder.decodeObject(forKey: "wind") as? Int
+    }
+}
+
+extension UIColor {
+    class func color(withData data:Data) -> UIColor {
+         return NSKeyedUnarchiver.unarchiveObject(with: data) as! UIColor
+    }
+
+    func encode() -> Data {
+         return NSKeyedArchiver.archivedData(withRootObject: self)
     }
 }

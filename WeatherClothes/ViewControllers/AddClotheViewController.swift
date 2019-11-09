@@ -63,16 +63,6 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         }*/
     }
     
-    func generateImageView(imageName: String, color: UIColor) -> UIImageView {
-        let imageView = UIImageView()
-        let bottomImage = UIImage(named: String(format: "%@_back", imageName))
-        var topImage = UIImage(named: String(format: "%@_top", imageName))
-        topImage = topImage?.tinted(with: color)
-        imageView.image = UIImage.imageByMergingImages(topImage: topImage!, bottomImage: bottomImage!)
-        //imageView.image = imageView.image!.imageOverlayingImages([overlayedImage!])
-        return imageView
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
     }
@@ -132,24 +122,19 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         }
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = typeCollectionView.dequeueReusableCell(withReuseIdentifier: "typeCell", for: indexPath) as! TypeCollectionViewCell
         if(indexPath.row == 0){
-            cell.imageView.image = UIImage(named: "cap_white")
+            cell.imageView.image = UIImage(named: "cap_white_default")
         }
         if(indexPath.row == 1){
-            cell.imageView.image = UIImage(named: "tshirt_white")
+            cell.imageView.image = UIImage(named: "tshirt_white_default")
         }
         if(indexPath.row == 2){
-            cell.imageView.image = UIImage(named: "pants_white")
+            cell.imageView.image = UIImage(named: "pants_white_default")
         }
         if(indexPath.row == 3){
-            cell.imageView.image = UIImage(named: "sneakers_white")
-        }
-        var theme = Settings.shared().theme
-        if #available(iOS 13, *) {
-            theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
+            cell.imageView.image = UIImage(named: "sneakers_white_default")
         }
         cell.imageView.backgroundColor = .lightGray
         return cell
@@ -165,9 +150,10 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @objc func changedColor(_ slider: ColorSlider) {
-        color = slider.color
-        generateImagesForScrollableView(with: color, toFirst: false)
+        self.color = slider.color
+        self.generateImagesForScrollableView(with: self.color, toFirst: false)
     }
+    
     
     func deselectAll(collectionView: UICollectionView){
         for i in 0..<typeCollectionView.numberOfItems(inSection: 0){
@@ -177,22 +163,22 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     func generateImagesForScrollableView(with color: UIColor, toFirst: Bool){
-        var array = Array<UIImageView>()
-
+        var array = Array<Dictionary<String, Any>>()
         switch type {
         case 0:
-            array.append(generateImageView(imageName: "cap" , color: color))
-            //array.append(generateImageView(imageName: "hat" , color: color))
+            array.append(inventory.generateImage(imageName: "cap" , color: color))
+            array.append(inventory.generateImage(imageName: "hat" , color: color))
         case 1:
-            array.append(generateImageView(imageName: "tshirt" , color: color))
-           // array.append(generateImageView(imageName: "windbreaker" , color: color))
+            array.append(inventory.generateImage(imageName: "tshirt" , color: color))
+            array.append(inventory.generateImage(imageName: "windbreaker" , color: color))
+            array.append(inventory.generateImage(imageName: "insulatedjacket" , color: color))
         case 2:
-            array.append(generateImageView(imageName: "shorts" , color: color))
-            array.append(generateImageView(imageName: "pants" , color: color))
+            array.append(inventory.generateImage(imageName: "pants" , color: color))
+            array.append(inventory.generateImage(imageName: "shorts" , color: color))
         case 3:
-            array.append(generateImageView(imageName: "slippers" , color: color))
-            array.append(generateImageView(imageName: "sneakers" , color: color))
-            array.append(generateImageView(imageName: "winterShoes" , color: color))
+            array.append(inventory.generateImage(imageName: "winterShoes" , color: color))
+            array.append(inventory.generateImage(imageName: "sneakers" , color: color))
+            //array.append(generateImage(imageName: "slippers" , color: color))
 
         default:
             break;
@@ -313,8 +299,9 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         let action = UIAlertAction(title: "Сохранить", style: .default) { (alertAction) in
             let textField = alert.textFields![0] as UITextField
             if(textField.text != ""){
-                let image = self.scrollableImages.getImageWithIndex()
-                let clothe = Clothe(name: textField.text!, image: image, type: self.type, temperature: Int(self.temperatureSlider.value), wind: Int(self.windSlider.value))
+                let imageName = self.scrollableImages.getClotheName()
+                let color = self.scrollableImages.getClotheColor()
+                let clothe = Clothe(name: textField.text!, imageName: imageName, color: color, type: self.type, temperature: Int(self.temperatureSlider.value), wind: Int(self.windSlider.value))
                 self.inventory.add(clothe: clothe)
                 self.navigationController?.popViewController(animated: true)
             }
