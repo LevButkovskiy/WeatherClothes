@@ -463,13 +463,15 @@ class Inventory: NSObject {
     }
     
     func generateImage(imageName: String, color: UIColor) -> Dictionary<String, Any> {
+        print(imageName)
         var result = Dictionary<String,Any>()
         var backImage = UIImage(named: String(format: "%@_white", imageName.lowercased().removingWhitespaces()))
+        var topImage = UIImage(named: String(format: "%@_frame", imageName.lowercased().removingWhitespaces()))
         if(imageName.uppercased() == "Jacket".uppercased() || imageName.uppercased() == "windBreaker".uppercased()){
-            backImage = UIImage(named: "windBreaker_white")
+            backImage = UIImage(named: "windbreaker_white")
+            topImage = UIImage(named: "windbreaker_frame")
         }
         let backImageView = UIImageView(image: backImage)
-        let topImage = UIImage(named: String(format: "%@_frame", imageName.lowercased().removingWhitespaces()))
         let topImageView = UIImageView(image: topImage)
         backImageView.tintColor = color
         result["back"] = backImageView
