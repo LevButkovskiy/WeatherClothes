@@ -81,8 +81,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         }
         else{
             var notifications = Dictionary<String,Any>()
-            notifications["hour"] = "9"
-            notifications["minutes"] = "0"
+            notifications["hour"] = "09"
+            notifications["minutes"] = "00"
             notifications["allowed"] = true
             do{
                 let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: notifications, requiringSecureCoding: true)
