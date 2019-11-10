@@ -102,12 +102,12 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                 WhatsNew.Item(
                     title: "Возможность добавления одежды",
                     subtitle: "Добавляйте собственную одежду с помощью генератора!",
-                    image: UIImage(named: "tshirt_white")
+                    image: UIImage(named: "tshirt_white_default")
                 ),
                 WhatsNew.Item(
                     title: "Уведомления",
                     subtitle: "Уведомления каждое утро о том, что сегодня надеть",
-                    image: UIImage(named: "tshirt_top")
+                    image: UIImage(named: "notifications")?.tinted(with: .white)
                 )
             ]
         )
@@ -338,6 +338,14 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         title.textAlignment = .center
         view.addSubview(title)*/
         performSegue(withIdentifier: "goToInventory", sender: nil)
+    }
+    func showNotificationSettins(){
+        let notificationsSettings = NotificationSettings()
+        notificationsSettings.frame = CGRect(x: 0, y: -self.view.frame.height, width: self.view.frame.width, height: self.view.frame.height)
+        self.view.addSubview(notificationsSettings)
+        UIView.animate(withDuration: 0.5, animations: {
+            notificationsSettings.frame = self.view.frame
+        })
     }
     
     @objc func closeButton(){

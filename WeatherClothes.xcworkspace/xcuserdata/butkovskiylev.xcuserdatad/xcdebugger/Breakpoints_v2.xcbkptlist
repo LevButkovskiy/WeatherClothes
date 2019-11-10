@@ -109,49 +109,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1F7D7C6F-A7B0-43A8-BFB8-65AAD42B010A"
+            uuid = "F569696E-5A34-49DA-B43E-B610897460C2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WeatherClothes/ViewControllers/AddClotheViewController.swift"
+            filePath = "WeatherClothes/Model/Notifications.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "304"
-            endingLineNumber = "304"
-            landmarkName = "saveAction()"
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "scheduleNotification(title:body:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "1F7D7C6F-A7B0-43A8-BFB8-65AAD42B010A - e58af3456d966e27"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in WeatherClothes.AddClotheViewController.saveAction() -&gt; ()"
-                  moduleName = "WeatherClothes"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/butkovskiylev/Documents/BlueBeakStd/WeatherClothes/WeatherClothes/ViewControllers/AddClotheViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "304"
-                  endingLineNumber = "304"
-                  offsetFromSymbolStart = "831">
-               </Location>
-               <Location
-                  uuid = "1F7D7C6F-A7B0-43A8-BFB8-65AAD42B010A - e58af3456d966e27"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (__C.UIAlertAction) -&gt; () in WeatherClothes.AddClotheViewController.saveAction() -&gt; ()"
-                  moduleName = "WeatherClothes"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/butkovskiylev/Documents/BlueBeakStd/WeatherClothes/WeatherClothes/ViewControllers/AddClotheViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "304"
-                  endingLineNumber = "304"
-                  offsetFromSymbolStart = "998">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "65446516-0C94-4960-B9EB-02155F5191EF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherClothes/ViewControllers/Views/NotificationSettings.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "applyChanges()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "57B5F05B-08C9-44ED-AC33-BD69AC1123F7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WeatherClothes/Model/Notifications.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "scheduleNotification(title:body:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

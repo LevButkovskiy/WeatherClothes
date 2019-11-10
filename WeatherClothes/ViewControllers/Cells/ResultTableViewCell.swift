@@ -53,7 +53,6 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
         else{
             clotheName.textColor = .black
             backView.backgroundColor = .white
-            backgroundColor = .white
             scrollView.backgroundColor = .white
         }
     }

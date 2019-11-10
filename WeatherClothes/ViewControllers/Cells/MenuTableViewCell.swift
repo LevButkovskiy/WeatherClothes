@@ -14,6 +14,8 @@ class MenuTableViewCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var switcher: UISwitch!
+    @IBOutlet weak var icon: UIImageView!
+    
     var mode = String()
     
     override func awakeFromNib() {
@@ -55,10 +57,12 @@ class MenuTableViewCell: UITableViewCell {
         if(theme){
             nameLabel.textColor = .white
             self.backgroundColor = UIColor(red: 30.0/255.0, green: 32.0/255.0, blue: 35.0/255.0, alpha: 1.0)
+            icon.image = icon.image?.tinted(with: .white)
         }
         else{
             nameLabel.textColor = .black
             self.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
+            icon.image = icon.image?.tinted(with: .black)
         }
     }
     

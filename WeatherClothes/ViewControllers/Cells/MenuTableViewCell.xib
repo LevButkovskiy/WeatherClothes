@@ -18,24 +18,34 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eio-aT-KcO">
-                        <rect key="frame" x="20" y="25.5" width="42" height="20.5"/>
+                        <rect key="frame" x="50" y="25.5" width="42" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <switch hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qwm-5D-NZm">
-                        <rect key="frame" x="72" y="20" width="51" height="31"/>
+                        <rect key="frame" x="102" y="20" width="51" height="31"/>
                     </switch>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TjP-L2-UZQ">
+                        <rect key="frame" x="10" y="20.5" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="CkH-WE-hhQ"/>
+                            <constraint firstAttribute="width" constant="30" id="KP4-GI-5cZ"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="eio-aT-KcO" firstAttribute="centerY" secondItem="TjP-L2-UZQ" secondAttribute="centerY" id="8JQ-wH-WXP"/>
+                    <constraint firstItem="TjP-L2-UZQ" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8bN-UF-flT"/>
                     <constraint firstItem="qwm-5D-NZm" firstAttribute="leading" secondItem="eio-aT-KcO" secondAttribute="trailing" constant="10" id="DKF-aW-DEt"/>
-                    <constraint firstItem="eio-aT-KcO" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="FiS-Gp-8jd"/>
                     <constraint firstItem="qwm-5D-NZm" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="PUi-Cb-ycc"/>
-                    <constraint firstItem="eio-aT-KcO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="qbU-tU-fhK"/>
+                    <constraint firstItem="eio-aT-KcO" firstAttribute="leading" secondItem="TjP-L2-UZQ" secondAttribute="trailing" constant="10" id="xV2-Tu-o4W"/>
+                    <constraint firstItem="TjP-L2-UZQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ybq-dH-HQf"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="icon" destination="TjP-L2-UZQ" id="MCX-KP-kMO"/>
                 <outlet property="nameLabel" destination="eio-aT-KcO" id="3SZ-YP-fuf"/>
                 <outlet property="switcher" destination="qwm-5D-NZm" id="Wff-Tp-MSL"/>
             </connections>

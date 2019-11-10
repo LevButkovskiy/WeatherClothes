@@ -57,49 +57,65 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         if #available(iOS 13, *) {
             switch indexPath.row {
             case 0:
-                cell.mode = "gender"
-                cell.nameLabel.text = "gender".localized
-                cell.switcher.isHidden = false
-                cell.switcher.onTintColor = UIColor(red:1.00, green:0.54, blue:0.98, alpha:1.0)
-                cell.switcher.tintColor = .blue
-                cell.switcher.layer.cornerRadius = cell.switcher.frame.height / 2
-                cell.switcher.backgroundColor = .blue
-                cell.selectionStyle = .none
+                cell.nameLabel.text = "Что нового"
+                cell.accessoryType = .disclosureIndicator
+                cell.icon.image = UIImage(named: "updates")
             case 1:
                 cell.nameLabel.text = "Уведомления"
                 cell.accessoryType = .disclosureIndicator
+                cell.icon.image = UIImage(named: "notifications")
             default: break
             }
         }
         else{
             switch indexPath.row {
             case 0:
-                cell.mode = "gender"
-                cell.nameLabel.text = "gender".localized
-                cell.switcher.isHidden = false
-                cell.switcher.onTintColor = UIColor(red:1.00, green:0.54, blue:0.98, alpha:1.0)
-                cell.switcher.tintColor = .blue
-                cell.switcher.layer.cornerRadius = cell.switcher.frame.height / 2
-                cell.switcher.backgroundColor = .blue
-                cell.selectionStyle = .none
+                cell.nameLabel.text = "Что нового"
+                cell.accessoryType = .disclosureIndicator
+                cell.icon.image = UIImage(named: "updates")
             case 1:
-                cell.mode = "theme"
-                cell.nameLabel.text = "nightTheme".localized
-                cell.switcher.isHidden = false
-                cell.selectionStyle = .none
-            case 2:
                 cell.nameLabel.text = "Уведомления"
                 cell.accessoryType = .disclosureIndicator
+                cell.icon.image = UIImage(named: "notifications")
+            case 2:
+                cell.mode = "theme"
+                cell.nameLabel.text = "darkMode".localized
+                cell.switcher.isHidden = false
+                cell.icon.image = UIImage(named: "darkMode")
+                cell.selectionStyle = .none
             default: break
             }
         }
+        
+        /*
+         cell.mode = "gender"
+         cell.nameLabel.text = "gender".localized
+         cell.switcher.isHidden = false
+         cell.switcher.onTintColor = UIColor(red:1.00, green:0.54, blue:0.98, alpha:1.0)
+         cell.switcher.tintColor = .blue
+         cell.switcher.layer.cornerRadius = cell.switcher.frame.height / 2
+         cell.switcher.backgroundColor = .blue
+         cell.selectionStyle = .none
+         */
 
         cell.setValues()
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)        
+        tableView.deselectRow(at: indexPath, animated: true)
+        if(indexPath.row == 0){
+            let viewController = (UIApplication.shared.keyWindow!.rootViewController) as! UINavigationController
+            let containerViewController = viewController.viewControllers[0] as! ContainerViewController
+            containerViewController.toggleMenu()
+            containerViewController.homeViewController.showWhatsNew()
+        }
+        if(indexPath.row == 1){
+            let viewController = (UIApplication.shared.keyWindow!.rootViewController) as! UINavigationController
+            let containerViewController = viewController.viewControllers[0] as! ContainerViewController
+            containerViewController.toggleMenu()
+            containerViewController.homeViewController.showNotificationSettins()
+        }
     }
 
 }

@@ -17,7 +17,7 @@
 "delete" = "Удалить";
 
 "hourly" = "Почасовая";
-"nightTheme" = "Темная тема";
+"darkMode" = "Темная тема";
 "gender" = "Пол";
 "inventory" = "Гардероб";
 "inventoryTitle" = "Ваша одежда";

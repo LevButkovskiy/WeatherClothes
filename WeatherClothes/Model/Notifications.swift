@@ -59,33 +59,69 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
         let minutes = calendar.component(.minute, from: date)
-        if(hour < 9){
-            timeInt = (9-hour)*60
-        }
-        else if(hour > 9){
-            timeInt = (24-hour+9)*60*60
+        if let unarchivedObject = UserDefaults.standard.object(forKey: "notification") as? NSData {
+            let notifications = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Dictionary<String,Any>)
+            let notificationHour = Int(notifications["hour"] as! String)!
+            let notificationMinutes = Int(notifications["minutes"] as! String)!
+            if(hour < notificationHour){
+                timeInt = (notificationHour-hour)*60*60
+            }
+            else if(hour > notificationHour){
+                timeInt = (24-hour+notificationHour)*60*60
+            }
+            else{
+                timeInt = 24*60
+            }
+            //timeInt = timeInt - minutes*60
+            print(timeInt)
+            let newDate = Date(timeInterval: TimeInterval(timeInt), since: date)
+            let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: newDate)
+            
+            //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+            YMMYandexMetrica.reportEvent("В \(hour):\(minutes) было установлено уведомление, которое сработает через \(timeInt) секунд") { (error) in
+                YMMYandexMetrica.reportEvent("Ошибка в reportEvent о уведомлении", onFailure: { (error) in
+                    print(error.localizedDescription)
+                })
+            }
+            let identifier = "Local notification"
+            
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+            notificationCenter.add(request) { (error) in
+                if let error = error{
+                    print("Error: \(error.localizedDescription)")
+                }
+            }
         }
         else{
-            timeInt = 24*60
-        }
-        timeInt = timeInt - minutes*60
-        print(timeInt)
-        let newDate = Date(timeInterval: TimeInterval(timeInt), since: date)
-        let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: newDate)
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        /*let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-        YMMYandexMetrica.reportEvent("В \(hour):\(minutes) было установлено уведомление, которое сработает через \(timeInt) секунд") { (error) in
-            YMMYandexMetrica.reportEvent("Ошибка в reportEvent о уведомлении", onFailure: { (error) in
-                print(error.localizedDescription)
-            })
-        }*/
-        let identifier = "Local notification"
-        
-        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-        notificationCenter.add(request) { (error) in
-            if let error = error{
-                print("Error: \(error.localizedDescription)")
+            if(hour < 9){
+                timeInt = (9-hour)*60
+            }
+            else if(hour > 9){
+                timeInt = (24-hour+9)*60*60
+            }
+            else{
+                timeInt = 24*60
+            }
+            timeInt = timeInt - minutes*60
+            print(timeInt)
+            let newDate = Date(timeInterval: TimeInterval(timeInt), since: date)
+            let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: newDate)
+            
+            //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
+            YMMYandexMetrica.reportEvent("В \(hour):\(minutes) было установлено уведомление, которое сработает через \(timeInt) секунд") { (error) in
+                YMMYandexMetrica.reportEvent("Ошибка в reportEvent о уведомлении", onFailure: { (error) in
+                    print(error.localizedDescription)
+                })
+            }
+            let identifier = "Local notification"
+            
+            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+            notificationCenter.add(request) { (error) in
+                if let error = error{
+                    print("Error: \(error.localizedDescription)")
+                }
             }
         }
         

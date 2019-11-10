@@ -11,6 +11,7 @@
 		A006C2332337916800B2A8F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A006C2352337916800B2A8F6 /* InfoPlist.strings */; };
 		A007981D237562170090033C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A007981F237562170090033C /* Localizable.strings */; };
 		A00928B4231ECE46002F9D2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00928B3231ECE46002F9D2A /* Main.storyboard */; };
+		A0186BFC2377E22400294330 /* NotificationSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0186BFB2377E22400294330 /* NotificationSettings.swift */; };
 		A01EA18323564824002F7850 /* SubscriptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A01EA18223564824002F7850 /* SubscriptionView.xib */; };
 		A0285587234E5C18003AC1DA /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0285585234E5C18003AC1DA /* ColorCollectionViewCell.swift */; };
 		A0285588234E5C18003AC1DA /* ColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0285586234E5C18003AC1DA /* ColorCollectionViewCell.xib */; };
@@ -18,6 +19,15 @@
 		A04C129022FC811A00C82372 /* ResultTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A04C128E22FC811A00C82372 /* ResultTableViewCell.xib */; };
 		A056C6532317A858003B83D3 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A056C6522317A858003B83D3 /* HeaderView.swift */; };
 		A056C6552317A869003B83D3 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A056C6542317A869003B83D3 /* HeaderView.xib */; };
+		A0698AF02377E94500DCE5C9 /* NotificationSettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0698AEF2377E94500DCE5C9 /* NotificationSettings.xib */; };
+		A0698AF32377EDEC00DCE5C9 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0698AF12377EDEC00DCE5C9 /* NotificationTableViewCell.swift */; };
+		A0698AF42377EDEC00DCE5C9 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0698AF22377EDEC00DCE5C9 /* NotificationTableViewCell.xib */; };
+		A0698AF72377EFEB00DCE5C9 /* SetValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0698AF52377EFEB00DCE5C9 /* SetValueTableViewCell.swift */; };
+		A0698AF82377EFEB00DCE5C9 /* SetValueTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0698AF62377EFEB00DCE5C9 /* SetValueTableViewCell.xib */; };
+		A0698AFB2377F14500DCE5C9 /* TimePickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0698AF92377F14500DCE5C9 /* TimePickerTableViewCell.swift */; };
+		A0698AFC2377F14500DCE5C9 /* TimePickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0698AFA2377F14500DCE5C9 /* TimePickerTableViewCell.xib */; };
+		A0698AFF2377F28600DCE5C9 /* ButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0698AFD2377F28600DCE5C9 /* ButtonTableViewCell.swift */; };
+		A0698B002377F28600DCE5C9 /* ButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0698AFE2377F28600DCE5C9 /* ButtonTableViewCell.xib */; };
 		A0773E10230D8B23007C202B /* Clothes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0773E0F230D8B23007C202B /* Clothes.swift */; };
 		A0967FF7236809D00066B8E7 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0967FF6236809D00066B8E7 /* Notifications.swift */; };
 		A0967FF923680E510066B8E7 /* 1234.png in Resources */ = {isa = PBXBuildFile; fileRef = A0967FF823680E510066B8E7 /* 1234.png */; };
@@ -98,6 +108,7 @@
 		A007981E237562170090033C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A0079820237562190090033C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A00928B3231ECE46002F9D2A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A0186BFB2377E22400294330 /* NotificationSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettings.swift; sourceTree = "<group>"; };
 		A018E13E2358851B00614796 /* WeatherClothes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WeatherClothes.entitlements; sourceTree = "<group>"; };
 		A01EA18223564824002F7850 /* SubscriptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscriptionView.xib; sourceTree = "<group>"; };
 		A0285585234E5C18003AC1DA /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -107,6 +118,15 @@
 		A04C128E22FC811A00C82372 /* ResultTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultTableViewCell.xib; sourceTree = "<group>"; };
 		A056C6522317A858003B83D3 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		A056C6542317A869003B83D3 /* HeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		A0698AEF2377E94500DCE5C9 /* NotificationSettings.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationSettings.xib; sourceTree = "<group>"; };
+		A0698AF12377EDEC00DCE5C9 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		A0698AF22377EDEC00DCE5C9 /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
+		A0698AF52377EFEB00DCE5C9 /* SetValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetValueTableViewCell.swift; sourceTree = "<group>"; };
+		A0698AF62377EFEB00DCE5C9 /* SetValueTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetValueTableViewCell.xib; sourceTree = "<group>"; };
+		A0698AF92377F14500DCE5C9 /* TimePickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerTableViewCell.swift; sourceTree = "<group>"; };
+		A0698AFA2377F14500DCE5C9 /* TimePickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimePickerTableViewCell.xib; sourceTree = "<group>"; };
+		A0698AFD2377F28600DCE5C9 /* ButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTableViewCell.swift; sourceTree = "<group>"; };
+		A0698AFE2377F28600DCE5C9 /* ButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonTableViewCell.xib; sourceTree = "<group>"; };
 		A0773E0E230C0BFB007C202B /* Magnitogorsk.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Magnitogorsk.gpx; sourceTree = "<group>"; };
 		A0773E0F230D8B23007C202B /* Clothes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Clothes.swift; path = ../Clothes.swift; sourceTree = "<group>"; };
 		A0967FF6236809D00066B8E7 /* Notifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
@@ -250,6 +270,14 @@
 				A0285586234E5C18003AC1DA /* ColorCollectionViewCell.xib */,
 				A0C37601234DEF1800E4604B /* TypeCollectionViewCell.swift */,
 				A0C37602234DEF1800E4604B /* TypeCollectionViewCell.xib */,
+				A0698AF12377EDEC00DCE5C9 /* NotificationTableViewCell.swift */,
+				A0698AF22377EDEC00DCE5C9 /* NotificationTableViewCell.xib */,
+				A0698AF52377EFEB00DCE5C9 /* SetValueTableViewCell.swift */,
+				A0698AF62377EFEB00DCE5C9 /* SetValueTableViewCell.xib */,
+				A0698AF92377F14500DCE5C9 /* TimePickerTableViewCell.swift */,
+				A0698AFA2377F14500DCE5C9 /* TimePickerTableViewCell.xib */,
+				A0698AFD2377F28600DCE5C9 /* ButtonTableViewCell.swift */,
+				A0698AFE2377F28600DCE5C9 /* ButtonTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -261,6 +289,8 @@
 				A0BF269723773886008D50E1 /* DoubleImageViewsView.swift */,
 				A0F270962354C78C00E3C814 /* ScrollableImagesView.xib */,
 				A0F270982354C7EA00E3C814 /* ScrollableImagesView.swift */,
+				A0186BFB2377E22400294330 /* NotificationSettings.swift */,
+				A0698AEF2377E94500DCE5C9 /* NotificationSettings.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -453,17 +483,22 @@
 			files = (
 				A0BF269A237738B5008D50E1 /* DoubleImageViewsView.xib in Resources */,
 				A04C129022FC811A00C82372 /* ResultTableViewCell.xib in Resources */,
+				A0698AF02377E94500DCE5C9 /* NotificationSettings.xib in Resources */,
+				A0698AF82377EFEB00DCE5C9 /* SetValueTableViewCell.xib in Resources */,
 				A00928B4231ECE46002F9D2A /* Main.storyboard in Resources */,
 				A0BCA547230B228C00407757 /* MenuTableViewCell.xib in Resources */,
 				A007981D237562170090033C /* Localizable.strings in Resources */,
 				A0C37604234DEF1800E4604B /* TypeCollectionViewCell.xib in Resources */,
 				A0E9BE182376EA65004C922D /* painting.gif in Resources */,
+				A0698AF42377EDEC00DCE5C9 /* NotificationTableViewCell.xib in Resources */,
+				A0698B002377F28600DCE5C9 /* ButtonTableViewCell.xib in Resources */,
 				A0F3611822F9DBB900906528 /* InventoryTableViewCell.xib in Resources */,
 				A056C6552317A869003B83D3 /* HeaderView.xib in Resources */,
 				A0DDFF74235E1CD000344ABB /* Assets.xcassets in Resources */,
 				A0EF387B22EC623700A980CC /* LaunchScreen.storyboard in Resources */,
 				A006C2332337916800B2A8F6 /* InfoPlist.strings in Resources */,
 				A01EA18323564824002F7850 /* SubscriptionView.xib in Resources */,
+				A0698AFC2377F14500DCE5C9 /* TimePickerTableViewCell.xib in Resources */,
 				A0F270972354C78C00E3C814 /* ScrollableImagesView.xib in Resources */,
 				A0285588234E5C18003AC1DA /* ColorCollectionViewCell.xib in Resources */,
 				A0967FF923680E510066B8E7 /* 1234.png in Resources */,
@@ -585,9 +620,13 @@
 				A0EF38A322EC628900A980CC /* API.swift in Sources */,
 				A056C6532317A858003B83D3 /* HeaderView.swift in Sources */,
 				A0F3611722F9DBB900906528 /* InventoryTableViewCell.swift in Sources */,
+				A0186BFC2377E22400294330 /* NotificationSettings.swift in Sources */,
+				A0698AFF2377F28600DCE5C9 /* ButtonTableViewCell.swift in Sources */,
 				A0EF387622EC623500A980CC /* WeatherClothes.xcdatamodeld in Sources */,
+				A0698AFB2377F14500DCE5C9 /* TimePickerTableViewCell.swift in Sources */,
 				A0EC77E523156B720080B7B1 /* Inventory.swift in Sources */,
 				A0285587234E5C18003AC1DA /* ColorCollectionViewCell.swift in Sources */,
+				A0698AF32377EDEC00DCE5C9 /* NotificationTableViewCell.swift in Sources */,
 				A0C37606234E314E00E4604B /* Clothe.swift in Sources */,
 				A0F3611222F992C400906528 /* Weather.swift in Sources */,
 				A0BCA53F230B078B00407757 /* MenuViewController.swift in Sources */,
@@ -598,6 +637,7 @@
 				A04C128F22FC811A00C82372 /* ResultTableViewCell.swift in Sources */,
 				A0CD2FEE235211D60069D6FB /* InventoryViewController.swift in Sources */,
 				A0BCA53D230B077E00407757 /* ContainerViewController.swift in Sources */,
+				A0698AF72377EFEB00DCE5C9 /* SetValueTableViewCell.swift in Sources */,
 				A0E67C7123476285008D8926 /* Settings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
