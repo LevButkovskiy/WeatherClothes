@@ -37,7 +37,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         tableView.register(UINib(nibName: "MenuTableViewCell", bundle: nil), forCellReuseIdentifier: reuseIdentifier)
         view.addSubview(tableView)
-        tableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width * 0.6, height: self.view.frame.height)
+        tableView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width * 0.65, height: self.view.frame.height)
         tableView.separatorStyle = .none
         tableView.rowHeight = 70
     }

@@ -144,6 +144,16 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         deselectAll(collectionView: typeCollectionView)
         cell.imageView.backgroundColor = .blue
     }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        print(UIDevice.modelName)
+        if(UIDevice.modelName == "iPhone 5s" || UIDevice.modelName == "iPhone 5c" || UIDevice.modelName == "iPhone SE" || UIDevice.modelName == "Simulator iPhone 5s" || UIDevice.modelName == "Simulator iPhone 5c" || UIDevice.modelName == "Simulator iPhone SE"){
+            return UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20);
+        }
+        else{
+            return UIEdgeInsets(top: 10, left: 50, bottom: 10, right: 50);
+        }
+    }
+
     
     @objc func changedColor(_ slider: ColorSlider) {
         self.color = slider.color
