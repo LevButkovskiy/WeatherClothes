@@ -31,15 +31,17 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
         }
     }
     
-    func scheduleNotification(title: String, body: String){
+    func scheduleNotification(){
         print("clicked")
         let content = UNMutableNotificationContent()
+        if let unarchivedObject = UserDefaults.standard.object(forKey: "notificationText") as? NSData {
+            content.title = "attention".localized
+            content.body = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! String)
+        }
         
-        content.title = title
-        content.body = body
         content.sound = .default
         content.badge = 1
-        guard let path = Bundle.main.path(forResource: "1234", ofType: "png") else {
+        /*guard let path = Bundle.main.path(forResource: "1234", ofType: "png") else {
             return;
         }
         let url = URL(fileURLWithPath: path)
@@ -52,7 +54,7 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
         }
         catch{
             print("Attachment could not be loaded")
-        }
+        }*/
         
         let date = Date()
         var timeInt = Int()
@@ -70,16 +72,20 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
                 timeInt = (24-hour+notificationHour)*60*60
             }
             else{
-                timeInt = 24*60
+                if(minutes > notificationMinutes){
+                    timeInt = 24*60*60 - minutes + notificationMinutes
+                }
+                else{
+                    timeInt = notificationMinutes * 60 - minutes * 60
+                }
             }
-            //timeInt = timeInt - minutes*60
             print(timeInt)
             let newDate = Date(timeInterval: TimeInterval(timeInt), since: date)
             let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: newDate)
             
             //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
             let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-            YMMYandexMetrica.reportEvent("В \(hour):\(minutes) было установлено уведомление, которое сработает через \(timeInt) секунд") { (error) in
+            YMMYandexMetrica.reportEvent("In\(hour):\(minutes) across \(timeInt) seconds") { (error) in
                 YMMYandexMetrica.reportEvent("Ошибка в reportEvent о уведомлении", onFailure: { (error) in
                     print(error.localizedDescription)
                 })

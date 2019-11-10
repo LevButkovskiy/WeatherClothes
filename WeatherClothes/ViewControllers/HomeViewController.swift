@@ -76,6 +76,22 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         setTheme()
         setViews()
+        
+        if (UserDefaults.standard.object(forKey: "notification") as? NSData) != nil {
+        }
+        else{
+            var notifications = Dictionary<String,Any>()
+            notifications["hour"] = "9"
+            notifications["minutes"] = "0"
+            notifications["allowed"] = true
+            do{
+                let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: notifications, requiringSecureCoding: true)
+                UserDefaults().set(archivedObject, forKey: "notification")
+            }
+            catch {
+                print(error)
+            }
+        }
     }
     
     func afterLoadSettings(){
@@ -214,6 +230,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                     //self.timeLabel.text = String(format: "%@, %@", self.now.dayOfWeek().localized, self.now.hoursMinutes())
                     self.weatherImage.image = self.weather.getImageForCondition(minutes: Int(minutes)!, hours: Int(hours)!, weatherCondition: self.weather.weatherCondition)
                     self.generateClothes()
+                    self.loadForecast()
                 }
                 
             }
@@ -227,17 +244,53 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         weatherForecast.initForForecast(latitude: self.latitude, longitude: self.longitude) { (completion) in
             DispatchQueue.main.async {
-                if(completion){
-                    for i in 0..<self.weatherForecast.forecast.count{
-                        let weatherPart = self.weatherForecast.forecast[i] as! Dictionary<String, Any>
-                        let time = weatherPart["time"] as! String
-                        if(time == "08:00" || time == "09:00" || time == "10:00"){
-                            let temperature = weatherPart["temperature"] as! String
-                            var weatherCondition = weatherPart["weatherCondition"] as! String
-                            weatherCondition = weatherCondition.capitalizedFirst()
-                            let weatherConditionImage = self.weatherForecast.getImageForCondition(minutes: Int("30")!, hours: Int("9")!, weatherCondition: weatherCondition)
-                            print("Time: \(time), Temperature: \(temperature), WeatherCondition: \(weatherCondition)")
-                            self.notificationCenter.scheduleNotification(title: "Доброе утро", body: "На улице: \(temperature)°С, \(weatherCondition)")
+                if let unarchivedObject = UserDefaults.standard.object(forKey: "notification") as? NSData {
+                    let notifications = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Dictionary<String,Any>)
+                    let notificationHour = Int(notifications["hour"] as! String)
+                    if(Int(self.now.hours())! <= notificationHour! + 2 && Int(self.now.hours())! >= notificationHour!){
+                        var notificationText = ""
+                        if(self.inventory.head == ""){
+                            notificationText = String(format: "%@: %d°С, %@. %@: %@, %@, %@", "outside", self.weather.temperature, self.weather.weatherCondition, "clothesToWear".localized, self.inventory.upper, self.inventory.lower, self.inventory.boots)
+                        }
+                        else{
+                            notificationText = String(format: "%@: %d°С, %@. %@: %@, %@, %@, %@", "outside".localized, self.weather.temperature, self.weather.weatherCondition, "clothesToWear".localized, self.inventory.head, self.inventory.upper, self.inventory.lower, self.inventory.boots)
+                        }
+                        print(notificationText)
+                        do{
+                            let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: notificationText, requiringSecureCoding: true)
+                            UserDefaults().set(archivedObject, forKey: "notificationText")
+                        }
+                        catch {
+                            print(error)
+                        }
+                    }
+                    else{
+                        if(completion){
+                            for i in 0..<self.weatherForecast.forecast.count{
+                                let weatherPart = self.weatherForecast.forecast[i] as! Dictionary<String, Any>
+                                let time = weatherPart["time"] as! String
+                                let timeHour = Int(time.components(separatedBy: ":")[0])
+                                if(timeHour == notificationHour! - 4 || timeHour == notificationHour! - 3 || timeHour == notificationHour! - 2){
+                                    let temperature = weatherPart["temperature"] as! String
+                                    var weatherCondition = weatherPart["weatherCondition"] as! String
+                                    weatherCondition = weatherCondition.capitalizedFirst()
+                                    var notificationText = ""
+                                    if(self.inventory.head == ""){
+                                        notificationText = String(format: "%@: %d°С, %@. %@: %@, %@, %@", "outside", temperature, weatherCondition, "clothesToWear".localized, self.inventory.upper, self.inventory.lower, self.inventory.boots)
+                                    }
+                                    else{
+                                        notificationText = String(format: "%@: %d°С, %@. %@: %@, %@, %@, %@", "outside".localized, temperature, weatherCondition, "clothesToWear".localized, self.inventory.head, self.inventory.upper, self.inventory.lower, self.inventory.boots)
+                                    }
+                                    print(notificationText)
+                                    do{
+                                        let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: notificationText, requiringSecureCoding: true)
+                                        UserDefaults().set(archivedObject, forKey: "notificationText")
+                                    }
+                                    catch {
+                                        print(error)
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -310,35 +363,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     @IBAction func refreshButton(_ sender: Any) {
-        /*let subView = UIView()
-        subView.frame = CGRect(x: 20, y: 40, width: view.frame.width - 40, height: view.frame.height - 80)
-        subView.backgroundColor = .white
-        subView.layer.cornerRadius = 10
-        let blackView = UIView()
-        blackView.frame = view.frame
-        blackView.alpha = 0.5
-        blackView.backgroundColor = .black
-        view.addSubview(blackView)
-        view.addSubview(subView)
-        
-        let button = UIButton()
-        button.backgroundColor = .whatsNewKitGreen
-        button.frame = CGRect(x: subView.frame.minX + 20, y: subView.frame.maxY - 10 - 30, width: subView.frame.width - 40, height: 30)
-        button.layer.cornerRadius = 5
-        view.addSubview(button)
-        let button2 = UIButton()
-        button2.backgroundColor = .whatsNewKitGreen
-        button2.frame = CGRect(x: subView.frame.minX + 20, y: subView.frame.maxY - 10 - 30 - 10 - 30, width: subView.frame.width - 40, height: 30)
-        button2.layer.cornerRadius = 5
-        view.addSubview(button2)
-        
-        let title = UILabel()
-        title.text = "Подписка"
-        title.frame = CGRect(x: subView.frame.minX + 20, y: subView.frame.minY + 20, width: subView.frame.width - 40, height: 40)
-        title.textAlignment = .center
-        view.addSubview(title)*/
         performSegue(withIdentifier: "goToInventory", sender: nil)
     }
+    
     func showNotificationSettins(){
         let notificationsSettings = NotificationSettings()
         notificationsSettings.frame = CGRect(x: 0, y: -self.view.frame.height, width: self.view.frame.width, height: self.view.frame.height)
@@ -372,7 +399,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                 self.longitude = location.coordinate.longitude
                 print("Location is \(location)")
                 loadWeather()
-                loadForecast()
             }
         }
     }
