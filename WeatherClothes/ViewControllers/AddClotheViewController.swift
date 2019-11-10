@@ -53,13 +53,7 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         setDefaultSettings()
         
         /*if(!clothe.isNil()){
-            name = (clothe["name"] as! String)
-            nameTextInput.text = (clothe["name"] as! String)
-            windSlider.value = clothe["wind"] as! Float
-            comfortTemperatureSlider.value = clothe["temperature"] as! Float
             clotheImage.image = UIImage(data: (clothe["image"] as! Data))
-            comfortTemperatureSliderLabel.text = String(format: "Комфортная температура: %d˙C", Int(comfortTemperatureSlider.value))
-            windSliderLabel.text = String(format: "Ветрозащита: %d м/с", Int(windSlider.value))
         }*/
     }
     
@@ -69,10 +63,12 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     
     func setDefaultSettings(){
         color = .white
+        temperatureSliderLabel.text = String(format: "%@: 0°C", "comfortableTemperature".localized)
+        windSliderLabel.text = String(format: "%@: 0 %@", "windProtection".localized, "ms".localized)
+        colorLabel.text = "color".localized
         navigationController?.navigationBar.isHidden = false
         
         //imagePicker.delegate = self
-        //self.nameTextInput.delegate = self
         let doneButtonImage = UIImage(named: "doneButton")
         let tintedDoneButtonImage = doneButtonImage?.withRenderingMode(.alwaysTemplate)
         doneButton.setImage(tintedDoneButtonImage, for: .normal)
@@ -202,54 +198,11 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     @IBAction func temperatureSliderChanged(_ sender: Any) {
-        /*if(temperatureSlider.value <= -30){
-            temperatureSlider.tintColor = UIColor(red:0.04, green:0.00, blue:0.23, alpha:1.0)
-        }
-        else if(temperatureSlider.value > -30 && temperatureSlider.value <= -25){
-            temperatureSlider.tintColor = UIColor(red:0.00, green:0.00, blue:0.35, alpha:1.0)
-        }
-        else if(temperatureSlider.value > -25 && temperatureSlider.value <= -20){
-            temperatureSlider.tintColor = UIColor(red:0.04, green:0.27, blue:0.85, alpha:1.0)
-        }
-        else if(temperatureSlider.value > -20 && temperatureSlider.value <= -15){
-            temperatureSlider.tintColor = UIColor(red:0.04, green:0.58, blue:0.85, alpha:1.0)
-        }
-        else if(temperatureSlider.value > -15 && temperatureSlider.value <= -10){
-            temperatureSlider.tintColor = UIColor(red:0.03, green:0.65, blue:0.96, alpha:1.0)
-        }
-        else if(temperatureSlider.value > -10 && temperatureSlider.value <= -5){
-            temperatureSlider.tintColor = UIColor(red:0.26, green:0.73, blue:0.96, alpha:1.0)
-        }
-        else if(temperatureSlider.value > -5 && temperatureSlider.value <= 0){
-            temperatureSlider.tintColor = UIColor(red:0.54, green:0.80, blue:0.94, alpha:1.0)
-        }
-        else if(temperatureSlider.value > 0 && temperatureSlider.value <= 5){
-            temperatureSlider.tintColor = UIColor(red:1.00, green:1.00, blue:0.75, alpha:1.0)
-        }
-        else if(temperatureSlider.value > 5 && temperatureSlider.value <= 10){
-            temperatureSlider.tintColor = UIColor(red:1.00, green:0.91, blue:0.48, alpha:1.0)
-        }
-        else if(temperatureSlider.value > 10 && temperatureSlider.value <= 15){
-            temperatureSlider.tintColor = UIColor(red:0.97, green:0.63, blue:0.13, alpha:1.0)
-        }
-        else if(temperatureSlider.value > 15 && temperatureSlider.value <= 20){
-            temperatureSlider.tintColor = UIColor(red:0.97, green:0.41, blue:0.13, alpha:1.0)
-        }
-        else if(temperatureSlider.value > 20 && temperatureSlider.value <= 25){
-            temperatureSlider.tintColor = UIColor(red:0.97, green:0.28, blue:0.13, alpha:1.0)
-        }
-        else if(temperatureSlider.value > 25 && temperatureSlider.value <= 30){
-            temperatureSlider.tintColor = UIColor(red:0.97, green:0.13, blue:0.13, alpha:1.0)
-        }
-        else if(temperatureSlider.value > 30){
-            temperatureSlider.tintColor = UIColor(red:0.80, green:0.00, blue:0.00, alpha:1.0)
-        }*/
-        
-        temperatureSliderLabel.text = String(format: "Комфортная температура: %d°C", Int(temperatureSlider.value))
+        temperatureSliderLabel.text = String(format: "%@: %d°C", "comfortableTemperature".localized, Int(temperatureSlider.value))
     }
     
     @IBAction func windSliderChanged(_ sender: Any) {
-        windSliderLabel.text = String(format: "Ветрозащита: %d м/с", Int(windSlider.value))
+        windSliderLabel.text = String(format: "%@: %d %@", "windProtection".localized, Int(windSlider.value), "ms".localized)
     }
     
     @IBAction func saveButton(_ sender: Any) {
@@ -257,7 +210,7 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
             saveAction()
         }
         else{
-            showHelpView(text: "Выберите тип одежды")
+            showHelpView(text: "chooseClotheType".localized)
         }
 
     }
@@ -294,9 +247,9 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     func saveAction(){
-        let alert = UIAlertController(title: "Добавление одежды", message: "Введите название одежды", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "addingClothes".localized, message: "enterClotheName".localized, preferredStyle: UIAlertController.Style.alert)
         
-        let action = UIAlertAction(title: "Сохранить", style: .default) { (alertAction) in
+        let action = UIAlertAction(title: "save".localized , style: .default) { (alertAction) in
             let textField = alert.textFields![0] as UITextField
             if(textField.text != ""){
                 let imageName = self.scrollableImages.getClotheName()
@@ -306,13 +259,13 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
                 self.navigationController?.popViewController(animated: true)
             }
             else{
-                self.showHelpView(text: "Название не может быть пустым")
+                self.showHelpView(text: "emptyName".localized)
             }
         }
-        let closeAction = UIAlertAction(title: "Отмена", style: .cancel) { (alertAction) in
+        let closeAction = UIAlertAction(title: "cancel".localized, style: .cancel) { (alertAction) in
         }
         alert.addTextField { (textField) in
-            textField.placeholder = "Название одежды"
+            textField.placeholder = "clotheName".localized
             textField.autocapitalizationType = .sentences
         }
         alert.addAction(action)
@@ -391,55 +344,4 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
         dismiss(animated: true, completion: nil)
     }*/
-}
-
-extension UIImage {
-    
-    typealias RectCalculationClosure = (_ parentSize: CGSize, _ newImageSize: CGSize)->(CGRect)
-    
-    func tinted(with color: UIColor) -> UIImage? {
-        return UIGraphicsImageRenderer(size: size, format: imageRendererFormat).image { _ in
-            color.set()
-            withRenderingMode(.alwaysTemplate).draw(at: .zero)
-        }
-    }
-    
-    func imageOverlayingImages(_ images: [UIImage], scalingBy factors: [CGFloat]? = nil) -> UIImage {
-        let size = self.size
-        let container = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        UIGraphicsBeginImageContextWithOptions(size, false, 2.0)
-        UIGraphicsGetCurrentContext()!.interpolationQuality = .high
-        
-        self.draw(in: container)
-        
-        let scaleFactors = factors ?? [CGFloat](repeating: 1.0, count: images.count)
-        
-        for (image, scaleFactor) in zip(images, scaleFactors) {
-            let topWidth = size.width / scaleFactor
-            let topHeight = size.height / scaleFactor
-            let topX = (size.width / 2.0) - (topWidth / 2.0)
-            let topY = (size.height / 2.0) - (topHeight / 2.0)
-            
-            image.draw(in: CGRect(x: topX, y: topY, width: topWidth, height: topHeight), blendMode: .normal, alpha: 1.0)
-        }
-        return UIGraphicsGetImageFromCurrentImageContext()!
-    }
-    
-    static func imageByMergingImages(topImage: UIImage, bottomImage: UIImage, scaleForTop: CGFloat = 1.0) -> UIImage {
-        let size = bottomImage.size
-        let container = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        UIGraphicsBeginImageContextWithOptions(size, false, 2.0)
-        UIGraphicsGetCurrentContext()!.interpolationQuality = .high
-        bottomImage.draw(in: container)
-        
-        let topWidth = size.width / scaleForTop
-        let topHeight = size.height / scaleForTop
-        let topX = (size.width / 2.0) - (topWidth / 2.0)
-        let topY = (size.height / 2.0) - (topHeight / 2.0)
-        
-        topImage.draw(in: CGRect(x: topX, y: topY, width: topWidth, height: topHeight), blendMode: .normal, alpha: 1.0)
-        
-        return UIGraphicsGetImageFromCurrentImageContext()!
-    }
-
 }

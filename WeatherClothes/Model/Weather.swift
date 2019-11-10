@@ -191,6 +191,9 @@ class Weather: NSObject {
         else if(weatherCondition.uppercased() == "snowfall".localized.uppercased() || weatherCondition.uppercased() == "heavySnow".localized.uppercased() || weatherCondition.uppercased() == "heavySnowers".localized.uppercased()){
             return UIImage(named: String(format: "Snow%@", getTimeDesription(hours: hours, minutes: minutes)))!
         }
+        else if(weatherCondition.uppercased() == "smoke".localized.uppercased()){
+            return UIImage(named: String(format: "Smoke%@", getTimeDesription(hours: hours, minutes: minutes)))!
+        }
         else{
             return nil
         }

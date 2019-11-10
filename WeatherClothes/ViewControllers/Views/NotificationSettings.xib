@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotificationSettings" customModule="WeatherClothes" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="oMF-xW-tz0"/>
+                <outlet property="navigationBar" destination="l3H-BS-Imd" id="cnh-dC-LCg"/>
                 <outlet property="tableView" destination="0bt-jD-jqI" id="xgE-Lq-zOE"/>
             </connections>
         </placeholder>

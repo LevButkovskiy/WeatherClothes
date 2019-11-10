@@ -12,6 +12,7 @@ class NotificationSettings: UIView, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var contentView: UIView!
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var navigationBar: UINavigationBar!
 
     var allowNotifications = Bool()
     var pickerIsActive = Bool()
@@ -32,14 +33,18 @@ class NotificationSettings: UIView, UITableViewDelegate, UITableViewDataSource {
     private func commonInit(){
         Bundle.main.loadNibNamed("NotificationSettings", owner: self, options: nil)
         addSubview(contentView)
+
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        
+        setTheme()
+        navigationBar.topItem?.title = "notifications".localized
         tableView.register(UINib(nibName: "NotificationTableViewCell", bundle: nil), forCellReuseIdentifier: "notificationCell")
         tableView.register(UINib(nibName: "SetValueTableViewCell", bundle: nil), forCellReuseIdentifier: "setValueCell")
         tableView.register(UINib(nibName: "TimePickerTableViewCell", bundle: nil), forCellReuseIdentifier: "timePickerCell")
         tableView.register(UINib(nibName: "ButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "buttonCell")
+        tableView.register(UINib(nibName: "HeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "headerView")
         tableView.separatorStyle = .none
+        tableView.isScrollEnabled = false
         pickerIsActive = false
         
         if let unarchivedObject = UserDefaults.standard.object(forKey: "notification") as? NSData {
@@ -48,6 +53,22 @@ class NotificationSettings: UIView, UITableViewDelegate, UITableViewDataSource {
             tableView.reloadData()
         }
     }
+    
+    func setTheme(){
+        var theme = Settings.shared().theme
+        if #available(iOS 13, *) {
+            theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
+        }
+        if(theme){
+            navigationBar.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+            tableView.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+        }
+        else{
+            navigationBar.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
+            tableView.backgroundColor = .white
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return pickerIsActive ? 4 : 3
     }
@@ -62,23 +83,27 @@ class NotificationSettings: UIView, UITableViewDelegate, UITableViewDataSource {
             case 0:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationTableViewCell
                 cell.selectionStyle = .none
+                cell.setTheme()
                 cell.switcher.isOn = allowNotifications
                 cell.switcher.addTarget(self, action: #selector(notificationSwitcherValueChanged(sender:)), for: .valueChanged)
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "setValueCell", for: indexPath) as! SetValueTableViewCell
                 cell.accessoryType = .disclosureIndicator
+                cell.setTheme()
                 if(notifications["hour"] != nil){
-                    cell.value.text = String(format: "%@:%@", notifications["hour"] as! String, notifications["minutes"] as! String)
+                    cell.valueLabel.text = String(format: "%@:%@", notifications["hour"] as! String, notifications["minutes"] as! String)
                 }
                 return cell
             case 2:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "timePickerCell", for: indexPath) as! TimePickerTableViewCell
+                cell.setTheme()
                 cell.timePicker.addTarget(self, action: #selector(timePickerValueChanged(sender:)), for: .valueChanged)
                 cell.selectionStyle = .none
                 return cell
             case 3:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "buttonCell", for: indexPath) as! ButtonTableViewCell
+                cell.setTheme()
                 cell.button.addTarget(self, action: #selector(applyChanges), for: .touchDown)
                 return cell
             default:
@@ -91,18 +116,21 @@ class NotificationSettings: UIView, UITableViewDelegate, UITableViewDataSource {
                 case 0:
                     let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationTableViewCell
                     cell.selectionStyle = .none
+                    cell.setTheme()
                     cell.switcher.isOn = allowNotifications
                     cell.switcher.addTarget(self, action: #selector(notificationSwitcherValueChanged(sender:)), for: .valueChanged)
                     return cell
                 case 1:
                     let cell = tableView.dequeueReusableCell(withIdentifier: "setValueCell", for: indexPath) as! SetValueTableViewCell
                     cell.accessoryType = .disclosureIndicator
+                    cell.setTheme()
                     if(notifications["hour"] != nil){
-                        cell.value.text = String(format: "%@:%@", notifications["hour"] as! String, notifications["minutes"] as! String)
+                        cell.valueLabel.text = String(format: "%@:%@", notifications["hour"] as! String, notifications["minutes"] as! String)
                     }
                     return cell
                 case 2:
                     let cell = tableView.dequeueReusableCell(withIdentifier: "buttonCell", for: indexPath) as! ButtonTableViewCell
+                    cell.setTheme()
                     cell.button.addTarget(self, action: #selector(applyChanges), for: .touchDown)
                     return cell
                 default:
@@ -112,8 +140,25 @@ class NotificationSettings: UIView, UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return " "
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return frame.height / 24
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "headerView") as! HeaderView
+        headerView.titleLabel.text = " "
+        var theme = Settings.shared().theme
+        if #available(iOS 13, *) {
+            theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
+        }
+        if(theme){
+            headerView.contentView.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+        }
+        else{
+            headerView.contentView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
+        }
+    
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -151,7 +196,7 @@ class NotificationSettings: UIView, UITableViewDelegate, UITableViewDataSource {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm"
         timeText = dateFormatter.string(from: sender.date)
-        cell.value.text = timeText
+        cell.valueLabel.text = timeText
         print(timeText)
     }
     

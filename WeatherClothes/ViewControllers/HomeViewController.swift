@@ -91,22 +91,22 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         // Initialize WhatsNew
         let whatsNew = WhatsNew(
             // The Title
-            title: "Что нового в версии 1.0.2",
+            title: "updateTitle".localized,
             // The features you want to showcase
             items: [
                 WhatsNew.Item(
-                    title: "Темная тема",
-                    subtitle: "Теперь в темное время суток проще рабоать с приложением!",
+                    title: "darkMode".localized,
+                    subtitle: "update1".localized,
                     image: UIImage(named: "darkMode")
                 ),
                 WhatsNew.Item(
-                    title: "Возможность добавления одежды",
-                    subtitle: "Добавляйте собственную одежду с помощью генератора!",
+                    title: "update2Title".localized,
+                    subtitle: "update2".localized,
                     image: UIImage(named: "tshirt_white_default")
                 ),
                 WhatsNew.Item(
-                    title: "Уведомления",
-                    subtitle: "Уведомления каждое утро о том, что сегодня надеть",
+                    title: "notifications".localized,
+                    subtitle: "update3".localized,
                     image: UIImage(named: "notifications")?.tinted(with: .white)
                 )
             ]
@@ -146,7 +146,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         configuration.itemsView.animation = .slideRight
         configuration.detailButton?.animation = .slideRight
         configuration.completionButton.animation = .slideRight
-        configuration.completionButton.title = "Понятно"
+        configuration.completionButton.title = "clearly".localized
     
         // Initialize WhatsNewViewController with custom configuration
         let whatsNewViewController = WhatsNewViewController(

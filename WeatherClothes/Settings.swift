@@ -114,6 +114,13 @@ extension UIImage
         return copied!
     }
     
+    func tinted(with color: UIColor) -> UIImage? {
+        return UIGraphicsImageRenderer(size: size, format: imageRendererFormat).image { _ in
+            color.set()
+            withRenderingMode(.alwaysTemplate).draw(at: .zero)
+        }
+    }
+    
     //GIF
     public class func gif(data: Data) -> UIImage? {
         // Create source from data

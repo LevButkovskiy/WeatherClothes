@@ -7,105 +7,129 @@
 */
 
 
-"lang" = "ru";
+"lang" = "en";
 
 //Attentions and default text's
-"attention" = "Внимание!";
-"details" = "Дополнительная информация";
-"refresh" = "Потяните для обновления";
+"attention" = "Attention!";
 "edit" = "Правка";
-"delete" = "Удалить";
+"delete" = "Delete";
+"establish" = "To establish";
+"clearly" = "Clearly";
+"cancel" = "Cancel";
+"save" = "Save";
 
-"hourly" = "Почасовая";
-"darkMode" = "Темная тема";
-"gender" = "Пол";
-"inventory" = "Гардероб";
-"inventoryTitle" = "Ваша одежда";
-"whatToWhearToday" = "Что сегодня надеть?";
-"clothesToWear" = "Одежда на сегодня";
+"time" = "Time";
+"hourly" = "Hourly";
+"darkMode" = "Dark mode";
+"gender" = "Gender";
+"inventory" = "Wardrobe";
+"inventoryTitle" = "Your clothes";
+"whatToWhearToday" = "What to wear today?";
+"clothesToWear" = "Clothes for today";
+"color" = "Color:";
+"whatsNew" = "What's new";
 
-"locationError" = "Доступ к геолокации ограничен. Для получения прогноза погоды, включите геолокацию в приложении «Настройки» в разделе «Конфиденциальность», «Местоположения».";
+"locationError" = "Access to geolocation is unavaliable. To get the weather forecast, enable geolocation in the Settings app in Privacy, Locations.";
 
 //Погода
-"wind" = "ветер";
-"pressure" = "давление";
-"humidity" = "влажность";
-"uvIndex" = "УФ индекс";
-"visibility" = "видимость";
+"wind" = "wind";
+"pressure" = "pressure";
+"humidity" = "humidity";
+"uvIndex" = "UV Index";
+"visibility" = "visibility";
 
-"cloudy" = "Облачно";
-"partyCloudy" = "Cлегка облачно";
-"fewClouds" = "Слегка облачно";
-"fewsClouds" = "Небольшая облачность";
-"scatteredCloud" = "Переменная облачность";
-"scatteredClouds" = "Слегка облачно";
-"clear" = "Ясно";
-"dull" = "Пасмурно";
-"lightRain" = "Легкий дождь";
-"lightyRain" = "Небольшой дождь";
-"rain" = "Дождь";
-"overcastClouds" = "Пасмурно";
-"brokenClouds" = "Пасмурно";
-"brokenCloudsLight" = "Облачно с прояснениями";
-"fog" = "Туман";
-"foggy" = "Туманно";
-"snow" = "Снег";
-"snowfall" = "Снегопад";
-"lightSnow" = "Небольшой снегопад";
-"lightShowersSnow" = "Небольшой снегопад";
-"heavySnow" = "Сильный снег";
-"heavySnowers" = "Сильный снегопад";
+"cloudy" = "Cloudy";
+"partyCloudy" = "Party Cloudy";
+"fewClouds" = "Few Clouds";
+"fewsClouds" = "Few Clouds";
+"scatteredCloud" = "Scattered Clouds";
+"scatteredClouds" = "Scattered Clouds";
+"clear" = "Clear";
+"dull" = "Dull";
+"lightRain" = "Light Rain";
+"lightyRain" = "Light Rain";
+"rain" = "Rain";
+"overcastClouds" = "Overcast Clouds";
+"brokenClouds" = "Broken Clouds";
+"brokenCloudsLight" = "Broken Clouds";
+"fog" = "Fog";
+"foggy" = "Fog";
+"snow" = "Snow";
+"snowfall" = "Snowfall";
+"lightSnow" = "Light Snow";
+"lightShowersSnow" = "Light Showers";
+"heavySnow" = "Heavy Snow";
+"heavySnowers" = "Heavy Snow";
+"smoke" = "Smoke";
 
-"day" = "День";
-"night" = "Ночь";
+"day" = "Day";
+"night" = "Night";
 
 //
-"ms" = "м/с";
-"mmHg" = "мм.рт.ст";
-"uv" = "уф";
-"km" = "км";
+"ms" = "m/s";
+"mmHg" = "mmHg.st";
+"uv" = "uv";
+"km" = "km";
 
 //День недели
-"Monday" = "Понедельник";
-"Tuesday" = "Вторник";
-"Wednesday" = "Среда";
-"Thursday" = "Четверг";
-"Friday" = "Пятница";
-"Saturday" = "Суббота";
-"Sunday" = "Воскресенье";
+"Monday" = "Monday";
+"Tuesday" = "Tuesday";
+"Wednesday" = "Wednesday";
+"Thursday" = "Thursday";
+"Friday" = "Friday";
+"Saturday" = "Saturday";
+"Sunday" = "Sunday";
 
 //Одежда
+"clotheName" = "Clothing name";
+"enterClotheName" = "Enter the name of the clothing";
+"addingClothes" = "Adding clothes";
+"emptyName" = "Empty name";
+"chooseClotheType" = "Choose type";
 //Головные уборы
-"Hats" = "Головные уборы";
+"Hats" = "Hats";
 //
-"Cap" = "Кепка";
-"Hat" = "Шапка";
-"InsulatedHat" = "Утепленная шапка";
+"Cap" = "Cap";
+"Hat" = "Hat";
+"InsulatedHat" = "Insulated Hat";
 
 //Верхняя часть одежды
-"TopOfClothes" = "Верхняя часть одежды";
+"TopOfClothes" = "Top Of Clothes";
 //
-"T-Shirt" = "Футболка";
-"Hoodie" = "Кофта";
-"Jacket" = "Куртка";
-"InsulatedJacket" = "Утепленная куртка";
-"WindBreaker" = "Ветровка";
-"Dress" = "Платье";
+"T-Shirt" = "Tshirt";
+"Hoodie" = "Hoodie";
+"Jacket" = "Jacket";
+"InsulatedJacket" = "Insulated Jacket";
+"WindBreaker" = "WindBreaker";
+"Dress" = "Dress";
 
 //Нижняя часть одежды
-"LowerPartOfClothes" = "Нижняя часть одежды";
+"LowerPartOfClothes" = "Lower Part Of Clothes";
 //
-"Shorts" = "Шорты";
-"Pants" = "Штаны";
-"Skirt" = "Юбка";
+"Shorts" = "Shorts";
+"Pants" = "Pants";
+"Skirt" = "Skirt";
 
 //Обувь
-"Footwear" = "Обувь";
+"Footwear" = "Footwear";
 //
-"Sneakers" = "Кроссовки";
-"Slippers" = "Тапки";
-"Winter Shoes" = "Зимняя обувь";
+"Sneakers" = "Sneakers";
+"Slippers" = "Slippers";
+"Winter Shoes" = "Winter Shoes";
 
 //Clothes conditions
-"windProtection" = "Ветрозащита";
-"comfortableTemperature" = "Комфортная температура";
+"windProtection" = "Wind Protection";
+"comfortableTemperature" = "Comfortable temperature";
+
+//1.0.2
+"updateTitle" = "What's new in the version 1.0.2";
+"update1" = "Now in the night time it is easier to work with the application!";
+"update2" = "Add your own clothes with in-app generator!";
+"update2Title" = "Ability to add clothes";
+"update3" = "Notifications every morning about what to wear today";
+
+//Notifications
+"notifications" = "Notifications";
+"notificationsTitle" = "Notifications every morning";
+"notificationsDescription" = "Tell you what to wear today";
+"notificationsWarning" = "to activate the function you need to go to the application at least once a day";

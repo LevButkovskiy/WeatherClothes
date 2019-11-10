@@ -479,13 +479,6 @@ class Inventory: NSObject {
         result["imageName"] = imageName
         result["color"] = color
         return result
-        /*
-        let bottomImage = UIImage(named: String(format: "%@_back", imageName))
-        var topImage = UIImage(named: String(format: "%@_top", imageName))
-        topImage = topImage?.tinted(with: color)
-        let result = UIImage.imageByMergingImages(topImage: topImage!, bottomImage: bottomImage!)
-        //imageView.image = imageView.image!.imageOverlayingImages([overlayedImage!])
-        return result*/
     }
 
 }

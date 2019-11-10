@@ -57,11 +57,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         if #available(iOS 13, *) {
             switch indexPath.row {
             case 0:
-                cell.nameLabel.text = "Что нового"
+                cell.nameLabel.text = "whatsNew".localized
                 cell.accessoryType = .disclosureIndicator
                 cell.icon.image = UIImage(named: "updates")
             case 1:
-                cell.nameLabel.text = "Уведомления"
+                cell.nameLabel.text = "notifications".localized
                 cell.accessoryType = .disclosureIndicator
                 cell.icon.image = UIImage(named: "notifications")
             default: break
@@ -70,11 +70,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         else{
             switch indexPath.row {
             case 0:
-                cell.nameLabel.text = "Что нового"
+                cell.nameLabel.text = "whatsNew".localized
                 cell.accessoryType = .disclosureIndicator
                 cell.icon.image = UIImage(named: "updates")
             case 1:
-                cell.nameLabel.text = "Уведомления"
+                cell.nameLabel.text = "notifications".localized
                 cell.accessoryType = .disclosureIndicator
                 cell.icon.image = UIImage(named: "notifications")
             case 2:
