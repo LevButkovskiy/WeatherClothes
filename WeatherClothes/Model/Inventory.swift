@@ -39,7 +39,7 @@ class Inventory: NSObject {
     }
     //MARK: model functions
     func load(){
-        if let unarchivedObject = UserDefaults.standard.object(forKey: "inventoryTes2") as? NSData {
+        if let unarchivedObject = UserDefaults.standard.object(forKey: "inventory") as? NSData {
             inventory = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Dictionary<Int, Any>)
             setSections()
         }
@@ -52,7 +52,7 @@ class Inventory: NSObject {
     func save(){
         do{
             let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: inventory, requiringSecureCoding: true)
-            UserDefaults().set(archivedObject, forKey: "inventoryTes2")
+            UserDefaults().set(archivedObject, forKey: "inventory")
         }
         catch {
             print(error.localizedDescription)
@@ -463,13 +463,12 @@ class Inventory: NSObject {
     }
     
     func generateImage(imageName: String, color: UIColor) -> Dictionary<String, Any> {
-        print(imageName)
         var result = Dictionary<String,Any>()
         var backImage = UIImage(named: String(format: "%@_white", imageName.lowercased().removingWhitespaces()))
         var topImage = UIImage(named: String(format: "%@_frame", imageName.lowercased().removingWhitespaces()))
-        if(imageName.uppercased() == "Jacket".uppercased() || imageName.uppercased() == "windBreaker".uppercased()){
-            backImage = UIImage(named: "windbreaker_white")
-            topImage = UIImage(named: "windbreaker_frame")
+        if((imageName == "Jacket".localized) || (imageName == "WindBreaker".localized)){
+            backImage = UIImage(named: "windBreaker_white")
+            topImage = UIImage(named: "windBreaker_frame")
         }
         let backImageView = UIImageView(image: backImage)
         let topImageView = UIImageView(image: topImage)
@@ -482,24 +481,3 @@ class Inventory: NSObject {
     }
 
 }
-
-
-/*
-func deleteClothe(delClothe : Dictionary<String, Any>){
-    for i in 0 ..< inventory.count{
-        var type = inventory[i] as! Dictionary<Int, Any>
-        for j in 0 ..< type.count{
-            let clothe = type[j] as! Dictionary<String, Any>
-            if(clothe.isEqual(dict: delClothe)){
-                type = deleteItemWithReplasing(dictionary: type, index: j)
-                inventory[i] = type
-                if(type.count == 0){
-                    inventory = deleteItemWithReplasing(dictionary: inventory, index: i)
-                }
-                tableView.reloadData()
-                saveClothe()
-                return
-            }
-        }
-    }
-}*/

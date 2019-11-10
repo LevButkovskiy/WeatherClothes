@@ -96,14 +96,13 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     
     func afterLoadSettings(){
         if (UserDefaults.standard.object(forKey: "version 1.0.2") as? NSData) == nil {
+            UserDefaults.standard.removeObject(forKey: "inventory")
             showWhatsNew()
         }
         setTheme()
     }
     
     func showWhatsNew(){
-        UserDefaults.standard.removeObject(forKey: "inventory")
-
         // Initialize WhatsNew
         let whatsNew = WhatsNew(
             // The Title
@@ -171,7 +170,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         )
         do{
             let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: true, requiringSecureCoding: true)
-            UserDefaults().set(archivedObject, forKey: "version102")
+            UserDefaults().set(archivedObject, forKey: "version 1.0.2")
         }
         catch {
             print(error)
@@ -276,10 +275,10 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                                     weatherCondition = weatherCondition.capitalizedFirst()
                                     var notificationText = ""
                                     if(self.inventory.head == ""){
-                                        notificationText = String(format: "%@: %d°С, %@. %@: %@, %@, %@", "outside", temperature, weatherCondition, "clothesToWear".localized, self.inventory.upper, self.inventory.lower, self.inventory.boots)
+                                        notificationText = String(format: "%@: %d°С, %@. %@: %@, %@, %@", "outside", Int(temperature)!, weatherCondition, "clothesToWear".localized, self.inventory.upper, self.inventory.lower, self.inventory.boots)
                                     }
                                     else{
-                                        notificationText = String(format: "%@: %d°С, %@. %@: %@, %@, %@, %@", "outside".localized, temperature, weatherCondition, "clothesToWear".localized, self.inventory.head, self.inventory.upper, self.inventory.lower, self.inventory.boots)
+                                        notificationText = String(format: "%@: %d°С, %@. %@: %@, %@, %@, %@", "outside".localized, Int(temperature)!, weatherCondition, "clothesToWear".localized, self.inventory.head, self.inventory.upper, self.inventory.lower, self.inventory.boots)
                                     }
                                     print(notificationText)
                                     do{
