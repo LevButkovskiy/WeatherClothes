@@ -67,16 +67,28 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
             let notificationMinutes = Int(notifications["minutes"] as! String)!
             if(hour < notificationHour){
                 timeInt = (notificationHour-hour)*60*60
+                if(minutes < notificationMinutes){
+                    timeInt += (notificationMinutes - minutes)*60
+                }
+                else{
+                    timeInt -= (minutes - notificationMinutes)*60
+                }
             }
             else if(hour > notificationHour){
                 timeInt = (24-hour+notificationHour)*60*60
-            }
-            else{
-                if(minutes > notificationMinutes){
-                    timeInt = 24*60*60 - minutes + notificationMinutes
+                if(minutes < notificationMinutes){
+                    timeInt += (notificationMinutes - minutes)*60
                 }
                 else{
-                    timeInt = notificationMinutes * 60 - minutes * 60
+                    timeInt -= (minutes - notificationMinutes)*60
+                }
+            }
+            else{
+                if(minutes < notificationMinutes){
+                    timeInt = (notificationMinutes - minutes) * 60
+                }
+                else{
+                    timeInt = 24*60*60 - (minutes - notificationMinutes)*60
                 }
             }
             print(timeInt)
