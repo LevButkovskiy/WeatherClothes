@@ -176,8 +176,8 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
             array.append(inventory.generateImage(imageName: "hat" , color: color))
         case 1:
             array.append(inventory.generateImage(imageName: "tshirt" , color: color))
-            array.append(inventory.generateImage(imageName: "windbreaker" , color: color))
-            array.append(inventory.generateImage(imageName: "insulatedjacket" , color: color))
+            array.append(inventory.generateImage(imageName: "windBreaker" , color: color))
+            //array.append(inventory.generateImage(imageName: "insulatedJacket" , color: color))
         case 2:
             array.append(inventory.generateImage(imageName: "pants" , color: color))
             array.append(inventory.generateImage(imageName: "shorts" , color: color))

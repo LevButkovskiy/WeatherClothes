@@ -466,9 +466,9 @@ class Inventory: NSObject {
         var result = Dictionary<String,Any>()
         var backImage = UIImage(named: String(format: "%@_white", imageName.lowercased().removingWhitespaces()))
         var topImage = UIImage(named: String(format: "%@_frame", imageName.lowercased().removingWhitespaces()))
-        if((imageName == "Jacket".localized) || (imageName == "WindBreaker".localized)){
-            backImage = UIImage(named: "windBreaker_white")
-            topImage = UIImage(named: "windBreaker_frame")
+        if(imageName.lowercased() == "jacket"){
+            backImage = UIImage(named: "windbreaker_white")
+            topImage = UIImage(named: "windbreaker_frame")
         }
         let backImageView = UIImageView(image: backImage)
         let topImageView = UIImageView(image: topImage)
