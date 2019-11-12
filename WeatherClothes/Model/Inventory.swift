@@ -223,23 +223,20 @@ class Inventory: NSObject {
     //Clothes methods
     func generateClothes(weather : Weather){
         var chill = Double()
-        if let unarchivedObject = UserDefaults.standard.object(forKey: "gender") as? NSData {
-            gender = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Bool)
-        }
+        gender = Settings.shared().gender
         
         guard (weather.humidity != 0) else {
             return
         }
         let temperature = Double(9/5 * Double(weather.temperature) + 32)
         let wind = 2.23694 * Double(weather.windSpeed)
-        if(wind != 0){
+        if(wind == 0.0){
+            chill = Double(weather.temperature)
+        }
+        else{
             let velocity = pow(wind, 0.16)
             chill = (35.74 + (0.6215 * temperature) - (35.75 * velocity) + (0.4275 * temperature * velocity) - 32) * 5/9
         }
-        else{
-            chill = temperature
-        }
-        
         if(chill < -30){
             head = "Insulated Hat"
             upper = "Insulated Jacket"
@@ -304,20 +301,20 @@ class Inventory: NSObject {
             boots = "Sneakers"
         }
         else if(chill > 20 && chill <= 25){
-            head = "Cap"
-            upper = "T-Shirt"
+            head = gender ? "Cap_w" : "Cap_m"
+            upper = "TShirt"
             lower = gender ? "Skirt" : "Shorts"
             boots = "Sneakers"
         }
         else if(chill > 25 && chill <= 30){
-            head = "Cap"
-            upper = "T-Shirt"
+            head = gender ? "Cap_w" : "Cap_m"
+            upper = "TShirt"
             lower = gender ? "Skirt" : "Shorts"
             boots = "Sneakers"
         }
         else if(chill > 30){
-            head = "Cap"
-            upper = "T-Shirt"
+            head = gender ? "Cap_w" : "Cap_m"
+            upper = "TShirt"
             lower = gender ? "Skirt": "Shorts"
             boots = "Slippers"
         }
@@ -466,10 +463,6 @@ class Inventory: NSObject {
         var result = Dictionary<String,Any>()
         var backImage = UIImage(named: String(format: "%@_white", imageName.lowercased().removingWhitespaces()))
         var topImage = UIImage(named: String(format: "%@_frame", imageName.lowercased().removingWhitespaces()))
-        if(imageName.lowercased() == "jacket"){
-            backImage = UIImage(named: "windbreaker_white")
-            topImage = UIImage(named: "windbreaker_frame")
-        }
         let backImageView = UIImageView(image: backImage)
         let topImageView = UIImageView(image: topImage)
         backImageView.tintColor = color

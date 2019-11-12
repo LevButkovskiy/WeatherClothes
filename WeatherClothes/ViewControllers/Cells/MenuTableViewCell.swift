@@ -18,6 +18,8 @@ class MenuTableViewCell: UITableViewCell {
     
     var mode = String()
     
+    var appearance = Appearance()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -28,6 +30,7 @@ class MenuTableViewCell: UITableViewCell {
     
     func setValues(){
         var theme = Settings.shared().theme
+        let gender = Settings.shared().gender
         if #available(iOS 13, *) {
             theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
         }
@@ -37,15 +40,9 @@ class MenuTableViewCell: UITableViewCell {
             switcher.isOn = theme
         }
         else if(mode == "gender"){
-            if let unarchivedObject = UserDefaults.standard.object(forKey: "gender") as? NSData {
-                let gender = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Bool)
-                if(gender){
-                    switcher.isOn = gender
-                }
-                else{
-                    switcher.isOn = false
-                }
-            }
+            switcher.addTarget(self, action: #selector(switchGender(sender:)), for: .valueChanged)
+            switcher.isOn = gender
+            icon.image = gender ? UIImage(named: "gender_woman") : UIImage(named: "gender_men")
         }
     }
     
@@ -56,12 +53,12 @@ class MenuTableViewCell: UITableViewCell {
         }
         if(theme){
             nameLabel.textColor = .white
-            self.backgroundColor = UIColor(red: 30.0/255.0, green: 32.0/255.0, blue: 35.0/255.0, alpha: 1.0)
+            self.backgroundColor = appearance.darkThemeBlue
             icon.image = icon.image?.tinted(with: .white)
         }
         else{
             nameLabel.textColor = .black
-            self.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
+            self.backgroundColor = appearance.lightThemeTableViewGray
             icon.image = icon.image?.tinted(with: .black)
         }
     }
@@ -74,5 +71,13 @@ class MenuTableViewCell: UITableViewCell {
         containerViewController.homeViewController.setTheme()
         containerViewController.menuViewController.tableView.reloadData()
         containerViewController.menuViewController.setTheme()
+    }
+    
+    @objc func switchGender(sender: UISwitch){
+        let viewController = (UIApplication.shared.keyWindow!.rootViewController) as! UINavigationController
+        let containerViewController = viewController.viewControllers[0] as! ContainerViewController
+        Settings.genderChanged(gender: sender.isOn)
+        containerViewController.menuViewController.tableView.reloadData()
+        containerViewController.homeViewController.generateClothes()
     }
 }

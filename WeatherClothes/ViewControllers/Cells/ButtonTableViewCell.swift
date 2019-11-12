@@ -10,6 +10,8 @@ import UIKit
 
 class ButtonTableViewCell: UITableViewCell {
     @IBOutlet var button: UIButton!
+    
+    var appearance = Appearance()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -30,7 +32,7 @@ class ButtonTableViewCell: UITableViewCell {
             theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
         }
         if(theme){
-            backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
+            backgroundColor = appearance.darkThemeGray
         }
         else{
             backgroundColor = .white

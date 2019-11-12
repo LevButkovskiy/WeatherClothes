@@ -13,7 +13,9 @@ class NotificationSettings: UIView, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var contentView: UIView!
     @IBOutlet var tableView: UITableView!
     @IBOutlet var navigationBar: UINavigationBar!
-
+    
+    var appearance = Appearance()
+    
     var allowNotifications = Bool()
     var pickerIsActive = Bool()
     var timeText = String()
@@ -60,11 +62,11 @@ class NotificationSettings: UIView, UITableViewDelegate, UITableViewDataSource {
             theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
         }
         if(theme){
-            navigationBar.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
-            tableView.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+            navigationBar.backgroundColor = appearance.darkThemeBlack
+            tableView.backgroundColor = appearance.darkThemeBlack
         }
         else{
-            navigationBar.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
+            navigationBar.backgroundColor = appearance.lightThemeTableViewGray
             tableView.backgroundColor = .white
         }
     }
@@ -152,10 +154,10 @@ class NotificationSettings: UIView, UITableViewDelegate, UITableViewDataSource {
             theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
         }
         if(theme){
-            headerView.contentView.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+            headerView.contentView.backgroundColor = appearance.darkThemeBlack
         }
         else{
-            headerView.contentView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
+            headerView.contentView.backgroundColor = appearance.lightThemeTableViewGray
         }
     
         return headerView
@@ -223,8 +225,10 @@ class NotificationSettings: UIView, UITableViewDelegate, UITableViewDataSource {
         UIView.animate(withDuration: 0.5, animations: {
             self.frame = CGRect(x: self.frame.minX, y: self.frame.maxY, width: self.frame.width, height: self.frame.height)
         }) { (completion) in
+            let viewController = (UIApplication.shared.keyWindow!.rootViewController) as! UINavigationController
+            let containerViewController = viewController.viewControllers[0] as! ContainerViewController
+            self.appearance.showCompleteViewWithRemovingAllViews(view: containerViewController.homeViewController.view, text: "established".localized)
             self.removeFromSuperview()
-            
         }
     }
 

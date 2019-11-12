@@ -13,6 +13,9 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     
     
     var inventory = Inventory()
+    var appearance = Appearance()
+    var gender = Bool()
+    
     var clothe : Dictionary<String, Any> = [:]
     let imagePicker = UIImagePickerController()
     
@@ -62,6 +65,7 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     }
     
     func setDefaultSettings(){
+        gender = Settings.shared().gender
         color = .white
         temperatureSliderLabel.text = String(format: "%@: 0°C", "comfortableTemperature".localized)
         windSliderLabel.text = String(format: "%@: 0 %@", "windProtection".localized, "ms".localized)
@@ -88,17 +92,17 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
             theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
         }
         if(theme){
-            view.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+            view.backgroundColor = appearance.darkThemeBlack
             typeCollectionView.backgroundColor = UIColor(red: 52.0/255.0, green: 52.0/255.0, blue: 54.0/255.0, alpha: 1.0)
-            conditionsView.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+            conditionsView.backgroundColor = appearance.darkThemeBlack
             temperatureSliderLabel.textColor = .white
             windSliderLabel.textColor = .white
             colorLabel.textColor = .white
         }
         else{
-            view.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
+            view.backgroundColor = appearance.lightThemeTableViewGray
             typeCollectionView.backgroundColor = .white
-            conditionsView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
+            conditionsView.backgroundColor = appearance.lightThemeTableViewGray
             temperatureSliderLabel.textColor = .black
             windSliderLabel.textColor = .black
             colorLabel.textColor = .black
@@ -118,20 +122,24 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         }
     }
     
+    func generateDefaultImages(index : Int) -> UIImage!{
+        switch index{
+        case 0:
+            return gender ? UIImage(named: "cap_w_white_default") : UIImage(named: "cap_m_white_default")
+        case 1:
+            return UIImage(named: "tshirt_white_default")
+        case 2:
+            return gender ? UIImage(named: "skirt_white_default") : UIImage(named: "pants_white_default")
+        case 3:
+            return UIImage(named: "sneakers_white_default")
+        default:
+            return UIImage(named: "")
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = typeCollectionView.dequeueReusableCell(withReuseIdentifier: "typeCell", for: indexPath) as! TypeCollectionViewCell
-        if(indexPath.row == 0){
-            cell.imageView.image = UIImage(named: "cap_white_default")
-        }
-        if(indexPath.row == 1){
-            cell.imageView.image = UIImage(named: "tshirt_white_default")
-        }
-        if(indexPath.row == 2){
-            cell.imageView.image = UIImage(named: "pants_white_default")
-        }
-        if(indexPath.row == 3){
-            cell.imageView.image = UIImage(named: "sneakers_white_default")
-        }
+        cell.imageView.image = generateDefaultImages(index: indexPath.row)
         cell.imageView.backgroundColor = .lightGray
         return cell
     }
@@ -140,7 +148,7 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         let cell = collectionView.cellForItem(at: indexPath) as! TypeCollectionViewCell
         colorSwitcher.isEnabled = true
         type = indexPath.row
-        generateImagesForScrollableView(with: color, toFirst: true)
+        setImagesForScrollableView(with: color, toFirst: true)
         deselectAll(collectionView: typeCollectionView)
         cell.imageView.backgroundColor = .blue
     }
@@ -157,7 +165,7 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
     
     @objc func changedColor(_ slider: ColorSlider) {
         self.color = slider.color
-        self.generateImagesForScrollableView(with: self.color, toFirst: false)
+        self.setImagesForScrollableView(with: self.color, toFirst: false)
     }
     
     
@@ -168,28 +176,40 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         }
     }
     
-    func generateImagesForScrollableView(with color: UIColor, toFirst: Bool){
+    func generateImagesForScrollableView(at index: Int) ->Array<Dictionary<String, Any>>{
+        print(gender)
         var array = Array<Dictionary<String, Any>>()
-        switch type {
+        switch index {
         case 0:
-            array.append(inventory.generateImage(imageName: "cap" , color: color))
+            array.append(inventory.generateImage(imageName: "insulatedhat" , color: color))
             array.append(inventory.generateImage(imageName: "hat" , color: color))
+            array.append(gender ? inventory.generateImage(imageName: "cap_w" , color: color) : inventory.generateImage(imageName: "cap_m" , color: color))
         case 1:
+            array.append(inventory.generateImage(imageName: "insulatedjacket" , color: color))
+            array.append(inventory.generateImage(imageName: "jacket" , color: color))
+            array.append(inventory.generateImage(imageName: "windbreaker" , color: color))
             array.append(inventory.generateImage(imageName: "tshirt" , color: color))
-            array.append(inventory.generateImage(imageName: "windBreaker" , color: color))
-            //array.append(inventory.generateImage(imageName: "insulatedJacket" , color: color))
         case 2:
             array.append(inventory.generateImage(imageName: "pants" , color: color))
-            array.append(inventory.generateImage(imageName: "shorts" , color: color))
+            if(gender){
+                array.append(inventory.generateImage(imageName: "dress" , color: color))
+                array.append(inventory.generateImage(imageName: "skirt" , color: color))
+            }
+            else{
+                array.append( inventory.generateImage(imageName: "shorts" , color: color))
+            }
         case 3:
-            array.append(inventory.generateImage(imageName: "winterShoes" , color: color))
+            array.append(inventory.generateImage(imageName: "wintershoes" , color: color))
             array.append(inventory.generateImage(imageName: "sneakers" , color: color))
-            //array.append(generateImage(imageName: "slippers" , color: color))
-
+            array.append(inventory.generateImage(imageName: "slippers" , color: color))
         default:
             break;
         }
-        scrollableImages.setImages(clothesImageViews: array)
+        return array
+    }
+    
+    func setImagesForScrollableView(with color: UIColor, toFirst: Bool){
+        scrollableImages.setImages(clothesImageViews: generateImagesForScrollableView(at: type))
         scrollableImages.update(toFirst: toFirst)
     }
     
@@ -203,7 +223,7 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         }
         else{
             colorSlider.removeFromSuperview()
-            generateImagesForScrollableView(with: .white, toFirst: false)
+            setImagesForScrollableView(with: .white, toFirst: false)
         }
     }
     
@@ -266,7 +286,11 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
                 let color = self.scrollableImages.getClotheColor()
                 let clothe = Clothe(name: textField.text!, imageName: imageName, color: color, type: self.type, temperature: Int(self.temperatureSlider.value), wind: Int(self.windSlider.value))
                 self.inventory.add(clothe: clothe)
-                self.navigationController?.popViewController(animated: true)
+                self.appearance.showCompleteViewWithRemovingAllViews(view: self.view, text: "saved".localized)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
             }
             else{
                 self.showHelpView(text: "emptyName".localized)

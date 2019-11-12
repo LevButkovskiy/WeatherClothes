@@ -16,6 +16,8 @@ class InventoryTableViewCell: UITableViewCell {
     @IBOutlet weak var comfortableTemperature: UILabel!
     @IBOutlet weak var clotheView: UIView!
     @IBOutlet weak var descriptionView: UIView!
+    
+    var appearance = Appearance()
     override func awakeFromNib() {
         super.awakeFromNib()
         clotheImage.layer.cornerRadius = 10
@@ -34,9 +36,9 @@ class InventoryTableViewCell: UITableViewCell {
             theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
         }
         if(theme){
-            backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
-            clotheView.backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
-            descriptionView.backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
+            backgroundColor = appearance.darkThemeGray
+            clotheView.backgroundColor = appearance.darkThemeGray
+            descriptionView.backgroundColor = appearance.darkThemeGray
             clotheName.textColor = .white
             windProtection.textColor = .white
             comfortableTemperature.textColor = .white

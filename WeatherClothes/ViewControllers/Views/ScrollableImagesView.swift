@@ -15,6 +15,7 @@ class ScrollableImagesView: UIView {
     @IBOutlet weak var leftButton: UIButton!
     @IBOutlet weak var rightButton: UIButton!
     
+    var appearance = Appearance()
     
     var height = CGFloat()
     var scrollViewPosition = CGFloat()
@@ -67,12 +68,12 @@ class ScrollableImagesView: UIView {
             theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
         }
         if(theme){
-            contentView.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
-            scrollView.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+            contentView.backgroundColor = appearance.darkThemeBlack
+            scrollView.backgroundColor = appearance.darkThemeBlack
         }
         else{
-            contentView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
-            scrollView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
+            contentView.backgroundColor = appearance.lightThemeTableViewGray
+            scrollView.backgroundColor = appearance.lightThemeTableViewGray
         }
     }
     
@@ -139,7 +140,7 @@ class ScrollableImagesView: UIView {
         else{
             leftButton.isEnabled = false
         }
-        if(scrollViewPosition <= scrollView.contentSize.width - height * 2){
+        if(scrollViewPosition <= (scrollView.contentSize.width - height * 2) + 1){
             rightButton.isEnabled = true
         }
         else{

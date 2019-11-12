@@ -14,6 +14,7 @@ class NotificationTableViewCell: UITableViewCell {
     @IBOutlet var descriptionLabel: UILabel!
     @IBOutlet var warningLabel: UILabel!
 
+    var appearance = Appearance()
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,7 +34,7 @@ class NotificationTableViewCell: UITableViewCell {
             theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
         }
         if(theme){
-            backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
+            backgroundColor = appearance.darkThemeGray
             titleLabel.textColor = .white
             descriptionLabel.textColor = .lightGray
             warningLabel.textColor = .darkGray

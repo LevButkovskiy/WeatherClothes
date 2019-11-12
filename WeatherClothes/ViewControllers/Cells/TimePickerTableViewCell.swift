@@ -10,6 +10,8 @@ import UIKit
 
 class TimePickerTableViewCell: UITableViewCell {
     @IBOutlet var timePicker: UIDatePicker!
+    
+    var appearance = Appearance()
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,7 +31,7 @@ class TimePickerTableViewCell: UITableViewCell {
             theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
         }
         if(theme){
-            backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
+            backgroundColor = appearance.darkThemeGray
             timePicker.setValue(UIColor.white, forKeyPath: "textColor")
         }
         else{

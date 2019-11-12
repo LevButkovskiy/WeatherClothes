@@ -12,6 +12,7 @@ import SystemConfiguration
 
 class Settings: NSObject {
     var theme = Bool()
+    var gender = Bool()
 
     /*func isConnectedToNetwork() -> Bool{
         if Reachability.isConnectedToNetwork(){
@@ -26,6 +27,9 @@ class Settings: NSObject {
         if let unarchivedObject = UserDefaults.standard.object(forKey: "theme") as? NSData {
             self.theme = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Bool)
         }
+        if let unarchivedObject = UserDefaults.standard.object(forKey: "gender") as? NSData {
+            self.gender = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Bool)
+        }
     }
     
     static func shared() -> Settings {
@@ -36,7 +40,16 @@ class Settings: NSObject {
         do{
             let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: theme, requiringSecureCoding: true)
             UserDefaults().set(archivedObject, forKey: "theme")
-            //setTheme(!switcher.isOn)
+        }
+        catch {
+            print(error)
+        }
+    }
+    
+    static func genderChanged(gender: Bool){
+        do{
+            let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: gender, requiringSecureCoding: true)
+            UserDefaults().set(archivedObject, forKey: "gender")
         }
         catch {
             print(error)

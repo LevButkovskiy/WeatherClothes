@@ -14,7 +14,8 @@ class DoubleImageViewsView: UIView {
     @IBOutlet var backImageView: UIImageView!
     @IBOutlet var topImageView: UIImageView!
 
-
+    var appearance = Appearance()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -45,7 +46,7 @@ class DoubleImageViewsView: UIView {
             theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
         }
         if(theme){
-            self.contentView.backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
+            self.contentView.backgroundColor = appearance.darkThemeGray
         }
         else{
             self.contentView.backgroundColor = .white

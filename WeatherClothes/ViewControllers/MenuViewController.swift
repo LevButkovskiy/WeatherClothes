@@ -13,6 +13,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     let reuseIdentifier = "menuCell"
     var tableView : UITableView!
     
+    var appearance = Appearance()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTableView()
@@ -24,10 +26,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
             theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
         }
         if(theme){
-            tableView.backgroundColor = UIColor(red: 30.0/255.0, green: 32.0/255.0, blue: 35.0/255.0, alpha: 1.0)
+            tableView.backgroundColor = appearance.darkThemeBlue
         }
         else{
-            tableView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
+            tableView.backgroundColor = appearance.lightThemeTableViewGray
         }
     }
     
@@ -44,10 +46,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if #available(iOS 13, *) {
-            return 2
+            return 3
         }
         else{
-            return 3
+            return 4
         }
     }
     
@@ -64,6 +66,15 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.nameLabel.text = "notifications".localized
                 cell.accessoryType = .disclosureIndicator
                 cell.icon.image = UIImage(named: "notifications")
+            case 2:
+                cell.mode = "gender"
+                cell.nameLabel.text = "gender".localized
+                cell.switcher.isHidden = false
+                cell.switcher.onTintColor = UIColor(red:1.00, green:0.54, blue:0.98, alpha:1.0)
+                cell.switcher.tintColor = .blue
+                cell.switcher.layer.cornerRadius = cell.switcher.frame.height / 2
+                cell.switcher.backgroundColor = .blue
+                cell.selectionStyle = .none
             default: break
             }
         }
@@ -83,21 +94,19 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.switcher.isHidden = false
                 cell.icon.image = UIImage(named: "darkMode")
                 cell.selectionStyle = .none
+            case 3:
+                cell.mode = "gender"
+                cell.nameLabel.text = "gender".localized
+                cell.switcher.isHidden = false
+                cell.switcher.onTintColor = UIColor(red:1.00, green:0.54, blue:0.98, alpha:1.0)
+                cell.switcher.tintColor = .blue
+                cell.switcher.layer.cornerRadius = cell.switcher.frame.height / 2
+                cell.switcher.backgroundColor = .blue
+                cell.selectionStyle = .none
             default: break
             }
         }
-        
-        /*
-         cell.mode = "gender"
-         cell.nameLabel.text = "gender".localized
-         cell.switcher.isHidden = false
-         cell.switcher.onTintColor = UIColor(red:1.00, green:0.54, blue:0.98, alpha:1.0)
-         cell.switcher.tintColor = .blue
-         cell.switcher.layer.cornerRadius = cell.switcher.frame.height / 2
-         cell.switcher.backgroundColor = .blue
-         cell.selectionStyle = .none
-         */
-
+    
         cell.setValues()
         return cell
     }

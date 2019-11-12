@@ -17,6 +17,8 @@
 "clearly" = "Clearly";
 "cancel" = "Cancel";
 "save" = "Save";
+"saved" = "Saved";
+"established" = "Established";
 
 "time" = "Time";
 "hourly" = "Hourly";
@@ -90,13 +92,14 @@
 "Hats" = "Hats";
 //
 "Cap" = "Cap";
+"Cap_w" = "Hat";
 "Hat" = "Hat";
 "InsulatedHat" = "Insulated Hat";
 
 //Верхняя часть одежды
 "TopOfClothes" = "Top Of Clothes";
 //
-"T-Shirt" = "Tshirt";
+"TShirt" = "T-Shirt";
 "Hoodie" = "Hoodie";
 "Jacket" = "Jacket";
 "InsulatedJacket" = "Insulated Jacket";
@@ -115,7 +118,7 @@
 //
 "Sneakers" = "Sneakers";
 "Slippers" = "Slippers";
-"Winter Shoes" = "Winter Shoes";
+"WinterShoes" = "Winter Shoes";
 
 //Clothes conditions
 "windProtection" = "Wind Protection";

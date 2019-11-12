@@ -12,7 +12,7 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tableView: UITableView!
     
     var inventory = Inventory()
-
+    var appearance = Appearance()
     override func viewDidLoad() {
         super.viewDidLoad()
         setDefaultSettings()
@@ -42,8 +42,8 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
             theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
         }
         if(theme){
-            view.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
-            tableView.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+            view.backgroundColor = appearance.darkThemeBlack
+            tableView.backgroundColor = appearance.darkThemeBlack
         }
         else{
             view.backgroundColor = .white
@@ -95,11 +95,11 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
             theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
         }
         if(theme){
-            headerView.contentView.backgroundColor = UIColor(red: 30.0/255.0, green: 32.0/255.0, blue: 35.0/255.0, alpha: 1.0)
+            headerView.contentView.backgroundColor = appearance.darkThemeBlue
             headerView.titleLabel.textColor = .white
         }
         else{
-            headerView.contentView.backgroundColor = UIColor(red: 245.0/255.0, green: 245.0/255.0, blue: 249.0/255.0, alpha: 1.0)
+            headerView.contentView.backgroundColor = appearance.lightThemeTableViewGray
             headerView.titleLabel.textColor = .black
         }
     

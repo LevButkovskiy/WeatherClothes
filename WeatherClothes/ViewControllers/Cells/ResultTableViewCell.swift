@@ -19,6 +19,8 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
     var clothesImageViews = Array<Dictionary<String,Any>>()
     private var imageViews = [DoubleImageViewsView]()
     
+    var appearance = Appearance()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = nil
@@ -46,8 +48,8 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
         }
         if(theme){
             clotheName.textColor = .white
-            backView.backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
-            scrollView.backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
+            backView.backgroundColor = appearance.darkThemeGray
+            scrollView.backgroundColor = appearance.darkThemeGray
 
         }
         else{

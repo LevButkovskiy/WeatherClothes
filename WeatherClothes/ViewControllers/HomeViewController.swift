@@ -23,6 +23,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     var weatherForecast = Weather()
     let clothes = Clothes()
     var inventory = Inventory()
+    var appearance = Appearance()
     
     var locationManager: CLLocationManager?
     var latitude = Double()
@@ -87,6 +88,17 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             do{
                 let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: notifications, requiringSecureCoding: true)
                 UserDefaults().set(archivedObject, forKey: "notification")
+            }
+            catch {
+                print(error)
+            }
+        }
+        if (UserDefaults.standard.object(forKey: "gender") as? NSData) != nil {
+        }
+        else{
+            do{
+                let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: false, requiringSecureCoding: true)
+                UserDefaults().set(archivedObject, forKey: "gender")
             }
             catch {
                 print(error)
@@ -311,11 +323,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
             theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
         }
         if(theme){
-            view.backgroundColor = UIColor(red: 41.0/255.0, green: 42.0/255.0, blue: 48.0/255.0, alpha: 1.0)
-            tableView.backgroundColor = UIColor(red: 48.0/255.0, green: 48.0/255.0, blue: 52.0/255.0, alpha: 1.0)
+            view.backgroundColor = appearance.darkThemeBlack
+            tableView.backgroundColor = appearance.darkThemeGray
         }
         else{
-            view.backgroundColor =  UIColor(red: 158.0/255.0, green: 201.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+            view.backgroundColor = UIColor(red: 158.0/255.0, green: 201.0/255.0, blue: 255.0/255.0, alpha: 1.0)
             tableView.backgroundColor = .white
         }
     }
@@ -350,7 +362,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         cell.layer.cornerRadius = 20
         let section = inventory.head == "" ? indexPath.section + 1 : indexPath.section
         let clotheName = inventory.getNameForIndex(index: section)
-        cell.clotheName.text = clotheName.localized
+        cell.clotheName.text = clotheName.removingWhitespaces().localized
         cell.clotheDescription.text = inventory.getDescriptionForIndex(index: section)
         let array = inventory.getClothes(weather: weather, section: section, value: clotheName.trimmingCharacters(in: .whitespaces))
         cell.clothesImageViews = array

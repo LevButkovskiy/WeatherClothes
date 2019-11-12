@@ -111,37 +111,5 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
                 }
             }
         }
-        else{
-            if(hour < 9){
-                timeInt = (9-hour)*60
-            }
-            else if(hour > 9){
-                timeInt = (24-hour+9)*60*60
-            }
-            else{
-                timeInt = 24*60
-            }
-            timeInt = timeInt - minutes*60
-            print(timeInt)
-            let newDate = Date(timeInterval: TimeInterval(timeInt), since: date)
-            let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: newDate)
-            
-            //let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-            let trigger = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-            YMMYandexMetrica.reportEvent("В \(hour):\(minutes) было установлено уведомление, которое сработает через \(timeInt) секунд") { (error) in
-                YMMYandexMetrica.reportEvent("Ошибка в reportEvent о уведомлении", onFailure: { (error) in
-                    print(error.localizedDescription)
-                })
-            }
-            let identifier = "Local notification"
-            
-            let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-            notificationCenter.add(request) { (error) in
-                if let error = error{
-                    print("Error: \(error.localizedDescription)")
-                }
-            }
-        }
-        
     }
 }
