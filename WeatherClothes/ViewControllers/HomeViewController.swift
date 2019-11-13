@@ -417,8 +417,18 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         let alert = UIAlertController(title: "attention".localized, message: "locationError".localized, preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Go to Settings now", style: .default, handler: { (alert: UIAlertAction!) in
-            UIApplication.shared.open((NSURL(string:"App-Prefs:root=General&path=ManagedConfigurationList")! as URL), options: [:], completionHandler: { (true) in
-            })
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+              return
+            }
+            if UIApplication.shared.canOpenURL(settingsUrl)  {
+              if #available(iOS 10.0, *) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                })
+              }
+              else  {
+                UIApplication.shared.openURL(settingsUrl)
+              }
+            }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
