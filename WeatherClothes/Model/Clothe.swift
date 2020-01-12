@@ -39,6 +39,15 @@ class Clothe: NSObject, NSSecureCoding {
         self.comfortWind = wind
     }
     
+    init(imageName : String, color: UIColor) {
+        self.imageName = imageName
+        self.color = color
+        self.name = ""
+        self.type = 0;
+        self.comfortTemperature = 0;
+        self.comfortWind = 0;
+    }
+    
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "name")
         aCoder.encode(imageName, forKey: "imageName")

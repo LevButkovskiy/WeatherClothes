@@ -31,13 +31,13 @@ class DoubleImageViewsView: UIView {
         addSubview(contentView)
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        //setTheme()
+        setTheme()
     }
     
-    func setImages(backImageView : UIImageView, topImageView: UIImageView){
-        self.backImageView.image = backImageView.image
-        self.backImageView.tintColor = backImageView.tintColor
-        self.topImageView.image = topImageView.image
+    func setImages(imageNamed: String, color: UIColor){
+        self.backImageView.image = UIImage(named: String(format: "%@_white", imageNamed.lowercased()))
+        self.backImageView.tintColor = color
+        self.topImageView.image = UIImage(named: String(format: "%@_frame", imageNamed.lowercased()))
     }
     
     func setTheme(){

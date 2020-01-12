@@ -426,6 +426,15 @@ extension UIImageView {
 
 }
 
+extension UIView {
+   func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        self.layer.mask = mask
+    }
+}
+
 public extension UIDevice {
 
     static let modelName: String = {
@@ -505,3 +514,37 @@ public extension UIDevice {
 
 }
 
+extension Date {
+    func dayOfWeek() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE"
+        dateFormatter.locale = Locale(identifier: "en_US")
+        return dateFormatter.string(from: self)
+    }
+    
+    func hours() -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("HH")
+        dateFormatter.string(from: Date())
+        return dateFormatter.string(from: self)
+    }
+    
+    func minutes() -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("mm")
+        dateFormatter.string(from: Date())
+        return dateFormatter.string(from: self)
+    }
+    
+    func hoursMinutes() -> String{
+        let dateFormatter = DateFormatter()
+        dateFormatter.setLocalizedDateFormatFromTemplate("HH:mm")
+        dateFormatter.string(from: Date())
+        return dateFormatter.string(from: self)
+    }
+}
+
+
+extension Notification.Name {
+    static let updateAfterApply = Notification.Name("updateAfterApply")
+}

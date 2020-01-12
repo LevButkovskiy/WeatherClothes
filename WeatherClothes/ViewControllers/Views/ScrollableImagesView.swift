@@ -20,9 +20,8 @@ class ScrollableImagesView: UIView {
     var height = CGFloat()
     var scrollViewPosition = CGFloat()
     var index = Int()
-    var clothesImageViews = Array<Dictionary<String, Any>>()
-    var imageViewsBack = [UIImageView]()
-    var imageViewsTop = [UIImageView]()
+    var clothesImageViews = Array<Clothe>()
+    var imageViews = [DoubleImageViewsView]()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -37,12 +36,12 @@ class ScrollableImagesView: UIView {
     
     func getClotheName() -> String{
         let clothe = clothesImageViews[index]
-        return clothe["imageName"] as! String
+        return clothe.imageName 
     }
     
     func getClotheColor() -> UIColor{
         let clothe = clothesImageViews[index]
-        return clothe["color"] as! UIColor
+        return clothe.color 
     }
 
     private func commonInit(){
@@ -56,9 +55,9 @@ class ScrollableImagesView: UIView {
         setTheme()
     }
     
-    func setImages(clothesImageViews: Array<Dictionary<String, Any>>){
+    func setImages(clothesImageViews: Array<Clothe>){
         self.clothesImageViews = clothesImageViews
-        setupImages()
+        setImages()
         checkButtons()
     }
     
@@ -77,7 +76,7 @@ class ScrollableImagesView: UIView {
         }
     }
     
-    private func setupImages(){
+    /*private func setupImages(){
         imageViewsBack = [UIImageView]()
         imageViewsTop = [UIImageView]()
         
@@ -112,6 +111,35 @@ class ScrollableImagesView: UIView {
         }
         
         let contentWidth  = height * CGFloat(imageViewsBack.count)
+        scrollView.contentSize = CGSize(width: contentWidth, height: height)
+    }*/
+    
+    private func setImages(){
+        imageViews = [DoubleImageViewsView]()
+        
+        for view in scrollView.subviews{
+            view.removeFromSuperview()
+        }
+        height = self.frame.height - 20
+        scrollView.layer.cornerRadius = 15
+        scrollView.layer.shadowColor = UIColor.lightGray.cgColor
+        scrollView.layer.shadowOpacity = 1
+        scrollView.layer.shadowOffset = .zero
+        scrollView.layer.shadowRadius = 3
+        
+        for (index, clothe) in clothesImageViews.enumerated(){
+            let doubleView = DoubleImageViewsView()
+            doubleView.setImages(imageNamed: clothe.imageName, color: clothe.color)
+            doubleView.setTheme()
+            doubleView.frame.size = CGSize(width: height, height: height)
+            doubleView.frame.origin.x = height * CGFloat(index)
+            doubleView.frame.origin.y = 0
+
+            scrollView.addSubview(doubleView)
+            imageViews.append(doubleView)
+        }
+        
+        let contentWidth  = height * CGFloat(imageViews.count)
         scrollView.contentSize = CGSize(width: contentWidth, height: height)
     }
 

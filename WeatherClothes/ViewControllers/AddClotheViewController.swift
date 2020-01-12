@@ -208,6 +208,37 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         return array
     }
     
+    func generateImagesForScrollableView(at index: Int) ->Array<Clothe>{
+        print(gender)
+        var array = Array<Clothe>()
+        switch index {
+        case 0:
+            array.append(Clothe(imageName: "hat", color: color))
+            array.append(gender ? Clothe(imageName: "cap_w", color: color) : Clothe(imageName: "cap_m", color: color))
+        case 1:
+            array.append(Clothe(imageName: "insulatedjacket", color: color))
+            array.append(Clothe(imageName: "jacket", color: color))
+            array.append(Clothe(imageName: "windbreaker", color: color))
+            array.append(Clothe(imageName: "tshirt", color: color))
+        case 2:
+            array.append(Clothe(imageName: "pants", color: color))
+            if(gender){
+                array.append(Clothe(imageName: "dress", color: color))
+                array.append(Clothe(imageName: "skirt", color: color))
+            }
+            else{
+                array.append(Clothe(imageName: "shorts", color: color))
+            }
+        case 3:
+            array.append(Clothe(imageName: "wintershoes", color: color))
+            array.append(Clothe(imageName: "sneakers", color: color))
+            array.append(Clothe(imageName: "slippers", color: color))
+        default:
+            break;
+        }
+        return array
+    }
+    
     func setImagesForScrollableView(with color: UIColor, toFirst: Bool){
         scrollableImages.setImages(clothesImageViews: generateImagesForScrollableView(at: type))
         scrollableImages.update(toFirst: toFirst)

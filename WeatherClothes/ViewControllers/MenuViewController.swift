@@ -20,6 +20,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         configureTableView()
         setTheme()
     }
+    
     func setTheme(){
         var theme = Settings.shared().theme
         if #available(iOS 13, *) {
@@ -116,14 +117,14 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         if(indexPath.row == 0){
             let viewController = (UIApplication.shared.keyWindow!.rootViewController) as! UINavigationController
             let containerViewController = viewController.viewControllers[0] as! ContainerViewController
-            containerViewController.toggleMenu()
+            containerViewController.homeViewController.showMenu(self)
             containerViewController.homeViewController.showWhatsNew()
         }
         if(indexPath.row == 1){
             let viewController = (UIApplication.shared.keyWindow!.rootViewController) as! UINavigationController
             let containerViewController = viewController.viewControllers[0] as! ContainerViewController
-            containerViewController.toggleMenu()
-            containerViewController.homeViewController.showNotificationSettins()
+            containerViewController.homeViewController.showMenu(self)
+            containerViewController.homeViewController.showNotificationSettings()
         }
     }
 

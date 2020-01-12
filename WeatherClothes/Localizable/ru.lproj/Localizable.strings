@@ -133,7 +133,6 @@
 
 //Notifications
 "notifications" = "Уведомления";
-"notificationsTitle" = "Уведомления каждое утро";
-"notificationsDescription" = "Подскажет что сегодня надеть";
-"notificationsWarning" = "для активации функции необходимо зайти в приложение хотя бы раз в день";
+"notificationsTitle" = "Уведомления";
+"notificationsFooter" = "Уведомления о том, что надеть в установленное время";
 "outside" = "На улице";

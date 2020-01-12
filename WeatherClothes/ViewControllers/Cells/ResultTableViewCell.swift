@@ -16,7 +16,7 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
     @IBOutlet weak var backView: UIView!
     
     var height = CGFloat()
-    var clothesImageViews = Array<Dictionary<String,Any>>()
+    var clothesImageViews = Array<Clothe>()
     private var imageViews = [DoubleImageViewsView]()
     
     var appearance = Appearance()
@@ -76,24 +76,21 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
         scrollView.layer.shadowOffset = .zero
         scrollView.layer.shadowRadius = 3
         
-        for imageView in clothesImageViews{
-            //imageView.contentMode = .f
+        for (index, clothe) in clothesImageViews.enumerated(){
             let doubleView = DoubleImageViewsView()
-            doubleView.setImages(backImageView: imageView["back"] as! UIImageView, topImageView: imageView["top"] as! UIImageView)
+            doubleView.setImages(imageNamed: clothe.imageName, color: clothe.color)
             doubleView.setTheme()
+            doubleView.frame.size = CGSize(width: height, height: height)
+            doubleView.frame.origin.x = height * CGFloat(index)
+            doubleView.frame.origin.y = 0
+
             scrollView.addSubview(doubleView)
             imageViews.append(doubleView)
         }
         
-        for(index, imageView) in imageViews.enumerated(){
-            imageView.frame.size = CGSize(width: height, height: height)
-            imageView.frame.origin.x = height * CGFloat(index)
-            imageView.frame.origin.y = 0
-        }
-        
-        
         let contentWidth  = height * CGFloat(imageViews.count)
         scrollView.contentSize = CGSize(width: contentWidth, height: height)
+ 
     }
 
 }

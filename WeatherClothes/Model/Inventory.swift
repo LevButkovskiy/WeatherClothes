@@ -320,7 +320,7 @@ class Inventory: NSObject {
         }
     }
     
-    func getClothes(weather: Weather, section : Int, value: String) -> Array<Dictionary<String,Any>>{
+    /*func getClothes(weather: Weather, section : Int, value: String) -> Array<Dictionary<String,Any>>{
         if(!weather.isNull){
             var clothesDict = Array<Dictionary<String,Any>>()
             if(inventory[section] != nil){
@@ -341,6 +341,38 @@ class Inventory: NSObject {
             else{
                 if(value != ""){
                     clothesDict.append(generateImage(imageName: value, color: .white))
+                }
+            }
+            return clothesDict
+        }
+        else{
+            return []
+        }
+    }*/
+    
+    func getClothes(weather: Weather, section : Int, value: String) -> Array<Clothe>{
+        if(!weather.isNull){
+            var clothesDict = Array<Clothe>()
+            if(inventory[section] != nil){
+                let typeOfClothe = inventory[section] as! Dictionary<Int, Any>
+                for i in 0..<typeOfClothe.count{
+                    let clothe = typeOfClothe[i] as! Clothe
+                    if(weather.temperature >= clothe.comfortTemperature! && weather.windSpeed <= clothe.comfortWind!){
+                        clothesDict.append(clothe)
+                    }
+                }
+                if(clothesDict.count == 0){
+                    print(value)
+                    if(value != ""){
+                        let clothe = Clothe(imageName: value, color: .white)
+                        clothesDict.append(clothe)
+                    }
+                }
+            }
+            else{
+                if(value != ""){
+                    let clothe = Clothe(imageName: value, color: .white)
+                    clothesDict.append(clothe)
                 }
             }
             return clothesDict
@@ -461,8 +493,8 @@ class Inventory: NSObject {
     
     func generateImage(imageName: String, color: UIColor) -> Dictionary<String, Any> {
         var result = Dictionary<String,Any>()
-        var backImage = UIImage(named: String(format: "%@_white", imageName.lowercased().removingWhitespaces()))
-        var topImage = UIImage(named: String(format: "%@_frame", imageName.lowercased().removingWhitespaces()))
+        let backImage = UIImage(named: String(format: "%@_white", imageName.lowercased().removingWhitespaces()))
+        let topImage = UIImage(named: String(format: "%@_frame", imageName.lowercased().removingWhitespaces()))
         let backImageView = UIImageView(image: backImage)
         let topImageView = UIImageView(image: topImage)
         backImageView.tintColor = color

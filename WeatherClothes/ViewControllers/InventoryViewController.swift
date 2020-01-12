@@ -63,10 +63,10 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "inventoryCell", for: indexPath) as! InventoryTableViewCell
         let clothe = inventory.cellForRowAt(indexPath: indexPath)
         if(clothe != nil){
-            let imageViews = inventory.generateImage(imageName: clothe!.imageName, color: clothe!.color)
+            //let imageViews = inventory.generateImage(imageName: clothe!.imageName, color: clothe!.color)
             cell.setTheme()
             cell.clotheName.text = clothe?.name
-            cell.clotheImage.setImages(backImageView: imageViews["back"] as! UIImageView, topImageView: imageViews["top"] as! UIImageView)
+            cell.clotheImage.setImages(imageNamed: clothe!.imageName, color: clothe!.color)
             cell.clotheImage.setTheme()
             cell.comfortableTemperature.text = String(format: "%@: %d˙C", "comfortableTemperature".localized, clothe!.comfortTemperature!)
             cell.windProtection.text = String(format: "%@: %d %@","windProtection".localized, clothe!.comfortWind!, "ms".localized)

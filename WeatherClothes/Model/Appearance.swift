@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class Appearance: NSObject {
     
     override init() {

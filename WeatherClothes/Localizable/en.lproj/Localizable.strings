@@ -91,7 +91,7 @@
 //Головные уборы
 "Hats" = "Hats";
 //
-"Cap" = "Cap";
+"Cap_m" = "Cap";
 "Cap_w" = "Hat";
 "Hat" = "Hat";
 "InsulatedHat" = "Insulated Hat";
@@ -133,7 +133,6 @@
 
 //Notifications
 "notifications" = "Notifications";
-"notificationsTitle" = "Notifications every morning";
-"notificationsDescription" = "Tell you what to wear today";
-"notificationsWarning" = "to activate the function you need to go to the application at least once a day";
+"notificationsTitle" = "Notifications";
+"notificationsFooter" = "Уведомления о том, что надеть в установленное время";
 "outside" = "Outside";

@@ -192,12 +192,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     func setViews(){
-        tableView.layer.cornerRadius = 30
+         tableView.layer.cornerRadius = 30
         tableView.layer.shadowColor = UIColor.lightGray.cgColor
         tableView.layer.shadowOpacity = 1
         tableView.layer.shadowOffset = CGSize(width: 1, height: 1)
         tableView.layer.shadowRadius = 1
-        tableView.backgroundColor = .white
 
         weatherView.layer.cornerRadius = 15
         weatherView.layer.shadowColor = UIColor.lightGray.cgColor
@@ -377,17 +376,25 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         performSegue(withIdentifier: "goToInventory", sender: nil)
     }
     
-    func showNotificationSettins(){
-        let notificationsSettings = NotificationSettings()
-        notificationsSettings.frame = CGRect(x: 0, y: -self.view.frame.height, width: self.view.frame.width, height: self.view.frame.height)
+    func showNotificationSettings(){
+        let no = NotificationSettingsViewController()
+        self.modalPresentationStyle = .overFullScreen
+        self.show(no, sender: nil)
+        //self.present(no, animated: true, completion: nil)
+        /*notificationsSettings.frame = CGRect(x: 0, y: self.view.frame.height * 2, width: self.view.frame.width, height: self.view.frame.height)
+        notificationsSettings.layer.cornerRadius = 20*/
+        //let no = UIViewController()
+//        no.view = notificationsSettings
+//        self.present(no, animated: true) {
+//
+//        }
+        /*
         self.view.addSubview(notificationsSettings)
+        self.present(<#T##viewControllerToPresent: UIViewController##UIViewController#>, animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
         UIView.animate(withDuration: 0.5, animations: {
-            notificationsSettings.frame = self.view.frame
-        })
-    }
-    
-    @objc func closeButton(){
-
+            notificationsSettings.frame = CGRect(x: 0, y: self.view.safeAreaInsets.top + 10, width: self.view.frame.width, height: self.view.frame.height - 10)
+            notificationsSettings.layer.cornerRadius = 20
+        })*/
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -434,36 +441,3 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         self.present(alert, animated: true, completion: nil)
     }
 }
-
-extension Date {
-    func dayOfWeek() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE"
-        dateFormatter.locale = Locale(identifier: "en_US")
-        return dateFormatter.string(from: self)
-    }
-    
-    func hours() -> String{
-        let dateFormatter = DateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("HH")
-        dateFormatter.string(from: Date())
-        return dateFormatter.string(from: self)
-    }
-    
-    func minutes() -> String{
-        let dateFormatter = DateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("mm")
-        dateFormatter.string(from: Date())
-        return dateFormatter.string(from: self)
-    }
-    
-    func hoursMinutes() -> String{
-        let dateFormatter = DateFormatter()
-        dateFormatter.setLocalizedDateFormatFromTemplate("HH:mm")
-        dateFormatter.string(from: Date())
-        return dateFormatter.string(from: self)
-    }
-}
-
-
-
