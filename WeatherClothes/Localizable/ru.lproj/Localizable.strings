@@ -40,30 +40,31 @@
 "uvIndex" = "УФ индекс";
 "visibility" = "видимость";
 
-"cloudy" = "Облачно";
+"cloudy" = "Облачно"; 
 "partyCloudy" = "Cлегка облачно";
+"scatteredClouds" = "Слегка облачно";
+"scatteredCloud" = "Переменная облачность";
 "fewClouds" = "Слегка облачно";
 "fewsClouds" = "Небольшая облачность";
-"scatteredCloud" = "Переменная облачность";
-"scatteredClouds" = "Слегка облачно";
 "clear" = "Ясно";
 "dull" = "Пасмурно";
-"lightRain" = "Легкий дождь";
-"lightyRain" = "Небольшой дождь";
-"rain" = "Дождь";
 "overcastClouds" = "Пасмурно";
 "brokenClouds" = "Пасмурно";
 "brokenCloudsLight" = "Облачно с прояснениями";
 "fog" = "Туман";
 "foggy" = "Туманно";
+"rain" = "Дождь";
+"lightRain" = "Легкий дождь";
+"lightyRain" = "Небольшой дождь";
 "snow" = "Снег";
-"snowfall" = "Снегопад";
 "lightSnow" = "Небольшой снегопад";
 "lightShowersSnow" = "Небольшой снегопад";
+"snowfall" = "Снегопад";
 "heavySnow" = "Сильный снег";
-"heavySnowers" = "Сильный снегопад";
+"heavyShowers" = "Сильный снегопад";
 "smoke" = "Дымка";
 
+"smoke" = "Smoke";
 "day" = "День";
 "night" = "Ночь";
 

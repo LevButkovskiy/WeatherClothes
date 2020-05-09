@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		19E19C93B01250E78C8EBDFB /* Pods_WeatherClothes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AC420B1EE9F9BC8F8D5A419 /* Pods_WeatherClothes.framework */; };
+		A00002F423D39BD20046B4E9 /* ColorSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00002F323D39BD20046B4E9 /* ColorSlider.swift */; };
 		A006C2332337916800B2A8F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A006C2352337916800B2A8F6 /* InfoPlist.strings */; };
 		A007981D237562170090033C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A007981F237562170090033C /* Localizable.strings */; };
 		A00928B4231ECE46002F9D2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A00928B3231ECE46002F9D2A /* Main.storyboard */; };
@@ -37,7 +38,6 @@
 		A0A678A823410772002C0134 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF386D22EC623500A980CC /* AppDelegate.swift */; };
 		A0A678A923410772002C0134 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0EF386D22EC623500A980CC /* AppDelegate.swift */; };
 		A0BB565E23BF436E00B7FBF8 /* DatePickerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BB565C23BF436E00B7FBF8 /* DatePickerTableView.swift */; };
-		A0BB566123BF4C3500B7FBF8 /* OverlayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BB566023BF4C3500B7FBF8 /* OverlayController.swift */; };
 		A0BB566A23BF5B1500B7FBF8 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BB566823BF5B1500B7FBF8 /* TableViewController.swift */; };
 		A0BB566B23BF5B1500B7FBF8 /* TableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0BB566923BF5B1500B7FBF8 /* TableViewController.xib */; };
 		A0BCA53D230B077E00407757 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0BCA53C230B077E00407757 /* ContainerViewController.swift */; };
@@ -51,6 +51,8 @@
 		A0C37604234DEF1800E4604B /* TypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0C37602234DEF1800E4604B /* TypeCollectionViewCell.xib */; };
 		A0C37606234E314E00E4604B /* Clothe.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0C37605234E314E00E4604B /* Clothe.swift */; };
 		A0CD2FEE235211D60069D6FB /* InventoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CD2FED235211D60069D6FB /* InventoryViewController.swift */; };
+		A0D3560523CB86A70089D7B4 /* ResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0D3560323CB86A70089D7B4 /* ResultCollectionViewCell.swift */; };
+		A0D3560623CB86A70089D7B4 /* ResultCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A0D3560423CB86A70089D7B4 /* ResultCollectionViewCell.xib */; };
 		A0DDFF74235E1CD000344ABB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A0DDFF73235E1CD000344ABB /* Assets.xcassets */; };
 		A0DE2943237AF91A00B7E1B9 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0DE2942237AF91A00B7E1B9 /* Appearance.swift */; };
 		A0E67C7123476285008D8926 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0E67C7023476285008D8926 /* Settings.swift */; };
@@ -109,6 +111,7 @@
 		4ED99F4301369B74E99A5BB3 /* Pods-WeatherClothes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherClothes.release.xcconfig"; path = "Target Support Files/Pods-WeatherClothes/Pods-WeatherClothes.release.xcconfig"; sourceTree = "<group>"; };
 		544036DED2AAB788A5EA1C21 /* Pods_WeatherClothesTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherClothesTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E16E86EC49CBE0D9DD7A75E /* Pods-WeatherClothes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherClothes.debug.xcconfig"; path = "Target Support Files/Pods-WeatherClothes/Pods-WeatherClothes.debug.xcconfig"; sourceTree = "<group>"; };
+		A00002F323D39BD20046B4E9 /* ColorSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSlider.swift; sourceTree = "<group>"; };
 		A006C2342337916800B2A8F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A006C2362337916D00B2A8F6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A007981E237562170090033C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -143,7 +146,6 @@
 		A099E222231D8777002AC664 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A0B5B8992358DD670028808E /* Chelyabinsk.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Chelyabinsk.gpx; sourceTree = "<group>"; };
 		A0BB565C23BF436E00B7FBF8 /* DatePickerTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerTableView.swift; sourceTree = "<group>"; };
-		A0BB566023BF4C3500B7FBF8 /* OverlayController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayController.swift; sourceTree = "<group>"; };
 		A0BB566823BF5B1500B7FBF8 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		A0BB566923BF5B1500B7FBF8 /* TableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewController.xib; sourceTree = "<group>"; };
 		A0BCA53C230B077E00407757 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
@@ -157,6 +159,8 @@
 		A0C37602234DEF1800E4604B /* TypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TypeCollectionViewCell.xib; sourceTree = "<group>"; };
 		A0C37605234E314E00E4604B /* Clothe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clothe.swift; sourceTree = "<group>"; };
 		A0CD2FED235211D60069D6FB /* InventoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InventoryViewController.swift; path = /Users/butkovskiylev/Documents/BlueBeakStd/WeatherClothes/WeatherClothes/ViewControllers/InventoryViewController.swift; sourceTree = "<absolute>"; };
+		A0D3560323CB86A70089D7B4 /* ResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCollectionViewCell.swift; sourceTree = "<group>"; };
+		A0D3560423CB86A70089D7B4 /* ResultCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultCollectionViewCell.xib; sourceTree = "<group>"; };
 		A0DDFF73235E1CD000344ABB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A0DE2942237AF91A00B7E1B9 /* Appearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		A0E67C7023476285008D8926 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = ../Settings.swift; sourceTree = "<group>"; };
@@ -222,6 +226,14 @@
 				0C970EDEF4A2F81CAD8E6E09 /* Pods-WeatherClothesUITests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A00002F523D39BE70046B4E9 /* ColorSlider */ = {
+			isa = PBXGroup;
+			children = (
+				A00002F323D39BD20046B4E9 /* ColorSlider.swift */,
+			);
+			path = ColorSlider;
 			sourceTree = "<group>";
 		};
 		A056C65623181759003B83D3 /* Localizable */ = {
@@ -303,6 +315,8 @@
 				A0698AFE2377F28600DCE5C9 /* ButtonTableViewCell.xib */,
 				A053C65C23BF266B00D73C58 /* FooterView.swift */,
 				A053C65E23BF26A400D73C58 /* FooterView.xib */,
+				A0D3560323CB86A70089D7B4 /* ResultCollectionViewCell.swift */,
+				A0D3560423CB86A70089D7B4 /* ResultCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -315,7 +329,6 @@
 				A0F270962354C78C00E3C814 /* ScrollableImagesView.xib */,
 				A0F270982354C7EA00E3C814 /* ScrollableImagesView.swift */,
 				A0C254462392D5B700D160BC /* DoubleImageView.swift */,
-				A0BB566023BF4C3500B7FBF8 /* OverlayController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -345,6 +358,7 @@
 		A0EF386C22EC623500A980CC /* WeatherClothes */ = {
 			isa = PBXGroup;
 			children = (
+				A00002F523D39BE70046B4E9 /* ColorSlider */,
 				A018E13E2358851B00614796 /* WeatherClothes.entitlements */,
 				A0A81DB5231AF8A2003EA87D /* ViewControllers */,
 				A0A81DB4231AF889003EA87D /* Model */,
@@ -514,6 +528,7 @@
 				A0BB566B23BF5B1500B7FBF8 /* TableViewController.xib in Resources */,
 				A0C37604234DEF1800E4604B /* TypeCollectionViewCell.xib in Resources */,
 				A0698AF42377EDEC00DCE5C9 /* NotificationTableViewCell.xib in Resources */,
+				A0D3560623CB86A70089D7B4 /* ResultCollectionViewCell.xib in Resources */,
 				A0698B002377F28600DCE5C9 /* ButtonTableViewCell.xib in Resources */,
 				A0F3611822F9DBB900906528 /* InventoryTableViewCell.xib in Resources */,
 				A056C6552317A869003B83D3 /* HeaderView.xib in Resources */,
@@ -638,8 +653,8 @@
 			files = (
 				A0EF386E22EC623500A980CC /* AppDelegate.swift in Sources */,
 				A099E223231D8777002AC664 /* HomeViewController.swift in Sources */,
-				A0BB566123BF4C3500B7FBF8 /* OverlayController.swift in Sources */,
 				A0BCA546230B228C00407757 /* MenuTableViewCell.swift in Sources */,
+				A0D3560523CB86A70089D7B4 /* ResultCollectionViewCell.swift in Sources */,
 				A053C65D23BF266B00D73C58 /* FooterView.swift in Sources */,
 				A0BF269823773886008D50E1 /* DoubleImageViewsView.swift in Sources */,
 				A0773E10230D8B23007C202B /* Clothes.swift in Sources */,
@@ -657,6 +672,7 @@
 				A0285587234E5C18003AC1DA /* ColorCollectionViewCell.swift in Sources */,
 				A0BB566A23BF5B1500B7FBF8 /* TableViewController.swift in Sources */,
 				A0698AF32377EDEC00DCE5C9 /* NotificationTableViewCell.swift in Sources */,
+				A00002F423D39BD20046B4E9 /* ColorSlider.swift in Sources */,
 				A0BB565E23BF436E00B7FBF8 /* DatePickerTableView.swift in Sources */,
 				A0C37606234E314E00E4604B /* Clothe.swift in Sources */,
 				A0F3611222F992C400906528 /* Weather.swift in Sources */,
@@ -863,7 +879,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = WeatherClothes/WeatherClothes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5J2CH3482H;
 				INFOPLIST_FILE = WeatherClothes/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
@@ -871,6 +887,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluebeakstd.WeatherClothesI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -887,7 +904,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = WeatherClothes/WeatherClothes.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5J2CH3482H;
 				INFOPLIST_FILE = WeatherClothes/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
@@ -895,6 +912,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluebeakstd.WeatherClothesI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

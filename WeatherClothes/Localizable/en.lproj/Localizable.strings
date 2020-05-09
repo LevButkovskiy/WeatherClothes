@@ -42,26 +42,26 @@
 
 "cloudy" = "Cloudy";
 "partyCloudy" = "Party Cloudy";
+"scatteredClouds" = "Scattered Clouds";
+"scatteredCloud" = "Scattered Clouds";
 "fewClouds" = "Few Clouds";
 "fewsClouds" = "Few Clouds";
-"scatteredCloud" = "Scattered Clouds";
-"scatteredClouds" = "Scattered Clouds";
 "clear" = "Clear";
 "dull" = "Dull";
-"lightRain" = "Light Rain";
-"lightyRain" = "Light Rain";
-"rain" = "Rain";
 "overcastClouds" = "Overcast Clouds";
 "brokenClouds" = "Broken Clouds";
 "brokenCloudsLight" = "Broken Clouds";
 "fog" = "Fog";
 "foggy" = "Fog";
+"rain" = "Rain";
+"lightRain" = "Light Rain";
+"lightyRain" = "Light Rain";
 "snow" = "Snow";
-"snowfall" = "Snowfall";
 "lightSnow" = "Light Snow";
 "lightShowersSnow" = "Light Showers";
+"snowfall" = "Snowfall";
 "heavySnow" = "Heavy Snow";
-"heavySnowers" = "Heavy Snow";
+"heavyShowers" = "Heavy Snow";
 "smoke" = "Smoke";
 
 "day" = "Day";

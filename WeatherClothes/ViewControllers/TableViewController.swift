@@ -83,6 +83,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 let cell = tableView.dequeueReusableCell(withIdentifier: "timeCell", for: indexPath) as! TimePickerTableViewCell
                 cell.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
                 cell.layer.cornerRadius = 10
+                cell.timePicker.date = dateTime
                 return cell
             case Row.Apply:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "buttonCell", for: indexPath) as! ButtonTableViewCell
@@ -141,26 +142,11 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let lastVisibleIndexPath = tableView.indexPathsForVisibleRows?.last {
             if indexPath == lastVisibleIndexPath {
-                print(cell.frame.maxY)
-                print(self.tableView.bounds.maxY)
-                print(self.tableView.frame.height)
-                print(self.tableView.bounds.height)
-                print(self.view.frame.height)
                 let d = self.tableView.frame.height - cell.frame.maxY - 30
                 print(d)
                 self.view.bounds = CGRect(x: 0, y: -d, width: self.tableView.bounds.width, height: self.tableView.bounds.height)
             }
         }
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

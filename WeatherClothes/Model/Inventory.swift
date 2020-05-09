@@ -461,6 +461,10 @@ class Inventory: NSObject {
         }
     }
     
+    func getClothe(for indexPath: IndexPath){
+        
+    }
+    
     func getDescriptionForIndex(index : Int) -> String{
         switch index {
         case 0:

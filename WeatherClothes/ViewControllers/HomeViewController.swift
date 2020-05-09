@@ -25,6 +25,8 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     var inventory = Inventory()
     var appearance = Appearance()
     
+    var counter = 0
+    
     var locationManager: CLLocationManager?
     var latitude = Double()
     var longitude = Double()
@@ -215,13 +217,15 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     
     @objc func reload(){
         loadWeather()
+        counter = 0
         inventory.update()
     }
     
     func loadWeather(){
         self.now = Date()
         self.locationManager?.stopUpdatingLocation()
-        
+        if(counter == 0){
+            counter = counter + 1
         weather = Weather()
         weather.initWithParams(latitude: self.latitude, longitude: self.longitude) { (completion) in
             DispatchQueue.main.async {
@@ -240,10 +244,11 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                     //self.timeLabel.text = String(format: "%@, %@", self.now.dayOfWeek().localized, self.now.hoursMinutes())
                     self.weatherImage.image = self.weather.getImageForCondition(minutes: Int(minutes)!, hours: Int(hours)!, weatherCondition: self.weather.weatherCondition)
                     self.generateClothes()
-                    self.loadForecast()
+                    //self.loadForecast()
                 }
                 
             }
+        }
         }
     }
     
@@ -359,21 +364,16 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         
         cell.contentView.layer.cornerRadius = 20
         cell.layer.cornerRadius = 20
+        
         let section = inventory.head == "" ? indexPath.section + 1 : indexPath.section
         let clotheName = inventory.getNameForIndex(index: section)
         cell.clotheName.text = clotheName.removingWhitespaces().localized
         cell.clotheDescription.text = inventory.getDescriptionForIndex(index: section)
         let array = inventory.getClothes(weather: weather, section: section, value: clotheName.trimmingCharacters(in: .whitespaces))
-        cell.clothesImageViews = array
-        cell.setImages()
-        cell.setTheme()
-
-        /*cell.clothesImages = inventory.getClothes(weather: weather, section: section, value: clotheName.trimmingCharacters(in: .whitespaces))*/
+        cell.clothes = array
+        cell.collectionView.reloadData()
+        
         return cell
-    }
-    
-    @IBAction func refreshButton(_ sender: Any) {
-        performSegue(withIdentifier: "goToInventory", sender: nil)
     }
     
     func showNotificationSettings(){
@@ -439,5 +439,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func refreshButton(_ sender: Any){
+        performSegue(withIdentifier: "goToInventory", sender: nil)
     }
 }

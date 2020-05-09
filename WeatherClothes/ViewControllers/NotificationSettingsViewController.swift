@@ -159,17 +159,32 @@ class NotificationSettingsViewController: UIViewController, UITableViewDelegate,
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if(indexPath.section == Section.Time.rawValue){
-            /*let cell = tableView.cellForRow(at: IndexPath(row: 0, section: Section.Time.rawValue)) as! SetValueTableViewCell
-            let timeValue = cell.valueLabel.text!
-            print(timeValue)*/
-            /*let timeValue = "08:20:00"
+            let cell = tableView.cellForRow(at: IndexPath(row: 0, section: Section.Time.rawValue)) as! SetValueTableViewCell
+            //let timeValue = cell.valueLabel.text!
+            //print(timeValue)
+            let time = cell.valueLabel.text
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "hh:mm"
+            dateFormatter.dateFormat = "HH:mm:ss"
+
+            let fullDate = dateFormatter.date(from: time!)
+            print(fullDate)
+            dateFormatter.dateFormat = "hh:mm:ss"
+            let vc = TableViewController()
+            vc.dateTime = fullDate!
+
+            /*let dateFormatter = DateFormatter()
+            dateFormatter.setLocalizedDateFormatFromTemplate("HH:mm")
+            dateFormatter.locale = Locale.current
+            dateFormatter.timeZone = TimeZone(secondsFromGMT: 18000)
+            let timeValue = "08:20"
+            print(timeValue)
+            print(dateFormatter.dateFormat)
+            print(dateFormatter.date(from: timeValue))
             let dateTime = dateFormatter.date(from: timeValue)
             let vc = TableViewController()
             vc.dateTime = dateTime!
+            
             self.present(vc, animated: true, completion: nil)*/
-            #warning("Сделать передачу dateTime на контроллер")
         }
     }
     

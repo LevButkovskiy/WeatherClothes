@@ -8,40 +8,54 @@
 
 import UIKit
 
-class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
-    
+class ResultTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet weak var clotheName: UILabel!
     @IBOutlet weak var clotheDescription: UILabel!
-    @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     var height = CGFloat()
-    var clothesImageViews = Array<Clothe>()
-    private var imageViews = [DoubleImageViewsView]()
+    var clothes = Array<Clothe>()
     
     var appearance = Appearance()
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundColor = nil
-
-        if(UIScreen.main.nativeBounds.height != 1136){
-            /*windView.layer.cornerRadius = 10
-            windView.layer.shadowColor = UIColor.lightGray.cgColor
-            windView.layer.shadowOpacity = 0.5
-            windView.layer.shadowOffset = .init(width: 2, height: 2)
-            tempView.layer.cornerRadius = 10
-            tempView.layer.shadowColor = UIColor.lightGray.cgColor
-            tempView.layer.shadowOpacity = 0.5
-            tempView.layer.shadowOffset = .init(width: 2, height: 2)
-            comfortView.layer.cornerRadius = 10
-            comfortView.layer.shadowColor = UIColor.lightGray.cgColor
-            comfortView.layer.shadowOpacity = 0.5
-            comfortView.layer.shadowOffset = .init(width: 2, height: 2)*/
-        }
+        
+        collectionView.register(UINib(nibName: "ResultCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "resultCollectionCell")
     }
     
-    func setTheme(){
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard clothes.count < 0 else {
+            return clothes.count
+        }
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "resultCollectionCell", for: indexPath) as! ResultCollectionViewCell
+        guard clothes.count < 0 else {
+            let clothe = clothes[indexPath.row]
+            cell.setImages(imageName: clothe.imageName, color: .green)
+            /*let image = UIImage(named: "tshirt_white")
+            let imageOver = image?.applyOverlayWithColor(color: .green, blendMode: .color, alpha: 0.5)
+            cell.backView.image = imageOver*/
+            //cell.topView.image = imageOver
+            
+            //cell.backView.tintColor = clothe.color
+            //cell.topView.image = UIImage(named: String(format: "%@_frame", clothe.imageName.lowercased()))
+            return cell
+        }
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+    }
+    /*func setTheme(){
         var theme = Settings.shared().theme
         if #available(iOS 13, *) {
             theme = self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark
@@ -57,13 +71,10 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
             backView.backgroundColor = .white
             scrollView.backgroundColor = .white
         }
-    }
+    }*/
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
     
-    func setImages(){
+    /*func setImages(){
         imageViews = [DoubleImageViewsView]()
         
         for view in scrollView.subviews{
@@ -91,6 +102,28 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
         let contentWidth  = height * CGFloat(imageViews.count)
         scrollView.contentSize = CGSize(width: contentWidth, height: height)
  
-    }
+    }*/
 
+}
+
+extension UIImage {
+    func applyOverlayWithColor(color: UIColor, blendMode: CGBlendMode) -> UIImage? {
+        // Create a new CGContext
+        UIGraphicsBeginImageContextWithOptions(self.size, false, UIScreen.main.scale)
+        let bounds = CGRect(origin: CGPoint.zero, size: self.size)
+        let context = UIGraphicsGetCurrentContext()
+        // Draw image into context, then fill using the proper color and blend mode
+        draw(in: bounds, blendMode: .normal, alpha: 1.0)
+        context?.setBlendMode(blendMode)
+        context?.setFillColor(color.cgColor)
+        context?.fill(bounds)
+        // Return the resulting image
+        let overlayImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext();
+        return overlayImage
+    }
+    
+    func applyOverlayWithColor(color: UIColor, blendMode: CGBlendMode, alpha: CGFloat) -> UIImage? {
+        return applyOverlayWithColor(color: color.withAlphaComponent(alpha), blendMode: blendMode)
+    }
 }
