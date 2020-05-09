@@ -1,4 +1,5 @@
 PODS:
+  - ApphudSDK (0.9.8)
   - ColorSlider (4.4)
   - WhatsNewKit (1.3.0)
   - YandexMobileMetrica (3.7.1):
@@ -11,6 +12,7 @@ PODS:
     - YandexMobileMetrica/Static/Core
 
 DEPENDENCIES:
+  - ApphudSDK
   - ColorSlider (~> 4.4)
   - WhatsNewKit
   - YandexMobileMetrica (= 3.7.1)
@@ -20,12 +22,15 @@ SPEC REPOS:
     - ColorSlider
     - WhatsNewKit
     - YandexMobileMetrica
+  trunk:
+    - ApphudSDK
 
 SPEC CHECKSUMS:
+  ApphudSDK: cbf8bbbe855ff2bdcfc834f8a59a7323018c485b
   ColorSlider: 9a888e65b871fa1e6a26fadebf4931c949935681
   WhatsNewKit: 7ec83c4ab2240605c3af63e302ede1310ab366be
   YandexMobileMetrica: 95e93ee5af38520c9e470533dc8df6cf72fa171d
 
-PODFILE CHECKSUM: 85be8e47bb1a8711191e4411b18164aa67f2c12a
+PODFILE CHECKSUM: 98ac8c7304efaf7923485fa9db277d6a520340b9
 
 COCOAPODS: 1.8.4

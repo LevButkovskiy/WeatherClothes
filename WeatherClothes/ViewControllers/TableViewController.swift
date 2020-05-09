@@ -124,14 +124,12 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                     UserDefaults().set(archivedObject, forKey: "notificationDateTime")
                     NotificationCenter.default.post(name: .updateAfterApply, object: nil)
                     self.dismiss(animated: true, completion: nil)
-
-
                 }
                 catch {
                     print(error)
                 }
             default:
-                break;
+                break
             }
         case .Bottom:
             self.dismiss(animated: true, completion: nil)
@@ -141,13 +139,7 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if let lastVisibleIndexPath = tableView.indexPathsForVisibleRows?.last {
             if indexPath == lastVisibleIndexPath {
-                print(cell.frame.maxY)
-                print(self.tableView.bounds.maxY)
-                print(self.tableView.frame.height)
-                print(self.tableView.bounds.height)
-                print(self.view.frame.height)
                 let d = self.tableView.frame.height - cell.frame.maxY - 30
-                print(d)
                 self.view.bounds = CGRect(x: 0, y: -d, width: self.tableView.bounds.width, height: self.tableView.bounds.height)
             }
         }

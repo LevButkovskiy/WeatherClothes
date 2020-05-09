@@ -9,6 +9,8 @@
 import UIKit
 import UserNotifications
 import YandexMobileMetrica
+import ApphudSDK
+
 class Notifications: NSObject, UNUserNotificationCenterDelegate {
     let notificationCenter = UNUserNotificationCenter.current()
 
@@ -41,20 +43,6 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
         
         content.sound = .default
         content.badge = 1
-        /*guard let path = Bundle.main.path(forResource: "1234", ofType: "png") else {
-            return;
-        }
-        let url = URL(fileURLWithPath: path)
-        do{
-            let attachment = try UNNotificationAttachment(
-                identifier: "1234",
-                url: url,
-                options: nil)
-            content.attachments = [attachment]
-        }
-        catch{
-            print("Attachment could not be loaded")
-        }*/
         
         let date = Date()
         var timeInt = Int()
@@ -105,9 +93,11 @@ class Notifications: NSObject, UNUserNotificationCenterDelegate {
             let identifier = "Local notification"
             
             let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
-            notificationCenter.add(request) { (error) in
-                if let error = error{
-                    print("Error: \(error.localizedDescription)")
+            if(Apphud.hasActiveSubscription()){
+                notificationCenter.add(request) { (error) in
+                    if let error = error{
+                        print("Error: \(error.localizedDescription)")
+                    }
                 }
             }
         }

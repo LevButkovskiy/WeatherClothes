@@ -24,21 +24,6 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = nil
-
-        if(UIScreen.main.nativeBounds.height != 1136){
-            /*windView.layer.cornerRadius = 10
-            windView.layer.shadowColor = UIColor.lightGray.cgColor
-            windView.layer.shadowOpacity = 0.5
-            windView.layer.shadowOffset = .init(width: 2, height: 2)
-            tempView.layer.cornerRadius = 10
-            tempView.layer.shadowColor = UIColor.lightGray.cgColor
-            tempView.layer.shadowOpacity = 0.5
-            tempView.layer.shadowOffset = .init(width: 2, height: 2)
-            comfortView.layer.cornerRadius = 10
-            comfortView.layer.shadowColor = UIColor.lightGray.cgColor
-            comfortView.layer.shadowOpacity = 0.5
-            comfortView.layer.shadowOffset = .init(width: 2, height: 2)*/
-        }
     }
     
     func setTheme(){
@@ -50,7 +35,6 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
             clotheName.textColor = .white
             backView.backgroundColor = appearance.darkThemeGray
             scrollView.backgroundColor = appearance.darkThemeGray
-
         }
         else{
             clotheName.textColor = .black
@@ -69,6 +53,7 @@ class ResultTableViewCell: UITableViewCell, UIScrollViewDelegate {
         for view in scrollView.subviews{
             view.removeFromSuperview()
         }
+        
         height = self.frame.height - 20
         scrollView.layer.cornerRadius = 15
         scrollView.layer.shadowColor = UIColor.lightGray.cgColor

@@ -63,7 +63,6 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCell(withIdentifier: "inventoryCell", for: indexPath) as! InventoryTableViewCell
         let clothe = inventory.cellForRowAt(indexPath: indexPath)
         if(clothe != nil){
-            //let imageViews = inventory.generateImage(imageName: clothe!.imageName, color: clothe!.color)
             cell.setTheme()
             cell.clotheName.text = clothe?.name
             cell.clotheImage.setImages(imageNamed: clothe!.imageName, color: clothe!.color)
@@ -111,18 +110,13 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        /*let block = UITableViewRowAction(style: .normal, title: "Изменить") { action, index in
-            print("Edit")
-            let clothe = self.inventory.cellForRowAt(indexPath: indexPath)
-            self.goToAdd(clothe!)
-        }*/
         let delete = UITableViewRowAction(style: .default, title: "delete".localized) { action, index in
             print("delete")
             let clothe = self.inventory.cellForRowAt(indexPath: indexPath)
             self.inventory.remove(clothe: clothe!)
             self.update()
         }
-        return [delete/*, block*/]
+        return [delete]
     }
     
     @IBAction func goToAdd(_ sender: Any) {
@@ -139,31 +133,3 @@ class InventoryViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
 }
-/*
- 
- 
-
- 
- func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
- return inventory.numberOfRowsInSection(section: section)
- }
- 
- func numberOfSections(in tableView: UITableView) -> Int {
- return inventory.numberOfSections()
- }
-
- func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
- return true
- }
- 
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- if(segue.identifier == "goToAdd"){
- let controller = segue.destination as! AddClotheViewController
- if(sender != nil){
- controller.clothe = sender as! Dictionary<String, Any>
- }
- controller.inventory = self.inventory
- }
- }
- }
-*/

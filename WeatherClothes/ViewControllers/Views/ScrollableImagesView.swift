@@ -120,7 +120,8 @@ class ScrollableImagesView: UIView {
         for view in scrollView.subviews{
             view.removeFromSuperview()
         }
-        height = self.frame.height - 20
+        
+        height = self.scrollView.frame.width
         scrollView.layer.cornerRadius = 15
         scrollView.layer.shadowColor = UIColor.lightGray.cgColor
         scrollView.layer.shadowOpacity = 1

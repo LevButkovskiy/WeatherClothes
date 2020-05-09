@@ -11,6 +11,7 @@ import CoreData
 import CoreLocation
 import YandexMobileMetrica
 import UserNotifications
+import ApphudSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = YMMYandexMetricaConfiguration.init(apiKey: "b9e9f3f0-6800-47c2-b6cd-6f2bf71793f1")
         YMMYandexMetrica.activate(with: configuration!)
         notificationCenter.requestAutorization()
+        
+        Apphud.start(apiKey: "app_ND6G4fDs2cy6icZnRM8iczi6AmzJKo")
+
         return true
     }
 

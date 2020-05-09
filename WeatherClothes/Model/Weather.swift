@@ -26,8 +26,6 @@ class Weather: NSObject {
     var sunriseTimeMinutes = Int()
     var sunsetTimeHours = Int()
     var sunsetTimeMinutes = Int()
-    //var tempMin = Int()
-    //var tempMax = Int()
 
     var forecast = Dictionary<Int, Any>()
     
@@ -36,8 +34,6 @@ class Weather: NSObject {
     }
 
     func initWithParams(latitude: Double, longitude: Double, completion: @escaping ((Bool) -> ())) {
-        //tempMax = -999
-        //tempMin = 999
         let api = API()
         api.load(latitude: latitude, longitude: longitude, language: "lang".localized, params: "Сейчас"){json in
             self.city = json["name"] as! String
@@ -50,23 +46,19 @@ class Weather: NSObject {
             let weather = (json["weather"] as! NSArray).mutableCopy() as! NSMutableArray
             let subWeather = weather.firstObject as! Dictionary<String, Any>
             self.weatherCondition = subWeather["description"] as! String
-            //self.visibility = (json["visibility"] as! Double) / 1000
             self.sunriseTimeHours = Int(self.getSunSetRice(value: "sunrise", json: json, formatter: "HH"))!
             self.sunriseTimeMinutes = Int(self.getSunSetRice(value: "sunrise", json: json, formatter: "mm"))!
             self.sunsetTimeHours = Int(self.getSunSetRice(value: "sunset", json: json, formatter: "HH"))!
             self.sunsetTimeMinutes = Int(self.getSunSetRice(value: "sunset", json: json, formatter: "mm"))!
-            api.loadUVIndex(latitude: latitude, longitude: longitude) { json in
-                self.uvIndex = json["value"] as! Double
-                completion(true)
-            }
+            completion(true)
         }
     }
     
     func initForForecast(latitude: Double, longitude: Double, completion: @escaping ((Bool) -> ())){
         let api = API()
-        api.load(latitude: latitude, longitude: longitude, language: "lang".localized, params: "3 часа"){jsonForecast in
-         self.parseJsonForecast(json: jsonForecast)
-         completion(true)
+        api.load(latitude: latitude, longitude: longitude, language: "lang".localized, params: "3 часа"){ jsonForecast in
+             self.parseJsonForecast(json: jsonForecast)
+             completion(true)
          }
     }
     

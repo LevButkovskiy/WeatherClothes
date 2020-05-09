@@ -18,16 +18,6 @@ class ContainerViewController: UIViewController, HomeViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        /*let firstLaunch = UserDefaults.standard.bool(forKey: "firstLaunch")
-        if firstLaunch  {
-            print("Not first launch.")
-        } else {
-            let tutorial = TutorialViewController()
-            navigationController?.pushViewController(tutorial, animated: true)
-            print("First launch, setting UserDefault.")
-            UserDefaults.standard.set(true, forKey: "firstLaunch")
-        }
-        */
         let home = HomeViewController()
         loadHomeViewController()
         navigationController?.popToViewController(home, animated: true)

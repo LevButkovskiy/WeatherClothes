@@ -152,13 +152,14 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
         deselectAll(collectionView: typeCollectionView)
         cell.imageView.backgroundColor = .blue
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         print(UIDevice.modelName)
         if(UIDevice.modelName == "iPhone 5s" || UIDevice.modelName == "iPhone 5c" || UIDevice.modelName == "iPhone SE" || UIDevice.modelName == "Simulator iPhone 5s" || UIDevice.modelName == "Simulator iPhone 5c" || UIDevice.modelName == "Simulator iPhone SE"){
-            return UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20);
+            return UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
         }
         else{
-            return UIEdgeInsets(top: 10, left: 50, bottom: 10, right: 50);
+            return UIEdgeInsets(top: 10, left: 50, bottom: 10, right: 50)
         }
     }
 
@@ -203,38 +204,38 @@ class AddClotheViewController: UIViewController, UIImagePickerControllerDelegate
             array.append(inventory.generateImage(imageName: "sneakers" , color: color))
             array.append(inventory.generateImage(imageName: "slippers" , color: color))
         default:
-            break;
+            break
         }
         return array
     }
     
     func generateImagesForScrollableView(at index: Int) ->Array<Clothe>{
-        print(gender)
+
         var array = Array<Clothe>()
         switch index {
         case 0:
-            array.append(Clothe(imageName: "hat", color: color))
             array.append(gender ? Clothe(imageName: "cap_w", color: color) : Clothe(imageName: "cap_m", color: color))
+            array.append(Clothe(imageName: "hat", color: color))
         case 1:
-            array.append(Clothe(imageName: "insulatedjacket", color: color))
-            array.append(Clothe(imageName: "jacket", color: color))
-            array.append(Clothe(imageName: "windbreaker", color: color))
             array.append(Clothe(imageName: "tshirt", color: color))
+            array.append(Clothe(imageName: "windbreaker", color: color))
+            array.append(Clothe(imageName: "jacket", color: color))
+            array.append(Clothe(imageName: "insulatedjacket", color: color))
         case 2:
             array.append(Clothe(imageName: "pants", color: color))
             if(gender){
-                array.append(Clothe(imageName: "dress", color: color))
                 array.append(Clothe(imageName: "skirt", color: color))
+                array.append(Clothe(imageName: "dress", color: color))
             }
             else{
                 array.append(Clothe(imageName: "shorts", color: color))
             }
         case 3:
-            array.append(Clothe(imageName: "wintershoes", color: color))
-            array.append(Clothe(imageName: "sneakers", color: color))
             array.append(Clothe(imageName: "slippers", color: color))
+            array.append(Clothe(imageName: "sneakers", color: color))
+            array.append(Clothe(imageName: "wintershoes", color: color))
         default:
-            break;
+            break
         }
         return array
     }

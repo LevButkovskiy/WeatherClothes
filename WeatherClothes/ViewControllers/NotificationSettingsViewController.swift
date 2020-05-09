@@ -49,6 +49,7 @@ class NotificationSettingsViewController: UIViewController, UITableViewDelegate,
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(reloadAfterApply), name: .updateAfterApply, object: nil)
+        
         // Do any additional setup after loading the view.
     }
     
@@ -87,10 +88,10 @@ class NotificationSettingsViewController: UIViewController, UITableViewDelegate,
             switch section {
             case .Notifications:
                 footerTitles.append("notificationsFooter".localized)
-                break;
+                break
             case .Time:
                 footerTitles.append("Время срабатывания уведомления")
-                break;
+                break
             }
         }
     }
@@ -159,29 +160,10 @@ class NotificationSettingsViewController: UIViewController, UITableViewDelegate,
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if(indexPath.section == Section.Time.rawValue){
-            /*let cell = tableView.cellForRow(at: IndexPath(row: 0, section: Section.Time.rawValue)) as! SetValueTableViewCell
-            let timeValue = cell.valueLabel.text!
-            print(timeValue)*/
-            /*let timeValue = "08:20:00"
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "hh:mm"
-            let dateTime = dateFormatter.date(from: timeValue)
-            let vc = TableViewController()
-            vc.dateTime = dateTime!
-            self.present(vc, animated: true, completion: nil)*/
-            #warning("Сделать передачу dateTime на контроллер")
+            let controller = TableViewController()
+            self.present(controller, animated: true, completion: nil)
         }
     }
-    
-    /*@objc func timePickerValueChanged(sender: UIDatePicker){
-        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: Section.Time.rawValue)) as! SetValueTableViewCell
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        timeText = dateFormatter.string(from: sender.date)
-        cell.valueLabel.text = timeText
-        applyChanges()
-        print(timeText)
-    }*/
     
     @objc func notificationSwitcherValueChanged(sender: UISwitch){
         allowNotifications = sender.isOn
@@ -203,5 +185,9 @@ class NotificationSettingsViewController: UIViewController, UITableViewDelegate,
         catch {
             print(error)
         }
+    }
+    
+    @IBAction func doneButtonAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
     }
 }

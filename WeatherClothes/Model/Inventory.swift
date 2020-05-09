@@ -88,7 +88,7 @@ class Inventory: NSObject {
             if(invItem.isEqual(clothe)){
                 items = deleteAtIndex(dictionary: items, index: i)
                 inventory[type] = items
-                break;
+                break
             }
         }
         if((inventory[type] as! Dictionary<Int, Any>).isNil()){

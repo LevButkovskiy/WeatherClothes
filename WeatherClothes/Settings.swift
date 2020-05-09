@@ -388,7 +388,7 @@ extension Dictionary{
     
     func isNil() -> Bool{
         if(self.count == 0){
-            return true;
+            return true
         }
         let keys = self.keys
         if(keys.count == 0){

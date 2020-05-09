@@ -10,6 +10,7 @@ import UIKit
 import CoreLocation
 import WhatsNewKit
 import SystemConfiguration //Internet
+import ApphudSDK
 
 protocol HomeViewControllerDelegate {
     func toggleMenu()
@@ -21,22 +22,18 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     
     var weather = Weather()
     var weatherForecast = Weather()
-    let clothes = Clothes()
     var inventory = Inventory()
     var appearance = Appearance()
     
     var locationManager: CLLocationManager?
-    var latitude = Double()
-    var longitude = Double()
+    var latitude = 0.0
+    var longitude = 0.0
     
     var homeViewControllerDelegate : HomeViewControllerDelegate?
     var menuIsActive = false
     
     var refreshControl = UIRefreshControl()
-    
-    let bView = UIView()
-    let spinner = UIActivityIndicatorView()
-    
+        
     var now = Date()
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -54,6 +51,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var wardrobeButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,8 +105,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     }
     
     func afterLoadSettings(){
-        if (UserDefaults.standard.object(forKey: "version 1.0.2") as? NSData) == nil {
-            UserDefaults.standard.removeObject(forKey: "inventory")
+        if (UserDefaults.standard.object(forKey: "version 1.0.3") as? NSData) == nil {
             showWhatsNew()
         }
         setTheme()
@@ -117,9 +114,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     func showWhatsNew(){
         // Initialize WhatsNew
         let whatsNew = WhatsNew(
-            // The Title
             title: "updateTitle".localized,
-            // The features you want to showcase
             items: [
                 WhatsNew.Item(
                     title: "darkMode".localized,
@@ -141,22 +136,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         // Initialize default Configuration
         var configuration = WhatsNewViewController.Configuration()
             
-        // Customize Configuration to your needs
-        /*if #available(iOS 13, *) {
-            if(self.traitCollection.userInterfaceStyle == UIUserInterfaceStyle.dark){
-                configuration.backgroundColor = .whatsNewKitDark
-                configuration.itemsView.titleColor = .white
-                configuration.itemsView.subtitleColor = .white
-            }
-            else{
-                configuration.backgroundColor = .white
-                configuration.itemsView.titleColor = .black
-                configuration.itemsView.subtitleColor = .black
-            }
-        }
-        else{
-            configuration.backgroundColor = .white
-        }*/
         configuration.backgroundColor = .whatsNewKitDark
         configuration.itemsView.titleColor = .white
         configuration.itemsView.subtitleColor = .white
@@ -182,17 +161,29 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         )
         do{
             let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: true, requiringSecureCoding: true)
-            UserDefaults().set(archivedObject, forKey: "version 1.0.2")
+            UserDefaults().set(archivedObject, forKey: "version 1.0.3")
         }
         catch {
             print(error)
         }
-        // Present it 🤩
+
         self.present(whatsNewViewController, animated: true)
     }
     
+    func showNotificationSettings(){
+        let controller = NotificationSettingsViewController()
+        self.modalPresentationStyle = .overFullScreen
+        self.show(controller, sender: nil)
+    }
+    
+    func showSubscription(){
+        let controller = SubscriptionViewController()
+        self.modalPresentationStyle = .overFullScreen
+        self.show(controller, sender: nil)
+    }
+    
     func setViews(){
-         tableView.layer.cornerRadius = 30
+        tableView.layer.cornerRadius = 30
         tableView.layer.shadowColor = UIColor.lightGray.cgColor
         tableView.layer.shadowOpacity = 1
         tableView.layer.shadowOffset = CGSize(width: 1, height: 1)
@@ -230,14 +221,9 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                     self.cityLabel.text = self.weather.city
                     self.temperatureLabel.text = String(format: "%d°C", self.weather.temperature)
                     self.windHumidityLabel.text = String(format: "%@: %d %@ | %@: %d %@", "wind".localized.capitalizedFirst(), self.weather.windSpeed, "ms".localized, "humidity".localized.capitalizedFirst(), self.weather.humidity, "%")
-                    //self.windValueLabel.text = String(format: "%d %@", self.weather.windSpeed, "ms".localized)
-                    //self.visibilityValueLabel.text = String(format: "%.1f %@", self.weather.visibility, "km".localized)
-                    //self.humidityValueLabel.text = String(format: "%d %@", self.weather.humidity, String("%"))
-                    //self.uvIndexValueLabel.text = String(format: "%.1f", self.weather.uvIndex)
                     self.weatherConditionLabel.text = self.weather.weatherCondition.capitalizedFirst()
                     let hours = self.now.hours()
                     let minutes = self.now.minutes()
-                    //self.timeLabel.text = String(format: "%@, %@", self.now.dayOfWeek().localized, self.now.hoursMinutes())
                     self.weatherImage.image = self.weather.getImageForCondition(minutes: Int(minutes)!, hours: Int(hours)!, weatherCondition: self.weather.weatherCondition)
                     self.generateClothes()
                     self.loadForecast()
@@ -258,21 +244,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                     let notifications = (NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject as Data) as! Dictionary<String,Any>)
                     let notificationHour = Int(notifications["hour"] as! String)
                     if(Int(self.now.hours())! <= notificationHour! + 2 && Int(self.now.hours())! >= notificationHour!){
-                        var notificationText = ""
-                        if(self.inventory.head == ""){
-                            notificationText = String(format: "%@: %d°С, %@. %@: %@, %@, %@", "outside", self.weather.temperature, self.weather.weatherCondition, "clothesToWear".localized, self.inventory.upper, self.inventory.lower, self.inventory.boots)
-                        }
-                        else{
-                            notificationText = String(format: "%@: %d°С, %@. %@: %@, %@, %@, %@", "outside".localized, self.weather.temperature, self.weather.weatherCondition, "clothesToWear".localized, self.inventory.head, self.inventory.upper, self.inventory.lower, self.inventory.boots)
-                        }
-                        print(notificationText)
-                        do{
-                            let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: notificationText, requiringSecureCoding: true)
-                            UserDefaults().set(archivedObject, forKey: "notificationText")
-                        }
-                        catch {
-                            print(error)
-                        }
+                        self.notificationAction(temperature: String(self.weather.temperature), weatherCondition: self.weather.weatherCondition)
                     }
                     else{
                         if(completion){
@@ -284,21 +256,7 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                                     let temperature = weatherPart["temperature"] as! String
                                     var weatherCondition = weatherPart["weatherCondition"] as! String
                                     weatherCondition = weatherCondition.capitalizedFirst()
-                                    var notificationText = ""
-                                    if(self.inventory.head == ""){
-                                        notificationText = String(format: "%@: %d°С, %@. %@: %@, %@, %@", "outside", Int(temperature)!, weatherCondition, "clothesToWear".localized, self.inventory.upper, self.inventory.lower, self.inventory.boots)
-                                    }
-                                    else{
-                                        notificationText = String(format: "%@: %d°С, %@. %@: %@, %@, %@, %@", "outside".localized, Int(temperature)!, weatherCondition, "clothesToWear".localized, self.inventory.head, self.inventory.upper, self.inventory.lower, self.inventory.boots)
-                                    }
-                                    print(notificationText)
-                                    do{
-                                        let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: notificationText, requiringSecureCoding: true)
-                                        UserDefaults().set(archivedObject, forKey: "notificationText")
-                                    }
-                                    catch {
-                                        print(error)
-                                    }
+                                    self.notificationAction(temperature: temperature, weatherCondition: weatherCondition)
                                 }
                             }
                         }
@@ -306,6 +264,24 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
                 }
                 
             }
+        }
+    }
+    
+    func notificationAction(temperature: String, weatherCondition: String){
+        var notificationText = ""
+        if(self.inventory.head == ""){
+            notificationText = String(format: "%@: %d°С, %@. %@: %@, %@, %@", "outside", Int(temperature)!, weatherCondition, "clothesToWear".localized, self.inventory.upper.localized, self.inventory.lower.localized, self.inventory.boots.localized)
+        }
+        else{
+            notificationText = String(format: "%@: %d°С, %@. %@: %@, %@, %@, %@", "outside".localized, Int(temperature)!, weatherCondition, "clothesToWear".localized, self.inventory.head.localized, self.inventory.upper.localized, self.inventory.lower.localized, self.inventory.boots.localized)
+        }
+        print(notificationText)
+        do{
+            let archivedObject = try NSKeyedArchiver.archivedData(withRootObject: notificationText, requiringSecureCoding: true)
+            UserDefaults().set(archivedObject, forKey: "notificationText")
+        }
+        catch {
+            print(error)
         }
     }
     
@@ -368,33 +344,17 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
         cell.setImages()
         cell.setTheme()
 
-        /*cell.clothesImages = inventory.getClothes(weather: weather, section: section, value: clotheName.trimmingCharacters(in: .whitespaces))*/
         return cell
     }
     
-    @IBAction func refreshButton(_ sender: Any) {
-        performSegue(withIdentifier: "goToInventory", sender: nil)
-    }
-    
-    func showNotificationSettings(){
-        let no = NotificationSettingsViewController()
-        self.modalPresentationStyle = .overFullScreen
-        self.show(no, sender: nil)
-        //self.present(no, animated: true, completion: nil)
-        /*notificationsSettings.frame = CGRect(x: 0, y: self.view.frame.height * 2, width: self.view.frame.width, height: self.view.frame.height)
-        notificationsSettings.layer.cornerRadius = 20*/
-        //let no = UIViewController()
-//        no.view = notificationsSettings
-//        self.present(no, animated: true) {
-//
-//        }
-        /*
-        self.view.addSubview(notificationsSettings)
-        self.present(<#T##viewControllerToPresent: UIViewController##UIViewController#>, animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
-        UIView.animate(withDuration: 0.5, animations: {
-            notificationsSettings.frame = CGRect(x: 0, y: self.view.safeAreaInsets.top + 10, width: self.view.frame.width, height: self.view.frame.height - 10)
-            notificationsSettings.layer.cornerRadius = 20
-        })*/
+    @IBAction func goToInventoryButton(_ sender: Any) {
+                let subscription = Apphud.hasActiveSubscription()
+        if(subscription){
+            performSegue(withIdentifier: "goToInventory", sender: nil)
+        }
+        else {
+            self.showSubscription()
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -403,10 +363,6 @@ class HomeViewController: UIViewController, CLLocationManagerDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.frame.height / CGFloat(tableView.numberOfSections) - 20
-    }
-    
-    @IBAction func goToInventoryButton(_ sender: Any) {
-        performSegue(withIdentifier: "goToInventory", sender: nil)
     }
     
     //Location

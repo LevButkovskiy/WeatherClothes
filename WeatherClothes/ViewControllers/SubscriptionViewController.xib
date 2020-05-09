@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SubscriptionViewController" customModule="WeatherClothes" customModuleProvider="target">
+            <connections>
+                <outlet property="cancelButton" destination="rys-bH-kCd" id="2cu-nb-Os7"/>
+                <outlet property="doneButton" destination="CWc-Kr-C9K" id="9pg-XB-Thj"/>
+                <outlet property="imageView" destination="s9H-RI-qj1" id="hQg-sX-nT3"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="discount" translatesAutoresizingMaskIntoConstraints="NO" id="s9H-RI-qj1">
+                    <rect key="frame" x="83" y="108" width="248" height="248.5"/>
+                    <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Специально для тебя!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOE-al-0lI">
+                    <rect key="frame" x="75.5" y="372.5" width="263.5" height="30"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Доступ к гардеробу, возможности добавлять собственную одежду и настраивать уведомления" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JoO-PX-gvI">
+                    <rect key="frame" x="32" y="410.5" width="350" height="61"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWc-Kr-C9K">
+                    <rect key="frame" x="16" y="487.5" width="165.5" height="41"/>
+                    <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
+                    <state key="normal" title="Оформить за 69₽">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="doneButtonAction:" destination="-1" eventType="touchDown" id="mm0-vh-taB"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rys-bH-kCd">
+                    <rect key="frame" x="232.5" y="487.5" width="165.5" height="38"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
+                    <state key="normal" title="Нет, спасибо">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="cancelButtonAction:" destination="-1" eventType="touchDown" id="6V1-6c-Mfa"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BDd-vd-Bi1">
+                    <rect key="frame" x="8" y="544.5" width="398" height="0.0"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0H-nk-LRc">
+                    <rect key="frame" x="303" y="853" width="79" height="27"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="Privacy policy">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="privacyPolicy:" destination="-1" eventType="touchDown" id="CpS-M6-1Dt"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gm1-ix-iNW">
+                    <rect key="frame" x="32" y="853" width="74" height="27"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <state key="normal" title="Terms of use">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="termsOfUse:" destination="-1" eventType="touchDown" id="AOa-LP-YC6"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NoJ-xn-IRN">
+                    <rect key="frame" x="16" y="738" width="382" height="115"/>
+                    <string key="text">Payment will be charged to your Apple ID account at the confirmation of purchase. Subscription automatically renews unless it is canceled at least 24 hours before the end of the current period. Your account will be charged for renewal within 24 hours prior to the end of the current period. You can manage and cancel your subscriptions by going to your account settings on the App Store after purchase.
+</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="v0H-nk-LRc" secondAttribute="trailing" constant="32" id="3sv-l2-dr2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="BDd-vd-Bi1" secondAttribute="trailing" constant="8" id="58J-JP-269"/>
+                <constraint firstItem="CWc-Kr-C9K" firstAttribute="top" secondItem="JoO-PX-gvI" secondAttribute="bottom" constant="16" id="5sa-vW-Mxf"/>
+                <constraint firstItem="CWc-Kr-C9K" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.4" id="8Cw-ub-lGP"/>
+                <constraint firstItem="Gm1-ix-iNW" firstAttribute="top" secondItem="NoJ-xn-IRN" secondAttribute="bottom" id="9ei-WD-pU2"/>
+                <constraint firstItem="CWc-Kr-C9K" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="BJn-ac-Ogo"/>
+                <constraint firstItem="rys-bH-kCd" firstAttribute="top" secondItem="JoO-PX-gvI" secondAttribute="bottom" constant="16" id="Cbk-Lh-55G"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="NoJ-xn-IRN" secondAttribute="trailing" constant="16" id="EV5-lX-vn0"/>
+                <constraint firstItem="JoO-PX-gvI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="32" id="GW2-z0-epe"/>
+                <constraint firstItem="NoJ-xn-IRN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="JfJ-WK-EPm"/>
+                <constraint firstItem="BDd-vd-Bi1" firstAttribute="top" secondItem="CWc-Kr-C9K" secondAttribute="bottom" constant="16" id="Obi-pM-iJ6"/>
+                <constraint firstItem="BDd-vd-Bi1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="QKc-Ag-mp2"/>
+                <constraint firstItem="JoO-PX-gvI" firstAttribute="top" secondItem="TOE-al-0lI" secondAttribute="bottom" constant="8" id="RDQ-0V-4oX"/>
+                <constraint firstItem="TOE-al-0lI" firstAttribute="top" secondItem="s9H-RI-qj1" secondAttribute="bottom" constant="16" id="SIc-Dv-HGh"/>
+                <constraint firstItem="rys-bH-kCd" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.4" id="Syt-AJ-gcb"/>
+                <constraint firstItem="TOE-al-0lI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="UBA-f1-89E"/>
+                <constraint firstAttribute="bottom" secondItem="Gm1-ix-iNW" secondAttribute="bottom" constant="16" id="V1P-eP-yC6"/>
+                <constraint firstItem="s9H-RI-qj1" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.6" id="Wrg-2a-2JS"/>
+                <constraint firstAttribute="trailing" secondItem="JoO-PX-gvI" secondAttribute="trailing" constant="32" id="b3X-YZ-fY4"/>
+                <constraint firstItem="s9H-RI-qj1" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cCh-qA-Pvr"/>
+                <constraint firstItem="JoO-PX-gvI" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="f7U-dq-eKu"/>
+                <constraint firstAttribute="bottom" secondItem="v0H-nk-LRc" secondAttribute="bottom" constant="16" id="gLl-q2-mCo"/>
+                <constraint firstItem="Gm1-ix-iNW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="32" id="jVc-XL-SUg"/>
+                <constraint firstItem="s9H-RI-qj1" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="width" multiplier="0.6" id="qnE-UR-sZL"/>
+                <constraint firstItem="s9H-RI-qj1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="64" id="sbE-ao-pTv"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rys-bH-kCd" secondAttribute="trailing" constant="16" id="vpu-U8-44T"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="139" y="110"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="discount" width="256" height="256"/>
+    </resources>
+</document>

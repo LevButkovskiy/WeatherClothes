@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import ApphudSDK
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let reuseIdentifier = "menuCell"
@@ -47,10 +47,10 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if #available(iOS 13, *) {
-            return 3
+            return Apphud.hasActiveSubscription() ? 3 : 4
         }
         else{
-            return 4
+            return Apphud.hasActiveSubscription() ? 4 : 5
         }
     }
     
@@ -76,6 +76,12 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.switcher.layer.cornerRadius = cell.switcher.frame.height / 2
                 cell.switcher.backgroundColor = .blue
                 cell.selectionStyle = .none
+            case 3:
+                cell.mode = "subscription"
+                cell.nameLabel.text = "Новые функции";
+                cell.accessoryType = .disclosureIndicator
+                cell.icon.image = UIImage(named: "updates")
+
             default: break
             }
         }
@@ -104,6 +110,11 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
                 cell.switcher.layer.cornerRadius = cell.switcher.frame.height / 2
                 cell.switcher.backgroundColor = .blue
                 cell.selectionStyle = .none
+            case 4:
+                cell.mode = "subscription"
+                cell.nameLabel.text = "Новые функции";
+                cell.accessoryType = .disclosureIndicator
+                cell.icon.image = UIImage(named: "updates")
             default: break
             }
         }
@@ -114,17 +125,25 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let cell = tableView.cellForRow(at: indexPath) as! MenuTableViewCell
+        let viewController = (UIApplication.shared.keyWindow!.rootViewController) as! UINavigationController
+        let containerViewController = viewController.viewControllers[0] as! ContainerViewController
+        containerViewController.homeViewController.showMenu(self)
+        
         if(indexPath.row == 0){
-            let viewController = (UIApplication.shared.keyWindow!.rootViewController) as! UINavigationController
-            let containerViewController = viewController.viewControllers[0] as! ContainerViewController
-            containerViewController.homeViewController.showMenu(self)
             containerViewController.homeViewController.showWhatsNew()
         }
         if(indexPath.row == 1){
-            let viewController = (UIApplication.shared.keyWindow!.rootViewController) as! UINavigationController
-            let containerViewController = viewController.viewControllers[0] as! ContainerViewController
-            containerViewController.homeViewController.showMenu(self)
-            containerViewController.homeViewController.showNotificationSettings()
+            if(Apphud.hasActiveSubscription()){
+                containerViewController.homeViewController.showNotificationSettings()
+            }
+            else{
+                containerViewController.homeViewController.showSubscription()
+            }
+        }
+        
+        if(cell.mode == "subscription") {
+            containerViewController.homeViewController.showSubscription()
         }
     }
 

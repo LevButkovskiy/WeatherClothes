@@ -43,8 +43,8 @@ class Clothe: NSObject, NSSecureCoding {
         self.imageName = imageName
         self.color = color
         self.name = ""
-        self.type = 0;
-        self.comfortTemperature = 0;
+        self.type = 0
+        self.comfortTemperature = 0
         self.comfortWind = 0;
     }
     
@@ -53,7 +53,6 @@ class Clothe: NSObject, NSSecureCoding {
         aCoder.encode(imageName, forKey: "imageName")
         let colorData = color.encode()
         aCoder.encode(colorData, forKey: "color")
-        //aCoder.encode(userImage, forKey: "userImage")
         aCoder.encode(type, forKey: "type")
         aCoder.encode(comfortTemperature, forKey: "temperature")
         aCoder.encode(comfortWind, forKey: "wind")
@@ -64,7 +63,6 @@ class Clothe: NSObject, NSSecureCoding {
         imageName = aDecoder.decodeObject(forKey: "imageName") as! String
         let colorData = aDecoder.decodeObject(forKey: "color") as! Data
         color = UIColor.color(withData: colorData)
-        //userImage = aDecoder.decodeObject(forKey: "userImage") as! Data
         type = aDecoder.decodeObject(forKey: "type") as? Int
         comfortTemperature = aDecoder.decodeObject(forKey: "temperature") as? Int
         comfortWind = aDecoder.decodeObject(forKey: "wind") as? Int

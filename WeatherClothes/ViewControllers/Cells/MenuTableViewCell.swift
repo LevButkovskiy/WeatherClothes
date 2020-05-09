@@ -42,8 +42,6 @@ class MenuTableViewCell: UITableViewCell {
         else if(mode == "gender"){
             switcher.addTarget(self, action: #selector(switchGender(sender:)), for: .valueChanged)
             switcher.isOn = gender
-            //let data = Data(
-            //let a = UIImage(data: <#T##Data#>)
             icon.image = gender ? UIImage(named: "gender_woman") : UIImage(named: "gender_men")
         }
     }

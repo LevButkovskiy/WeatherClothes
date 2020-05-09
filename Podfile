@@ -9,6 +9,7 @@ target 'WeatherClothes' do
   pod 'YandexMobileMetrica', '3.7.1'
   pod 'WhatsNewKit'
   pod 'ColorSlider', '~> 4.4'
+  pod 'ApphudSDK'
   
   target 'WeatherClothesTests' do
     inherit! :search_paths
